@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.FXMLDocumentController">
+   <children>
+      <Label layoutX="585.0" layoutY="48.0" text="GENERAL">
+         <font>
+            <Font name="Roboto Bold" size="27.0" />
+         </font>
+      </Label>
+      <Separator layoutX="247.0" layoutY="117.0" prefHeight="5.0" prefWidth="817.0" />
+      <JFXTextField labelFloat="true" layoutX="349.0" layoutY="217.0" prefHeight="42.0" prefWidth="212.0" promptText="Name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField labelFloat="true" layoutX="771.0" layoutY="221.0" prefHeight="42.0" prefWidth="212.0" promptText="College ID">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField labelFloat="true" layoutX="771.0" layoutY="443.0" prefHeight="42.0" prefWidth="212.0" promptText="Date of Birth">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField labelFloat="true" layoutX="353.0" layoutY="441.0" prefHeight="42.0" prefWidth="212.0" promptText="Contact">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField labelFloat="true" layoutX="357.0" layoutY="327.0" prefHeight="42.0" prefWidth="212.0" promptText="Current Sem">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField labelFloat="true" layoutX="771.0" layoutY="324.0" prefHeight="42.0" prefWidth="212.0" promptText="Branch">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField labelFloat="true" layoutX="357.0" layoutY="558.0" prefHeight="42.0" prefWidth="212.0" promptText="Trust">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="saveBtn" buttonType="RAISED" layoutX="1045.0" layoutY="652.0" onAction="#handleSaveButt" prefHeight="41.0" prefWidth="124.0" ripplerFill="#002a94" style="-fx-text-fill: #ffffff; -fx-background-color: #1883D7;" text="SAVE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

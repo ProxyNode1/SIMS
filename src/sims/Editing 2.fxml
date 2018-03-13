@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing2Controller">
+   <children>
+      <HBox alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="32.0" prefWidth="1274.0" style="-fx-background-color: #ffffff;" />
+      <VBox fx:id="menuBar" layoutX="3.0" layoutY="3.0" prefHeight="714.0" prefWidth="125.0" style="-fx-background-color: #323640;" />
+      <Circle fill="#535353" layoutX="640.0" layoutY="690.0" radius="12.0" stroke="#0078d7" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BtnTo2" fill="WHITE" layoutX="640.0" layoutY="690.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="BtnTo1" fill="WHITE" layoutX="600.0" layoutY="690.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="BtnTo3" fill="WHITE" layoutX="680.0" layoutY="690.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
+      <Pane layoutX="211.0" layoutY="127.0" prefHeight="422.0" prefWidth="438.0" style="-fx-background-color: #2F3136; -fx-border-color: #DEA309;">
+         <children>
+            <Label layoutX="191.0" layoutY="33.0" text="SSC" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="27.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" layoutX="216.0" layoutY="72.0" startX="-100.0" stroke="WHITE" />
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="122.0" promptText="Year of Passing" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="122.0" promptText="Roll No" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="193.0" promptText="Board" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="241.0" layoutY="193.0" promptText="Medium" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="274.0" promptText="School" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="241.0" layoutY="274.0" promptText="City" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="355.0" promptText="Marks(Total)" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="241.0" layoutY="355.0" promptText="Percentage" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </Pane>
+      <MenuButton layoutX="757.0" layoutY="127.0" mnemonicParsing="false" prefHeight="37.58" prefWidth="163.7" style="-fx-background-color: #323640; -fx-border-color: #707070;" text="HSSC" textFill="WHITE">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+         <font>
+            <Font name="Roboto Bold" size="16.0" />
+         </font>
+      </MenuButton>
+      <Pane layoutX="757.0" layoutY="177.0" prefHeight="330.0" prefWidth="426.0" style="-fx-background-color: #2F3136; -fx-border-color: #DEA309;">
+         <children>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="28.0" promptText="Year of Passing" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="236.0" layoutY="28.0" promptText="Roll No" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="99.0" promptText="Board" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="236.0" layoutY="99.0" promptText="Medium" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="180.0" promptText="School" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="236.0" layoutY="180.0" promptText="City" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="261.0" promptText="Marks(Total)" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="236.0" layoutY="261.0" promptText="Year of Passing" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+               <font>
+                  <Font name="Roboto" size="16.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </Pane>
+      <ScrollBar layoutX="1263.0" layoutY="35.0" orientation="VERTICAL" prefHeight="682.0" prefWidth="12.0" />
+   </children>
+</Pane>

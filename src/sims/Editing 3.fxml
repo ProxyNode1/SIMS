@@ -15,49 +15,49 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing3Controller">
+<Pane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing3Controller">
    <children>
-      <Label fx:id="Gen" layoutX="604.0" layoutY="74.0" text="GENERAL" textFill="WHITE">
+      <JFXTextField fx:id="EmailBtn" focusColor="WHITE" labelFloat="true" layoutX="198.0" layoutY="160.0" prefHeight="64.0" prefWidth="301.0" promptText="Personal Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
          <font>
-            <Font name="Roboto Bold" size="27.0" />
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="CEmailBtn" focusColor="WHITE" labelFloat="true" layoutX="598.0" layoutY="160.0" prefHeight="64.0" prefWidth="301.0" promptText="College's Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="DadCntct" focusColor="WHITE" labelFloat="true" layoutX="198.0" layoutY="280.0" prefHeight="64.0" prefWidth="301.0" promptText="Father's Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="MomCntct" focusColor="WHITE" labelFloat="true" layoutX="598.0" layoutY="280.0" prefHeight="64.0" prefWidth="301.0" promptText="Mother's Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </JFXTextField>
+      <HBox alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="32.0" prefWidth="1274.0" style="-fx-background-color: #ffffff;" />
+      <VBox fx:id="menuBar" layoutX="2.0" layoutY="2.0" prefHeight="716.0" prefWidth="125.0" style="-fx-background-color: #323640;" />
+      <Circle fill="#535353" layoutX="680.0" layoutY="700.0" radius="12.0" stroke="#0078d7" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BtnTo2" fill="WHITE" layoutX="640.0" layoutY="700.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="BtnTo1" fill="WHITE" layoutX="600.0" layoutY="700.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="BtnTo3" fill="WHITE" layoutX="680.0" layoutY="700.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
+      <JFXCheckBox fx:id="CertifTick" alignment="CENTER" checkedColor="#2f3136" contentDisplay="RIGHT" graphicTextGap="5.0" layoutX="198.0" layoutY="390.0" prefHeight="57.0" prefWidth="305.24" style="-fx-background-color: #323640; -fx-border-color: #707070; -fx-border-width: 1; -jfx-unchecked-color: #BCE0FD;" text="Certifications" textFill="WHITE" unCheckedColor="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="18.0" />
+         </font>
+      </JFXCheckBox>
+      <TextArea fx:id="AddInfoField" layoutX="198.0" layoutY="500.0" prefHeight="156.0" prefWidth="748.0" />
+      <Label layoutX="203.0" layoutY="464.0" text="Additional Information" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="18.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="NameTXT" focusColor="WHITE" labelFloat="true" layoutX="357.0" layoutY="260.0" prefHeight="42.0" prefWidth="212.0" promptText="Name" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
+      <JFXButton fx:id="SavBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1127.0" layoutY="628.0" prefHeight="24.45" prefWidth="76.79" style="-fx-background-color: #DEA309;" text="Save" textAlignment="CENTER">
          <font>
-            <Font name="Arial" size="14.0" />
+            <Font name="Arial" size="17.0" />
          </font>
-      </JFXTextField>
-      <JFXTextField fx:id="idTXT" focusColor="WHITE" labelFloat="true" layoutX="757.0" layoutY="260.0" prefHeight="42.0" prefWidth="212.0" promptText="College ID" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="dobTXT" focusColor="WHITE" labelFloat="true" layoutX="357.0" layoutY="370.0" prefHeight="42.0" prefWidth="212.0" promptText="Current Sem" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="cntctTXT" focusColor="WHITE" labelFloat="true" layoutX="757.0" layoutY="370.0" prefHeight="42.0" prefWidth="212.0" promptText="Branch" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="semTXT" focusColor="WHITE" labelFloat="true" layoutX="357.0" layoutY="480.0" prefHeight="42.0" prefWidth="212.0" promptText="Contect" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="branchTXT" focusColor="WHITE" labelFloat="true" layoutX="757.0" layoutY="480.0" prefHeight="42.0" prefWidth="212.0" promptText="Date of Birth" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff;" unFocusColor="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
-      <Line endX="620.0" layoutX="357.0" layoutY="126.0" stroke="#dea309" />
-      <HBox alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="32.0" prefWidth="1274.0" style="-fx-background-color: #ffffff;" />
-      <VBox fx:id="menuBar" layoutX="3.0" layoutY="3.0" prefHeight="714.0" prefWidth="125.0" style="-fx-background-color: #323640;" />
-      <Circle fill="#535353" layoutX="600.0" layoutY="690.0" radius="12.0" stroke="#0078d7" strokeType="INSIDE" strokeWidth="2.0" />
-      <Circle fx:id="BtnTo2" fill="WHITE" layoutX="640.0" layoutY="690.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="BtnTo1" fill="WHITE" layoutX="600.0" layoutY="690.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="BtnTo3" fill="WHITE" layoutX="680.0" layoutY="690.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
+      </JFXButton>
    </children>
 </Pane>

@@ -9,19 +9,86 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
+import com.jfoenix.controls.JFXTextField;
+import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
+
 /**
  * FXML Controller class
  *
  * @author VIC's
  */
-public class Editing2Controller implements Initializable {
+public class Editing2Controller implements Initializable 
+{
 
-    /**
-     * Initializes the controller class.
-     */
+  
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        SPass.requestFocus();
+    }  
+    
+    
+
+
+
+    @FXML
+    private JFXTextField SPentg;
+
+    @FXML
+    private JFXTextField SSch;
+
+    @FXML
+    private JFXTextField HPass;
+
+    @FXML
+    private JFXTextField HCity;
+
+    @FXML
+    private JFXTextField SBrd;
+
+    @FXML
+    private JFXTextField SRoll;
+
+    @FXML
+    private Circle BtnTo3;
+
+    @FXML
+    private JFXTextField HBrd;
+
+    @FXML
+    private Circle BtnTo2;
+
+    @FXML
+    private JFXTextField HMark;
+
+    @FXML
+    private Circle BtnTo1;
+
+    @FXML
+    private JFXTextField SCity;
+
+    @FXML
+    private VBox menuBar;
+
+    @FXML
+    private Pane HSch;
+
+    @FXML
+    private JFXTextField SPass;
+
+    @FXML
+    private JFXTextField SMark;
+
+    @FXML
+    private JFXTextField HPentg;
+
+    @FXML
+    private JFXTextField HRoll;
+
+    @FXML
+    private JFXTextField SMed;
     
 }

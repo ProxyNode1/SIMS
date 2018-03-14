@@ -7,71 +7,54 @@ package sims;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
-
-
-
-
-
-
-
 /**
+ * FXML Controller class
  *
  * @author VIC's
  */
-public class Editing1Controller implements Initializable 
-{
+public class Editing1Controller implements Initializable {
+
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-       System.out.println("lele");
-        Gen.requestFocus();
-        
-    }  
+        NamFld.requestFocus();
+    }    
     
-    @FXML
-     private Label Gen;
-
-    @FXML
-    private JFXTextField NameTXT;
-
-    @FXML
-    private JFXTextField idTXT;
-
-    @FXML
-    private JFXTextField dobTXT;
-
-    @FXML
-    private JFXTextField cntctTXT;
-
-    @FXML
-    private JFXTextField semTXT;
-
-    @FXML
-    private JFXTextField branchTXT;
-
-    @FXML
+     @FXML
     private VBox menuBar;
+
+    @FXML
+    private JFXTextField IdFld;
+
+    @FXML
+    private MenuButton EduBtn;
+
+    @FXML
+    private JFXTextField CntctFld;
+
+    @FXML
+    private JFXTextField DOBFld;
+
+    @FXML
+    private JFXTextField NamFld;
+
+    @FXML
+    private JFXTextField DpmtFld;
+
+    @FXML
+    private JFXTextField SemFld;
+
+    @FXML
+    private Circle BtnTo3;
 
     @FXML
     private Circle BtnTo2;
@@ -79,11 +62,5 @@ public class Editing1Controller implements Initializable
     @FXML
     private Circle BtnTo1;
 
-    @FXML
-    private Circle BtnTo3;
-    
-    
-
-      
     
 }

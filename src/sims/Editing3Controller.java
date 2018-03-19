@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -37,6 +38,10 @@ public class Editing3Controller implements Initializable {
     
 
 
+
+
+    @FXML
+    private ImageView CloseBtn;
 
     @FXML
     private VBox menuBar;
@@ -70,7 +75,8 @@ public class Editing3Controller implements Initializable {
 
     @FXML
     private Circle BtnTo1;
-
+    
+    
    
     
 }

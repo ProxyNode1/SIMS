@@ -14,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.image.ImageView;
+
 
 /**
  * FXML Controller class
@@ -61,6 +63,12 @@ public class Editing1Controller implements Initializable {
 
     @FXML
     private Circle BtnTo1;
+    
+    
+    @FXML
+    private ImageView CloseBtn;
+    
+    
 
     
 }

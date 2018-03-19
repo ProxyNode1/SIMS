@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -33,7 +34,10 @@ public class Editing2Controller implements Initializable
     
 
 
-
+    
+    @FXML
+    private ImageView CloseBtn;
+    
     @FXML
     private JFXTextField SPentg;
 

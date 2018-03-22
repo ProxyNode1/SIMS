@@ -10,11 +10,13 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+
+
 
 
 /**
@@ -29,6 +31,8 @@ public class Editing1Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     {
         NamFld.requestFocus();
+        
+        
     }    
     
      @FXML
@@ -37,8 +41,7 @@ public class Editing1Controller implements Initializable {
     @FXML
     private JFXTextField IdFld;
 
-    @FXML
-    private MenuButton EduBtn;
+    
 
     @FXML
     private JFXTextField CntctFld;
@@ -66,7 +69,14 @@ public class Editing1Controller implements Initializable {
     
     
     @FXML
-    private ImageView CloseBtn;
+    private Label CloseBtn;
+    @FXML
+    void handleClose(ActionEvent event) 
+    {
+        System.exit(0);
+    }
+    
+    
     
     
 

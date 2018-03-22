@@ -14,7 +14,9 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+
 
 /**
  * FXML Controller class
@@ -29,14 +31,16 @@ public class Editing2Controller implements Initializable
     public void initialize(URL url, ResourceBundle rb) 
     {
         SPass.requestFocus();
+        
     }  
     
     
 
 
-    
     @FXML
-    private ImageView CloseBtn;
+    private Label CloseBtn;
+    
+        
     
     @FXML
     private JFXTextField SPentg;
@@ -94,5 +98,16 @@ public class Editing2Controller implements Initializable
 
     @FXML
     private JFXTextField SMed;
+    
+    @FXML
+    void handleClose(MouseEvent event)
+    {
+        //Platform.exit();
+        System.exit(0);
+        /* get a handle to the stage
+        Stage stage = (Stage) CloseBtn.getScene().getWindow();
+        // do what you have to do
+        stage.close();*/
+    }
     
 }

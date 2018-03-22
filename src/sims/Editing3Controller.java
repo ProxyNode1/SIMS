@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sims;
 
 import java.net.URL;
@@ -13,10 +9,13 @@ import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
@@ -33,18 +32,20 @@ public class Editing3Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     {
         EmailBtn.requestFocus();
+        
     }    
     
-    
-
-
-
-
-    @FXML
-    private ImageView CloseBtn;
 
     @FXML
     private VBox menuBar;
+    
+    @FXML
+    private Label CloseBtn;
+    @FXML
+    void handleClose(ActionEvent event) 
+    {
+        System.exit(0);
+    }
 
     @FXML
     private JFXTextField CEmailBtn;

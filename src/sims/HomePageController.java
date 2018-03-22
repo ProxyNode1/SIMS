@@ -11,12 +11,16 @@ import javafx.fxml.Initializable;
 
 
 
+import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.scene.control.TableView;
-import com.jfoenix.controls.JFXButton;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+
+
 
 /**
  * FXML Controller class
@@ -29,12 +33,12 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        // TODO
+               
     }
 
 
 
-
+    
 
     @FXML
     private VBox menuBar;
@@ -59,7 +63,19 @@ public class HomePageController implements Initializable {
     
     
     @FXML
-    private ImageView CloseBtn;
+    private Label CloseBtn;
+    
+    
+    @FXML
+    void handleClose(MouseEvent event)
+    {
+        //Platform.exit();
+        System.exit(0);
+        /* get a handle to the stage
+        Stage stage = (Stage) CloseBtn.getScene().getWindow();
+        // do what you have to do
+        stage.close();*/
+    }
     
     @FXML
     private JFXButton addRow;

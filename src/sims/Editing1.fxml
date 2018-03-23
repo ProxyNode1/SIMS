@@ -8,12 +8,24 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing1Controller">
+<Pane fx:id="Edit1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing1Controller">
    <children>
       <Circle fill="#535353" layoutX="660.0" layoutY="700.0" radius="12.0" stroke="#0078d7" strokeType="INSIDE" strokeWidth="2.0" />
-      <Circle fx:id="BtnTo1" fill="WHITE" layoutX="660.0" layoutY="700.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="BtnTo2" fill="WHITE" layoutX="700.0" layoutY="700.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="BtnTo3" fill="WHITE" layoutX="740.0" layoutY="700.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
+      <Label fx:id="BtnTo1" layoutX="653.0" layoutY="692.0" prefHeight="14.0" prefWidth="14.0">
+         <graphic>
+            <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+         </graphic>
+      </Label>
+      <Label fx:id="BtnTo2" layoutX="693.0" layoutY="692.0" onMouseClicked="#toEdit2" prefHeight="14.0" prefWidth="14.0">
+         <graphic>
+            <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+         </graphic>
+      </Label>
+      <Label fx:id="BtnTo3" layoutX="733.0" layoutY="692.0" onMouseClicked="#toEdit3" prefHeight="14.0" prefWidth="14.0">
+         <graphic>
+            <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+         </graphic>
+      </Label>
       <HBox alignment="CENTER" layoutX="2.0" layoutY="2.0" prefHeight="32.0" prefWidth="1276.0" style="-fx-background-color: #212121;" />
       <VBox fx:id="menuBar" layoutX="2.0" layoutY="2.0" prefHeight="716.0" prefWidth="125.0" style="-fx-background-color: #323640;" />
       <Label layoutX="604.0" layoutY="74.0" text="General" textFill="WHITE">
@@ -22,22 +34,22 @@
          </font>
       </Label>
       <Line endX="620.0" layoutX="357.0" layoutY="126.0" stroke="#dea309" />
-      <JFXTextField fx:id="NamFld" focusColor="WHITE" labelFloat="true" layoutX="357.0" layoutY="240.0" prefHeight="42.0" prefWidth="212.0" promptText="Name" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
+      <JFXTextField fx:id="NamFld" focusColor="WHITE" labelFloat="true" layoutX="357.0" layoutY="240.0" prefHeight="42.0" prefWidth="212.0" promptText="  Name" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="IdFld" focusColor="WHITE" labelFloat="true" layoutX="757.0" layoutY="240.0" prefHeight="42.0" prefWidth="212.0" promptText="College ID" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
+      <JFXTextField fx:id="IdFld" focusColor="WHITE" labelFloat="true" layoutX="757.0" layoutY="240.0" prefHeight="42.0" prefWidth="212.0" promptText="  College ID" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="DOBFld" focusColor="WHITE" labelFloat="true" layoutX="357.0" layoutY="350.0" prefHeight="42.0" prefWidth="212.0" promptText="Date of Birth" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
+      <JFXTextField fx:id="DOBFld" focusColor="WHITE" labelFloat="true" layoutX="357.0" layoutY="350.0" prefHeight="42.0" prefWidth="212.0" promptText="  Date of Birth" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="DpmtFld" focusColor="WHITE" labelFloat="true" layoutX="757.0" layoutY="350.0" prefHeight="42.0" prefWidth="212.0" promptText="Department" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
+      <JFXTextField fx:id="DpmtFld" focusColor="WHITE" labelFloat="true" layoutX="757.0" layoutY="350.0" prefHeight="42.0" prefWidth="212.0" promptText="  Department" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -51,20 +63,24 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </MenuButton>
-      <JFXTextField fx:id="SemFld" focusColor="WHITE" labelFloat="true" layoutX="757.0" layoutY="470.0" prefHeight="42.0" prefWidth="212.0" promptText="Current Semester" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
+      <JFXTextField fx:id="SemFld" focusColor="WHITE" labelFloat="true" layoutX="757.0" layoutY="470.0" prefHeight="42.0" prefWidth="212.0" promptText="  Current Semester" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="CntctFld" focusColor="WHITE" labelFloat="true" layoutX="357.0" layoutY="580.0" prefHeight="42.0" prefWidth="212.0" promptText="Contect" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
+      <JFXTextField fx:id="CntctFld" focusColor="WHITE" labelFloat="true" layoutX="357.0" layoutY="580.0" prefHeight="42.0" prefWidth="212.0" promptText="  Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-     <Label fx:id="CloseBtn" alignment="CENTER" layoutX="1245.0" layoutY="10.0" onMouseClicked="#handleClose" prefHeight="27.0" prefWidth="22.0" text="X" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font></Label>
+     <Label fx:id="CloseBtn" alignment="CENTER" layoutX="1245.0" layoutY="10.0" onMouseClicked="#handleClose" prefHeight="27.0" prefWidth="22.0" textFill="WHITE">
+                  <graphic>
+            <ImageView fitHeight="27.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/close.png" />
+               </image>
+            </ImageView>
+         </graphic></Label>
       
    </children>
 </Pane>

@@ -10,11 +10,20 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton; 
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import static sims.Sims.stage;
+
 
 
 
@@ -34,14 +43,16 @@ public class Editing1Controller implements Initializable {
         
         
     }    
-    
-     @FXML
+    Stage primaryStage = stage;
+     
+    @FXML
     private VBox menuBar;
 
     @FXML
     private JFXTextField IdFld;
 
-    
+    @FXML
+    private MenuButton EduBtn;
 
     @FXML
     private JFXTextField CntctFld;
@@ -57,24 +68,91 @@ public class Editing1Controller implements Initializable {
 
     @FXML
     private JFXTextField SemFld;
+    
+    @FXML
+    private Label BtnTo1;
+    
+     /*public void toEdit1(MouseEvent event)
+     {
+        
+         try 
+        {
+            
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing1.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.show();
+        } 
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+            
+        }
+    }*/
+
+    
+    @FXML
+    private Label BtnTo2;
+    
+    public void toEdit2(MouseEvent event)
+    {
+        
+        
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing2.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+            primaryStage.close();
+        } 
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+        }
+    }
 
     @FXML
-    private Circle BtnTo3;
-
-    @FXML
-    private Circle BtnTo2;
-
-    @FXML
-    private Circle BtnTo1;
+    private Label BtnTo3;  
+    
+    public void toEdit3(MouseEvent event)
+    {
+        try 
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing3.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+            primaryStage.close();
+        } 
+        catch (Exception ex) 
+          {
+            ex.printStackTrace();
+          }
+    }
     
     
     @FXML
     private Label CloseBtn;
+    
     @FXML
-    void handleClose(ActionEvent event) 
+    void handleClose(MouseEvent event)
     {
+        
         System.exit(0);
+        
     }
+    
+    @FXML
+    private Pane Edit1;
+    
+    
+
     
     
     

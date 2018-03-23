@@ -11,22 +11,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.HomePageController">
+<Pane fx:id="Mpage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.HomePageController">
    <children>
-      <ScrollPane layoutX="137.0" layoutY="112.0" prefHeight="566.0" prefViewportHeight="564.0" prefViewportWidth="1137.0" prefWidth="1116.0" stylesheets="@test.css" vbarPolicy="ALWAYS">
+      <ScrollPane layoutX="137.0" layoutY="112.0" prefHeight="566.0" prefViewportHeight="564.0" prefViewportWidth="1137.0" prefWidth="1116.0" stylesheets="@Common.css" vbarPolicy="ALWAYS">
          <content>
             <Pane layoutX="137.0" layoutY="112.0" prefHeight="564.0" prefWidth="1100.0">
                <children>
-                  <TableView fx:id="Table" fixedCellSize="0.0" prefHeight="564.0" prefWidth="1101.0" style="-fx-background-color: #212121; -fx-selection-bar: #212121; -fx-text-fill: #212121;" stylesheets="@test.css">
+                  <TableView fx:id="Table" fixedCellSize="0.0" maxWidth="1101.0" minWidth="1101.0" prefHeight="564.0" prefWidth="1101.0" style="-fx-background-color: #212121; -fx-selection-bar: #212121; -fx-text-fill: #ffffff;">
                     <columns>
-                        <TableColumn maxWidth="38.0" minWidth="38.0" prefWidth="38.0" text="S No." />
-                      <TableColumn fx:id="ClgID" maxWidth="147.0" minWidth="147.0" prefWidth="147.0" text="College ID" />
-                      <TableColumn fx:id="Name" maxWidth="320.3333740234375" minWidth="215.0" prefWidth="320.3333740234375" text="Name" />
-                        <TableColumn fx:id="Branch" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" text="Branch" />
-                        <TableColumn fx:id="CurrSem" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" text=" Current Sem" />
-                        <TableColumn maxWidth="230.0" minWidth="215.0" prefWidth="215.0" text="Current Edu" />
-                        <TableColumn fx:id="Contect" maxWidth="260.0" minWidth="250.0" prefWidth="250.0" text="Contect" />
+                        <TableColumn fx:id="SnoCol" maxWidth="55.0" minWidth="31.0" prefWidth="37.0" />                        
+                        <TableColumn fx:id="clgIdCol" maxWidth="152.0" minWidth="148.0" prefWidth="148.0" text="College ID" />
+                        <TableColumn fx:id="nameCol" maxWidth="325.0" minWidth="320.0" prefWidth="320.0" text="Name" />
+                        <TableColumn fx:id="branchCol" maxWidth="95.0" minWidth="90.0" prefWidth="90.0" text="Branch" />
+                        <TableColumn fx:id="CsemCol" maxWidth="120.0" minWidth="115.0" prefWidth="115.0" text=" Current Sem" />
+                        <TableColumn fx:id="currentEduCol" maxWidth="200.0" minWidth="195.0" prefWidth="195.0" text="Current Education" />
+                        <TableColumn fx:id="contectCol" maxWidth="200.0" minWidth="195.0" prefWidth="195.0" text="Contact " />
                     </columns>
+                     <stylesheets>
+                        <URL value="@Common.css" />
+                        <URL value="@Common.css" />
+                     </stylesheets>
                   </TableView>
                </children>
             </Pane>
@@ -34,10 +38,14 @@
       </ScrollPane>
       <HBox alignment="CENTER" layoutX="2.0" layoutY="2.0" prefHeight="32.0" prefWidth="1276.0" style="-fx-background-color: #212121;" />
       <VBox fx:id="menuBar" layoutX="2.0" layoutY="2.0" prefHeight="716.0" prefWidth="125.0" style="-fx-background-color: #323640;" />
-      <Label fx:id="CloseBtn" alignment="CENTER" layoutX="1245.0" layoutY="10.0" onMouseClicked="#handleClose" prefHeight="27.0" prefWidth="22.0" text="X" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font></Label>
+      <Label fx:id="CloseBtn" alignment="CENTER" layoutX="1245.0" layoutY="10.0" onMouseClicked="#handleClose" prefHeight="27.0" prefWidth="22.0" textFill="WHITE">
+                  <graphic>
+            <ImageView fitHeight="27.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/close.png" />
+               </image>
+            </ImageView>
+         </graphic></Label>
       <JFXButton fx:id="addRow" alignment="CENTER" layoutX="1208.0" layoutY="65.0" prefHeight="24.0" prefWidth="36.0" ripplerFill="#9a6c00" style="-fx-background-color: #DEA309;" text="+" textFill="#212121">
          <font>
             <Font name="Arial Bold" size="20.0" />

@@ -23,20 +23,18 @@ public class Sims extends Application
     public void start(Stage stage) throws Exception 
     {
         this.stage = stage;
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
         stage.initStyle(StageStyle.UNDECORATED);
         
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
         stage.show();
         Sims.stage.setResizable(false);
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+    
+    public static void main(String[] args) 
+    {
         launch(args);
     }
     

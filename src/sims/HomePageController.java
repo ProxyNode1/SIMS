@@ -26,6 +26,7 @@ import javafx.scene.layout.Pane;
 
 
 
+
 /**
  * FXML Controller class
  *
@@ -46,8 +47,10 @@ public class HomePageController implements Initializable
     @FXML 
     private TableColumn<?, Integer> SnoCol;  
     
-    @FXML 
-    private TableColumn<InputClass, Integer> clgIdCol;  
+    TableColumn clgIdCol = new TableColumn("College ID");
+    
+    
+    
     
     @FXML
     private TableColumn<InputClass, String> nameCol;  
@@ -68,22 +71,23 @@ public class HomePageController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        /*//sets the columns
-        SnoCol.setCellValueFactory("1");
+        //sets the columns
+        clgIdCol.setCellValueFactory(new PropertyValueFactory<InputClass, Integer>("") );
         clgIdCol.setCellValueFactory(new PropertyValueFactory<InputClass, Integer>("clgId") );
         nameCol.setCellValueFactory(new PropertyValueFactory<InputClass, String>("name") );
         branchCol.setCellValueFactory(new PropertyValueFactory<InputClass, String>("branch") );
         CsemCol.setCellValueFactory(new PropertyValueFactory<InputClass, Integer>("Csem") );
         currentEduCol.setCellValueFactory(new PropertyValueFactory<InputClass, String>("currentEdu") );
         contectCol.setCellValueFactory(new PropertyValueFactory<InputClass, String>("contect") );
-        */
+        
+        
     }
     
-   private final ObservableList<InputClass> data = FXCollections.observableArrayList(new InputClass(new InputClass(26354, "Vikram", "CSE", 6, "Undergraduate", "9425990093")));
+   private final ObservableList<InputClass> data = FXCollections.observableArrayList(new InputClass(26354, "Vikram", "CSE", 6, "Undergraduate", "9425990093"));
     
-    Table.setItems(inpt);
+    /*Table.setItems(data);
     table.getColumns().addAll( clgId,  name,  branch,  Csem,  currentEdu, contect);
-
+*/
 
     
 
@@ -111,7 +115,8 @@ public class HomePageController implements Initializable
     @FXML
     private JFXButton addRow;
     
-    
+    @FXML
+    private Label StatusBtn;
 
 }    
     

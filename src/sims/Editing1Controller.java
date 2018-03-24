@@ -12,17 +12,16 @@ import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton; 
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import static sims.Sims.stage;
+
 
 
 
@@ -43,7 +42,7 @@ public class Editing1Controller implements Initializable {
         
         
     }    
-    Stage primaryStage = stage;
+    
      
     @FXML
     private VBox menuBar;
@@ -69,52 +68,33 @@ public class Editing1Controller implements Initializable {
     @FXML
     private JFXTextField SemFld;
     
+    
+    
     @FXML
     private Label BtnTo1;
-    
-     /*public void toEdit1(MouseEvent event)
-     {
-        
-         try 
-        {
-            
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing1.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.show();
-        } 
-        catch (Exception ex) 
-        {
-            ex.printStackTrace();
-            
-        }
-    }*/
-
-    
+   
     @FXML
     private Label BtnTo2;
     
-    public void toEdit2(MouseEvent event)
+    public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {
         
         
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing2.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
-            primaryStage.close();
+           
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+            
         } 
         catch (Exception ex) 
         {
             ex.printStackTrace();
         }
     }
-
+ 
     @FXML
     private Label BtnTo3;  
     
@@ -122,13 +102,11 @@ public class Editing1Controller implements Initializable {
     {
         try 
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing3.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
-            primaryStage.close();
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing3.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
         } 
         catch (Exception ex) 
           {

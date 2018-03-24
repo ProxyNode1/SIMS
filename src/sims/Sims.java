@@ -22,14 +22,14 @@ public class Sims extends Application
     @Override
     public void start(Stage stage) throws Exception 
     {
-        this.stage = stage;
+        
         Parent root = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
         stage.initStyle(StageStyle.UNDECORATED);
         
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        Sims.stage.setResizable(false);
+        
     }
 
     

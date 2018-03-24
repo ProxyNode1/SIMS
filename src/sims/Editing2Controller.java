@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -21,8 +22,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import static sims.Sims.stage;
+
 
 
 
@@ -43,7 +43,7 @@ public class Editing2Controller implements Initializable
         
     }  
     
-    Stage primaryStage = stage;
+    
     @FXML
     private Pane Edit2;
     
@@ -54,13 +54,11 @@ public class Editing2Controller implements Initializable
      {
         try 
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing1.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
-            primaryStage.close();
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
         } 
         catch (Exception ex) 
         {
@@ -73,22 +71,7 @@ public class Editing2Controller implements Initializable
     @FXML
     private Label BtnTo2;
     
-    /*public void toEdit2(MouseEvent event)
-    {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing2.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.show();
-            
-        } 
-        catch (Exception ex) 
-        {
-            ex.printStackTrace();
-        }
-    }*/
+    
 
     @FXML
     private Label BtnTo3;  
@@ -97,13 +80,11 @@ public class Editing2Controller implements Initializable
     {
         try 
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing3.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
-            primaryStage.close();
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing3.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
         } 
         catch (Exception ex) 
           {

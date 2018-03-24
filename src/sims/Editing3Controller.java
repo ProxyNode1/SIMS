@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -19,8 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import static sims.Sims.stage;
+
 
 
 
@@ -41,7 +41,7 @@ public class Editing3Controller implements Initializable {
         EmailBtn.requestFocus();
         
     }    
-    Stage primaryStage = stage;
+    
 
     @FXML
     private Pane Edit3;
@@ -76,12 +76,11 @@ public class Editing3Controller implements Initializable {
      {
         try 
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.show();
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
         } 
         catch (Exception ex) 
         {
@@ -108,13 +107,11 @@ public class Editing3Controller implements Initializable {
      {
         try 
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing1.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
-            primaryStage.close();
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
         } 
         catch (Exception ex) 
         {
@@ -130,13 +127,11 @@ public class Editing3Controller implements Initializable {
     public void toEdit2(MouseEvent event)
     {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing2.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
-            primaryStage.close();
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
         } 
         catch (Exception ex) 
         {
@@ -147,22 +142,7 @@ public class Editing3Controller implements Initializable {
     @FXML
     private Label BtnTo3;  
     
-    /*public void toEdit3(MouseEvent event)
-    {
-        try 
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Editing3.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.show();
-        } 
-        catch (Exception ex) 
-          {
-            ex.printStackTrace();
-          }
-    }*/
+   
     
     
    

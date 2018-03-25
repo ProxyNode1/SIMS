@@ -25,7 +25,6 @@
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
       </Label>
-      <HBox alignment="CENTER" layoutX="2.0" layoutY="2.0" prefHeight="32.0" prefWidth="1276.0" style="-fx-background-color: #212121;" />
       <Label layoutX="593.0" layoutY="78.0" text="General" textFill="WHITE">
          <font>
             <Font name="Roboto Bold" size="27.0" />
@@ -52,10 +51,10 @@
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <MenuButton fx:id="EduBtn" layoutX="323.0" layoutY="428.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Current Edu Level" textFill="#e6e6e6">
+      <MenuButton fx:id="EduDrpDwn" layoutX="323.0" layoutY="428.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Current Education" textFill="#e6e6e6">
         <items>
-          <MenuItem mnemonicParsing="false" text="Postgraduate" />
-          <MenuItem mnemonicParsing="false" text="Undergraduate" />
+          <MenuItem fx:id="pg" mnemonicParsing="false" text="Postgraduation" />
+          <MenuItem fx:id="ug" mnemonicParsing="false" text="Undergraduation" />
         </items>
          <font>
             <Font name="Arial Bold" size="18.0" />
@@ -79,6 +78,15 @@
                </image>
             </ImageView>
          </graphic></Label>
+      <Label fx:id="bck" contentDisplay="CENTER" layoutX="19.0" layoutY="15.0" onMouseClicked="#bck2HP" prefHeight="26.0" prefWidth="26.0">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/back%20arrow.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
       
    </children>
 </Pane>

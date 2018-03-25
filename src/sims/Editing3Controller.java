@@ -46,8 +46,7 @@ public class Editing3Controller implements Initializable {
     @FXML
     private Pane Edit3;
     
-    @FXML
-    private VBox menuBar;
+    
     
     @FXML
     private Label CloseBtn;
@@ -70,32 +69,16 @@ public class Editing3Controller implements Initializable {
     private JFXTextField EmailBtn;
 
     
+    
+    
     @FXML
-    private JFXButton SavBtn;
-    public void toSave(MouseEvent event)
-     {
-        try 
-        {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-        } 
-        catch (Exception ex) 
-        {
-            ex.printStackTrace();
-            
-        }
-    }
-    
-    
+    private Label errDisplay;
 
     @FXML
     private TextArea AddInfoField;
 
     @FXML
-    private JFXTextField MomCntct;
+    private JFXTextField FamCntct;
 
     @FXML
     private JFXCheckBox CertifTick;
@@ -137,6 +120,44 @@ public class Editing3Controller implements Initializable {
         {
             ex.printStackTrace();
         }
+    }
+    
+    @FXML
+    private JFXButton SavBtn;
+    public void toSave(MouseEvent event)
+     {
+        try 
+        {
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+        } 
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+            
+        }
+    }
+    
+    @FXML
+    private Label bck;
+    
+    public void bck2HP(MouseEvent event)
+    {
+        try 
+        {
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+        } 
+        catch (Exception ex) 
+          {
+            ex.printStackTrace();
+          }
     }
 
     @FXML

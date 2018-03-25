@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,6 +23,8 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ChoiceBox;
 
 
 
@@ -39,19 +43,52 @@ public class Editing1Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     {
         NamFld.requestFocus();
+        getEduDrpDwn();
         
         
     }    
     
-     
-    @FXML
-    private VBox menuBar;
+     @FXML
+    private ChoiceBox<String> choiceBox = new ChoiceBox<>();
+    
+    
 
     @FXML
     private JFXTextField IdFld;
 
     @FXML
-    private MenuButton EduBtn;
+    private MenuButton EduDrpDwn;
+    
+    @FXML
+    private MenuItem pg;
+    
+    @FXML
+    private MenuItem ug;
+    
+    public void getEduDrpDwn()
+    {
+              
+       pg.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                EduDrpDwn.setText("  Postgraduation");
+            }
+       }
+       );
+       
+       ug.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                EduDrpDwn.setText("  Undergraduation");
+            }
+       }
+       );
+    }
+    
+    
+    
 
     @FXML
     private JFXTextField CntctFld;
@@ -124,6 +161,25 @@ public class Editing1Controller implements Initializable {
         
         System.exit(0);
         
+    }
+    
+    @FXML
+    private Label bck;
+    
+    public void bck2HP(MouseEvent event)
+    {
+        try 
+        {
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+        } 
+        catch (Exception ex) 
+          {
+            ex.printStackTrace();
+          }
     }
     
     @FXML

@@ -35,60 +35,64 @@ import javafx.scene.layout.Pane;
 public class HomePageController implements Initializable 
 {
 
-    @FXML
-    private TableView<InputClass> Table = new TableView<InputClass>();
-    
-    
-    
-    
-    
-    
-    
-    @FXML 
-    private TableColumn<?, Integer> SnoCol;  
-    
-    TableColumn clgIdCol = new TableColumn("College ID");
-    
-    
-    
-    
-    @FXML
-    private TableColumn<InputClass, String> nameCol;  
-    
-    @FXML 
-    private TableColumn<InputClass, String> branchCol;  
-    
-    @FXML 
-    private TableColumn<InputClass, Integer> CsemCol;  
-    
-    @FXML 
-    private TableColumn<InputClass, String> currentEduCol;  
-    
-    @FXML 
-    private TableColumn<InputClass, String> contectCol;  
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        //sets the columns
-        clgIdCol.setCellValueFactory(new PropertyValueFactory<InputClass, Integer>("") );
-        clgIdCol.setCellValueFactory(new PropertyValueFactory<InputClass, Integer>("clgId") );
-        nameCol.setCellValueFactory(new PropertyValueFactory<InputClass, String>("name") );
-        branchCol.setCellValueFactory(new PropertyValueFactory<InputClass, String>("branch") );
-        CsemCol.setCellValueFactory(new PropertyValueFactory<InputClass, Integer>("Csem") );
-        currentEduCol.setCellValueFactory(new PropertyValueFactory<InputClass, String>("currentEdu") );
-        contectCol.setCellValueFactory(new PropertyValueFactory<InputClass, String>("contect") );
-        
-        
+        getInput();
+        TableOP();        
+       
     }
     
-   private final ObservableList<InputClass> data = FXCollections.observableArrayList(new InputClass(26354, "Vikram", "CSE", 6, "Undergraduate", "9425990093"));
+    @FXML
+    private final TableView<InputClass> Table = new TableView<>();
+       
+    @FXML 
+    private final TableColumn<InputClass, Integer> snoCol = new TableColumn<>("S No.");  
     
-    /*Table.setItems(data);
-    table.getColumns().addAll( clgId,  name,  branch,  Csem,  currentEdu, contect);
-*/
-
+    @FXML 
+    private final TableColumn<InputClass, Integer> clgIDCol = new TableColumn<>("College ID");  
+            
+    @FXML
+    private final TableColumn<InputClass, String> nameCol = new TableColumn<>("Name");   
+    
+    @FXML 
+    private final TableColumn<InputClass, String> branchCol = new TableColumn<>("Branch");   
+    
+    @FXML 
+    private final TableColumn<InputClass, Integer> CsemCol = new TableColumn<>("Current Sem");    
+    
+    @FXML 
+    private final TableColumn<InputClass, String> currentEduCol = new TableColumn<>("Current Education");   
+    
+    @FXML 
+    private final TableColumn<InputClass, String> contactCol = new TableColumn<>("Contact");   
+    
+    public ObservableList<InputClass> getInput()
+    {
+        
+        
+        ObservableList<InputClass> ip = FXCollections.observableArrayList();
+        ip.add(new InputClass(1, 33, "Saurabh", "CSE", 6, "Undergraduation", "9987248564")); //add values to table
+        ip.add(new InputClass(2, 8, "Ashwini", "CSE", 6, "Undergraduation", "8587515673"));
+        ip.add(new InputClass(3, 32, "Sapna", "CSE", 6, "Undergraduation", "7865112684"));
+        ip.add(new InputClass(4, 26, "Rohan", "CSE", 6, "Undergraduation", "91728567895"));
+        ip.add(new InputClass(5, 43, "Vikram", "CSE", 6, "Undergraduation", "9425990093"));
+        
+        return ip;
+    }
+    public void TableOP()
+    {
+        snoCol.setCellValueFactory(new PropertyValueFactory<>("sno")); //take value from sno from its class
+        clgIDCol.setCellValueFactory(new PropertyValueFactory<>("collegeId"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        branchCol.setCellValueFactory(new PropertyValueFactory<>("branch"));
+        CsemCol.setCellValueFactory(new PropertyValueFactory<>("Csem"));
+        currentEduCol.setCellValueFactory(new PropertyValueFactory<>("currentEdu"));
+        contactCol.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        
+        Table.setItems(getInput());
+        Table.getColumns().addAll(snoCol, clgIDCol, nameCol, branchCol, CsemCol, currentEduCol, contactCol);
+    }
     
 
     @FXML

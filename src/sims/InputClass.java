@@ -1,61 +1,72 @@
 
 package sims;
 
-import javafx.beans.property.SimpleStringProperty;
+
 
 public class InputClass 
 {   
-    private SimpleStringProperty name,branch, currentEdu, contect ;
-    private int clgId, Csem ;
+    private String name,branch, currentEdu, contact;
+    private int sno, Csem ;
+    private long collegeId;
 
-    public InputClass(int clgId, String name, String branch, int Csem, String currentEdu, String contect)
+    public InputClass(int sno, long collegeId, String name, String branch, int Csem, String currentEdu, String contact)
     {
-        this.name = new SimpleStringProperty(name);
-        this.branch = new SimpleStringProperty(branch);
-        this.currentEdu = new SimpleStringProperty(currentEdu);
-        this.contect = new SimpleStringProperty(contect);
-        this.clgId = clgId;
+       
+        this.name = name;
+        this.branch = branch;
+        this.currentEdu = currentEdu;
+        this.contact = contact;
+        this.sno = sno;
+        this.collegeId = collegeId;
         this.Csem = Csem;
     }
 
     public String getName() {
-        return name.get();
+        return name;
     }
 
-    public void setName(SimpleStringProperty name) {
+    public void setName(String name) {
         this.name = name;
     }
 
     public String getBranch() {
-        return branch.get();
+        return branch;
     }
 
-    public void setBranch(SimpleStringProperty branch) {
+    public void setBranch(String branch) {
         this.branch = branch;
     }
 
     public String getCurrentEdu() {
-        return currentEdu.get();
+        return currentEdu;
     }
 
-    public void setCurrentEdu(SimpleStringProperty currentEdu) {
+    public void setCurrentEdu(String currentEdu) {
         this.currentEdu = currentEdu;
     }
 
-    public String getContect() {
-        return contect.get();
+    public String getContact() {
+        return contact;
     }
 
-    public void setContect(SimpleStringProperty contect) {
-        this.contect = contect; 
+    public void setContect(String contact) {
+        this.contact = contact;
     }
 
-    public int getClgId() {
-        return clgId;
+    public int getSno() {
+        return sno;
     }
 
-    public void setClgId(int clgId) {
-        this.clgId = clgId;
+    public void setSno(int sno) {
+        this.sno = sno;
+    }
+
+    public long getCollegeId() {
+        return collegeId;
+    }
+
+    public void setCollegeId(long collegeId) {
+        this.collegeId = collegeId;
     }
 
     public int getCsem() {
@@ -68,5 +79,4 @@ public class InputClass
     
     
     
-
 }

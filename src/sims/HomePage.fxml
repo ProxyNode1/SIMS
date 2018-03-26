@@ -13,13 +13,12 @@
 
 <Pane fx:id="Mpage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.HomePageController">
    <children>
-      <ScrollPane layoutX="137.0" layoutY="112.0" prefHeight="537.0" prefViewportHeight="564.0" prefViewportWidth="1137.0" prefWidth="1116.0" stylesheets="@Common.css">
+      <ScrollPane layoutX="137.0" layoutY="112.0" prefHeight="537.0" prefViewportHeight="564.0" prefViewportWidth="1137.0" prefWidth="1054.0" stylesheets="@Common.css">
          <content>
-            <Pane layoutX="137.0" layoutY="112.0" prefHeight="529.0" prefWidth="1100.0">
+            <Pane layoutX="137.0" layoutY="112.0" prefHeight="529.0" prefWidth="1040.0">
                <children>
-                  <TableView fx:id="Table" editable="true" fixedCellSize="0.0" maxWidth="1101.0" minWidth="1101.0" prefHeight="537.0" prefWidth="1101.0" style="-fx-background-color: #212121; -fx-selection-bar: #212121; -fx-text-fill: #ffffff;">
-                    <columns>
-                        <TableColumn fx:id="SnoCol" maxWidth="96.0" minWidth="68.0" prefWidth="68.0" text="S No." />                        
+                  <TableView fx:id="Table" editable="true" fixedCellSize="0.0" maxWidth="1101.0" minWidth="1035.0" prefHeight="537.0" prefWidth="1035.0" style="-fx-background-color: #212121; -fx-selection-bar: #212121; -fx-text-fill: #ffffff;">
+                    <columns>                        
                         <TableColumn fx:id="clgIdCol" maxWidth="152.0" minWidth="117.0" prefWidth="117.0" text="College ID" />
                         <TableColumn fx:id="nameCol" maxWidth="325.0" minWidth="320.0" prefWidth="320.0" text="Name" />
                         <TableColumn fx:id="branchCol" maxWidth="95.0" minWidth="90.0" prefWidth="90.0" text="Branch" />
@@ -45,7 +44,7 @@
                </image>
             </ImageView>
          </graphic></Label>
-      <JFXButton fx:id="addRow" alignment="CENTER" layoutX="1208.0" layoutY="65.0" prefHeight="24.0" prefWidth="36.0" ripplerFill="#9a6c00" style="-fx-background-color: #DEA309;" text="+" textFill="#212121">
+      <JFXButton fx:id="addRow" alignment="CENTER" layoutX="1208.0" layoutY="65.0" onMouseClicked="#toEdit" prefHeight="24.0" prefWidth="36.0" ripplerFill="#9a6c00" style="-fx-background-color: #DEA309;" text="+" textFill="#212121">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>

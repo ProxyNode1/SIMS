@@ -39,6 +39,7 @@ public class Editing3Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     {
         EmailBtn.requestFocus();
+        //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
         
     }    
     

@@ -22,7 +22,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -44,6 +43,7 @@ public class Editing2Controller implements Initializable
     {
         SPass.requestFocus();
         getPostSSDwn();
+        //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
         
     }  
     
@@ -182,8 +182,7 @@ public class Editing2Controller implements Initializable
     @FXML
     private MenuItem HSSC;
     
-    @FXML
-    private MenuItem DIPLOMA;
+    
     
     public void getPostSSDwn()
     {
@@ -193,20 +192,38 @@ public class Editing2Controller implements Initializable
             public void handle(ActionEvent t) 
             {
                 PostSS.setText("  HSSC");
-                
+                DPane.setVisible(false);
+                HPane.setVisible(true);
             }
        }
        );
+       
        
        DIPLOMA.setOnAction(new EventHandler<ActionEvent>() 
        {
             public void handle(ActionEvent t) 
             {
                 PostSS.setText("  DIPLOMA");
+                HPane.setVisible(false);
+                DPane.setVisible(true);
             }
        }
        );
     }
+    
+    ////////////////////////// Diploma Fields //////////////////////
+    
+    @FXML
+    private MenuItem DIPLOMA;
+    
+    @FXML
+    private MenuButton DSem;
+    
+    @FXML
+    private JFXTextField DPentg;
+    
+    @FXML
+    private Pane DPane;
     
     ////////////////////////////Engineering Fields
         

@@ -33,6 +33,8 @@ import javafx.stage.Stage;
  *
  * @author VIC's
  */
+
+///////////////////////////////////////////////////Table related space///////////////////
 public class HomePageController implements Initializable 
 {
 
@@ -90,7 +92,7 @@ public class HomePageController implements Initializable
         //Table.getColumns().addAll(clgIDCol, nameCol, branchCol, CsemCol, currentEduCol, contactCol);
     }
     
-
+///////////////////////////////////////////////////Table related space///////////////////
     @FXML
     private VBox menuBar;
     

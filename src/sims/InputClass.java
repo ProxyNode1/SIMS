@@ -5,10 +5,10 @@ package sims;
 public class InputClass 
 {   
     private String name,branch, currentEdu, contact;
-    private int Csem ;
-    private long collegeId;
+    private int Csem, collegeId ;
+    
 
-    public InputClass(long collegeId, String name, String branch, int Csem, String currentEdu, String contact)
+    public InputClass(int collegeId, String name, String branch, int Csem, String currentEdu, String contact)
     {
        
         this.name = name;
@@ -47,19 +47,19 @@ public class InputClass
         return contact;
     }
 
-    public void setContect(String contact) {
+    public void setContact(String contact) {
         this.contact = contact;
     }
     
-    public long getCollegeId() {
+    public int getCollegeId() {
         return collegeId;
     }
 
-    public void setCollegeId(long collegeId) {
+    public void setCollegeId(int collegeId) {
         this.collegeId = collegeId;
     }
 
-    public int getCsem() {
+    public long getCsem() {
         return Csem;
     }
 

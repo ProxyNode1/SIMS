@@ -1,4 +1,3 @@
-
 package sims;
 
 import java.net.URL;
@@ -33,8 +32,6 @@ import javafx.stage.Stage;
  *
  * @author VIC's
  */
-
-///////////////////////////////////////////////////Table related space///////////////////
 public class HomePageController implements Initializable 
 {
 
@@ -74,7 +71,7 @@ public class HomePageController implements Initializable
         ip.add(new InputClass( 33, "Saurabh", "CSE", 6, "Undergraduation", "9987248564")); //add values to table
         ip.add(new InputClass( 8, "Ashwini", "CSE", 6, "Undergraduation", "8587515673"));
         ip.add(new InputClass( 32, "Sapna", "CSE", 6, "Undergraduation", "7865112684"));
-        ip.add(new InputClass( 26, "Rohan", "CSE", 6, "Undergraduation", "91728567895"));
+        ip.add(new InputClass( 26, "Rohan", "CSE", 6, "Undergraduation", "9172856789"));
         ip.add(new InputClass( 43, "Vikram", "CSE", 6, "Undergraduation", "9425990093"));
         
         return ip;
@@ -92,7 +89,7 @@ public class HomePageController implements Initializable
         //Table.getColumns().addAll(clgIDCol, nameCol, branchCol, CsemCol, currentEduCol, contactCol);
     }
     
-///////////////////////////////////////////////////Table related space///////////////////
+
     @FXML
     private VBox menuBar;
     
@@ -138,6 +135,4 @@ public class HomePageController implements Initializable
     @FXML
     private Label StatusBtn;
 
-}    
-    
-
+}   

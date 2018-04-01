@@ -37,7 +37,7 @@
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="IdFld" focusColor="WHITE" labelFloat="true" layoutX="743.0" layoutY="198.0" prefHeight="42.0" prefWidth="212.0" promptText="  College ID" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <JFXTextField fx:id="IdFld" focusColor="WHITE" labelFloat="true" layoutX="743.0" layoutY="198.0" prefHeight="42.0" prefWidth="212.0" promptText="College ID" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -68,12 +68,12 @@
                   <MenuItem fx:id="dec" mnemonicParsing="false" text="December" />
                </items>
             </MenuButton>
-            <JFXTextField fx:id="DobDay" focusColor="WHITE" labelFloat="true" layoutX="130.0" layoutY="45.0" prefHeight="36.4" prefWidth="83.0" promptText="  Day" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+            <JFXTextField fx:id="DobDay" focusColor="WHITE" labelFloat="true" layoutX="130.0" layoutY="45.0" prefHeight="36.4" prefWidth="83.0" promptText="Day" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="DobYear" focusColor="WHITE" labelFloat="true" layoutX="230.0" layoutY="45.0" prefHeight="36.4" prefWidth="83.0" promptText="  Year" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+            <JFXTextField fx:id="DobYear" focusColor="WHITE" labelFloat="true" layoutX="230.0" layoutY="45.0" prefHeight="36.4" prefWidth="83.0" promptText="Year" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
@@ -81,7 +81,7 @@
             <Label fx:id="MnthLbl" layoutX="12.0" layoutY="27.0" text="Month" textFill="WHITE" visible="false" />
          </children>
       </Pane>
-      <JFXTextField fx:id="CntctFld" focusColor="WHITE" labelFloat="true" layoutX="743.0" layoutY="308.0" prefHeight="42.0" prefWidth="212.0" promptText="  Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <JFXTextField fx:id="CntctFld" focusColor="WHITE" labelFloat="true" layoutX="743.0" layoutY="308.0" prefHeight="42.0" prefWidth="212.0" promptText="Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -106,7 +106,7 @@
             <MenuItem fx:id="civ" mnemonicParsing="false" text="Civil Engineering" />
          </items>
       </MenuButton>
-      <JFXTextField fx:id="SemFld" focusColor="WHITE" labelFloat="true" layoutX="323.0" layoutY="528.0" prefHeight="42.0" prefWidth="212.0" promptText="  Current Semester" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <JFXTextField fx:id="SemFld" focusColor="WHITE" labelFloat="true" layoutX="323.0" layoutY="528.0" prefHeight="42.0" prefWidth="212.0" promptText="Current Semester" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>

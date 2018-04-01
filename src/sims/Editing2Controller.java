@@ -95,16 +95,7 @@ public class Editing2Controller implements Initializable
           }
     }
     
-    @FXML
-    private Label CloseBtn;
     
-    @FXML
-    void handleClose(MouseEvent event)
-    {
-        
-        System.exit(0);
-        
-    }
     
     @FXML
     private Label bck;

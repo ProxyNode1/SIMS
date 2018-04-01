@@ -57,6 +57,10 @@
    
 }
 
+#table .table-cell{
+    -fx-padding: 8px;
+}
+
 
 .table-row-cell:selected {
     -fx-background-color: #1883D7;

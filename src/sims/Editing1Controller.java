@@ -138,16 +138,7 @@ public class Editing1Controller implements Initializable {
     }
     
     
-    @FXML
-    private Label CloseBtn;
     
-    @FXML
-    void handleClose(MouseEvent event)
-    {
-        
-        System.exit(0);
-        
-    }
     
     @FXML
     private Label bck;
@@ -227,6 +218,9 @@ public class Editing1Controller implements Initializable {
     }
     
     @FXML
+    private Label MnthLbl;
+    
+    @FXML
     private MenuButton DobMnth;
     
     @FXML
@@ -273,6 +267,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" January");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -282,6 +277,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" Fabruary");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -291,6 +287,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" March");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -300,6 +297,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" April");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -309,6 +307,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" May");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -318,6 +317,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" June");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -327,6 +327,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" July");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -336,6 +337,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" August");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -345,6 +347,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" September");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -354,6 +357,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" October");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -363,6 +367,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" November");
+                MnthLbl.setVisible(true);
             }
        }
        );
@@ -372,6 +377,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 DobMnth.setText(" December");
+                MnthLbl.setVisible(true);
             }
        }
        );

@@ -38,6 +38,7 @@ public class HomePageController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
+        Table.setId("table");
         TableOP();               
        
     }
@@ -101,17 +102,7 @@ public class HomePageController implements Initializable
      
 
     
-    @FXML
-    private Label CloseBtn;
     
-    
-    @FXML
-    void handleClose(MouseEvent event)
-    {
-        
-        System.exit(0);
-       
-    }
     
     @FXML
     private JFXButton addRow;

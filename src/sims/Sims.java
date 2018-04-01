@@ -24,8 +24,8 @@ public class Sims extends Application
     {
         
         Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-        stage.initStyle(StageStyle.UNDECORATED);
-        
+        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.resizableProperty().setValue(Boolean.FALSE);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

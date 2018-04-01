@@ -49,16 +49,7 @@ public class Editing3Controller implements Initializable {
     
     
     
-    @FXML
-    private Label CloseBtn;
     
-    @FXML
-    void handleClose(MouseEvent event)
-    {
-        
-        System.exit(0);
-        
-    }
 
     @FXML
     private JFXTextField CEmailBtn;

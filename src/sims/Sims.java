@@ -23,7 +23,7 @@ public class Sims extends Application
     public void start(Stage stage) throws Exception 
     {
         
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.resizableProperty().setValue(Boolean.FALSE);
         Scene scene = new Scene(root);

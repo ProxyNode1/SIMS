@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -127,5 +128,13 @@ public class HomePageController implements Initializable
     
     @FXML
     private Label StatusBtn;
+    
+    public void clickItem(MouseEvent event) //this will allow to view info of students
+    {
+        if(event.getClickCount() == 2) //on double click
+        {
+            StatusBtn.setVisible(true);
+        }
+    }
 
 }   

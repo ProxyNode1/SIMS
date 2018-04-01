@@ -42,20 +42,21 @@
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-border-width: 0;
-    -fx-padding: 1 0.5 1 0; 
+    
+    
 }
 
 .table-row-cell{
     -fx-text-fill: white;
     -fx-background-color: #212121;   
     -fx-border-width: 0;
-    
+        
 }
 
 
 
 #table .table-cell{
-    -fx-padding: 8px;
+    -fx-padding: 12px;
 }
 
 
@@ -70,6 +71,7 @@
 .text-field:disabled {
    -fx-opacity: 1.0;
 }
+
 
 
 

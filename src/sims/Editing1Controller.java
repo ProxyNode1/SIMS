@@ -6,6 +6,9 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,21 +36,82 @@ public class Editing1Controller implements Initializable {
         //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
                 
         
-        getEduDrpDwn();
-        getDeptDrpDwn();
-        getDobMnth();
+        chzEduDrpDwn();
+        chzDeptDrpDwn();
+        chzDobMnth();
                 
+        NamFld.setTooltip(new Tooltip ("use Fullname"));
         DobYear.setTooltip(new Tooltip("eg. 1997"));
         SemFld.setTooltip(new Tooltip("eg. 6, for 6th semester"));
+        
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Editing1Controller.class.getResource("Editing2.fxml"));
+        Parent root;
+        try {
+            root = loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(Editing1Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+        
     }    
     
      
     
     @FXML
     private JFXTextField IdFld;
+    public JFXTextField getIdFld() {
+        return IdFld;
+    }
+
+    public void setIdFld(JFXTextField IdFld) {
+        this.IdFld = IdFld;
+    } 
 
     @FXML
+    private JFXTextField CntctFld;
+    public JFXTextField getCntctFld() {
+        return CntctFld;
+    }
+
+    public void setCntctFld(JFXTextField CntctFld) {
+        this.CntctFld = CntctFld;
+    }
+
+    @FXML
+    private JFXTextField NamFld;
+    
+    public JFXTextField getNamFld() {
+        return NamFld;
+    }
+
+    public void setNamFld(JFXTextField NamFld) {
+        this.NamFld = NamFld;
+    }
+  
+
+    @FXML
+    private JFXTextField SemFld;
+    public JFXTextField getSemFld() {
+        return SemFld;
+    }
+
+    public void setSemFld(JFXTextField SemFld) {
+        this.SemFld = SemFld;
+    }
+    
+    @FXML
     private MenuButton EduDrpDwn;
+    public MenuButton getEduDrpDwn() {
+        return EduDrpDwn;
+    }
+
+    public void setEduDrpDwn(MenuButton EduDrpDwn) {
+        this.EduDrpDwn = EduDrpDwn;
+    }
     
     @FXML
     private MenuItem pg;
@@ -55,7 +119,7 @@ public class Editing1Controller implements Initializable {
     @FXML
     private MenuItem ug;
     
-    public void getEduDrpDwn()
+    public void chzEduDrpDwn()
     {
               
        pg.setOnAction(new EventHandler<ActionEvent>() 
@@ -78,23 +142,6 @@ public class Editing1Controller implements Initializable {
     }
     
     
-    
-
-    @FXML
-    private JFXTextField CntctFld;
-
-    @FXML
-    private JFXTextField NamFld;
-
-    @FXML
-    private JFXTextField DpmtFld;
-
-    @FXML
-    private JFXTextField SemFld;
-    
-    
-    @FXML
-    private Label BtnTo1;
    
     @FXML
     private Label BtnTo2;
@@ -164,6 +211,13 @@ public class Editing1Controller implements Initializable {
  
     @FXML
     private MenuButton DeptDrpDwn;
+    public MenuButton getDeptDrpDwn() {
+        return DeptDrpDwn;
+    }
+
+    public void setDeptDrpDwn(MenuButton DeptDrpDwn) {
+        this.DeptDrpDwn = DeptDrpDwn;
+    }
     
     @FXML
     private MenuItem mech;
@@ -177,7 +231,7 @@ public class Editing1Controller implements Initializable {
     @FXML
     private MenuItem civ;
     
-    public void getDeptDrpDwn()
+    public void chzDeptDrpDwn()
     {
               
        mech.setOnAction(new EventHandler<ActionEvent>() 
@@ -222,6 +276,13 @@ public class Editing1Controller implements Initializable {
     
     @FXML
     private MenuButton DobMnth;
+    public MenuButton getDobMnth() {
+        return DobMnth;
+    }
+
+    public void setDobMnth(MenuButton DobMnth) {
+        this.DobMnth = DobMnth;
+    }
     
     @FXML
     private MenuItem jan;
@@ -259,7 +320,7 @@ public class Editing1Controller implements Initializable {
     @FXML
     private MenuItem dec;
     
-    public void getDobMnth()
+    public void chzDobMnth()
     {
               
        jan.setOnAction(new EventHandler<ActionEvent>() 
@@ -386,8 +447,22 @@ public class Editing1Controller implements Initializable {
 
     @FXML
     private JFXTextField DobYear;
+    public JFXTextField getDobYear() {
+        return DobYear;
+    }
+
+    public void setDobYear(JFXTextField DobYear) {
+        this.DobYear = DobYear;
+    }
+    
 
     @FXML
     private JFXTextField DobDay;
-    
+    public JFXTextField getDobDay() {
+        return DobDay;
+    }
+
+    public void setDobDay(JFXTextField DobDay) {
+        this.DobDay = DobDay;
+    }
 }

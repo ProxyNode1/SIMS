@@ -128,6 +128,14 @@ public class HomePageController implements Initializable
     
     @FXML
     private Label StatusBtn;
+
+    public Label getStatusBtn() {
+        return StatusBtn;
+    }
+
+    public void setStatusBtn(Label StatusBtn) {
+        this.StatusBtn = StatusBtn;
+    }
     
     public void clickItem(MouseEvent event) //this will allow to view info of students
     {

@@ -38,7 +38,7 @@ public class Editing3Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        EmailBtn.requestFocus();
+        Email.requestFocus();
         //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
         
     }    
@@ -46,34 +46,68 @@ public class Editing3Controller implements Initializable {
 
     @FXML
     private Pane Edit3;
-    
-    
-    
-    
+   
 
     @FXML
-    private JFXTextField CEmailBtn;
+    private JFXTextField CEmail;
+    public JFXTextField getCEmail() {
+        return CEmail;
+    }
+
+    public void setCEmail(JFXTextField CEmail) {
+        this.CEmail = CEmail;
+    }
 
     @FXML
     private JFXTextField DadCntct;
+    public JFXTextField getDadCntct() {
+        return DadCntct;
+    }
 
+    public void setDadCntct(JFXTextField DadCntct) {
+        this.DadCntct = DadCntct;
+    }
+    
     @FXML
-    private JFXTextField EmailBtn;
+    private JFXTextField Email;
+    public JFXTextField getEmail() {
+        return Email;
+    }
 
-    
-    
-    
-    @FXML
-    private Label errDisplay;
-
+    public void setEmail(JFXTextField Email) {
+        this.Email = Email;
+    }
+        
     @FXML
     private TextArea AddInfoField;
+    public TextArea getAddInfoField() {
+        return AddInfoField;
+    }
+
+    public void setAddInfoField(TextArea AddInfoField) {
+        this.AddInfoField = AddInfoField;
+    }
 
     @FXML
     private JFXTextField FamCntct;
+    public JFXTextField getFamCntct() {
+        return FamCntct;
+    }
+
+    public void setFamCntct(JFXTextField FamCntct) {
+        this.FamCntct = FamCntct;
+    }
 
     @FXML
     private JFXCheckBox CertifTick;
+    public JFXCheckBox getCertifTick() {
+        return CertifTick;
+    }
+
+    public void setCertifTick(JFXCheckBox CertifTick) {
+        this.CertifTick = CertifTick;
+    }
+    
 
    @FXML
     private Label BtnTo1;
@@ -150,14 +184,16 @@ public class Editing3Controller implements Initializable {
           {
             ex.printStackTrace();
           }
+    }    
+    
+    @FXML
+    private Label StatusBtn;
+
+    public Label getStatusBtn() {
+        return StatusBtn;
     }
 
-    @FXML
-    private Label BtnTo3;  
-    
-   
-    
-    
-   
-    
+    public void setStatusBtn(Label StatusBtn) {
+        this.StatusBtn = StatusBtn;
+    }
 }

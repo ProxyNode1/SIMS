@@ -11,7 +11,7 @@
 
 <Pane fx:id="Edit1" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing1Controller">
    <children>
-      <Label fx:id="BtnTo1" layoutX="599.0" layoutY="690.0" prefHeight="14.0" prefWidth="14.0">
+      <Label layoutX="599.0" layoutY="690.0" prefHeight="14.0" prefWidth="14.0">
          <graphic>
             <Circle fill="WHITE" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #0078D7;" />
          </graphic>
@@ -42,14 +42,14 @@
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <Pane layoutX="323.0" layoutY="280.0" prefHeight="94.0" prefWidth="320.0">
+      <Pane layoutX="323.0" layoutY="280.0" prefHeight="94.0" prefWidth="325.0">
          <children>
             <Label layoutY="5.0" text="Date of Birth" textFill="WHITE">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>
             </Label>
-            <MenuButton fx:id="DobMnth" layoutY="45.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="113.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Month" textFill="WHITE">
+            <MenuButton fx:id="DobMnth" layoutX="105.0" layoutY="45.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="113.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Month" textFill="WHITE">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
@@ -68,12 +68,12 @@
                   <MenuItem fx:id="dec" mnemonicParsing="false" text="December" />
                </items>
             </MenuButton>
-            <JFXTextField fx:id="DobDay" focusColor="WHITE" labelFloat="true" layoutX="130.0" layoutY="45.0" prefHeight="36.4" prefWidth="83.0" promptText="Day" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+            <JFXTextField fx:id="DobDay" focusColor="WHITE" labelFloat="true" layoutX="235.0" layoutY="45.0" prefHeight="36.4" prefWidth="83.0" promptText="Day" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="DobYear" focusColor="WHITE" labelFloat="true" layoutX="230.0" layoutY="45.0" prefHeight="36.4" prefWidth="83.0" promptText="Year" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+            <JFXTextField fx:id="DobYear" focusColor="WHITE" labelFloat="true" layoutX="5.0" layoutY="45.0" prefHeight="36.4" prefWidth="83.0" promptText="Year" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
@@ -81,21 +81,7 @@
             <Label fx:id="MnthLbl" layoutX="12.0" layoutY="27.0" text="Month" textFill="WHITE" visible="false" />
          </children>
       </Pane>
-      <JFXTextField fx:id="CntctFld" focusColor="WHITE" labelFloat="true" layoutX="743.0" layoutY="308.0" prefHeight="42.0" prefWidth="212.0" promptText="Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
-         <font>
-            <Font name="Arial" size="15.0" />
-         </font>
-      </JFXTextField>
-      <MenuButton fx:id="EduDrpDwn" layoutX="323.0" layoutY="418.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Current Education" textFill="WHITE">
-        <items>
-          <MenuItem fx:id="pg" mnemonicParsing="false" text="Postgraduation" />
-          <MenuItem fx:id="ug" mnemonicParsing="false" text="Undergraduation" />
-        </items>
-         <font>
-            <Font name="Arial" size="15.0" />
-         </font>
-      </MenuButton>
-      <MenuButton fx:id="DeptDrpDwn" layoutX="743.0" layoutY="418.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="257.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Department" textFill="WHITE">
+      <MenuButton fx:id="DeptDrpDwn" layoutX="743.0" layoutY="308.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="257.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Department" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -106,7 +92,21 @@
             <MenuItem fx:id="civ" mnemonicParsing="false" text="Civil Engineering" />
          </items>
       </MenuButton>
-      <JFXTextField fx:id="SemFld" focusColor="WHITE" labelFloat="true" layoutX="323.0" layoutY="528.0" prefHeight="42.0" prefWidth="212.0" promptText="Current Semester" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <MenuButton fx:id="EduDrpDwn" layoutX="323.0" layoutY="418.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Current Education" textFill="WHITE">
+        <items>
+          <MenuItem fx:id="pg" mnemonicParsing="false" text="Postgraduation" />
+          <MenuItem fx:id="ug" mnemonicParsing="false" text="Undergraduation" />
+        </items>
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </MenuButton>
+      <JFXTextField fx:id="SemFld" focusColor="WHITE" labelFloat="true" layoutX="743.0" layoutY="418.0" prefHeight="42.0" prefWidth="212.0" promptText="Current Semester" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="CntctFld" focusColor="WHITE" labelFloat="true" layoutX="323.0" layoutY="528.0" prefHeight="42.0" prefWidth="212.0" promptText="Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>

@@ -13,13 +13,14 @@
 
 <Pane fx:id="Mpage" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.HomePageController">
    <children>
-      <ScrollPane layoutX="90.0" layoutY="124.0" prefHeight="537.0" prefViewportHeight="564.0" prefViewportWidth="1137.0" prefWidth="1174.0" stylesheets="@Common.css">
+      <VBox fx:id="menuBar" layoutX="2.0" layoutY="2.0" prefHeight="716.0" prefWidth="77.0" style="-fx-background-color: #323640;" />
+      <ScrollPane layoutX="90.0" layoutY="124.0" prefHeight="537.0" prefViewportHeight="564.0" prefViewportWidth="1137.0" prefWidth="1180.0" stylesheets="@Common.css">
          <content>
-            <Pane layoutX="137.0" layoutY="112.0" prefHeight="529.0" prefWidth="1160.0">
+            <Pane layoutX="137.0" layoutY="112.0" prefHeight="529.0" prefWidth="1171.0">
                <children>
-                  <TableView fx:id="Table" editable="true" fixedCellSize="0.0" maxWidth="1167.0" minWidth="1035.0" onMouseClicked="#clickItem" prefHeight="537.0" prefWidth="1159.0" stylesheets="@Common.css">
+                  <TableView fx:id="Table" editable="true" fixedCellSize="0.0" maxWidth="1167.0" minWidth="1035.0" onMouseClicked="#clickItem" prefHeight="529.0" prefWidth="1159.0" stylesheets="@Common.css">
                     <columns>
-                        <TableColumn fx:id="strt" maxWidth="1.5" minWidth="1.5" prefWidth="1.5" />                        
+                        <TableColumn maxWidth="1.5" minWidth="1.5" prefWidth="1.5" />                        
                         <TableColumn fx:id="clgIDCol" maxWidth="135.0" minWidth="117.0" prefWidth="135.0" text="College ID" />
                         <TableColumn fx:id="nameCol" maxWidth="338.0" minWidth="320.0" prefWidth="338.0" style="-fx-text-fill: white;" text="Name" />
                         <TableColumn fx:id="branchCol" maxWidth="133.0" minWidth="115.0" prefWidth="133.0" style="-fx-text-fill: white;" text="Branch" />
@@ -27,12 +28,14 @@
                         <TableColumn fx:id="currentEduCol" maxWidth="213.0" minWidth="195.0" prefWidth="213.0" style="-fx-text-fill: white;" text="Current Education" />
                         <TableColumn fx:id="contactCol" maxWidth="212.0" minWidth="195.0" prefWidth="212.0" style="-fx-text-fill: white;" text="Contact" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                      </TableView>
                </children>
             </Pane>
          </content>
       </ScrollPane>
-      <VBox fx:id="menuBar" layoutX="2.0" layoutY="2.0" prefHeight="716.0" prefWidth="77.0" style="-fx-background-color: #323640;" />
       <JFXButton fx:id="addRow" alignment="CENTER" layoutX="1208.0" layoutY="65.0" onMouseClicked="#toEdit" prefHeight="24.0" prefWidth="36.0" ripplerFill="#9a6c00" style="-fx-background-color: #DEA309;" text="+" textFill="#212121">
          <font>
             <Font name="Arial Bold" size="20.0" />

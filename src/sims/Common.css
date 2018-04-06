@@ -56,6 +56,10 @@
     -fx-border-width: 0;  
 }
 
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
 #table .table-cell{
     -fx-padding: 12px;
 }

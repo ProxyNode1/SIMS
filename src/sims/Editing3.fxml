@@ -34,7 +34,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="Edit3" focusTraversable="true" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing3Controller">
+<Pane fx:id="Edit3" focusTraversable="true" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing3Controller">
    <children>
       <JFXTextField fx:id="Email" focusColor="WHITE" labelFloat="true" layoutX="198.0" layoutY="160.0" prefHeight="42.0" prefWidth="212.0" promptText="Personal Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
@@ -66,9 +66,9 @@
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
       </Label>
-      <Label layoutX="679.0" layoutY="690.0" prefHeight="14.0" prefWidth="14.0">
+      <Label contentDisplay="CENTER" layoutX="679.0" layoutY="690.0" prefHeight="14.0" prefWidth="14.0">
          <graphic>
-            <Circle fill="#0078d7" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="#0078d7" radius="7.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
       </Label>
       <JFXCheckBox fx:id="CertifTick" alignment="CENTER" checkedColor="#2f3136" contentDisplay="RIGHT" graphicTextGap="5.0" layoutX="198.0" layoutY="390.0" prefHeight="57.0" prefWidth="305.24" style="-fx-background-color: #323640; -fx-border-color: #707070; -fx-border-width: 1; -jfx-unchecked-color: #BCE0FD;" text="Certifications" textFill="WHITE" unCheckedColor="WHITE">
@@ -96,7 +96,7 @@
             </ImageView>
          </graphic>
       </Label>
-      <Label fx:id="StatusBtn" layoutX="1053.0" layoutY="678.0" prefHeight="19.0" prefWidth="195.0" text="*Warning, Database Missing!" textFill="#ff2323" visible="false">
+      <Label fx:id="StatusBtn1" layoutX="1053.0" layoutY="678.0" prefHeight="19.0" prefWidth="195.0" text="*Warning, Database Missing!" textFill="#ff2323" visible="false">
          <font>
             <Font name="Roboto" size="15.0" />
          </font>

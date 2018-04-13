@@ -187,13 +187,11 @@ public class Editing3Controller implements Initializable {
     }    
     
     @FXML
-    private Label StatusBtn;
+    public static Label StatusBtn1;
 
-    public Label getStatusBtn() {
-        return StatusBtn;
-    }
-
-    public void setStatusBtn(Label StatusBtn) {
-        this.StatusBtn = StatusBtn;
-    }
+        
+    /*public void showError()
+    {
+        StatusBtn.setVisible(true);
+    }*/
 }

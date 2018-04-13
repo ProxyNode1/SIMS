@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="Mpage" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.HomePageController">
+<Pane fx:id="Mpage" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.HomePageController">
    <children>
-      <VBox fx:id="menuBar" layoutX="2.0" layoutY="2.0" prefHeight="716.0" prefWidth="77.0" style="-fx-background-color: #323640;" />
-      <ScrollPane layoutX="90.0" layoutY="124.0" prefHeight="537.0" prefViewportHeight="564.0" prefViewportWidth="1137.0" prefWidth="1180.0" stylesheets="@Common.css">
+      <ScrollPane layoutX="60.0" layoutY="124.0" prefHeight="537.0" prefViewportHeight="564.0" prefViewportWidth="1137.0" prefWidth="1180.0" stylesheets="@Common.css">
          <content>
             <Pane layoutX="137.0" layoutY="112.0" prefHeight="529.0" prefWidth="1171.0">
                <children>
@@ -41,27 +40,7 @@
             <Font name="Arial Bold" size="20.0" />
          </font>
       </JFXButton>
-      <Label fx:id="StatusBtn" layoutX="1043.0" layoutY="668.0" prefHeight="19.0" prefWidth="195.0" text="*Warning, Database Missing!" textFill="#ff2323" visible="false">
-         <font>
-            <Font name="Roboto" size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="CreateNew" layoutX="20.0" layoutY="144.0" text="New" textFill="#f6f6f6">
-         <font>
-            <Font name="Roboto" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="20.0" layoutY="184.0" text="Open" textFill="#f6f6f6">
-         <font>
-            <Font name="Roboto" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="20.0" layoutY="224.0" text="Import" textFill="#f6f6f6">
-         <font>
-            <Font name="Roboto" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="20.0" layoutY="264.0" text="Export" textFill="#f6f6f6">
+      <Label fx:id="StatusBtn0" layoutX="1043.0" layoutY="668.0" prefHeight="19.0" prefWidth="195.0" text="*Warning, Database Missing!" textFill="#ff2323" visible="false">
          <font>
             <Font name="Roboto" size="15.0" />
          </font>
@@ -71,5 +50,10 @@
             <Font name="Roboto" size="13.0" />
          </font>
       </Text>
+      <JFXButton fx:id="Import" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="65.0" prefHeight="37.0" prefWidth="74.0" ripplerFill="#9a6c00" style="-fx-background-color: #DEA309;" text="Import" textFill="#212121">
+         <font>
+            <Font name="Roboto Bold" size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </Pane>

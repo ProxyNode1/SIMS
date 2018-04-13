@@ -9,17 +9,19 @@ public class DatabaseCon
     {
         try
         {
-        Connection mycon = DriverManager.getConnection("jdbc:mysql://locathost3306/studentinfoschema", "root", "root");
+            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentinfoschema?autoReconnect=true&useSSL=false", "root", "root");
+            System.out.println("ok");
+            
+            
         }
         catch(Exception e)
         {
-            HomePageController hp = new HomePageController();
-            hp.getStatusBtn().setVisible(true);
-            
-            Editing3Controller e3 = new Editing3Controller();
-            e3.getStatusBtn().setVisible(true);
+            e.printStackTrace();
+            //HomePageController.StatusBtn0.setVisible(true);
+            Editing3Controller.StatusBtn1.setVisible(true);
         }
     }
 }
+   
 
 

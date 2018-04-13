@@ -28,10 +28,10 @@ import javafx.scene.control.Tooltip;
 
 public class Editing1Controller implements Initializable {
 
-   
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
-    {
+    {  
         Edit1.requestFocus();
         //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
                 
@@ -44,32 +44,24 @@ public class Editing1Controller implements Initializable {
         DobYear.setTooltip(new Tooltip("eg. 1997"));
         SemFld.setTooltip(new Tooltip("eg. 6, for 6th semester"));
         
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Editing1Controller.class.getResource("Editing2.fxml"));
-        Parent root;
-        try {
-            root = loader.load();
-        } catch (IOException ex) {
-            Logger.getLogger(Editing1Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         
-        
-        
-        
+            
     }    
     
+    
+    
      
+    /*void abc()
+    {
+        Editing3Controller.StatusBtn1.setVisible(true);
+        HomePageController.StatusBtn0.setVisible(true);
+    }*/
     
     @FXML
-    private JFXTextField IdFld;
-    public JFXTextField getIdFld() {
-        return IdFld;
-    }
-
-    public void setIdFld(JFXTextField IdFld) {
-        this.IdFld = IdFld;
-    } 
+    public JFXTextField IdFld;
+    //public static JFXTextField IdFld;
+    
 
     @FXML
     private JFXTextField CntctFld;

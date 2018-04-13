@@ -92,19 +92,13 @@ public class HomePageController implements Initializable
         Table.setItems(getInput());
         //Table.getColumns().addAll(clgIDCol, nameCol, branchCol, CsemCol, currentEduCol, contactCol);
     }
-    
-
-    @FXML
-    private VBox menuBar;
-    
-    
+ 
     @FXML
     private Pane Mpage;
      
-
-    
-    
-    
+    @FXML
+    private JFXButton Import;
+        
     @FXML
     private JFXButton addRow;
     public void toEdit(MouseEvent event) //this function allow add new person to the database and show them in table, after filling their details
@@ -127,21 +121,15 @@ public class HomePageController implements Initializable
     }
     
     @FXML
-    private Label StatusBtn;
+    public Label StatusBtn0;
+    //public static Label StatusBtn0;
 
-    public Label getStatusBtn() {
-        return StatusBtn;
-    }
-
-    public void setStatusBtn(Label StatusBtn) {
-        this.StatusBtn = StatusBtn;
-    }
     
     public void clickItem(MouseEvent event) //this will allow to view info of students
     {
         if(event.getClickCount() == 2) //on double click
         {
-            StatusBtn.setVisible(true);
+            StatusBtn0.setVisible(true);
         }
     }
 

@@ -48,6 +48,8 @@ public class Editing2Controller implements Initializable
         SBrd.setTooltip(new Tooltip("eg. state"));
         HBrd.setTooltip(new Tooltip("eg. state"));
         
+        //SRoll.setText(Editing1Controller.IdFld.getText());
+        
     }  
     
     
@@ -56,10 +58,10 @@ public class Editing2Controller implements Initializable
     
     
     @FXML
-    private Label BtnTo1;
+    public static Label BtnTo1;
     
     public void toEdit1(MouseEvent event)
-     {
+     {  
         try 
         {
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));

@@ -20,7 +20,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="Edit2" focusTraversable="true" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 2;" stylesheets="@Common.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing2Controller">
+<Pane fx:id="Edit2" focusTraversable="true" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 1;" stylesheets="@Common.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing2Controller">
    <children>
       <ScrollPane hbarPolicy="NEVER" layoutX="90.0" layoutY="115.0" prefHeight="540.0" prefWidth="1183.0" style="-fx-background: #212121; -fx-border-color: #212121; -fx-border-width: 1;" vbarPolicy="ALWAYS">
          <content>
@@ -229,9 +229,9 @@
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
       </Label>
-      <Label layoutX="639.0" layoutY="690.0" prefHeight="14.0" prefWidth="14.0">
+      <Label contentDisplay="CENTER" layoutX="639.0" layoutY="690.0" prefHeight="14.0" prefWidth="14.0">
          <graphic>
-            <Circle fill="WHITE" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #0078D7;" />
+            <Circle fill="WHITE" radius="7.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #0078D7;" />
          </graphic>
       </Label>
       <Label fx:id="BtnTo3" layoutX="679.0" layoutY="690.0" onMouseClicked="#toEdit3" prefHeight="14.0" prefWidth="14.0">

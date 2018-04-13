@@ -26,7 +26,9 @@ public class Sims extends Application
         stage.sizeToScene();
         stage.show();
         
+        
     }
+    
 
     
     public static void main(String[] args) 

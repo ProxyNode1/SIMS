@@ -43,8 +43,7 @@ public class HomePageController implements Initializable
         TableOP();               
        
     }
-    @FXML
-    private TableColumn<?, ?> strt;
+    
     
     @FXML 
     private  TableView<InputClass> Table = new TableView<>();
@@ -74,9 +73,9 @@ public class HomePageController implements Initializable
         ObservableList<InputClass> ip = FXCollections.observableArrayList();
         ip.add(new InputClass( 33, "Saurabh Sutar", "CSE", 6, "Undergraduation", "9987248564")); //add values to table
         ip.add(new InputClass( 8, "Ashwini Dhale", "CSE", 6, "Undergraduation", "8587515673"));
-        ip.add(new InputClass( 32, "Sapna Choksey", "CSE", 6, "Undergraduation", "7865112684"));
-        ip.add(new InputClass( 26, "Rohan Majrikar", "CSE", 6, "Undergraduation", "9172856789"));
-        ip.add(new InputClass( 43, "Vikramaditya Thakur", "CSE", 6, "Undergraduation", "9425990093"));
+        ip.add(new InputClass( 32, "Sapna Choksey", "CIVIL", 6, "Undergraduation", "7865112684"));
+        ip.add(new InputClass( 26, "Rohan Majrikar", "ENC", 6, "Undergraduation", "9172856789"));
+        ip.add(new InputClass( 43, "Vikramaditya Thakur", "MECH", 6, "Undergraduation", "9425990093"));
         
         return ip;
     }
@@ -96,8 +95,7 @@ public class HomePageController implements Initializable
     @FXML
     private Pane Mpage;
      
-    @FXML
-    private JFXButton Import;
+    
         
     @FXML
     private JFXButton addRow;

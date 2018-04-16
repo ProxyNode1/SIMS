@@ -48,10 +48,13 @@ public class Editing2Controller implements Initializable
         SBrd.setTooltip(new Tooltip("eg. state"));
         HBrd.setTooltip(new Tooltip("eg. state"));
         
-        int a = i;
+        s1 = Editing1Controller.useName;
+        int o = Editing1Controller.up;
+        hide(o);
         
     }  
     
+    DatabaseIO xyz = new DatabaseIO();
     
     @FXML
     private Pane Edit2;
@@ -76,9 +79,6 @@ public class Editing2Controller implements Initializable
             
         }
     }
-
-    
-    
     
     @FXML
     private Label BtnTo3;  
@@ -138,76 +138,59 @@ public class Editing2Controller implements Initializable
     
 
     /////////////////////////////////////////////Secondary School Fields
-    @FXML
-    private JFXTextField SPentg;
-    public JFXTextField getSPentg() {
-        return SPentg;
-    }
-
-    public void setSPentg(JFXTextField SPentg) {
-        this.SPentg = SPentg;
-    }
-
-    @FXML
-    private JFXTextField SRoll;
-    public JFXTextField getSRoll() {
-        return SRoll;
-    }
-
-    public void setSRoll(JFXTextField SRoll) {
-        this.SRoll = SRoll;
-    }
-
-    @FXML
-    private JFXTextField SMed;
-    public JFXTextField getSMed() {
-        return SMed;
-    }
-
-    public void setSMed(JFXTextField SMed) {
-        this.SMed = SMed;
-    }
-
-    @FXML
-    private JFXTextField SSch;
-    public JFXTextField getSSch() {
-        return SSch;
-    }
-
-    public void setSSch(JFXTextField SSch) {
-        this.SSch = SSch;
-    }
-
-    @FXML
-    private JFXTextField SBrd;
-    public JFXTextField getSBrd() {
-        return SBrd;
-    }
-
-    public void setSBrd(JFXTextField SBrd) {
-        this.SBrd = SBrd;
-    }
-
-    @FXML
-    private JFXTextField SCity;
-    public JFXTextField getSCity() {
-        return SCity;
-    }
-
-    public void setSCity(JFXTextField SCity) {
-        this.SCity = SCity;
-    }
-
+    int s3, s2, s8;
+    String s1;
+    String s4, s5, s6, s7;
+    
     @FXML
     private JFXTextField SPass;
-    public JFXTextField getSPass() {
-        return SPass;
-    }
-
-    public void setSPass(JFXTextField SPass) {
-        this.SPass = SPass;
+    public void getSPass()
+    {   s2 = Integer.parseInt(SPass.getText());
+        System.out.println(s2);            
     }
     
+    @FXML
+    private JFXTextField SRoll;
+    public void getSRoll()
+    {   s3 = Integer.parseInt(SRoll.getText());
+        System.out.println(s3);            
+    }
+    
+    @FXML
+    private JFXTextField SBrd;
+    public void getSBrd()
+    {   s4 = "'"+SBrd.getText()+"'";
+        System.out.println(s4);
+    }
+    
+    @FXML
+    private JFXTextField SMed;
+    public void getSMed()
+    {   s5 = "'"+SMed.getText()+"'";
+        System.out.println(s5);
+    }
+    
+    @FXML
+    private JFXTextField SSch;
+    public void getSSch()
+    {   s6 = "'"+SSch.getText()+"'";
+        System.out.println(s6);
+    }
+    
+    @FXML
+    private JFXTextField SCity;
+    public void getSCity()
+    {   s7 = "'"+SCity.getText()+"'";
+        System.out.println(s7);
+    }
+    
+    @FXML
+    private JFXTextField SPentg;
+    public void getSPtng()
+    {       s8 = Integer.parseInt(SPentg.getText());
+            System.out.println(s8);            
+    }
+
     
     ///////////////////////////////////High School Fields/////////////////////////
     
@@ -389,17 +372,27 @@ public class Editing2Controller implements Initializable
         this.DCrs = DCrs;
     }
     
+    
+    public void hide(int o)
+    {   
+        if(o == 1)
+        {
+            EPentg.setDisable(true);
+            ESem.setDisable(true);
+        }
+        if(o == 2)
+        {
+            PPentg.setDisable(true);
+            PSem.setDisable(true);
+        }
+    }
+    
+    int j = Editing1Controller.useSem;
     ////////////////////////////Engineering Fields/////////////////////
         
     @FXML
     private static Pane EPane;
-    public Pane getEPane() {
-        return EPane;
-    }
-
-    public void setEPane(Pane EPane) {
-        this.EPane = EPane;
-    }
+    
     
     @FXML
     private JFXTextField EPentg;
@@ -407,13 +400,7 @@ public class Editing2Controller implements Initializable
     @FXML
     private MenuButton ESem;
     
-     public JFXTextField getEPentg() {
-        return EPentg;
-    }
-
-    public void setEPentg(JFXTextField EPentg) {
-        this.EPentg = EPentg;
-    }
+    
 
     public MenuButton getESem() {
         return ESem;
@@ -423,12 +410,7 @@ public class Editing2Controller implements Initializable
         this.ESem = ESem;
     }
     
-    /*public void createESem()
-    {
-        
-        
-        
-    }*/
+    
        
 
     //////////////////////////////////////Postgraduation Fields///////////////////////////
@@ -467,5 +449,9 @@ public class Editing2Controller implements Initializable
     }
 
     
-    
+    public void setValues()
+    {       
+        xyz.setSscinfo(s1, s2, s3, s4, s5, s6, s7, s8); 
+        //xyz.;
+    }
 }

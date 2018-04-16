@@ -49,6 +49,7 @@ public class Editing1Controller implements Initializable {
     }    
     
     public static String a, useName;
+    public static int up, useSem;
     
     @FXML
     private Pane Edit1;
@@ -152,7 +153,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 EduDrpDwn.setText("  Postgraduation");
-                Editing2Controller.i = 1;
+                up = 1;
                 String ab  = "PG";
                 s4 = "'"+ab+"'";
                 System.out.println(s4);
@@ -165,7 +166,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 EduDrpDwn.setText("  Undergraduation");
-                Editing2Controller.i = 2;
+                up = 2;
                 String ab  = "UG";
                 s4 = "'"+ab+"'";
                 System.out.println(s4);
@@ -178,6 +179,7 @@ public class Editing1Controller implements Initializable {
     private JFXTextField SemFld;
     public void getSem()
     {       s5 = Integer.parseInt(SemFld.getText());
+            useSem = s5;
             System.out.println(s5);
     }
     
@@ -398,7 +400,7 @@ public class Editing1Controller implements Initializable {
     
     public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {
-        setValues();
+        //setValues();
         
         try {
            

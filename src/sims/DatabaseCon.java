@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class DatabaseCon 
 {   
-    public static int check;
+    
     
     public static Connection connect()
     {   
@@ -19,7 +19,8 @@ public class DatabaseCon
             
             // create a connection to the database
             Connection myConn = DriverManager.getConnection(urlMySql, username, password);
-            check = 1;
+            
+                  
             System.out.println("ok");
                         
             return myConn;
@@ -28,9 +29,10 @@ public class DatabaseCon
         catch(Exception e)
         {
             e.printStackTrace();
-            //HomePageController.StatusBtn0.setText("*Warning, Database Missing!");
-            //Editing1Controller.StatusBtn1.setText("*Warning, Database Missing!");
             
+            HomePageController.a = "*Warning, Database Missing!";
+            Editing1Controller.a = "*Warning, Database Missing!";
+                       
             return null;
         }
     }    

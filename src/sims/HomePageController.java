@@ -41,9 +41,10 @@ public class HomePageController implements Initializable
     {
         Table.setId("table");
         TableOP();               
-       
+        StatusBtn0.setText(a);
     }
     
+    public static String a;
     
     @FXML 
     private  TableView<InputClass> Table = new TableView<>();
@@ -119,16 +120,8 @@ public class HomePageController implements Initializable
     }
     
     @FXML
-    public static Label StatusBtn0;
-    void chk()
-    {
-        int x = DatabaseCon.check;
-        
-        if (x == 1)
-        {
-            StatusBtn0.setText("*Warning, Database Missing!");
-        }
-    }
+    public Label StatusBtn0;
+    
 
     
     public void clickItem(MouseEvent event) //this will allow to view info of students

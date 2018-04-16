@@ -9,7 +9,7 @@ public class DatabaseIO
 {
     Connection myConn = null;
     Statement stmt = null;
-    PreparedStatement ps =null;
+    PreparedStatement ps = null;
     ResultSet res = null;
 
     public DatabaseIO() 
@@ -25,7 +25,7 @@ public class DatabaseIO
     
     public void createTables()
     {
-        String basicInfo =  "CREATE TABLE IF NOT EXIST `student_info_schema`.`basic_info` (" + 
+        String basicInfo =  "CREATE TABLE IF NOT EXISTS `student_info_schema`.`basic_info` (" + 
                             "`name` VARCHAR(30) NOT NULL," +
                             "`clgId` VARCHAR(10) NOT NULL," +
                             "`dept` VARCHAR(5) NOT NULL," +
@@ -38,9 +38,9 @@ public class DatabaseIO
                             "UNIQUE INDEX `name_UNIQUE` (`name` ASC)," +
                             "UNIQUE INDEX `contact_UNIQUE` (`contact` ASC));" ;
         
-        String sscInfo =    "CREATE TABLE IF NOT EXIST `student_info_schema`.`ssc_info` ("+
+        String sscInfo =    "CREATE TABLE IF NOT EXISTS `student_info_schema`.`ssc_info` ("+
                             "`name` VARCHAR(30) NOT NULL,"+
-                            "`SYop` DATE NOT NULL,"+
+                            "`SYop` INT(4) NOT NULL,"+
                             "`SRn` INT(5) UNSIGNED NOT NULL,"+
                             "`SBoard` VARCHAR(5) NOT NULL,"+
                             "`SMedium` VARCHAR(10) NOT NULL,"+
@@ -50,13 +50,11 @@ public class DatabaseIO
                             "INDEX `Sname_idx` (`name` ASC),"+
                             "CONSTRAINT `Sname`"+
                             "FOREIGN KEY (`name`)"+
-                            "REFERENCES `student_info_schema`.`basic_info` (`name`)"+
-                            "ON DELETE NO ACTION"+
-                            "ON UPDATE NO ACTION);";
+                            "REFERENCES `student_info_schema`.`basic_info` (`name`));";
         
-        String hsscInfo = "CREATE TABLE IF NOT EXIST `student_info_schema`.`hssc_info` (" +
+        String hsscInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`hssc_info` (" +
                           "`name` VARCHAR(30) NOT NULL," +
-                          "`HYop` DATE NOT NULL," +
+                          "`HYop` INT(4) NOT NULL," +
                           "`HRn` INT(5) UNSIGNED NOT NULL," +
                           "`HBoard` VARCHAR(5) NOT NULL," +
                           "`HMedium` VARCHAR(10) NOT NULL," +
@@ -69,11 +67,9 @@ public class DatabaseIO
                           "INDEX `Hname_idx` (`name` ASC)," +
                           "CONSTRAINT `Hname`" +
                           "FOREIGN KEY (`name`)" +
-                          "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
-                          "ON DELETE NO ACTION" +
-                          "ON UPDATE NO ACTION);";
+                          "REFERENCES `student_info_schema`.`basic_info` (`name`));";
         
-        String dipInfo = "CREATE TABLE IF NOT EXIST `student_info_schema`.`diploma_info` (" +
+        String dipInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`diploma_info` (" +
                          "`name` VARCHAR(30) NOT NULL," +
                          "`DSem1` INT(1) UNSIGNED NOT NULL," +
                          "`DPtng1` INT(2) UNSIGNED NOT NULL," +
@@ -90,14 +86,12 @@ public class DatabaseIO
                          "INDEX `Dname_idx` (`name` ASC)," +
                          "CONSTRAINT `Dname`" +
                          "FOREIGN KEY (`name`)" +
-                         "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
-                         "ON DELETE NO ACTION" +
-                         "ON UPDATE NO ACTION);";
+                         "REFERENCES `student_info_schema`.`basic_info` (`name`));";
         
-        String uInfo = "CREATE TABLE IF NOT EXIST `student_info_schema`.`ug_info` (" +
+        String uInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`ug_info` (" +
                        "`name` VARCHAR(30) NOT NULL," +
                        "`ESem1` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng1` INT(2) UNSIGNED NOT NULL" +
+                       "`EPtng1` INT(2) UNSIGNED NOT NULL," +
                        "`ESem2` INT(1) UNSIGNED NOT NULL," +
                        "`EPtng2` INT(2) UNSIGNED NOT NULL," +
                        "`ESem3` INT(1) UNSIGNED NOT NULL," +
@@ -107,19 +101,17 @@ public class DatabaseIO
                        "`ESem5` INT(1) UNSIGNED NOT NULL," +
                        "`EPtng5` INT(2) UNSIGNED NOT NULL," +
                        "`ESem6` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng6` INT(2) UNSIGNED NOT NULL" +
+                       "`EPtng6` INT(2) UNSIGNED NOT NULL," +
                        "`ESem7` INT(1) UNSIGNED NOT NULL," +
                        "`EPtng7` INT(2) UNSIGNED NOT NULL," +
                        "`ESem8` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng8` INT(2) UNSIGNED NOT NULL,n" +
+                       "`EPtng8` INT(2) UNSIGNED NOT NULL," +
                        "INDEX `Uname_idx` (`name` ASC)," +
                        "CONSTRAINT `Uname`" +
                        "FOREIGN KEY (`name`)" +
-                       "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
-                       "ON DELETE NO ACTION" +
-                       "ON UPDATE NO ACTION);";
+                       "REFERENCES `student_info_schema`.`basic_info` (`name`));";
         
-        String pInfo = "CREATE TABLE IF NOT EXIST `student_info_schema`.`pg_info` (" +
+        String pInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`pg_info` (" +
                        "`name` VARCHAR(30) NOT NULL," +
                        "`PSem1` INT(1) UNSIGNED NOT NULL," +
                        "`PPtng1` INT(2) UNSIGNED NOT NULL," +
@@ -132,11 +124,9 @@ public class DatabaseIO
                        "INDEX `Pname_idx` (`name` ASC)," +
                        "CONSTRAINT `Pname`" +
                        "FOREIGN KEY (`name`)" +
-                       "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
-                       "ON DELETE NO ACTION" +
-                       "ON UPDATE NO ACTION);";
+                       "REFERENCES `student_info_schema`.`basic_info` (`name`));";
         
-        String oInfo = "CREATE TABLE IF NOT EXIST `student_info_schema`.`other_info` (" +
+        String oInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`other_info` (" +
                        "`name` VARCHAR(30) NOT NULL," +
                        "`PEmail` VARCHAR(45) NULL," +
                        "`CEmail` VARCHAR(45) NOT NULL," +
@@ -149,9 +139,7 @@ public class DatabaseIO
                        "UNIQUE INDEX `CEmail_UNIQUE` (`CEmail` ASC)," +
                        "CONSTRAINT `Oname`" +
                        "FOREIGN KEY (`name`)" +
-                       "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
-                       "ON DELETE NO ACTION" +
-                       "ON UPDATE NO ACTION);";
+                       "REFERENCES `student_info_schema`.`basic_info` (`name`));";
         
         try{
             stmt = myConn.createStatement();
@@ -235,10 +223,17 @@ public class DatabaseIO
     {   String sql = "insert into student_info_schema.basic_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +");";
         try{
             ps = myConn.prepareCall(sql);
+            ps.executeUpdate();
+            ps = null;
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
+    }
+    
+    void setSscinfo()
+    {
+        
     }
 }

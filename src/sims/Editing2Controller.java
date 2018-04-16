@@ -48,7 +48,7 @@ public class Editing2Controller implements Initializable
         SBrd.setTooltip(new Tooltip("eg. state"));
         HBrd.setTooltip(new Tooltip("eg. state"));
         
-        
+        int a = i;
         
     }  
     
@@ -98,17 +98,18 @@ public class Editing2Controller implements Initializable
             ex.printStackTrace();
           }
     }
+    public static int i;
+    public int a;
     
-    
-    public static void disableGrad(int i)
+    public  void disableGrad()
     {
-        if(i == 1)
+        if(a == 2)
         {
            PPane.setDisable(true);
            EPane.setDisable(false);
         }
         
-        if(i == 0)
+        if(a == 1)
         {
            EPane.setDisable(true);
            PPane.setDisable(false);

@@ -43,8 +43,12 @@ public class Editing1Controller implements Initializable {
         NamFld.setTooltip(new Tooltip ("use Fullname"));
         DobYear.setTooltip(new Tooltip("eg. 1997"));
         SemFld.setTooltip(new Tooltip("eg. 6, for 6th semester"));
+        
+        StatusBtn1.setText(a);
                   
     }    
+    
+    public static String a, useName;
     
     @FXML
     private Pane Edit1;
@@ -57,6 +61,7 @@ public class Editing1Controller implements Initializable {
     public void getName()
     {       s1 = "'"+NamFld.getText()+"'";
             System.out.println(s1);
+            useName = s1;
     }
     
     @FXML
@@ -147,6 +152,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 EduDrpDwn.setText("  Postgraduation");
+                Editing2Controller.i = 1;
                 String ab  = "PG";
                 s4 = "'"+ab+"'";
                 System.out.println(s4);
@@ -159,6 +165,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 EduDrpDwn.setText("  Undergraduation");
+                Editing2Controller.i = 2;
                 String ab  = "UG";
                 s4 = "'"+ab+"'";
                 System.out.println(s4);
@@ -185,6 +192,7 @@ public class Editing1Controller implements Initializable {
     private JFXTextField DobYear;
     public void DobYear()
     {       s71 = DobYear.getText();
+            System.out.println(s71);
             
     }
     
@@ -371,13 +379,12 @@ public class Editing1Controller implements Initializable {
     private JFXTextField DobDay;
     public void DobDay()
     {       s73 = DobDay.getText();
+            System.out.println(s73);
+            s7 = "'"+ s71 + "-" + s72 + "-" + s73 + "'"; 
+            System.out.println(s7);
     }
     
-    public void DOB()
-    {
-        s7 = "'"+ s71 + "-" + s72 + "-" + s73 + "'"; 
-        System.out.println(s7);
-    }
+    
    
     public void setValues()
     {
@@ -391,7 +398,7 @@ public class Editing1Controller implements Initializable {
     
     public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {
-        
+        setValues();
         
         try {
            
@@ -413,6 +420,7 @@ public class Editing1Controller implements Initializable {
     
     public void toEdit3(MouseEvent event)
     {
+        setValues();
         try 
         {
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing3.fxml"));
@@ -429,15 +437,8 @@ public class Editing1Controller implements Initializable {
     
     @FXML
     public Label StatusBtn1;
-    void chk()
-    {
-        int x = DatabaseCon.check;
-        
-        if (x == 1)
-        {
-            StatusBtn1.setText("*Warning, Database Missing!");
-        }
-    }
+    
+    
     @FXML
     private Label bck;
     

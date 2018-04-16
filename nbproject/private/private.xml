@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/NetBeans/NetBeans%208.2/Projects/sims/src/sims/FXML_HomePage.fxml</file>
-            <file>file:/E:/NetBeans/NetBeans%208.2/Projects/sims/src/sims/FXMLDocumentController.java</file>
-            <file>file:/E:/NetBeans/NetBeans%208.2/Projects/sims/src/sims/FXML_HomePageController.java</file>
-            <file>file:/E:/NetBeans/NetBeans%208.2/Projects/sims/src/sims/Sims.java</file>
-            <file>file:/E:/NetBeans/NetBeans%208.2/Projects/sims/src/sims/FXMLDocument.fxml</file>
+            <file>file:/E:/project/sims/src/sims/Editing1Controller.java</file>
+            <file>file:/E:/project/sims/src/sims/DatabaseIO.java</file>
+            <file>file:/E:/project/sims/src/sims/DatabaseCon.java</file>
+            <file>file:/E:/project/sims/src/sims/HomePageController.java</file>
+            <file>file:/E:/project/sims/src/sims/Sims.java</file>
         </group>
     </open-files>
 </project-private>

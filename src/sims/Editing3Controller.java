@@ -186,12 +186,5 @@ public class Editing3Controller implements Initializable {
           }
     }    
     
-    @FXML
-    public static Label StatusBtn1;
-
-        
-    /*public void showError()
-    {
-        StatusBtn.setVisible(true);
-    }*/
+    
 }

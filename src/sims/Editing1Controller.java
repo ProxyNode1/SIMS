@@ -43,174 +43,32 @@ public class Editing1Controller implements Initializable {
         NamFld.setTooltip(new Tooltip ("use Fullname"));
         DobYear.setTooltip(new Tooltip("eg. 1997"));
         SemFld.setTooltip(new Tooltip("eg. 6, for 6th semester"));
-        
-        
-        
-            
+                  
     }    
-    
-    
-    
-     
-    /*void abc()
-    {
-        Editing3Controller.StatusBtn1.setVisible(true);
-        HomePageController.StatusBtn0.setVisible(true);
-    }*/
-    
-    @FXML
-    public JFXTextField IdFld;
-    //public static JFXTextField IdFld;
-    
-
-    @FXML
-    private JFXTextField CntctFld;
-    public JFXTextField getCntctFld() {
-        return CntctFld;
-    }
-
-    public void setCntctFld(JFXTextField CntctFld) {
-        this.CntctFld = CntctFld;
-    }
-
-    @FXML
-    private JFXTextField NamFld;
-    
-    public JFXTextField getNamFld() {
-        return NamFld;
-    }
-
-    public void setNamFld(JFXTextField NamFld) {
-        this.NamFld = NamFld;
-    }
-  
-
-    @FXML
-    private JFXTextField SemFld;
-    public JFXTextField getSemFld() {
-        return SemFld;
-    }
-
-    public void setSemFld(JFXTextField SemFld) {
-        this.SemFld = SemFld;
-    }
-    
-    @FXML
-    private MenuButton EduDrpDwn;
-    public MenuButton getEduDrpDwn() {
-        return EduDrpDwn;
-    }
-
-    public void setEduDrpDwn(MenuButton EduDrpDwn) {
-        this.EduDrpDwn = EduDrpDwn;
-    }
-    
-    @FXML
-    private MenuItem pg;
-    
-    @FXML
-    private MenuItem ug;
-    
-    public void chzEduDrpDwn()
-    {
-              
-       pg.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                EduDrpDwn.setText("  Postgraduation");
-            }
-       }
-       );
-       
-       ug.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                EduDrpDwn.setText("  Undergraduation");
-            }
-       }
-       );
-    }
-    
-    
-   
-    @FXML
-    private Label BtnTo2;
-    
-    public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
-    {
-        
-        
-        try {
-           
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-            
-        } 
-        catch (Exception ex) 
-        {
-            ex.printStackTrace();
-        }
-    }
- 
-    @FXML
-    private Label BtnTo3;  
-    
-    public void toEdit3(MouseEvent event)
-    {
-        try 
-        {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing3.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-        } 
-        catch (Exception ex) 
-          {
-            ex.printStackTrace();
-          }
-    }
-    
-    
-    
-    
-    @FXML
-    private Label bck;
-    
-    public void bck2HP(MouseEvent event)
-    {
-        try 
-        {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-        } 
-        catch (Exception ex) 
-          {
-            ex.printStackTrace();
-          }
-    }
     
     @FXML
     private Pane Edit1;
- 
+    
+    public String s1, s2, s3, s4, s6, s7, s71, s72, s73;
+    public int s5;  
+    
     @FXML
-    private MenuButton DeptDrpDwn;
-    public MenuButton getDeptDrpDwn() {
-        return DeptDrpDwn;
-    }
-
-    public void setDeptDrpDwn(MenuButton DeptDrpDwn) {
-        this.DeptDrpDwn = DeptDrpDwn;
+    private JFXTextField NamFld;
+    public void getName()
+    {       s1 = "'"+NamFld.getText()+"'";
+            System.out.println(s1);
     }
     
+    @FXML
+    public JFXTextField IdFld;
+    public void getID()
+    {   s2 = "'"+IdFld.getText()+"'";
+        System.out.println(s2);
+    }
+    
+    @FXML
+    private MenuButton DeptDrpDwn;
+         
     @FXML
     private MenuItem mech;
 
@@ -230,37 +88,104 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
-                DeptDrpDwn.setText(" Mechanical Enginnering");
+                DeptDrpDwn.setText(" MECH");
+                String ab  = "MECH";
+                s3 = "'"+ab+"'";
+                System.out.println(s3);
+
             }
-       }
-       );
+       } );
        
        cs.setOnAction(new EventHandler<ActionEvent>() 
        {
             public void handle(ActionEvent t) 
             {
-                DeptDrpDwn.setText(" Computer Science and Engineering");
+                DeptDrpDwn.setText(" CSE");
+                String ab  = "CSE";
+                s3 = "'"+ab+"'";   
+                System.out.println(s3);
             }
-       }
-       );
+       } );
        
        enc.setOnAction(new EventHandler<ActionEvent>() 
        {
             public void handle(ActionEvent t) 
             {
-                DeptDrpDwn.setText(" Electronics and Communication");
+                DeptDrpDwn.setText(" EnC");
+                String ab  = "EnC";
+                s3 = "'"+ab+"'";
+                System.out.println(s3);
             }
-       }
-       );
+       } );
        
        civ.setOnAction(new EventHandler<ActionEvent>() 
        {
             public void handle(ActionEvent t) 
             {
-                DeptDrpDwn.setText(" Civil Engineering");
+                DeptDrpDwn.setText(" CIVIL");
+                String ab  = "CIVIL";
+                s3 = "'"+ab+"'";
+                System.out.println(s3);
             }
-       }
-       );
+       } );
+    }
+
+    @FXML
+    private MenuButton EduDrpDwn;
+ 
+    @FXML
+    private MenuItem pg;
+    
+    @FXML
+    private MenuItem ug;
+    
+    public void chzEduDrpDwn()
+    {
+              
+       pg.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                EduDrpDwn.setText("  Postgraduation");
+                String ab  = "PG";
+                s4 = "'"+ab+"'";
+                System.out.println(s4);
+            
+            }
+       });
+       
+       ug.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                EduDrpDwn.setText("  Undergraduation");
+                String ab  = "UG";
+                s4 = "'"+ab+"'";
+                System.out.println(s4);
+                
+            }
+        });
+    }
+    
+    @FXML
+    private JFXTextField SemFld;
+    public void getSem()
+    {       s5 = Integer.parseInt(SemFld.getText());
+            System.out.println(s5);
+    }
+    
+    @FXML
+    private JFXTextField CntctFld;
+    public void getCntct()
+    {   s6 = "'"+CntctFld.getText()+"'";
+        System.out.println(s6);
+    } 
+    
+    @FXML
+    private JFXTextField DobYear;
+    public void DobYear()
+    {       s71 = DobYear.getText();
+            
     }
     
     @FXML
@@ -268,13 +193,7 @@ public class Editing1Controller implements Initializable {
     
     @FXML
     private MenuButton DobMnth;
-    public MenuButton getDobMnth() {
-        return DobMnth;
-    }
-
-    public void setDobMnth(MenuButton DobMnth) {
-        this.DobMnth = DobMnth;
-    }
+    
     
     @FXML
     private MenuItem jan;
@@ -321,9 +240,9 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" January");
                 MnthLbl.setVisible(true);
+                s72 = "1";
             }
-       }
-       );
+       }       );
        
        fab.setOnAction(new EventHandler<ActionEvent>() 
        {
@@ -331,9 +250,9 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" Fabruary");
                 MnthLbl.setVisible(true);
+                s72 = "2";
             }
-       }
-       );
+       }       );
        
        march.setOnAction(new EventHandler<ActionEvent>() 
        {
@@ -341,6 +260,7 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" March");
                 MnthLbl.setVisible(true);
+                s72 = "3";
             }
        }
        );
@@ -351,6 +271,7 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" April");
                 MnthLbl.setVisible(true);
+                s72 = "4";
             }
        }
        );
@@ -361,6 +282,7 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" May");
                 MnthLbl.setVisible(true);
+                s72 = "5";
             }
        }
        );
@@ -371,6 +293,7 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" June");
                 MnthLbl.setVisible(true);
+                s72 = "6";
             }
        }
        );
@@ -381,6 +304,7 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" July");
                 MnthLbl.setVisible(true);
+                s72 = "7";
             }
        }
        );
@@ -391,6 +315,7 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" August");
                 MnthLbl.setVisible(true);
+                s72 = "8";
             }
        }
        );
@@ -401,6 +326,7 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" September");
                 MnthLbl.setVisible(true);
+                s72 = "9";
             }
        }
        );
@@ -411,6 +337,7 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" October");
                 MnthLbl.setVisible(true);
+                s72 = "10";
             }
        }
        );
@@ -421,6 +348,7 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" November");
                 MnthLbl.setVisible(true);
+                s72 = "11";
             }
        }
        );
@@ -431,30 +359,102 @@ public class Editing1Controller implements Initializable {
             {
                 DobMnth.setText(" December");
                 MnthLbl.setVisible(true);
+                s72 = "12";
+    
             }
        }
        );
        
     }
-
-    @FXML
-    private JFXTextField DobYear;
-    public JFXTextField getDobYear() {
-        return DobYear;
-    }
-
-    public void setDobYear(JFXTextField DobYear) {
-        this.DobYear = DobYear;
-    }
     
-
     @FXML
     private JFXTextField DobDay;
-    public JFXTextField getDobDay() {
-        return DobDay;
+    public void DobDay()
+    {       s73 = DobDay.getText();
+    }
+    
+    public void DOB()
+    {
+        s7 = "'"+ s71 + "-" + s72 + "-" + s73 + "'"; 
+        System.out.println(s7);
+    }
+   
+    public void setValues()
+    {
+        DatabaseIO a = new DatabaseIO();
+        a.setBasicinfo(s1, s2, s3, s4, s5, s6, s7); 
+    }
+    
+    
+    @FXML
+    private Label BtnTo2;
+    
+    public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
+    {
+        
+        
+        try {
+           
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+            
+        } 
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+        }
+    }
+ 
+    @FXML
+    private Label BtnTo3;  
+    
+    public void toEdit3(MouseEvent event)
+    {
+        try 
+        {
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing3.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+        } 
+        catch (Exception ex) 
+          {
+            ex.printStackTrace();
+          }
+    }
+    
+    @FXML
+    public Label StatusBtn1;
+    void chk()
+    {
+        int x = DatabaseCon.check;
+        
+        if (x == 1)
+        {
+            StatusBtn1.setText("*Warning, Database Missing!");
+        }
+    }
+    @FXML
+    private Label bck;
+    
+    public void bck2HP(MouseEvent event)
+    {
+        try 
+        {
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+        } 
+        catch (Exception ex) 
+          {
+            ex.printStackTrace();
+          }
     }
 
-    public void setDobDay(JFXTextField DobDay) {
-        this.DobDay = DobDay;
-    }
 }

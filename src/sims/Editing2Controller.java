@@ -48,7 +48,7 @@ public class Editing2Controller implements Initializable
         SBrd.setTooltip(new Tooltip("eg. state"));
         HBrd.setTooltip(new Tooltip("eg. state"));
         
-        //SRoll.setText(Editing1Controller.IdFld.getText());
+        
         
     }  
     

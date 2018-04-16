@@ -1,0 +1,84 @@
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-background:  #212121;
+    -fx-border-color:  #212121;
+}
+
+.scroll-pane:focused {
+    -fx-background-insets: 0;
+}
+
+.scroll-pane .corner {
+    -fx-background-insets: 0;
+}
+
+
+
+.table-view{
+    -fx-background-color:  #212121;
+    -fx-selection-bar:  #212121;
+    -fx-text-fill: white;
+    -fx-border-width: 0;
+    
+}
+
+.table-view .column-header .label {
+     
+    -fx-text-fill: white;
+    -fx-border-color: #212121;
+    -fx-opacity: 100;
+    -fx-background-color:#212121;
+    -fx-font-size: 14px;
+    -fx-border-width: 0;
+    -fx-alignment: TOP_LEFT;
+    -fx-padding: 8px;
+    
+}
+
+.table-view .table-column 
+{
+    -fx-alignment: TOP_LEFT;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-width: 0;
+ }
+
+.table-row-cell{
+    -fx-text-fill: white;
+    -fx-background-color: #212121;
+    -fx-border-width: 0;
+}
+
+.table-row-cell:even{
+    -fx-text-fill: white;
+    -fx-background-color: #1A1A1A;
+    -fx-border-width: 0;  
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
+#table .table-cell{
+    -fx-padding: 12px;
+}
+
+
+.table-row-cell:selected {
+    -fx-background-color: #0078D7;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    
+}
+
+
+
+
+
+
+
+  
+    
+
+  

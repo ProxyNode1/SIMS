@@ -229,5 +229,16 @@ public class DatabaseIO
             e.printStackTrace();
             System.out.println("err 7");
         }
+        
+    }
+    void setBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
+    {   String sql = "insert into student_info_schema.basic_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +");";
+        try{
+            ps = myConn.prepareCall(sql);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

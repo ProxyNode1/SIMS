@@ -30,7 +30,7 @@ public class db
         catch(Exception e)
         {
             e.printStackTrace();
-            Editing3Controller.StatusBtn1.setVisible(true);
+            //Editing3Controller.StatusBtn1.setVisible(true);
         }
     }
 }

@@ -16,8 +16,8 @@ public class Sims extends Application
     public static Stage stage;
     @Override
     public void start(Stage stage) throws Exception 
-    {
-        
+    {        
+        DatabaseCon.connect();
         Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.resizableProperty().setValue(Boolean.FALSE);
@@ -27,6 +27,7 @@ public class Sims extends Application
         stage.show();
         
         
+               
     }
     
 

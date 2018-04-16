@@ -119,15 +119,23 @@ public class HomePageController implements Initializable
     }
     
     @FXML
-    public Label StatusBtn0;
-    //public static Label StatusBtn0;
+    public static Label StatusBtn0;
+    void chk()
+    {
+        int x = DatabaseCon.check;
+        
+        if (x == 1)
+        {
+            StatusBtn0.setText("*Warning, Database Missing!");
+        }
+    }
 
     
     public void clickItem(MouseEvent event) //this will allow to view info of students
     {
         if(event.getClickCount() == 2) //on double click
         {
-            StatusBtn0.setVisible(true);
+            //StatusBtn0.setVisible(true);
         }
     }
 

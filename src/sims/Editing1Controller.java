@@ -400,7 +400,7 @@ public class Editing1Controller implements Initializable {
     
     public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {
-        //setValues();
+        setValues();
         
         try {
            
@@ -422,7 +422,7 @@ public class Editing1Controller implements Initializable {
     
     public void toEdit3(MouseEvent event)
     {
-        setValues();
+        
         try 
         {
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing3.fxml"));

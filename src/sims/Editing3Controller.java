@@ -38,77 +38,104 @@ public class Editing3Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        Email.requestFocus();
+        CEmail.requestFocus();
         //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
-        
+        s1 = Editing1Controller.useName;
+        System.out.println(s1);
     }    
     
 
     @FXML
     private Pane Edit3;
    
-
-    @FXML
-    private JFXTextField CEmail;
-    public JFXTextField getCEmail() {
-        return CEmail;
-    }
-
-    public void setCEmail(JFXTextField CEmail) {
-        this.CEmail = CEmail;
-    }
-
-    @FXML
-    private JFXTextField DadCntct;
-    public JFXTextField getDadCntct() {
-        return DadCntct;
-    }
-
-    public void setDadCntct(JFXTextField DadCntct) {
-        this.DadCntct = DadCntct;
-    }
+    String s1;
+    String h1 = null, h2 = null, h3 = null, h4 = null, h5 = null, h6 = null;
+    
     
     @FXML
     private JFXTextField Email;
-    public JFXTextField getEmail() {
-        return Email;
+    public void getEmail()
+    {   
+        if(Email.getText() == null || Email.getText().trim().isEmpty())
+        {
+            h1 = null;
+        }
+        else
+        {
+            h1 = "'"+Email.getText()+"'";
+            System.out.println(h1);
+        }
     }
-
-    public void setEmail(JFXTextField Email) {
-        this.Email = Email;
-    }
-        
+    
     @FXML
-    private TextArea AddInfoField;
-    public TextArea getAddInfoField() {
-        return AddInfoField;
-    }
-
-    public void setAddInfoField(TextArea AddInfoField) {
-        this.AddInfoField = AddInfoField;
-    }
-
-    @FXML
-    private JFXTextField FamCntct;
-    public JFXTextField getFamCntct() {
-        return FamCntct;
-    }
-
-    public void setFamCntct(JFXTextField FamCntct) {
-        this.FamCntct = FamCntct;
-    }
-
-    @FXML
-    private JFXCheckBox CertifTick;
-    public JFXCheckBox getCertifTick() {
-        return CertifTick;
-    }
-
-    public void setCertifTick(JFXCheckBox CertifTick) {
-        this.CertifTick = CertifTick;
+    private JFXTextField CEmail;
+    public void getCEmail()
+    {   h2 = "'"+CEmail.getText()+"'";
+        System.out.println(h2);
     }
     
 
+    @FXML
+    private JFXTextField DadCntct;
+    public void getDadCntct()
+    {   h3 = "'"+DadCntct.getText()+"'";
+        System.out.println(h3);
+    }
+    
+    @FXML
+    private JFXTextField FamCntct;
+    public void getFamCntct()
+    {   
+        if(FamCntct.getText() == null || FamCntct.getText().trim().isEmpty())
+        {
+            h4 = null;
+        }
+        
+        else
+        {
+            h4 = "'"+FamCntct.getText()+"'";
+            System.out.println(h4);
+        }
+    }
+    
+    @FXML
+    private JFXCheckBox CertifTick;
+    public void getCertifTick()
+    {   
+        h5 = "'"+CertifTick.isSelected()+"'"; 
+        System.out.println(h5);          
+    }
+    
+    @FXML
+    private TextArea AddInfoField;
+    
+    @FXML
+    private Label saveTxt;
+        
+    public void savInfo(MouseEvent event)
+     {  //h6 = AddInfoField.getText().replaceAll("\n", System.getProperty("line.separator"));
+        if(AddInfoField.getText() == null || AddInfoField.getText().trim().isEmpty())
+        {
+            h6 = null;
+        }
+        else
+        {
+            h6 = "'"+AddInfoField.getText()+"'";
+            System.out.println(h6);
+        }
+    }
+    
+    public void setValues()
+    {
+        DatabaseIO a = new DatabaseIO();
+        a.setUlinfo(s1, h1, h2, h3, h4, h5, h6); 
+    }
+    
+    
+    /*public void allValues()
+    {
+        
+    }*/
    @FXML
     private Label BtnTo1;
     
@@ -140,8 +167,7 @@ public class Editing3Controller implements Initializable {
             Scene editPg1Scene = new Scene(editPag1);
             Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             appStage.setScene(editPg1Scene);
-            appStage.show();
-        } 
+            appStage.show();        } 
         catch (Exception ex) 
         {
             ex.printStackTrace();
@@ -152,6 +178,13 @@ public class Editing3Controller implements Initializable {
     private JFXButton SavBtn;
     public void toSave(MouseEvent event)
      {
+        
+        Editing1Controller n = new Editing1Controller();
+        n.setValues();
+        /*Editing2Controller m = new Editing2Controller();
+        m.setValues();*/
+        setValues();
+        
         try 
         {
             Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));

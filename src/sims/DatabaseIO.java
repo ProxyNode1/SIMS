@@ -76,17 +76,17 @@ public class DatabaseIO
         String dipInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`diploma_info` (" +
                          "`name` VARCHAR(30) NULL," +
                          "`DSem1` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng1` INT(2) UNSIGNED NOT NULL," +
+                         "`DPtng1` INT(3) UNSIGNED NOT NULL," +
                          "`DSem2` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng2` INT(2) UNSIGNED NOT NULL," +
+                         "`DPtng2` INT(3) UNSIGNED NOT NULL," +
                          "`DSem3` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng3` INT(2) UNSIGNED NOT NULL," +
+                         "`DPtng3` INT(3) UNSIGNED NOT NULL," +
                          "`DSem4` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng4` INT(2) UNSIGNED NOT NULL," +
+                         "`DPtng4` INT(3) UNSIGNED NOT NULL," +
                          "`DSem5` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng5` INT(2) UNSIGNED NOT NULL," +
+                         "`DPtng5` INT(3) UNSIGNED NOT NULL," +
                          "`DSem6` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng6` INT(2) UNSIGNED NOT NULL," +
+                         "`DPtng6` INT(3) UNSIGNED NOT NULL," +
                          "INDEX `Dname_idx` (`name` ASC)," +
                          "CONSTRAINT `Dname`" +
                          "FOREIGN KEY (`name`)" +
@@ -97,21 +97,21 @@ public class DatabaseIO
         String uInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`ug_info` (" +
                        "`name` VARCHAR(30) NULL," +
                        "`ESem1` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng1` INT(2) UNSIGNED NOT NULL," +
+                       "`EPtng1` INT(3) UNSIGNED NOT NULL," +
                        "`ESem2` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng2` INT(2) UNSIGNED NOT NULL," +
+                       "`EPtng2` INT(3) UNSIGNED NOT NULL," +
                        "`ESem3` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng3` INT(2) UNSIGNED NOT NULL," +
+                       "`EPtng3` INT(3) UNSIGNED NOT NULL," +
                        "`ESem4` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng4` INT(2) UNSIGNED NOT NULL," +
+                       "`EPtng4` INT(3) UNSIGNED NOT NULL," +
                        "`ESem5` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng5` INT(2) UNSIGNED NOT NULL," +
+                       "`EPtng5` INT(3) UNSIGNED NOT NULL," +
                        "`ESem6` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng6` INT(2) UNSIGNED NOT NULL," +
+                       "`EPtng6` INT(3) UNSIGNED NOT NULL," +
                        "`ESem7` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng7` INT(2) UNSIGNED NOT NULL," +
+                       "`EPtng7` INT(3) UNSIGNED NOT NULL," +
                        "`ESem8` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng8` INT(2) UNSIGNED NOT NULL," +
+                       "`EPtng8` INT(3) UNSIGNED NOT NULL," +
                        "INDEX `Uname_idx` (`name` ASC)," +
                        "CONSTRAINT `Uname`" +
                        "FOREIGN KEY (`name`)" +
@@ -122,13 +122,13 @@ public class DatabaseIO
         String pInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`pg_info` (" +
                        "`name` VARCHAR(30) NULL," +
                        "`PSem1` INT(1) UNSIGNED NOT NULL," +
-                       "`PPtng1` INT(2) UNSIGNED NOT NULL," +
+                       "`PPtng1` INT(3) UNSIGNED NOT NULL," +
                        "`PSem2` INT(1) UNSIGNED NOT NULL," +
-                       "`PPtng2` INT(2) UNSIGNED NOT NULL," +
+                       "`PPtng2` INT(3) UNSIGNED NOT NULL," +
                        "`PSem3` INT(1) UNSIGNED NOT NULL," +
-                       "`PPtng3` INT(2) UNSIGNED NOT NULL," +
+                       "`PPtng3` INT(3) UNSIGNED NOT NULL," +
                        "`PSem4` INT(1) UNSIGNED NOT NULL," +
-                       "`PPtng4` INT(2) UNSIGNED NOT NULL," +
+                       "`PPtng4` INT(3) UNSIGNED NOT NULL," +
                        "INDEX `Pname_idx` (`name` ASC)," +
                        "CONSTRAINT `Pname`" +
                        "FOREIGN KEY (`name`)" +
@@ -138,12 +138,12 @@ public class DatabaseIO
         
         String oInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`other_info` (" +
                        "`name` VARCHAR(30) NULL," +
-                       "`PEmail` VARCHAR(45) NULL," +
-                       "`CEmail` VARCHAR(45) NOT NULL," +
-                       "`FatherCntct` VARCHAR(45) NOT NULL," +
-                       "`FamCntct` VARCHAR(45) NULL," +
-                       "`Certification` CHAR(1) NULL," +
-                       "`AddInfo` VARCHAR(100) NULL," +
+                       "`PEmail` VARCHAR(50) NULL," +
+                       "`CEmail` VARCHAR(50) NOT NULL," +
+                       "`FatherCntct` VARCHAR(10) NOT NULL," +
+                       "`FamCntct` VARCHAR(10) NULL," +
+                       "`Certification` VARCHAR(5) NULL," +
+                       "`AddInfo` TEXT NULL," +
                        "INDEX `Oname_idx` (`name` ASC)," +
                        "UNIQUE INDEX `PEmail_UNIQUE` (`PEmail` ASC)," +
                        "UNIQUE INDEX `CEmail_UNIQUE` (`CEmail` ASC)," +
@@ -156,67 +156,67 @@ public class DatabaseIO
         try{
             stmt = myConn.createStatement();
             stmt.executeUpdate(basicInfo);
-            System.out.println("succ 1");
+            
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            System.out.println("err 1");
+            
         }
         
         try{
             stmt = myConn.createStatement();
             stmt.executeUpdate(sscInfo);
-            System.out.println("succ 2");
+            
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            System.out.println("err 2");
+            
         }
         
         try{
             stmt = myConn.createStatement();
             stmt.executeUpdate(hsscInfo);
-            System.out.println("succ 3");
+            
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            System.out.println("err 3");
+            
         }
         
         try{
             stmt = myConn.createStatement();
             stmt.executeUpdate(dipInfo);
-            System.out.println("succ 4");
+            
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            System.out.println("err 4");
+            
         }
         
         try{
             stmt = myConn.createStatement();
             stmt.executeUpdate(uInfo);
-            System.out.println("succ 5");
+            
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            System.out.println("err 5");
+            
         }
         
         try{
             stmt = myConn.createStatement();
             stmt.executeUpdate(pInfo);
-            System.out.println("succ 6");
+           
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            System.out.println("err 6");
+            
         }
         
         try{
@@ -256,5 +256,76 @@ public class DatabaseIO
         {
             e.printStackTrace();
         }   
+    }
+    
+    void setHsscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8, int s9, int s10, int s11)
+    {
+        String sql = "insert into student_info_schema.hssc_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +","+ s8 +","+ s9 +","+ s10 +","+ s11 +");";
+        try{
+            ps = myConn.prepareCall(sql);
+            ps.executeUpdate();
+            ps = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }   
+    }
+    
+    void setDipinfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7)
+    {
+        String sql = "insert into student_info_schema.diploma_info VALUES("+ s1 +", 1,"+ s2 +", 2,"+ s3 +", 3,"+ s4 +", 4,"+ s5 +", 5,"+ s6 +", 6,"+ s7 +");";
+        try{
+            ps = myConn.prepareCall(sql);
+            ps.executeUpdate();
+            ps = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }   
+    }
+    
+    void setUginfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9)
+    {
+        String sql = "insert into student_info_schema.ug_info VALUES("+ s1 +", 1,"+ s2 +", 2,"+ s3 +", 3,"+ s4 +", 4,"+ s5 +", 5,"+ s6 +", 6,"+ s7 +", 7,"+ s8 +", 8" + s9 +");";
+        try{
+            ps = myConn.prepareCall(sql);
+            ps.executeUpdate();
+            ps = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }   
+    }
+    
+    void setPginfo(String s1, int s2, int s3, int s4, int s5)
+    {
+        String sql = "insert into student_info_schema.pg_info VALUES("+ s1 +", 1,"+ s2 +", 2,"+ s3 +", 3,"+ s4 +", 4,"+ s5 +");";
+        try{
+            ps = myConn.prepareCall(sql);
+            ps.executeUpdate();
+            ps = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }   
+    }
+    
+    void setUlinfo(String s1, String s2, String s3, String s4, String s5, String s6, String s7)
+    {
+        String sql = "insert into student_info_schema.other_info VALUES ("+ s1 + "," + s2 + "," + s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +");";
+        
+        try{
+            ps = myConn.prepareCall(sql);
+            ps.executeUpdate();
+            ps = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        } 
     }
 }

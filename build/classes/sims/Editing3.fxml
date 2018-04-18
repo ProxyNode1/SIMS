@@ -36,22 +36,22 @@
 
 <Pane fx:id="Edit3" focusTraversable="true" maxHeight="720.0" maxWidth="1280.0" minHeight="480.0" minWidth="855.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing3Controller">
    <children>
-      <JFXTextField fx:id="Email" focusColor="WHITE" labelFloat="true" layoutX="198.0" layoutY="160.0" prefHeight="42.0" prefWidth="212.0" promptText="Personal Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <JFXTextField fx:id="Email" focusColor="WHITE" labelFloat="true" layoutX="598.0" layoutY="140.0" onAction="#getEmail" prefHeight="42.0" prefWidth="212.0" promptText="Personal Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="CEmail" focusColor="WHITE" labelFloat="true" layoutX="598.0" layoutY="160.0" prefHeight="42.0" prefWidth="212.0" promptText="College's Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <JFXTextField fx:id="CEmail" focusColor="WHITE" labelFloat="true" layoutX="198.0" layoutY="140.0" onAction="#getCEmail" prefHeight="42.0" prefWidth="212.0" promptText="College's Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="DadCntct" focusColor="WHITE" labelFloat="true" layoutX="198.0" layoutY="280.0" prefHeight="42.0" prefWidth="212.0" promptText="Father's Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <JFXTextField fx:id="DadCntct" focusColor="WHITE" labelFloat="true" layoutX="198.0" layoutY="260.0" onAction="#getDadCntct" prefHeight="42.0" prefWidth="212.0" promptText="Father's Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="FamCntct" focusColor="WHITE" labelFloat="true" layoutX="598.0" layoutY="280.0" prefHeight="42.0" prefWidth="212.0" promptText="Family's Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <JFXTextField fx:id="FamCntct" focusColor="WHITE" labelFloat="true" layoutX="598.0" layoutY="260.0" onAction="#getFamCntct" prefHeight="42.0" prefWidth="212.0" promptText="Family's Contact" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -71,17 +71,11 @@
             <Circle fill="#0078d7" radius="7.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
       </Label>
-      <JFXCheckBox fx:id="CertifTick" alignment="CENTER" checkedColor="#2f3136" contentDisplay="RIGHT" graphicTextGap="5.0" layoutX="198.0" layoutY="390.0" prefHeight="57.0" prefWidth="305.24" style="-fx-background-color: #323640; -fx-border-color: #707070; -fx-border-width: 1; -jfx-unchecked-color: #BCE0FD;" text="Certifications" textFill="WHITE" unCheckedColor="WHITE">
+      <JFXCheckBox fx:id="CertifTick" alignment="CENTER" checkedColor="#2f3136" contentDisplay="RIGHT" graphicTextGap="5.0" layoutX="198.0" layoutY="370.0" onAction="#getCertifTick" prefHeight="57.0" prefWidth="305.24" style="-fx-background-color: #323640; -fx-border-color: #707070; -fx-border-width: 1; -jfx-unchecked-color: #BCE0FD;" text="Certifications" textFill="WHITE" unCheckedColor="WHITE">
          <font>
             <Font name="Roboto Bold" size="18.0" />
          </font>
       </JFXCheckBox>
-      <TextArea fx:id="AddInfoField" layoutX="198.0" layoutY="500.0" prefHeight="130.0" prefWidth="597.0" />
-      <Label layoutX="203.0" layoutY="464.0" text="Additional Information" textFill="WHITE">
-         <font>
-            <Font name="Roboto Bold" size="18.0" />
-         </font>
-      </Label>
       <JFXButton fx:id="SavBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1120.0" layoutY="640.0" onMouseClicked="#toSave" prefHeight="24.45" prefWidth="76.79" ripplerFill="#9a6c00" style="-fx-background-color: #DEA309;" text="Save" textAlignment="CENTER" textFill="#212121">
          <font>
             <Font name="Arial" size="17.0" />
@@ -96,5 +90,24 @@
             </ImageView>
          </graphic>
       </Label>
+      <Pane layoutX="198.0" layoutY="444.0" prefHeight="217.0" prefWidth="597.0" style="-fx-background-color: #212121;">
+         <children>
+            <TextArea fx:id="AddInfoField" layoutY="44.0" prefHeight="130.0" prefWidth="597.0" />
+            <Label layoutX="6.0" layoutY="10.0" text="Additional Information" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="saveTxt" layoutX="570.0" layoutY="190.0" onMouseClicked="#savInfo" prefHeight="20.0" prefWidth="20.0">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/success.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </Pane>

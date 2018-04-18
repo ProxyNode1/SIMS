@@ -81,14 +81,14 @@
             <Label fx:id="MnthLbl" layoutX="107.0" layoutY="27.0" text="Month" textFill="WHITE" visible="false" />
          </children>
       </Pane>
-      <MenuButton fx:id="DeptDrpDwn" layoutX="743.0" layoutY="308.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Department" textFill="WHITE">
+      <MenuButton fx:id="DeptDrpDwn" layoutX="743.0" layoutY="318.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Department" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
          <items>
             <MenuItem fx:id="mech" mnemonicParsing="false" text="MECH" />
             <MenuItem fx:id="cs" mnemonicParsing="false" text="CSE" />
-            <MenuItem fx:id="enc" mnemonicParsing="false" text="ETC" />
+            <MenuItem fx:id="enc" mnemonicParsing="false" text="EnC" />
             <MenuItem fx:id="civ" mnemonicParsing="false" text="CIVIL" />
          </items>
       </MenuButton>

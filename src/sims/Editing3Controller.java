@@ -15,8 +15,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -32,9 +32,6 @@ import javafx.stage.Stage;
  */
 public class Editing3Controller implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -42,9 +39,13 @@ public class Editing3Controller implements Initializable {
         //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
         s1 = Editing1Controller.useName;
         System.out.println(s1);
+        AddInfoField.setTooltip(new Tooltip("use '. ' after every statement "));
     }    
     
 
+    @FXML
+    private Label takeFocus;
+    
     @FXML
     private Pane Edit3;
    
@@ -178,21 +179,23 @@ public class Editing3Controller implements Initializable {
     private JFXButton SavBtn;
     public void toSave(MouseEvent event)
      {
-        
-        Editing1Controller n = new Editing1Controller();
-        n.setValues();
-        /*Editing2Controller m = new Editing2Controller();
-        m.setValues();*/
-        setValues();
-        
-        try 
+        try
         {
+            Editing1Controller n = new Editing1Controller();
+            n.setValues();
+            
+            Editing2Controller m = new Editing2Controller();
+            m.setValues();
+            
+            setValues();
+            
             Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
             Scene editPg1Scene = new Scene(editPag1);
             Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             appStage.setScene(editPg1Scene);
             appStage.show();
-        } 
+        }
+         
         catch (Exception ex) 
         {
             ex.printStackTrace();

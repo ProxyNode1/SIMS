@@ -42,7 +42,7 @@ public class Editing1Controller implements Initializable {
                 
         NamFld.setTooltip(new Tooltip ("use Fullname"));
         DobYear.setTooltip(new Tooltip("eg. 1997"));
-        SemFld.setTooltip(new Tooltip("eg. 6, for 6th semester"));
+        SemFld.setTooltip(new Tooltip("check 'Current Sem' before input"));
         
         StatusBtn1.setText(a);
                   
@@ -52,10 +52,13 @@ public class Editing1Controller implements Initializable {
     public static int up, useSem;
     
     @FXML
+    private Label takeFocus;
+    
+    @FXML
     private Pane Edit1;
     
-    public String s1, s2, s3, s4, s6, s7, s71, s72, s73;
-    public int s5;  
+    public String s1, s2, s3, s4, s6, s7, s72;
+    public int s5, s71, s73;  
     
     @FXML
     private JFXTextField NamFld;
@@ -157,6 +160,9 @@ public class Editing1Controller implements Initializable {
                 String ab  = "PG";
                 s4 = "'"+ab+"'";
                 System.out.println(s4);
+                useSem = 0;
+                s5 = 0;
+                SemFld.setText(null);
             
             }
        });
@@ -170,6 +176,9 @@ public class Editing1Controller implements Initializable {
                 String ab  = "UG";
                 s4 = "'"+ab+"'";
                 System.out.println(s4);
+                useSem = 0;
+                s5 = 0;
+                SemFld.setText(null);
                 
             }
         });
@@ -178,9 +187,30 @@ public class Editing1Controller implements Initializable {
     @FXML
     private JFXTextField SemFld;
     public void getSem()
-    {       s5 = Integer.parseInt(SemFld.getText());
+    {       
+        int l = Integer.parseInt(SemFld.getText());
+        if(up == 2 && l<=9 && l>0)
+        {   
+            s5 = l;
             useSem = s5;
             System.out.println(s5);
+        }
+        
+        else if(up == 1 && l<=5 && l>0)
+        {   
+            s5 = l;
+            useSem = s5;
+            System.out.println(s5);
+        } 
+        
+        else
+        {
+            SemFld.setText(null);
+            SemFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s5 = 0;
+            System.out.println("check");
+        }
+
     }
     
     @FXML
@@ -193,8 +223,17 @@ public class Editing1Controller implements Initializable {
     @FXML
     private JFXTextField DobYear;
     public void DobYear()
-    {       s71 = DobYear.getText();
+    {      
+        try
+        {
+            s71 = Integer.parseInt(DobYear.getText());
             System.out.println(s71);
+        }
+        catch(Exception e)
+        {
+            DobYear.setText(null);
+            DobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
             
     }
     
@@ -380,10 +419,19 @@ public class Editing1Controller implements Initializable {
     @FXML
     private JFXTextField DobDay;
     public void DobDay()
-    {       s73 = DobDay.getText();
+    {    
+        try
+        {
+            s73 = Integer.parseInt(DobDay.getText());
             System.out.println(s73);
             s7 = "'"+ s71 + "-" + s72 + "-" + s73 + "'"; 
             System.out.println(s7);
+        }
+        catch(Exception e)
+        {
+            DobDay.setText(null);
+            DobDay.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
     }
     
     
@@ -400,7 +448,7 @@ public class Editing1Controller implements Initializable {
     
     public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {
-        setValues();
+        //setValues();
         
         try {
            

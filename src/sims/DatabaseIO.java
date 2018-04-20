@@ -51,90 +51,90 @@ public class DatabaseIO
                             "CONSTRAINT `Sname`"+
                             "FOREIGN KEY (`name`)"+
                             "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
-                            "ON DELETE SET NULL " +
-                            "ON UPDATE SET NULL);";
+                            "ON DELETE CASCADE " +
+                            "ON UPDATE CASCADE);";
         
         String hsscInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`hssc_info` (" +
                           "`name` VARCHAR(30) NULL," +
-                          "`HYop` INT(4) NOT NULL," +
-                          "`HRn` INT(5) UNSIGNED NOT NULL," +
-                          "`HBoard` VARCHAR(5) NOT NULL," +
-                          "`HMedium` VARCHAR(10) NOT NULL," +
-                          "`HSch` VARCHAR(30) NOT NULL," +
-                          "`HCity` VARCHAR(10) NOT NULL," +
-                          "`HPtng` INT(2) UNSIGNED NOT NULL," +
-                          "`physics` INT(2) NOT NULL," +
-                          "`chemistry` INT(2) UNSIGNED NOT NULL," +
-                          "`math` INT(2) UNSIGNED NOT NULL," +
+                          "`HYop` INT(4) NULL," +
+                          "`HRn` INT(5) UNSIGNED NULL," +
+                          "`HBoard` VARCHAR(5) NULL," +
+                          "`HMedium` VARCHAR(10) NULL," +
+                          "`HSch` VARCHAR(30) NULL," +
+                          "`HCity` VARCHAR(10) NULL," +
+                          "`HPtng` INT(2) UNSIGNED NULL," +
+                          "`physics` INT(2) NULL," +
+                          "`chemistry` INT(2) UNSIGNED NULL," +
+                          "`math` INT(2) UNSIGNED NULL," +
                           "INDEX `Hname_idx` (`name` ASC)," +
                           "CONSTRAINT `Hname`" +
                           "FOREIGN KEY (`name`)" +
                           "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
-                          "ON DELETE SET NULL " +
-                          "ON UPDATE SET NULL);";
+                          "ON DELETE CASCADE " +
+                          "ON UPDATE CASCADE);";
         
         String dipInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`diploma_info` (" +
                          "`name` VARCHAR(30) NULL," +
-                         "`DSem1` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng1` INT(3) UNSIGNED NOT NULL," +
-                         "`DSem2` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng2` INT(3) UNSIGNED NOT NULL," +
-                         "`DSem3` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng3` INT(3) UNSIGNED NOT NULL," +
-                         "`DSem4` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng4` INT(3) UNSIGNED NOT NULL," +
-                         "`DSem5` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng5` INT(3) UNSIGNED NOT NULL," +
-                         "`DSem6` INT(1) UNSIGNED NOT NULL," +
-                         "`DPtng6` INT(3) UNSIGNED NOT NULL," +
+                         "`DSem1` INT(1) UNSIGNED NULL," +
+                         "`DPtng1` INT(3) UNSIGNED NULL," +
+                         "`DSem2` INT(1) UNSIGNED NULL," +
+                         "`DPtng2` INT(3) UNSIGNED NULL," +
+                         "`DSem3` INT(1) UNSIGNED NULL," +
+                         "`DPtng3` INT(3) UNSIGNED NULL," +
+                         "`DSem4` INT(1) UNSIGNED NULL," +
+                         "`DPtng4` INT(3) UNSIGNED NULL," +
+                         "`DSem5` INT(1) UNSIGNED NULL," +
+                         "`DPtng5` INT(3) UNSIGNED NULL," +
+                         "`DSem6` INT(1) UNSIGNED NULL," +
+                         "`DPtng6` INT(3) UNSIGNED NULL," +
                          "INDEX `Dname_idx` (`name` ASC)," +
                          "CONSTRAINT `Dname`" +
                          "FOREIGN KEY (`name`)" +
                          "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
-                         "ON DELETE SET NULL " +
-                         "ON UPDATE SET NULL);";
+                         "ON DELETE CASCADE " +
+                         "ON UPDATE CASCADE);";
         
         String uInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`ug_info` (" +
                        "`name` VARCHAR(30) NULL," +
-                       "`ESem1` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng1` INT(3) UNSIGNED NOT NULL," +
-                       "`ESem2` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng2` INT(3) UNSIGNED NOT NULL," +
-                       "`ESem3` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng3` INT(3) UNSIGNED NOT NULL," +
-                       "`ESem4` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng4` INT(3) UNSIGNED NOT NULL," +
-                       "`ESem5` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng5` INT(3) UNSIGNED NOT NULL," +
-                       "`ESem6` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng6` INT(3) UNSIGNED NOT NULL," +
-                       "`ESem7` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng7` INT(3) UNSIGNED NOT NULL," +
-                       "`ESem8` INT(1) UNSIGNED NOT NULL," +
-                       "`EPtng8` INT(3) UNSIGNED NOT NULL," +
+                       "`ESem1` INT(1) UNSIGNED NULL," +
+                       "`EPtng1` INT(3) UNSIGNED NULL," +
+                       "`ESem2` INT(1) UNSIGNED NULL," +
+                       "`EPtng2` INT(3) UNSIGNED NULL," +
+                       "`ESem3` INT(1) UNSIGNED NULL," +
+                       "`EPtng3` INT(3) UNSIGNED NULL," +
+                       "`ESem4` INT(1) UNSIGNED NULL," +
+                       "`EPtng4` INT(3) UNSIGNED NULL," +
+                       "`ESem5` INT(1) UNSIGNED NULL," +
+                       "`EPtng5` INT(3) UNSIGNED NULL," +
+                       "`ESem6` INT(1) UNSIGNED NULL," +
+                       "`EPtng6` INT(3) UNSIGNED NULL," +
+                       "`ESem7` INT(1) UNSIGNED NULL," +
+                       "`EPtng7` INT(3) UNSIGNED NULL," +
+                       "`ESem8` INT(1) UNSIGNED NULL," +
+                       "`EPtng8` INT(3) UNSIGNED NULL," +
                        "INDEX `Uname_idx` (`name` ASC)," +
                        "CONSTRAINT `Uname`" +
                        "FOREIGN KEY (`name`)" +
                        "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
-                       "ON DELETE SET NULL " +
-                       "ON UPDATE SET NULL);";
+                       "ON DELETE CASCADE " +
+                       "ON UPDATE CASCADE);";
         
         String pInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`pg_info` (" +
                        "`name` VARCHAR(30) NULL," +
-                       "`PSem1` INT(1) UNSIGNED NOT NULL," +
-                       "`PPtng1` INT(3) UNSIGNED NOT NULL," +
-                       "`PSem2` INT(1) UNSIGNED NOT NULL," +
-                       "`PPtng2` INT(3) UNSIGNED NOT NULL," +
-                       "`PSem3` INT(1) UNSIGNED NOT NULL," +
-                       "`PPtng3` INT(3) UNSIGNED NOT NULL," +
-                       "`PSem4` INT(1) UNSIGNED NOT NULL," +
-                       "`PPtng4` INT(3) UNSIGNED NOT NULL," +
+                       "`PSem1` INT(1) UNSIGNED NULL," +
+                       "`PPtng1` INT(3) UNSIGNED NULL," +
+                       "`PSem2` INT(1) UNSIGNED NULL," +
+                       "`PPtng2` INT(3) UNSIGNED NULL," +
+                       "`PSem3` INT(1) UNSIGNED NULL," +
+                       "`PPtng3` INT(3) UNSIGNED NULL," +
+                       "`PSem4` INT(1) UNSIGNED NULL," +
+                       "`PPtng4` INT(3) UNSIGNED NULL," +
                        "INDEX `Pname_idx` (`name` ASC)," +
                        "CONSTRAINT `Pname`" +
                        "FOREIGN KEY (`name`)" +
                        "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
-                       "ON DELETE SET NULL " +
-                       "ON UPDATE SET NULL);";
+                       "ON DELETE CASCADE " +
+                       "ON UPDATE CASCADE);";
         
         String oInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`other_info` (" +
                        "`name` VARCHAR(30) NULL," +
@@ -150,8 +150,8 @@ public class DatabaseIO
                        "CONSTRAINT `Oname`" +
                        "FOREIGN KEY (`name`)" +
                        "REFERENCES `student_info_schema`.`basic_info` (`name`)"+
-                       "ON DELETE SET NULL "+
-                       "ON UPDATE SET NULL);";
+                       "ON DELETE CASCADE " +
+                       "ON UPDATE CASCADE);";
         
         try{
             stmt = myConn.createStatement();
@@ -288,7 +288,7 @@ public class DatabaseIO
     
     void setUginfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9)
     {
-        String sql = "insert into student_info_schema.ug_info VALUES("+ s1 +", 1,"+ s2 +", 2,"+ s3 +", 3,"+ s4 +", 4,"+ s5 +", 5,"+ s6 +", 6,"+ s7 +", 7,"+ s8 +", 8" + s9 +");";
+        String sql = "insert into student_info_schema.ug_info VALUES ("+ s1 + ", 1, "+ s2 +", 2, "+ s3 +", 3, "+ s4 +", 4, "+ s5 +" , 5, "+ s6 +", 6, "+ s7 +", 7, "+ s8 +", 8, "+ s9 +" );";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();

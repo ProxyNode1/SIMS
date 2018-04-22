@@ -59,7 +59,7 @@ public class Editing2Controller implements Initializable
         
     }  
     
-    DatabaseIO xyz = new DatabaseIO();
+    
     
     public static int i, h;
     public int a;
@@ -87,9 +87,9 @@ public class Editing2Controller implements Initializable
     
 
     /////////////////////////////////////////////**Secondary School Fields**///////////////
-    int s3, s2, s8;
-    String s1;
-    String s4, s5, s6, s7;
+    static int  s3, s2, s8;
+    static String s1;
+    static String s4, s5, s6, s7;
     
     @FXML
     private JFXTextField SPass;
@@ -97,6 +97,7 @@ public class Editing2Controller implements Initializable
     {    
         try
         {
+            SPass.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s2 = Integer.parseInt(SPass.getText());
             System.out.println(s2);     
         }
@@ -113,6 +114,7 @@ public class Editing2Controller implements Initializable
     {   
         try
         {
+            SRoll.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s3 = Integer.parseInt(SRoll.getText());
             System.out.println(s3);     
         }
@@ -157,6 +159,7 @@ public class Editing2Controller implements Initializable
     {          
         try
         {
+            SPentg.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s8 = Integer.parseInt(SPentg.getText());
             System.out.println(s8);     
         }
@@ -215,8 +218,8 @@ public class Editing2Controller implements Initializable
     @FXML
     private Pane HPane;
     
-    int t3 = 0, t2 = 0, t8 = 0, t9 = 0, t10 = 0, t11 = 0;
-    String t4 = "null", t5 = "null", t6 = "null", t7 = "null";
+    static int t3, t2, t8, t9, t10, t11;
+    static String t4 = "null", t5 = "null", t6 = "null", t7 = "null";
     
     @FXML
     private JFXTextField HPass;
@@ -224,6 +227,7 @@ public class Editing2Controller implements Initializable
     {              
         try
         {
+            HPass.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             t2 = Integer.parseInt(HPass.getText());
             System.out.println(t2);          
         }
@@ -240,6 +244,7 @@ public class Editing2Controller implements Initializable
     {         
         try
         {
+            HRoll.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             t3 = Integer.parseInt(HRoll.getText());
             System.out.println(t3);     
         }
@@ -285,6 +290,7 @@ public class Editing2Controller implements Initializable
     {   
         try
         {
+            HPentg.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             t8 = Integer.parseInt(HPentg.getText());
             System.out.println(t8);       
         }
@@ -301,6 +307,7 @@ public class Editing2Controller implements Initializable
     {    
         try
         {
+            HP.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             t9 = Integer.parseInt(HP.getText());
             System.out.println(t9);     
         }
@@ -317,6 +324,7 @@ public class Editing2Controller implements Initializable
     {   
         try
         {
+            HC.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             t10 = Integer.parseInt(HC.getText());
             System.out.println(t10);      
         }
@@ -333,6 +341,7 @@ public class Editing2Controller implements Initializable
     {    
         try
         {
+            HM.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             t11 = Integer.parseInt(HM.getText());
             System.out.println(t11);   
         }
@@ -348,7 +357,7 @@ public class Editing2Controller implements Initializable
     @FXML
     private Pane DPane;
     
-    int d1 = 0, d2 = 0, d3 = 0, d4 = 0, d5 = 0, d6 = 0;    
+    static int d1, d2, d3, d4, d5, d6;    
     @FXML
     private JFXTextField DPentg1;
     
@@ -373,6 +382,7 @@ public class Editing2Controller implements Initializable
          
         try
         {
+            DPentg1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             d1 = Integer.parseInt(DPentg1.getText());
             System.out.println(d1);     
         }
@@ -388,6 +398,7 @@ public class Editing2Controller implements Initializable
 
         try
         {
+            DPentg2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             d2 = Integer.parseInt(DPentg2.getText());
             System.out.println(d2);    
         }
@@ -404,6 +415,7 @@ public class Editing2Controller implements Initializable
          
         try
         {
+            DPentg3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             d3 = Integer.parseInt(DPentg3.getText());
             System.out.println(d3);      
         }
@@ -420,6 +432,7 @@ public class Editing2Controller implements Initializable
         
         try
         {
+            DPentg4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             d4 = Integer.parseInt(DPentg4.getText());
             System.out.println(d4);     
         }
@@ -435,6 +448,7 @@ public class Editing2Controller implements Initializable
     {   
         try
         {
+            DPentg5.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             d5 = Integer.parseInt(DPentg5.getText());
             System.out.println(d5);      
         }
@@ -450,6 +464,7 @@ public class Editing2Controller implements Initializable
     {  
         try
         {
+            DPentg6.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             d6 = Integer.parseInt(DPentg6.getText());
             System.out.println(d6);       
         }
@@ -515,13 +530,14 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField EPentg8;
 
-    int e1 = 0, e2 = 0, e3 = 0, e4 = 0, e5 = 0, e6 = 0, e7 = 0, e8 = 0;
+    static int e1, e2, e3, e4, e5, e6, e7, e8;
     
     public void getEPentg1()
     {   
           
         try
         {
+            EPentg1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             e1 = Integer.parseInt(EPentg1.getText());
             System.out.println(e1);     
         }
@@ -537,6 +553,7 @@ public class Editing2Controller implements Initializable
         
         try
         {
+            EPentg2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             e2 = Integer.parseInt(EPentg2.getText());
             System.out.println(e2);      
         }
@@ -553,6 +570,7 @@ public class Editing2Controller implements Initializable
          
         try
         {
+            EPentg3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             e3 = Integer.parseInt(EPentg3.getText());
             System.out.println(e3);     
         }
@@ -568,6 +586,7 @@ public class Editing2Controller implements Initializable
         
         try
         {
+            EPentg4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             e4 = Integer.parseInt(EPentg4.getText());
             System.out.println(e4);      
         }
@@ -583,6 +602,7 @@ public class Editing2Controller implements Initializable
             
         try
         {
+            EPentg5.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             e5 = Integer.parseInt(EPentg5.getText());
             System.out.println(e5);    
         }
@@ -598,6 +618,7 @@ public class Editing2Controller implements Initializable
         
         try
         {
+            EPentg6.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             e6 = Integer.parseInt(EPentg6.getText());
             System.out.println(e6);     
         }
@@ -613,6 +634,7 @@ public class Editing2Controller implements Initializable
         
         try
         {
+            EPentg7.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             e7 = Integer.parseInt(EPentg7.getText());
             System.out.println(e7);     
         }
@@ -629,6 +651,7 @@ public class Editing2Controller implements Initializable
 
         try
         {
+            EPentg8.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             e8 = Integer.parseInt(EPentg8.getText());
             System.out.println(e8);     
         }
@@ -644,7 +667,7 @@ public class Editing2Controller implements Initializable
     
     public void selEPentg()
     { 
-        for(int count = 0; count<j && o == 2; count++)
+        for(int count = 0; count<j-1 && o == 2; count++)
         {
             EList.get(count).setDisable(false);
         }
@@ -667,15 +690,16 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField PPentg4;
     
-    int p1 = 0, p2 = 0, p3 = 0, p4 = 0;
+    static int p1, p2, p3, p4;
     
-    //private JFXTextField P[];
+    
     
     public void getPPentg1()
     {   
          
         try
         {
+            PPentg1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             p1 = Integer.parseInt(PPentg1.getText());
             System.out.println(p1);    
         }
@@ -691,6 +715,7 @@ public class Editing2Controller implements Initializable
         
         try
         {
+            PPentg2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             p2 = Integer.parseInt(PPentg2.getText());
             System.out.println(p2);      
         }
@@ -706,6 +731,7 @@ public class Editing2Controller implements Initializable
         
         try
         {
+            PPentg3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             p3 = Integer.parseInt(PPentg3.getText());
             System.out.println(p3);     
         }
@@ -722,6 +748,7 @@ public class Editing2Controller implements Initializable
            
         try
         {
+            PPentg4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             p4 = Integer.parseInt(PPentg4.getText());
             System.out.println(p4);      
         }
@@ -737,7 +764,7 @@ public class Editing2Controller implements Initializable
     
     public void selPPentg()
     { 
-        for(int count = 0; count<j && o == 1; count++)
+        for(int count = 0; count<j-1 && o == 1; count++)
         {
             PList.get(count).setDisable(false);
         }
@@ -746,8 +773,9 @@ public class Editing2Controller implements Initializable
     //////////////////////////////////////////////////////////
    
     
-    public void setValues()
+    public static void setValues()
     {       
+        DatabaseIO xyz = new DatabaseIO();
         xyz.setSscinfo(s1, s2, s3, s4, s5, s6, s7, s8); 
         xyz.setHsscinfo(s1,  t2,  t3,  t4,  t5,  t6,  t7,  t8,  t9,  t10, t11);
         xyz.setDipinfo(s1, d1, d2, d3, d4, d5, d6);

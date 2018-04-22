@@ -18,16 +18,14 @@ public class Sims extends Application
     public void start(Stage stage) throws Exception 
     {        
         DatabaseCon.connect();
-        Parent root = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setScene(new Scene(root, 1280, 720));  
         stage.setResizable(false);
         stage.sizeToScene();
         stage.show();
-        
-        
-               
+
     }
     
 

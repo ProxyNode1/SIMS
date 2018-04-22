@@ -5,8 +5,7 @@ import java.sql.*;
 
 public class DatabaseCon 
 {   
-    
-    
+
     public static Connection connect()
     {   
         try
@@ -31,8 +30,7 @@ public class DatabaseCon
             e.printStackTrace();
             
             HomePageController.a = "*Warning, Database Missing!";
-            Editing1Controller.a = "*Warning, Database Missing!";
-                       
+          
             return null;
         }
     }    

@@ -7,6 +7,9 @@ import javafx.fxml.Initializable;
 
 
 import com.jfoenix.controls.JFXButton;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -39,9 +42,13 @@ public class HomePageController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        Table.setId("table");
-        TableOP();               
+        
+                       
         StatusBtn0.setText(a);
+        
+        h = DatabaseCon.connect();
+        
+        //String g = Editing1Controller.useName;
     }
     
     public static String a;
@@ -69,7 +76,7 @@ public class HomePageController implements Initializable
     private  TableColumn<InputClass, String> contactCol = new TableColumn<>();   
     
     
-    public ObservableList<InputClass> getInput()
+    /*public ObservableList<InputClass> getInput()
     {
         ObservableList<InputClass> ip = FXCollections.observableArrayList();
         ip.add(new InputClass( 33, "Saurabh Sutar", "CSE", 6, "Undergraduation", "9987248564")); //add values to table
@@ -79,9 +86,35 @@ public class HomePageController implements Initializable
         ip.add(new InputClass( 43, "Vikramaditya Thakur", "MECH", 6, "Undergraduation", "9425990093"));
         
         return ip;
-    }
+    }*/
+    
+    ObservableList<InputClass> ip;
+    Connection h;
+    
+    
     public void TableOP()
     {
+
+        ip = FXCollections.observableArrayList();
+
+        try
+        {
+            Statement myStmt = h.createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from student_info_schema.ssc_info");
+            while(myRs.next())
+            {
+                ip.add(new InputClass(myRs.getString(2), myRs.getString(1), myRs.getString(3), myRs.getInt(5), myRs.getString(4), myRs.getString(6)));
+                /*String s = myRs.getString(2); //2 is the column number
+                System.out.println(s); 
+                System.out.println(myRs.getInt(1)); */
+            }
+        }
+        
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        
         clgIDCol.setCellValueFactory(new PropertyValueFactory<>("collegeId")); //take value from sno from its class
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         branchCol.setCellValueFactory(new PropertyValueFactory<>("branch"));
@@ -89,9 +122,14 @@ public class HomePageController implements Initializable
         currentEduCol.setCellValueFactory(new PropertyValueFactory<>("currentEdu"));
         contactCol.setCellValueFactory(new PropertyValueFactory<>("contact"));
         
-        Table.setItems(getInput());
+        
+        Table.setItems(null);
+        Table.setItems(ip);
         //Table.getColumns().addAll(clgIDCol, nameCol, branchCol, CsemCol, currentEduCol, contactCol);
     }
+    
+    
+    
  
     @FXML
     private Pane Mpage;

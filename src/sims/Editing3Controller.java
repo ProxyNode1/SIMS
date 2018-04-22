@@ -37,9 +37,17 @@ public class Editing3Controller implements Initializable {
     {
         CEmail.requestFocus();
         //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
-        s1 = Editing1Controller.useName;
-        System.out.println(s1);
+        /*try
+        {
+            s1 = Editing1Controller.useName;
+            System.out.println(s1);
+        }
+        catch(Exception e)
+        {
+            errbtn.setText("Check input fields again!");
+        }*/
         AddInfoField.setTooltip(new Tooltip("use '. ' after every statement "));
+        //Editing1Controller.setValues();
     }    
     
 
@@ -52,6 +60,8 @@ public class Editing3Controller implements Initializable {
     String s1;
     String h1 = null, h2 = null, h3 = null, h4 = null, h5 = null, h6 = null;
     
+    @FXML
+    public Label errbtn;
     
     @FXML
     private JFXTextField Email;
@@ -179,15 +189,13 @@ public class Editing3Controller implements Initializable {
     private JFXButton SavBtn;
     public void toSave(MouseEvent event)
      {
+        
         try
         {
-            Editing1Controller n = new Editing1Controller();
-            n.setValues();
-            
-            Editing2Controller m = new Editing2Controller();
-            m.setValues();
-            
-            setValues();
+            /*Editing2Controller.setValues();
+            setValues();*/
+            HomePageController h = new HomePageController();
+            h.TableOP();
             
             Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
             Scene editPg1Scene = new Scene(editPag1);
@@ -199,7 +207,7 @@ public class Editing3Controller implements Initializable {
         catch (Exception ex) 
         {
             ex.printStackTrace();
-            
+            errbtn.setText("Check input fields again!"); 
         }
     }
     

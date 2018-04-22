@@ -42,11 +42,9 @@ public class Editing1Controller implements Initializable {
                 
         NamFld.setTooltip(new Tooltip ("use Fullname"));
         DobYear.setTooltip(new Tooltip("eg. 1997"));
-        SemFld.setTooltip(new Tooltip("check 'Current Sem' before input"));
-        
-        StatusBtn1.setText(a);
-                  
+        SemFld.setTooltip(new Tooltip("verify Graduation level before input"));
     }    
+    
     
     public static String a, useName;
     public static int up, useSem;
@@ -57,8 +55,8 @@ public class Editing1Controller implements Initializable {
     @FXML
     private Pane Edit1;
     
-    public String s1, s2, s3, s4, s6, s7, s72;
-    public int s5, s71, s73;  
+    public static String s1, s2, s3, s4, s6, s7, s72;
+    public static int s5, s71, s73;  
     
     @FXML
     private JFXTextField NamFld;
@@ -191,6 +189,7 @@ public class Editing1Controller implements Initializable {
         int l = Integer.parseInt(SemFld.getText());
         if(up == 2 && l<=9 && l>0)
         {   
+            SemFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s5 = l;
             useSem = s5;
             System.out.println(s5);
@@ -198,6 +197,7 @@ public class Editing1Controller implements Initializable {
         
         else if(up == 1 && l<=5 && l>0)
         {   
+            SemFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s5 = l;
             useSem = s5;
             System.out.println(s5);
@@ -226,6 +226,7 @@ public class Editing1Controller implements Initializable {
     {      
         try
         {
+            DobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s71 = Integer.parseInt(DobYear.getText());
             System.out.println(s71);
         }
@@ -236,6 +237,8 @@ public class Editing1Controller implements Initializable {
         }
             
     }
+    
+    int dd;
     
     @FXML
     private Label MnthLbl;
@@ -287,6 +290,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 31;
                 DobMnth.setText(" January");
                 MnthLbl.setVisible(true);
                 s72 = "1";
@@ -297,6 +301,14 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                if(s71%4 == 0)
+                {
+                    dd = 29;
+                }
+                else
+                {
+                    dd = 28;
+                }
                 DobMnth.setText(" Fabruary");
                 MnthLbl.setVisible(true);
                 s72 = "2";
@@ -307,6 +319,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 31;
                 DobMnth.setText(" March");
                 MnthLbl.setVisible(true);
                 s72 = "3";
@@ -318,6 +331,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 30;
                 DobMnth.setText(" April");
                 MnthLbl.setVisible(true);
                 s72 = "4";
@@ -329,6 +343,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 31;
                 DobMnth.setText(" May");
                 MnthLbl.setVisible(true);
                 s72 = "5";
@@ -340,6 +355,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 30;
                 DobMnth.setText(" June");
                 MnthLbl.setVisible(true);
                 s72 = "6";
@@ -351,6 +367,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 31;
                 DobMnth.setText(" July");
                 MnthLbl.setVisible(true);
                 s72 = "7";
@@ -362,6 +379,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 31;
                 DobMnth.setText(" August");
                 MnthLbl.setVisible(true);
                 s72 = "8";
@@ -373,6 +391,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 30;
                 DobMnth.setText(" September");
                 MnthLbl.setVisible(true);
                 s72 = "9";
@@ -384,6 +403,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 31;
                 DobMnth.setText(" October");
                 MnthLbl.setVisible(true);
                 s72 = "10";
@@ -395,6 +415,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 30;
                 DobMnth.setText(" November");
                 MnthLbl.setVisible(true);
                 s72 = "11";
@@ -406,6 +427,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
+                dd = 31;
                 DobMnth.setText(" December");
                 MnthLbl.setVisible(true);
                 s72 = "12";
@@ -419,15 +441,17 @@ public class Editing1Controller implements Initializable {
     @FXML
     private JFXTextField DobDay;
     public void DobDay()
-    {    
-        try
+    {  
+        int l = Integer.parseInt(DobDay.getText());
+        if(l <= dd)
         {
-            s73 = Integer.parseInt(DobDay.getText());
+            DobDay.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s73 = l;
             System.out.println(s73);
             s7 = "'"+ s71 + "-" + s72 + "-" + s73 + "'"; 
             System.out.println(s7);
         }
-        catch(Exception e)
+        else
         {
             DobDay.setText(null);
             DobDay.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -436,7 +460,7 @@ public class Editing1Controller implements Initializable {
     
     
    
-    public void setValues()
+    public static void setValues()
     {
         DatabaseIO a = new DatabaseIO();
         a.setBasicinfo(s1, s2, s3, s4, s5, s6, s7); 
@@ -448,7 +472,7 @@ public class Editing1Controller implements Initializable {
     
     public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {
-        //setValues();
+        
         
         try {
            
@@ -484,10 +508,6 @@ public class Editing1Controller implements Initializable {
             ex.printStackTrace();
           }
     }
-    
-    @FXML
-    public Label StatusBtn1;
-    
     
     @FXML
     private Label bck;

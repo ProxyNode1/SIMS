@@ -79,8 +79,8 @@
       </MenuButton>
       <MenuButton fx:id="EduDrpDwn" layoutX="323.0" layoutY="418.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" style="-fx-background-color: #212121; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Current Education" textFill="WHITE">
         <items>
-          <MenuItem fx:id="pg" mnemonicParsing="false" text="Postgraduation" />
           <MenuItem fx:id="ug" mnemonicParsing="false" text="Undergraduation" />
+          <MenuItem fx:id="pg" mnemonicParsing="false" text="Postgraduation" />
         </items>
          <font>
             <Font name="Arial" size="15.0" />
@@ -119,11 +119,6 @@
          <graphic>
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
-      </Label>
-      <Label fx:id="StatusBtn1" layoutX="1063.0" layoutY="688.0" prefHeight="19.0" prefWidth="195.0" textFill="#ff2323">
-         <font>
-            <Font name="Roboto" size="15.0" />
-         </font>
       </Label>
       <Label fx:id="takeFocus" layoutX="55.0" layoutY="87.0" prefHeight="2.0" prefWidth="2.0" />
       

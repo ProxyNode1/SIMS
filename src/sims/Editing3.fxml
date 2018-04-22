@@ -76,7 +76,7 @@
             <Font name="Roboto Bold" size="18.0" />
          </font>
       </JFXCheckBox>
-      <JFXButton fx:id="SavBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1120.0" layoutY="640.0" onMouseClicked="#toSave" prefHeight="24.45" prefWidth="76.79" ripplerFill="#9a6c00" style="-fx-background-color: #DEA309;" text="Save" textAlignment="CENTER" textFill="#212121">
+      <JFXButton fx:id="SavBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1120.0" layoutY="660.0" onMouseClicked="#toSave" prefHeight="24.45" prefWidth="76.79" ripplerFill="#9a6c00" style="-fx-background-color: #DEA309;" text="Save" textAlignment="CENTER" textFill="#212121">
          <font>
             <Font name="Arial" size="17.0" />
          </font>
@@ -110,5 +110,10 @@
          </children>
       </Pane>
       <Label fx:id="takeFocus" layoutX="55.0" layoutY="87.0" prefHeight="2.0" prefWidth="2.0" />
+      <Label fx:id="errbtn" layoutX="1095.0" layoutY="620.0" prefHeight="21.0" prefWidth="127.0" textFill="#ff2323">
+         <font>
+            <Font name="Roboto" size="15.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

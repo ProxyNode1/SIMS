@@ -812,7 +812,7 @@ public class Editing2Controller implements Initializable
     
     public void toEdit3(MouseEvent event)
     {
-        //setValues();
+        
         try 
         {
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing3.fxml"));

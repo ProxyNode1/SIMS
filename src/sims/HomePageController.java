@@ -30,25 +30,19 @@ import javafx.stage.Stage;
 
 
 
-
-/**
- * FXML Controller class
- *
- * @author VIC's
- */
 public class HomePageController implements Initializable 
 {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        
-                       
+      
         StatusBtn0.setText(a);
         
         h = DatabaseCon.connect();
         
-        //String g = Editing1Controller.useName;
+        String g = Editing1Controller.useName;
+        TableOP();
     }
     
     public static String a;
@@ -76,17 +70,7 @@ public class HomePageController implements Initializable
     private  TableColumn<InputClass, String> contactCol = new TableColumn<>();   
     
     
-    /*public ObservableList<InputClass> getInput()
-    {
-        ObservableList<InputClass> ip = FXCollections.observableArrayList();
-        ip.add(new InputClass( 33, "Saurabh Sutar", "CSE", 6, "Undergraduation", "9987248564")); //add values to table
-        ip.add(new InputClass( 8, "Ashwini Dhale", "CSE", 6, "Undergraduation", "8587515673"));
-        ip.add(new InputClass( 32, "Sapna Choksey", "CIVIL", 6, "Undergraduation", "7865112684"));
-        ip.add(new InputClass( 26, "Rohan Majrikar", "ENC", 6, "Undergraduation", "9172856789"));
-        ip.add(new InputClass( 43, "Vikramaditya Thakur", "MECH", 6, "Undergraduation", "9425990093"));
-        
-        return ip;
-    }*/
+    
     
     ObservableList<InputClass> ip;
     Connection h;
@@ -100,7 +84,7 @@ public class HomePageController implements Initializable
         try
         {
             Statement myStmt = h.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from student_info_schema.ssc_info");
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.basic_info");
             while(myRs.next())
             {
                 ip.add(new InputClass(myRs.getString(2), myRs.getString(1), myRs.getString(3), myRs.getInt(5), myRs.getString(4), myRs.getString(6)));

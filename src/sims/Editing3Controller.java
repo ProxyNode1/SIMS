@@ -37,7 +37,7 @@ public class Editing3Controller implements Initializable {
     {
         CEmail.requestFocus();
         //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
-        /*try
+        try
         {
             s1 = Editing1Controller.useName;
             System.out.println(s1);
@@ -45,9 +45,9 @@ public class Editing3Controller implements Initializable {
         catch(Exception e)
         {
             errbtn.setText("Check input fields again!");
-        }*/
+        }
         AddInfoField.setTooltip(new Tooltip("use '. ' after every statement "));
-        //Editing1Controller.setValues();
+        Editing1Controller.setValues();
     }    
     
 
@@ -143,10 +143,7 @@ public class Editing3Controller implements Initializable {
     }
     
     
-    /*public void allValues()
-    {
-        
-    }*/
+    
    @FXML
     private Label BtnTo1;
     
@@ -192,10 +189,9 @@ public class Editing3Controller implements Initializable {
         
         try
         {
-            /*Editing2Controller.setValues();
-            setValues();*/
-            HomePageController h = new HomePageController();
-            h.TableOP();
+            Editing2Controller.setValues();
+            setValues();
+            
             
             Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
             Scene editPg1Scene = new Scene(editPag1);

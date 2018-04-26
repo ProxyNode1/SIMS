@@ -216,8 +216,23 @@ public class Editing1Controller implements Initializable {
     @FXML
     private JFXTextField CntctFld;
     public void getCntct()
-    {   s6 = "'"+CntctFld.getText()+"'";
-        System.out.println(s6);
+    {  
+        String l = "'"+CntctFld.getText()+"'";
+        
+        if(l.length() == 10)
+        {
+            s6 = l;
+            System.out.println(s6);
+            
+        }
+        else
+        {
+            CntctFld.setText(null);
+            CntctFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s6 = null;
+            System.out.println("check");
+            
+        }
     } 
     
     @FXML

@@ -7,10 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- *
- * @author VIC's
- */
+
 public class Sims extends Application 
 {
     public static Stage stage;
@@ -19,7 +16,7 @@ public class Sims extends Application
     {        
         DatabaseCon.connect();
         Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-        //stage.initStyle(StageStyle.UNDECORATED);
+        
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setScene(new Scene(root, 1280, 720));  
         stage.setResizable(false);

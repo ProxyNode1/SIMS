@@ -25,7 +25,7 @@ public class DatabaseIO
     
     public void createTables()
     {
-        String basicInfo =  "CREATE TABLE IF NOT EXISTS `student_info_schema`.`basic_info` (" + 
+        String basicInfo =  "CREATE TABLE IF NOT EXISTS `studentinfoschema`.`basic_info` (" + 
                             "`name` VARCHAR(30) NOT NULL," +
                             "`clgId` VARCHAR(10) NOT NULL," +
                             "`dept` VARCHAR(5) NOT NULL," +
@@ -33,47 +33,46 @@ public class DatabaseIO
                             "`csem` INT(1) UNSIGNED NOT NULL," +
                             "`contact` VARCHAR(10) NOT NULL," +
                             "`dob` DATE NOT NULL," +
-                            "UNIQUE INDEX `clgId_UNIQUE` (`clgId` ASC)," +
                             "PRIMARY KEY (`name`)," +
-                            "UNIQUE INDEX `name_UNIQUE` (`name` ASC)," +
+                            "UNIQUE INDEX `clgId_UNIQUE` (`clgId` ASC)," +
                             "UNIQUE INDEX `contact_UNIQUE` (`contact` ASC));" ;
         
-        String sscInfo =    "CREATE TABLE IF NOT EXISTS `student_info_schema`.`ssc_info` ("+
+        String sscInfo =    "CREATE TABLE IF NOT EXISTS `studentinfoschema`.`ssc_info` ("+
                             "`name` VARCHAR(30) NULL,"+
-                            "`SYop` INT(4) NOT NULL,"+
+                            "`SYop` INT(4) UNSIGNED NOT NULL,"+
                             "`SRn` INT(5) UNSIGNED NOT NULL,"+
                             "`SBoard` VARCHAR(5) NOT NULL,"+
                             "`SMedium` VARCHAR(10) NOT NULL,"+
                             "`SSch` VARCHAR(30) NOT NULL,"+
                             "`SCity` VARCHAR(10) NOT NULL,"+
-                            "`SPtng` INT(2) UNSIGNED NOT NULL,"+
+                            "`SPtng` INT(3) UNSIGNED NOT NULL,"+
                             "INDEX `Sname_idx` (`name` ASC),"+
                             "CONSTRAINT `Sname`"+
                             "FOREIGN KEY (`name`)"+
-                            "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
+                            "REFERENCES `studentinfoschema`.`basic_info` (`name`)" +
                             "ON DELETE CASCADE " +
                             "ON UPDATE CASCADE);";
         
-        String hsscInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`hssc_info` (" +
+        String hsscInfo = "CREATE TABLE IF NOT EXISTS `studentinfoschema`.`hssc_info` (" +
                           "`name` VARCHAR(30) NULL," +
-                          "`HYop` INT(4) NULL," +
+                          "`HYop` INT(4) UNSIGNED NULL," +
                           "`HRn` INT(5) UNSIGNED NULL," +
                           "`HBoard` VARCHAR(5) NULL," +
                           "`HMedium` VARCHAR(10) NULL," +
                           "`HSch` VARCHAR(30) NULL," +
                           "`HCity` VARCHAR(10) NULL," +
-                          "`HPtng` INT(2) UNSIGNED NULL," +
-                          "`physics` INT(2) NULL," +
-                          "`chemistry` INT(2) UNSIGNED NULL," +
-                          "`math` INT(2) UNSIGNED NULL," +
+                          "`HPtng` INT(3) UNSIGNED NULL," +
+                          "`physics` INT(3) NULL," +
+                          "`chemistry` INT(3) UNSIGNED NULL," +
+                          "`math` INT(3) UNSIGNED NULL," +
                           "INDEX `Hname_idx` (`name` ASC)," +
                           "CONSTRAINT `Hname`" +
                           "FOREIGN KEY (`name`)" +
-                          "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
+                          "REFERENCES `studentinfoschema`.`basic_info` (`name`)" +
                           "ON DELETE CASCADE " +
                           "ON UPDATE CASCADE);";
         
-        String dipInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`diploma_info` (" +
+        String dipInfo = "CREATE TABLE IF NOT EXISTS `studentinfoschema`.`diploma_info` (" +
                          "`name` VARCHAR(30) NULL," +
                          "`DSem1` INT(1) UNSIGNED NULL," +
                          "`DPtng1` INT(3) UNSIGNED NULL," +
@@ -90,11 +89,11 @@ public class DatabaseIO
                          "INDEX `Dname_idx` (`name` ASC)," +
                          "CONSTRAINT `Dname`" +
                          "FOREIGN KEY (`name`)" +
-                         "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
+                         "REFERENCES `studentinfoschema`.`basic_info` (`name`)" +
                          "ON DELETE CASCADE " +
                          "ON UPDATE CASCADE);";
         
-        String uInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`ug_info` (" +
+        String uInfo = "CREATE TABLE IF NOT EXISTS `studentinfoschema`.`ug_info` (" +
                        "`name` VARCHAR(30) NULL," +
                        "`ESem1` INT(1) UNSIGNED NULL," +
                        "`EPtng1` INT(3) UNSIGNED NULL," +
@@ -115,11 +114,11 @@ public class DatabaseIO
                        "INDEX `Uname_idx` (`name` ASC)," +
                        "CONSTRAINT `Uname`" +
                        "FOREIGN KEY (`name`)" +
-                       "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
+                       "REFERENCES `studentinfoschema`.`basic_info` (`name`)" +
                        "ON DELETE CASCADE " +
                        "ON UPDATE CASCADE);";
         
-        String pInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`pg_info` (" +
+        String pInfo = "CREATE TABLE IF NOT EXISTS `studentinfoschema`.`pg_info` (" +
                        "`name` VARCHAR(30) NULL," +
                        "`PSem1` INT(1) UNSIGNED NULL," +
                        "`PPtng1` INT(3) UNSIGNED NULL," +
@@ -132,14 +131,14 @@ public class DatabaseIO
                        "INDEX `Pname_idx` (`name` ASC)," +
                        "CONSTRAINT `Pname`" +
                        "FOREIGN KEY (`name`)" +
-                       "REFERENCES `student_info_schema`.`basic_info` (`name`)" +
+                       "REFERENCES `studentinfoschema`.`basic_info` (`name`)" +
                        "ON DELETE CASCADE " +
                        "ON UPDATE CASCADE);";
         
-        String oInfo = "CREATE TABLE IF NOT EXISTS `student_info_schema`.`other_info` (" +
+        String oInfo = "CREATE TABLE IF NOT EXISTS `studentinfoschema`.`other_info` (" +
                        "`name` VARCHAR(30) NULL," +
-                       "`PEmail` VARCHAR(50) NULL," +
                        "`CEmail` VARCHAR(50) NOT NULL," +
+                       "`PEmail` VARCHAR(50) NULL," +
                        "`FatherCntct` VARCHAR(10) NOT NULL," +
                        "`FamCntct` VARCHAR(10) NULL," +
                        "`Certification` VARCHAR(5) NULL," +
@@ -149,7 +148,7 @@ public class DatabaseIO
                        "UNIQUE INDEX `CEmail_UNIQUE` (`CEmail` ASC)," +
                        "CONSTRAINT `Oname`" +
                        "FOREIGN KEY (`name`)" +
-                       "REFERENCES `student_info_schema`.`basic_info` (`name`)"+
+                       "REFERENCES `studentinfoschema`.`basic_info` (`name`)"+
                        "ON DELETE CASCADE " +
                        "ON UPDATE CASCADE);";
         
@@ -232,7 +231,7 @@ public class DatabaseIO
         
     }
     void setBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
-    {   String sql = "insert into student_info_schema.basic_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +");";
+    {   String sql = "insert into studentinfoschema.basic_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +");";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -246,7 +245,7 @@ public class DatabaseIO
     
     void setSscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8)
     {
-        String sql = "insert into student_info_schema.ssc_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +","+ s8 +");";
+        String sql = "insert into studentinfoschema.ssc_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +","+ s8 +");";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -260,7 +259,7 @@ public class DatabaseIO
     
     void setHsscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8, int s9, int s10, int s11)
     {
-        String sql = "insert into student_info_schema.hssc_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +","+ s8 +","+ s9 +","+ s10 +","+ s11 +");";
+        String sql = "insert into studentinfoschema.hssc_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +","+ s8 +","+ s9 +","+ s10 +","+ s11 +");";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -274,7 +273,7 @@ public class DatabaseIO
     
     void setDipinfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7)
     {
-        String sql = "insert into student_info_schema.diploma_info VALUES("+ s1 +", 1,"+ s2 +", 2,"+ s3 +", 3,"+ s4 +", 4,"+ s5 +", 5,"+ s6 +", 6,"+ s7 +");";
+        String sql = "insert into studentinfoschema.diploma_info VALUES("+ s1 +", 1,"+ s2 +", 2,"+ s3 +", 3,"+ s4 +", 4,"+ s5 +", 5,"+ s6 +", 6,"+ s7 +");";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -288,7 +287,7 @@ public class DatabaseIO
     
     void setUginfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9)
     {
-        String sql = "insert into student_info_schema.ug_info VALUES ("+ s1 + ", 1, "+ s2 +", 2, "+ s3 +", 3, "+ s4 +", 4, "+ s5 +" , 5, "+ s6 +", 6, "+ s7 +", 7, "+ s8 +", 8, "+ s9 +" );";
+        String sql = "insert into studentinfoschema.ug_info VALUES ("+ s1 + ", 1, "+ s2 +", 2, "+ s3 +", 3, "+ s4 +", 4, "+ s5 +" , 5, "+ s6 +", 6, "+ s7 +", 7, "+ s8 +", 8, "+ s9 +" );";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -302,7 +301,7 @@ public class DatabaseIO
     
     void setPginfo(String s1, int s2, int s3, int s4, int s5)
     {
-        String sql = "insert into student_info_schema.pg_info VALUES("+ s1 +", 1,"+ s2 +", 2,"+ s3 +", 3,"+ s4 +", 4,"+ s5 +");";
+        String sql = "insert into studentinfoschema.pg_info VALUES("+ s1 +", 1,"+ s2 +", 2,"+ s3 +", 3,"+ s4 +", 4,"+ s5 +");";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -316,7 +315,7 @@ public class DatabaseIO
     
     void setUlinfo(String s1, String s2, String s3, String s4, String s5, String s6, String s7)
     {
-        String sql = "insert into student_info_schema.other_info VALUES ("+ s1 + "," + s2 + "," + s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +");";
+        String sql = "insert into studentinfoschema.other_info VALUES ("+ s1 + "," + s2 + "," + s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +");";
         
         try{
             ps = myConn.prepareCall(sql);

@@ -48,6 +48,9 @@
     -fx-text-fill: white;
     -fx-background-color: #212121;
     -fx-border-width: 0;
+    -fx-padding: 5 0 0 0;
+    -fx-cell-size: 40px;
+
 }
 
 .table-row-cell:even{

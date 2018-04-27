@@ -777,7 +777,7 @@ public class Editing2Controller implements Initializable
     {       
         DatabaseIO xyz = new DatabaseIO();
         xyz.setSscinfo(s1, s2, s3, s4, s5, s6, s7, s8); 
-        xyz.setHsscinfo(s1,  t2,  t3,  t4,  t5,  t6,  t7,  t8,  t9,  t10, t11);
+        xyz.setHsscinfo(s1,  t2,  t3,  t4,  t5,  t6,  t7,  t8,  t11,  t10, t9);
         xyz.setDipinfo(s1, d1, d2, d3, d4, d5, d6);
         xyz.setUginfo(s1, e1, e2, e3, e4, e5, e6, e7, e8);
         xyz.setPginfo(s1, p1, p2, p3, p4);

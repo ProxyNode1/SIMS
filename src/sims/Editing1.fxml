@@ -120,7 +120,15 @@
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
       </Label>
-      <Label fx:id="takeFocus" layoutX="55.0" layoutY="87.0" prefHeight="2.0" prefWidth="2.0" />
+      <Label fx:id="delData" contentDisplay="TOP" layoutX="1200.0" layoutY="68.0" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE" visible="false">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/rubbish-bin.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
       
    </children>
 </Pane>

@@ -151,6 +151,21 @@ public class HomePageController implements Initializable
         if(event.getClickCount() == 2) //on double click
         {
             //StatusBtn0.setVisible(true);
+            
+            /*try 
+            {
+
+                Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
+                Scene editPg1Scene = new Scene(editPag1);
+                Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                appStage.setScene(editPg1Scene);
+                appStage.show();
+
+            } 
+            catch (Exception ex) 
+            {
+                ex.printStackTrace();
+            }*/
         }
     }
 

@@ -290,7 +290,15 @@
             </ImageView>
          </graphic>
       </Label>
-      <Label fx:id="takeFocus" layoutX="45.0" layoutY="77.0" prefHeight="2.0" prefWidth="2.0" />
+      <Label fx:id="delData" contentDisplay="TOP" layoutX="1200.0" layoutY="78.0" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/rubbish-bin.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
       <fx:define>
           <ArrayList fx:id = "EList" >
               <fx:reference source = "EPentg1" />
@@ -302,7 +310,6 @@
               <fx:reference source = "EPentg7" />
               <fx:reference source = "EPentg8" />
           </ArrayList>
-      
           <ArrayList fx:id = "PList" >
               <fx:reference source = "PPentg1" />
               <fx:reference source = "PPentg2" />

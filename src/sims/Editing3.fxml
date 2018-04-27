@@ -109,11 +109,19 @@
             </Label>
          </children>
       </Pane>
-      <Label fx:id="takeFocus" layoutX="55.0" layoutY="87.0" prefHeight="2.0" prefWidth="2.0" />
       <Label fx:id="errbtn" layoutX="1095.0" layoutY="620.0" prefHeight="21.0" prefWidth="127.0" textFill="#ff2323">
          <font>
             <Font name="Roboto" size="15.0" />
          </font>
+      </Label>
+      <Label fx:id="delData" contentDisplay="TOP" layoutX="1210.0" layoutY="78.0" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE" visible="false">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/rubbish-bin.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Label>
    </children>
 </Pane>

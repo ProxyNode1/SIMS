@@ -47,10 +47,10 @@ public class Editing1Controller implements Initializable {
     
     
     public static String a, useName;
-    public static int up, useSem;
+    public static int up, useSem, iu = 0;
     
     @FXML
-    private Label takeFocus;
+    private Label delData;
     
     @FXML
     private Pane Edit1;

@@ -52,7 +52,7 @@ public class Editing3Controller implements Initializable {
     
 
     @FXML
-    private Label takeFocus;
+    private Label delData;
     
     @FXML
     private Pane Edit3;

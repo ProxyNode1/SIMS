@@ -49,6 +49,7 @@ public class Editing1Controller implements Initializable {
     public static String a, useName;
     public static int up, useSem, iu = 0;
     
+    
     @FXML
     private Label delData;
     
@@ -219,7 +220,7 @@ public class Editing1Controller implements Initializable {
     {  
         String l = "'"+CntctFld.getText()+"'";
         
-        if(l.length() == 10)
+        if(l.length() == 12)
         {
             s6 = l;
             System.out.println(s6);
@@ -227,6 +228,7 @@ public class Editing1Controller implements Initializable {
         }
         else
         {
+            System.out.println(l);
             CntctFld.setText(null);
             CntctFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s6 = null;
@@ -477,11 +479,15 @@ public class Editing1Controller implements Initializable {
    
     public static void setValues()
     {
-        DatabaseIO a = new DatabaseIO();
-        a.setBasicinfo(s1, s2, s3, s4, s5, s6, s7); 
+        DatabaseIO d = new DatabaseIO();
+        d.setBasicinfo(s1, s2, s3, s4, s5, s6, s7); 
     }
     
-    
+    public void delEdit1()
+    {
+       DatabaseIO d = new DatabaseIO();
+       d.DelBasicinfo(useName); 
+    }
     @FXML
     private Label BtnTo2;
     

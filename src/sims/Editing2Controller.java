@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sims;
 
 import java.net.URL;
@@ -307,14 +303,14 @@ public class Editing2Controller implements Initializable
     {    
         try
         {
-            HP.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            
             t9 = Integer.parseInt(HP.getText());
             System.out.println(t9);     
         }
         catch(Exception e)
         {
             HP.setText(null);
-            HP.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            
         }
     }
     
@@ -324,14 +320,14 @@ public class Editing2Controller implements Initializable
     {   
         try
         {
-            HC.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            
             t10 = Integer.parseInt(HC.getText());
             System.out.println(t10);      
         }
         catch(Exception e)
         {
             HC.setText(null);
-            HC.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            
         }
     }
     
@@ -341,14 +337,14 @@ public class Editing2Controller implements Initializable
     {    
         try
         {
-            HM.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            
             t11 = Integer.parseInt(HM.getText());
             System.out.println(t11);   
         }
         catch(Exception e)
         {
             HM.setText(null);
-            HM.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            
         }
     }
     
@@ -783,6 +779,15 @@ public class Editing2Controller implements Initializable
         xyz.setPginfo(s1, p1, p2, p3, p4);
     }
     
+    public void delEdit2()
+    {
+       DatabaseIO d = new DatabaseIO();
+       d.DelSscinfo(Editing1Controller.useName); 
+       d.DelHsscinfo(Editing1Controller.useName); 
+       d.DelDipinfo(Editing1Controller.useName); 
+       d.DelUGinfo(Editing1Controller.useName); 
+       d.DelPGinfo(Editing1Controller.useName); 
+    }
     @FXML
     private Pane Edit2;
     

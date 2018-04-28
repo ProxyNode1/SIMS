@@ -89,23 +89,51 @@ public class Editing3Controller implements Initializable {
     @FXML
     private JFXTextField DadCntct;
     public void getDadCntct()
-    {   h3 = "'"+DadCntct.getText()+"'";
-        System.out.println(h3);
+    {   
+        String l = "'"+DadCntct.getText()+"'";
+        if(DadCntct.getText() == null || DadCntct.getText().trim().isEmpty())
+        {
+            System.out.println(l);
+            DadCntct.setText(null);
+            DadCntct.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            h3 = null;
+            System.out.println("check");
+        }
+        if(l.length() == 12)
+        {
+            h3 = l;
+            System.out.println(h3);
+            
+        }
+        else
+        {
+            System.out.println(l);
+            DadCntct.setText(null);
+            DadCntct.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            h3 = null;
+            System.out.println("check");
+        }
     }
-    
     @FXML
     private JFXTextField FamCntct;
     public void getFamCntct()
     {   
-        if(FamCntct.getText() == null || FamCntct.getText().trim().isEmpty())
-        {
-            h4 = null;
-        }
         
+        String l = "'"+FamCntct.getText()+"'";
+        
+        if(l.length() == 12)
+        {
+            h4 = l;
+            System.out.println(h4);
+            
+        }
         else
         {
-            h4 = "'"+FamCntct.getText()+"'";
-            System.out.println(h4);
+            System.out.println(l);
+            DadCntct.setText(null);
+            DadCntct.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            h4 = null;
+            System.out.println("check");
         }
     }
     
@@ -142,7 +170,11 @@ public class Editing3Controller implements Initializable {
         a.setUlinfo(s1, h1, h2, h3, h4, h5, h6); 
     }
     
-    
+    public void delEdit3()
+    {
+       DatabaseIO d = new DatabaseIO();
+       d.DelUlinfo(Editing1Controller.useName); 
+    }
     
    @FXML
     private Label BtnTo1;

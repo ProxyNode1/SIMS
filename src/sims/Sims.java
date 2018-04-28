@@ -15,6 +15,7 @@ public class Sims extends Application
     public void start(Stage stage) throws Exception 
     {        
         DatabaseCon.connect();
+        DatabaseIO a = new DatabaseIO();
         Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         
         stage.resizableProperty().setValue(Boolean.FALSE);

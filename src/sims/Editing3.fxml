@@ -56,17 +56,17 @@
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <Label fx:id="BtnTo1" layoutX="599.0" layoutY="690.0" onMouseClicked="#toEdit1" prefHeight="14.0" prefWidth="14.0">
+      <Label fx:id="BtnTo1" layoutX="599.0" layoutY="670.0" onMouseClicked="#toEdit1" prefHeight="14.0" prefWidth="14.0">
          <graphic>
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
       </Label>
-      <Label fx:id="BtnTo2" layoutX="639.0" layoutY="690.0" onMouseClicked="#toEdit2" prefHeight="14.0" prefWidth="14.0">
+      <Label fx:id="BtnTo2" layoutX="639.0" layoutY="670.0" onMouseClicked="#toEdit2" prefHeight="14.0" prefWidth="14.0">
          <graphic>
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
       </Label>
-      <Label contentDisplay="CENTER" layoutX="679.0" layoutY="690.0" prefHeight="14.0" prefWidth="14.0">
+      <Label contentDisplay="CENTER" layoutX="679.0" layoutY="670.0" prefHeight="14.0" prefWidth="14.0">
          <graphic>
             <Circle fill="#0078d7" radius="7.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
@@ -114,7 +114,7 @@
             <Font name="Roboto" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="delData" contentDisplay="TOP" layoutX="1210.0" layoutY="78.0" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE" visible="false">
+      <Label fx:id="delData" contentDisplay="TOP" layoutX="1210.0" layoutY="78.0" onMouseClicked="#delEdit3" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE" visible="false">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -118,24 +118,24 @@
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <Label layoutX="18.0" layoutY="333.0" prefHeight="18.0" prefWidth="54.0" text="Physics:" textFill="WHITE">
+                        <Label layoutX="298.0" layoutY="333.0" prefHeight="18.0" prefWidth="54.0" text="Physics:" textFill="WHITE">
                            <font>
                               <Font name="Roboto" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="HP" layoutX="72.0" layoutY="329.0" onAction="#getHP" prefHeight="25.0" prefWidth="69.0" />
-                        <Label layoutX="148.0" layoutY="333.0" prefHeight="18.0" prefWidth="72.0" text="Chemistry:" textFill="WHITE">
+                        <TextField fx:id="HP" layoutX="350.0" layoutY="330.0" onAction="#getHP" prefHeight="25.0" prefWidth="69.0" />
+                        <Label layoutX="144.0" layoutY="333.0" prefHeight="18.0" prefWidth="72.0" text="Chemistry:" textFill="WHITE">
                            <font>
                               <Font name="Roboto" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="HC" layoutX="220.0" layoutY="329.0" onAction="#getHC" prefHeight="25.0" prefWidth="69.0" />
-                        <Label layoutX="298.0" layoutY="333.0" prefHeight="18.0" prefWidth="36.0" text="Math:" textFill="WHITE">
+                        <TextField fx:id="HC" layoutX="212.0" layoutY="330.0" onAction="#getHC" prefHeight="25.0" prefWidth="69.0" />
+                        <Label layoutX="18.0" layoutY="333.0" prefHeight="18.0" prefWidth="36.0" text="Math:" textFill="WHITE">
                            <font>
                               <Font name="Roboto" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="HM" layoutX="343.0" layoutY="329.0" onAction="#getHM" prefHeight="25.0" prefWidth="69.0" />
+                        <TextField fx:id="HM" layoutX="58.0" layoutY="330.0" onAction="#getHM" prefHeight="25.0" prefWidth="69.0" />
                      </children>
                   </Pane>
                   <Pane fx:id="DPane" layoutX="581.0" layoutY="98.0" prefHeight="327.0" prefWidth="438.0" style="-fx-background-color: #2F3136; -fx-border-color: #DEA309;" visible="false">
@@ -260,17 +260,17 @@
             <URL value="@Common.css" />
          </stylesheets>
       </ScrollPane>
-      <Label fx:id="BtnTo1" layoutX="599.0" layoutY="690.0" onMouseClicked="#toEdit1" prefHeight="14.0" prefWidth="14.0">
+      <Label fx:id="BtnTo1" layoutX="599.0" layoutY="670.0" onMouseClicked="#toEdit1" prefHeight="14.0" prefWidth="14.0">
          <graphic>
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
       </Label>
-      <Label contentDisplay="CENTER" layoutX="639.0" layoutY="690.0" prefHeight="14.0" prefWidth="14.0">
+      <Label contentDisplay="CENTER" layoutX="639.0" layoutY="670.0" prefHeight="14.0" prefWidth="14.0">
          <graphic>
             <Circle fill="WHITE" radius="7.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #0078D7;" />
          </graphic>
       </Label>
-      <Label fx:id="BtnTo3" layoutX="679.0" layoutY="690.0" onMouseClicked="#toEdit3" prefHeight="14.0" prefWidth="14.0">
+      <Label fx:id="BtnTo3" layoutX="679.0" layoutY="670.0" onMouseClicked="#toEdit3" prefHeight="14.0" prefWidth="14.0">
          <graphic>
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
@@ -290,7 +290,7 @@
             </ImageView>
          </graphic>
       </Label>
-      <Label fx:id="delData" contentDisplay="TOP" layoutX="1200.0" layoutY="78.0" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE">
+      <Label fx:id="delData" contentDisplay="TOP" layoutX="1200.0" layoutY="78.0" onMouseClicked="#delEdit2" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE" visible="false">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -46,7 +46,7 @@ public class Editing3Controller implements Initializable {
         {
             errbtn.setText("Check input fields again!");
         }
-        AddInfoField.setTooltip(new Tooltip("use '. ' after every statement "));
+        AddInfoField.setTooltip(new Tooltip("use '. ' after every statement. "));
         Editing1Controller.setValues();
     }    
     
@@ -67,22 +67,31 @@ public class Editing3Controller implements Initializable {
     private JFXTextField Email;
     public void getEmail()
     {   
-        if(Email.getText() == null || Email.getText().trim().isEmpty())
-        {
-            h1 = null;
-        }
-        else
-        {
-            h1 = "'"+Email.getText()+"'";
-            System.out.println(h1);
-        }
+              h2 = "'"+Email.getText()+"'";
+            System.out.println(h2);
+        
     }
     
     @FXML
     private JFXTextField CEmail;
     public void getCEmail()
-    {   h2 = "'"+CEmail.getText()+"'";
-        System.out.println(h2);
+    {   
+        
+        if(CEmail.getText() == null)
+        {
+            System.out.println(h1);
+            CEmail.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            h1 = null;
+            
+        }
+        else 
+        {
+            CEmail.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            h1 = "'"+CEmail.getText()+"'";
+            System.out.println(h2);
+
+        }
+        
     }
     
 
@@ -91,7 +100,7 @@ public class Editing3Controller implements Initializable {
     public void getDadCntct()
     {   
         String l = "'"+DadCntct.getText()+"'";
-        if(DadCntct.getText() == null || DadCntct.getText().trim().isEmpty())
+        if(DadCntct.getText() == null)
         {
             System.out.println(l);
             DadCntct.setText(null);
@@ -101,6 +110,7 @@ public class Editing3Controller implements Initializable {
         }
         if(l.length() == 12)
         {
+            DadCntct.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h3 = l;
             System.out.println(h3);
             
@@ -123,6 +133,7 @@ public class Editing3Controller implements Initializable {
         
         if(l.length() == 12)
         {
+            DadCntct.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h4 = l;
             System.out.println(h4);
             
@@ -167,6 +178,7 @@ public class Editing3Controller implements Initializable {
     public void setValues()
     {
         DatabaseIO a = new DatabaseIO();
+        
         a.setUlinfo(s1, h1, h2, h3, h4, h5, h6); 
     }
     
@@ -207,7 +219,8 @@ public class Editing3Controller implements Initializable {
             Scene editPg1Scene = new Scene(editPag1);
             Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             appStage.setScene(editPg1Scene);
-            appStage.show();        } 
+            appStage.show();        
+        } 
         catch (Exception ex) 
         {
             ex.printStackTrace();
@@ -218,24 +231,37 @@ public class Editing3Controller implements Initializable {
     private JFXButton SavBtn;
     public void toSave(MouseEvent event)
      {
-        
+        int e = 0;
         try
         {
-            Editing2Controller.setValues();
             setValues();
-            
-            
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
+            Editing2Controller.setValues();
+            e = 0;
         }
          
         catch (Exception ex) 
         {
+            e = 1;
+            errbtn.setText("Check input fields again!");
             ex.printStackTrace();
-            errbtn.setText("Check input fields again!"); 
+             
+            
+        }
+        
+        if(e == 0)
+        {
+            try
+            {
+                Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+                Scene editPg1Scene = new Scene(editPag1);
+                Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                appStage.setScene(editPg1Scene);
+                appStage.show();
+            }
+            catch(Exception xyz)
+            {
+                System.out.println("page changing error!");
+            }
         }
     }
     

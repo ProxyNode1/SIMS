@@ -37,8 +37,9 @@ public class Editing2Controller implements Initializable
         SPass.requestFocus();
         
         //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
-        SBrd.setTooltip(new Tooltip("eg. state"));
-        HBrd.setTooltip(new Tooltip("eg. state"));
+        
+        chzHBrdDrpDwn();
+        chzSBrdDrpDwn();
         
         s1 = Editing1Controller.useName;
         System.out.println(s1);
@@ -52,6 +53,9 @@ public class Editing2Controller implements Initializable
        
         selEPentg();
         selPPentg();
+        
+        SSch.setTooltip(new Tooltip("Do not use , or ."));
+        HSch.setTooltip(new Tooltip("Do not use , or ."));
         
     }  
     
@@ -121,32 +125,145 @@ public class Editing2Controller implements Initializable
         }
     }
     
+        
     @FXML
-    private JFXTextField SBrd;
-    public void getSBrd()
-    {   s4 = "'"+SBrd.getText()+"'";
-        System.out.println(s4);
+    private MenuButton SBrdDrpDwn;
+         
+    @FXML
+    private MenuItem Scbse;
+
+    @FXML
+    private MenuItem Scisce;
+    
+    @FXML
+    private MenuItem Sstate;
+
+    @FXML
+    private MenuItem Sibo;
+    
+    @FXML
+    private MenuItem Scie;
+    
+    public void chzSBrdDrpDwn()
+    {
+              
+       Scbse.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                SBrdDrpDwn.setText("CBSE");
+                String ab  = "CBSE";
+                s4 = "'"+ab+"'";
+                System.out.println(s4);
+
+            }
+       } );
+       
+       Scisce.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                SBrdDrpDwn.setText("CISCE");
+                String ab  = "CISCE";
+                s4 = "'"+ab+"'";   
+                System.out.println(s4);
+            }
+       } );
+       
+       Sstate.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                SBrdDrpDwn.setText("STATE");
+                String ab  = "STATE";
+                s4 = "'"+ab+"'";
+                System.out.println(s4);
+            }
+       } );
+       
+       Sibo.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                SBrdDrpDwn.setText("IBO");
+                String ab  = "IBO";
+                s4 = "'"+ab+"'";
+                System.out.println(s4);
+            }
+       } );
+       
+       Scie.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                SBrdDrpDwn.setText("CIE");
+                String ab  = "CIE";
+                s4 = "'"+ab+"'";
+                System.out.println(s4);
+            }
+       } );
     }
     
     @FXML
     private JFXTextField SMed;
     public void getSMed()
-    {   s5 = "'"+SMed.getText()+"'";
-        System.out.println(s5);
+    {   
+        String l = SMed.getText();
+        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        { 
+            SMed.setText(null);
+            SMed.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            s5 = null;
+        } 
+        else 
+        { 
+            SMed.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s5 = "'"+l+"'";
+            System.out.println(s5);
+        }
     }
     
     @FXML
     private JFXTextField SSch;
     public void getSSch()
-    {   s6 = "'"+SSch.getText()+"'";
-        System.out.println(s6);
+    {    
+        String l = SSch.getText();
+        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        { 
+            SSch.setText(null);
+            SSch.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            s6 = null;
+            
+        } 
+        else 
+        { 
+            SSch.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s6 = "'"+l+"'";
+            System.out.println(s6);
+        }
     }
+    
     
     @FXML
     private JFXTextField SCity;
     public void getSCity()
-    {   s7 = "'"+SCity.getText()+"'";
-        System.out.println(s7);
+    {   
+        String l = SCity.getText();
+        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        { 
+            SCity.setText(null);
+            SCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            s7 = null;
+        } 
+        else 
+        { 
+            SCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s7 = "'"+l+"'";
+            System.out.println(s7);
+        }
     }
     
     @FXML
@@ -187,7 +304,7 @@ public class Editing2Controller implements Initializable
        {
             public void handle(ActionEvent t) 
             {
-                PostSS.setText("  HSSC");
+                PostSS.setText("HSSC");
                 HD = 1;
                 DPane.setVisible(false);
                 HPane.setVisible(true);
@@ -200,7 +317,7 @@ public class Editing2Controller implements Initializable
        {
             public void handle(ActionEvent t) 
             {
-                PostSS.setText("  DIPLOMA");
+                PostSS.setText("DIPLOMA");
                 HD = 2;
                 HPane.setVisible(false);
                 DPane.setVisible(true);
@@ -221,16 +338,22 @@ public class Editing2Controller implements Initializable
     private JFXTextField HPass;
     public void getHPass()
     {              
+        int l = Integer.parseInt(HPass.getText());
+        if(l > s2)
         try
         {
             HPass.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            t2 = Integer.parseInt(HPass.getText());
+            t2 = l;
             System.out.println(t2);          
         }
         catch(Exception e)
         {
             HPass.setText(null);
             HPass.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
+        else
+        {
+            System.out.println("check");
         }
     }
     
@@ -252,32 +375,141 @@ public class Editing2Controller implements Initializable
     }
     
     @FXML
-    private JFXTextField HBrd;
-    public void getHBrd()
-    {   t4 = "'"+HBrd.getText()+"'";
-        System.out.println(t4);
-    }
+    private MenuButton HBrdDrpDwn;
+         
+    @FXML
+    private MenuItem Hcbse;
 
+    @FXML
+    private MenuItem Hcisce;
+    
+    @FXML
+    private MenuItem Hstate;
+
+    @FXML
+    private MenuItem Hibo;
+    
+    @FXML
+    private MenuItem Hcie;
+    
+    public void chzHBrdDrpDwn()
+    {
+              
+       Hcbse.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                HBrdDrpDwn.setText("CBSE");
+                String ab  = "CBSE";
+                t4 = "'"+ab+"'";
+                System.out.println(t4);
+
+            }
+       } );
+       
+       Hcisce.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                HBrdDrpDwn.setText("CISCE");
+                String ab  = "CISCE";
+                t4 = "'"+ab+"'";   
+                System.out.println(t4);
+            }
+       } );
+       
+       Hstate.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                HBrdDrpDwn.setText("STATE");
+                String ab  = "STATE";
+                t4 = "'"+ab+"'";
+                System.out.println(t4);
+            }
+       } );
+       
+       Hibo.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                HBrdDrpDwn.setText("IBO");
+                String ab  = "IBO";
+                t4 = "'"+ab+"'";
+                System.out.println(t4);
+            }
+       } );
+       
+       Hcie.setOnAction(new EventHandler<ActionEvent>() 
+       {
+            public void handle(ActionEvent t) 
+            {
+                HBrdDrpDwn.setText("CIE");
+                String ab  = "CIE";
+                t4 = "'"+ab+"'";
+                System.out.println(t4);
+            }
+       } );
+    }
         
     @FXML
     private JFXTextField HMed;
     public void getHMed()
-    {   t5 = "'"+HMed.getText()+"'";
-        System.out.println(t5);
+    {   
+        String l = HMed.getText();
+        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        { 
+            HMed.setText(null);
+            HMed.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            t5 = null;
+        } 
+        else 
+        { 
+            HMed.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            t5 = "'"+l+"'";
+            System.out.println(t5);
+        }
     }
     
     @FXML
     private JFXTextField HSch;
     public void getHSch()
-    {   t6 = "'"+HSch.getText()+"'";
-        System.out.println(t6);
+    {   
+        String l = HSch.getText();
+        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        { 
+            HSch.setText(null);
+            HSch.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            t6 = null;
+        } 
+        else 
+        { 
+            HSch.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            t6 = "'"+l+"'";
+            System.out.println(t6);
+        }
     }
     
     @FXML
     private JFXTextField HCity;
     public void getHCity()
-    {   t7 = "'"+HCity.getText()+"'";
-        System.out.println(t7);
+    {   
+        String l = HCity.getText();
+        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        { 
+            HCity.setText(null);
+            HCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            t7 = null;
+        } 
+        else 
+        { 
+            HCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            t7 = "'"+l+"'";
+            System.out.println(t7);
+        }
     }
     
     @FXML
@@ -302,8 +534,7 @@ public class Editing2Controller implements Initializable
     public void getHP()
     {    
         try
-        {
-            
+        {   
             t9 = Integer.parseInt(HP.getText());
             System.out.println(t9);     
         }
@@ -319,8 +550,7 @@ public class Editing2Controller implements Initializable
     public void getHC()
     {   
         try
-        {
-            
+        {    
             t10 = Integer.parseInt(HC.getText());
             System.out.println(t10);      
         }
@@ -337,7 +567,6 @@ public class Editing2Controller implements Initializable
     {    
         try
         {
-            
             t11 = Integer.parseInt(HM.getText());
             System.out.println(t11);   
         }
@@ -407,8 +636,7 @@ public class Editing2Controller implements Initializable
     
     public void getDPentg3()
     {   
-        
-         
+
         try
         {
             DPentg3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -424,8 +652,7 @@ public class Editing2Controller implements Initializable
     
     public void getDPentg4()
     {   
-        
-        
+ 
         try
         {
             DPentg4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -659,7 +886,7 @@ public class Editing2Controller implements Initializable
     }
     
     @FXML
-    private List<JFXTextField> EList;
+    private List<JFXTextField> EList; //see Editing2.fxml to more info
     
     public void selEPentg()
     { 
@@ -756,7 +983,7 @@ public class Editing2Controller implements Initializable
     }
     
     @FXML
-    private List<JFXTextField> PList;
+    private List<JFXTextField> PList; //see Editing2.fxml to more info
     
     public void selPPentg()
     { 

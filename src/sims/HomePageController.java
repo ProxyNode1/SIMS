@@ -87,7 +87,8 @@ public class HomePageController implements Initializable
             ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.basic_info");
             while(myRs.next())
             {
-                ip.add(new InputClass(myRs.getString(2), myRs.getString(1), myRs.getString(3), myRs.getInt(5), myRs.getString(4), myRs.getString(6)));
+                
+                ip.add(new InputClass("   "+myRs.getString(2), "   "+myRs.getString(1), "   "+myRs.getString(3), "   "+myRs.getInt(5), "   "+myRs.getString(4), "   "+myRs.getString(6)));
                 /*String s = myRs.getString(2); //2 is the column number
                 System.out.println(s); 
                 System.out.println(myRs.getInt(1)); */
@@ -166,6 +167,8 @@ public class HomePageController implements Initializable
             {
                 ex.printStackTrace();
             }*/
+            
+            
         }
     }
 

@@ -36,12 +36,12 @@
 
 <Pane fx:id="Edit3" focusTraversable="true" maxHeight="720.0" maxWidth="1280.0" minHeight="480.0" minWidth="855.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing3Controller">
    <children>
-      <JFXTextField fx:id="Email" focusColor="WHITE" labelFloat="true" layoutX="598.0" layoutY="140.0" onAction="#getEmail" prefHeight="42.0" prefWidth="212.0" promptText="Personal Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <JFXTextField fx:id="CEmail" focusColor="WHITE" labelFloat="true" layoutX="198.0" layoutY="140.0" onAction="#getCEmail" prefHeight="42.0" prefWidth="212.0" promptText="College's Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="CEmail" focusColor="WHITE" labelFloat="true" layoutX="198.0" layoutY="140.0" onAction="#getCEmail" prefHeight="42.0" prefWidth="212.0" promptText="College's Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <JFXTextField fx:id="Email" focusColor="WHITE" labelFloat="true" layoutX="598.0" layoutY="140.0" onAction="#getEmail" prefHeight="42.0" prefWidth="212.0" promptText="Personal Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>

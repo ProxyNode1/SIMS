@@ -62,9 +62,24 @@ public class Editing1Controller implements Initializable {
     @FXML
     private JFXTextField NamFld;
     public void getName()
-    {       s1 = "'"+NamFld.getText()+"'";
+    {       
+        String l = NamFld.getText();
+        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        { 
+            NamFld.setText(null);
+            NamFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            s1 = null;
+        } 
+        else 
+        { 
+            NamFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s1 = "'"+l+"'";
             System.out.println(s1);
             useName = s1;
+        }
+        
+        
     }
     
     @FXML
@@ -96,7 +111,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
-                DeptDrpDwn.setText(" MECH");
+                DeptDrpDwn.setText("MECH");
                 String ab  = "MECH";
                 s3 = "'"+ab+"'";
                 System.out.println(s3);
@@ -108,7 +123,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
-                DeptDrpDwn.setText(" CSE");
+                DeptDrpDwn.setText("CSE");
                 String ab  = "CSE";
                 s3 = "'"+ab+"'";   
                 System.out.println(s3);
@@ -119,7 +134,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
-                DeptDrpDwn.setText(" EnC");
+                DeptDrpDwn.setText("EnC");
                 String ab  = "EnC";
                 s3 = "'"+ab+"'";
                 System.out.println(s3);
@@ -130,7 +145,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
-                DeptDrpDwn.setText(" CIVIL");
+                DeptDrpDwn.setText("CIVIL");
                 String ab  = "CIVIL";
                 s3 = "'"+ab+"'";
                 System.out.println(s3);
@@ -154,7 +169,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
-                EduDrpDwn.setText("  Postgraduation");
+                EduDrpDwn.setText("Postgraduation");
                 up = 1;
                 String ab  = "PG";
                 s4 = "'"+ab+"'";
@@ -170,7 +185,7 @@ public class Editing1Controller implements Initializable {
        {
             public void handle(ActionEvent t) 
             {
-                EduDrpDwn.setText("  Undergraduation");
+                EduDrpDwn.setText("Undergraduation");
                 up = 2;
                 String ab  = "UG";
                 s4 = "'"+ab+"'";
@@ -222,6 +237,7 @@ public class Editing1Controller implements Initializable {
         
         if(l.length() == 12)
         {
+            CntctFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s6 = l;
             System.out.println(s6);
             
@@ -241,13 +257,22 @@ public class Editing1Controller implements Initializable {
     private JFXTextField DobYear;
     public void DobYear()
     {      
-        try
+        String l = DobYear.getText();
+        if(l.length() == 4)
         {
-            DobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s71 = Integer.parseInt(DobYear.getText());
-            System.out.println(s71);
+            try
+            {
+                DobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                s71 = Integer.parseInt(DobYear.getText());
+                System.out.println(s71);
+            }
+            catch(Exception e)
+            {
+                DobYear.setText(null);
+                DobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            }
         }
-        catch(Exception e)
+        else
         {
             DobYear.setText(null);
             DobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -308,7 +333,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 31;
-                DobMnth.setText(" January");
+                DobMnth.setText("January");
                 MnthLbl.setVisible(true);
                 s72 = "1";
             }
@@ -326,7 +351,7 @@ public class Editing1Controller implements Initializable {
                 {
                     dd = 28;
                 }
-                DobMnth.setText(" Fabruary");
+                DobMnth.setText("Fabruary");
                 MnthLbl.setVisible(true);
                 s72 = "2";
             }
@@ -337,7 +362,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 31;
-                DobMnth.setText(" March");
+                DobMnth.setText("March");
                 MnthLbl.setVisible(true);
                 s72 = "3";
             }
@@ -349,7 +374,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 30;
-                DobMnth.setText(" April");
+                DobMnth.setText("April");
                 MnthLbl.setVisible(true);
                 s72 = "4";
             }
@@ -361,7 +386,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 31;
-                DobMnth.setText(" May");
+                DobMnth.setText("May");
                 MnthLbl.setVisible(true);
                 s72 = "5";
             }
@@ -373,7 +398,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 30;
-                DobMnth.setText(" June");
+                DobMnth.setText("June");
                 MnthLbl.setVisible(true);
                 s72 = "6";
             }
@@ -385,7 +410,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 31;
-                DobMnth.setText(" July");
+                DobMnth.setText("July");
                 MnthLbl.setVisible(true);
                 s72 = "7";
             }
@@ -397,7 +422,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 31;
-                DobMnth.setText(" August");
+                DobMnth.setText("August");
                 MnthLbl.setVisible(true);
                 s72 = "8";
             }
@@ -409,7 +434,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 30;
-                DobMnth.setText(" September");
+                DobMnth.setText("September");
                 MnthLbl.setVisible(true);
                 s72 = "9";
             }
@@ -421,7 +446,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 31;
-                DobMnth.setText(" October");
+                DobMnth.setText("October");
                 MnthLbl.setVisible(true);
                 s72 = "10";
             }
@@ -433,7 +458,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 30;
-                DobMnth.setText(" November");
+                DobMnth.setText("November");
                 MnthLbl.setVisible(true);
                 s72 = "11";
             }
@@ -445,7 +470,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 dd = 31;
-                DobMnth.setText(" December");
+                DobMnth.setText("December");
                 MnthLbl.setVisible(true);
                 s72 = "12";
     

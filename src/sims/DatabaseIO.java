@@ -316,6 +316,7 @@ public class DatabaseIO
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
             ps = null;
+            System.out.println("sent!");
         }
         catch(Exception e)
         {

@@ -4,11 +4,11 @@ package sims;
 
 public class InputClass 
 {   
-    private String name,branch, currentEdu, contact, collegeId;
-    private int Csem ;
+    private String name,branch, currentEdu, contact, collegeId, Csem;
+    
     
 
-    public InputClass(String collegeId, String name, String branch, int Csem, String currentEdu, String contact)
+    public InputClass(String collegeId, String name, String branch, String Csem, String currentEdu, String contact)
     {
        
         this.name = name;
@@ -59,11 +59,11 @@ public class InputClass
         this.collegeId = collegeId;
     }
 
-    public long getCsem() {
+    public String getCsem() {
         return Csem;
     }
 
-    public void setCsem(int Csem) {
+    public void setCsem(String Csem) {
         this.Csem = Csem;
     }
     

@@ -18,8 +18,7 @@ public class DatabaseCon
             
             // create a connection to the database
             Connection myConn = DriverManager.getConnection(urlMySql, username, password);
-            
-                  
+                              
             System.out.println("ok");
                         
             return myConn;

@@ -45,11 +45,18 @@
                               <Font name="Arial" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="SBrd" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="193.0" onAction="#getSBrd" prefHeight="42.0" prefWidth="166.0" promptText="Board" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1;" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <MenuButton fx:id="SBrdDrpDwn" layoutX="23.0" layoutY="193.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="166.0" style="-fx-background-color: #2F3136; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Board" textFill="WHITE">
                            <font>
-                              <Font name="Roboto" size="16.0" />
+                              <Font name="Arial" size="15.0" />
                            </font>
-                        </JFXTextField>
+                           <items>
+                              <MenuItem fx:id="Scbse" mnemonicParsing="false" text="CBSE" />
+                              <MenuItem fx:id="Scisce" mnemonicParsing="false" text="CISCE" />
+                              <MenuItem fx:id="Sstate" mnemonicParsing="false" text="STATE" />
+                              <MenuItem fx:id="Sibo" mnemonicParsing="false" text="IBO" />
+                              <MenuItem fx:id="Scie" mnemonicParsing="false" text="CIE" />
+                           </items>
+                        </MenuButton>
                         <JFXTextField fx:id="SMed" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="193.0" onAction="#getSMed" prefHeight="42.0" prefWidth="166.0" promptText="Medium" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1;" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
@@ -72,7 +79,7 @@
                         </JFXTextField>
                      </children>
                   </Pane>
-                  <MenuButton fx:id="PostSS" layoutX="581.0" layoutY="51.0" mnemonicParsing="false" prefHeight="37.58" prefWidth="163.7" style="-fx-background-color: #323640; -fx-border-color: #707070;" text="HSSC" textFill="WHITE">
+                  <MenuButton fx:id="PostSS" layoutX="581.0" layoutY="51.0" mnemonicParsing="false" prefHeight="37.58" prefWidth="163.7" style="-fx-background-color: #323640; -fx-border-color: #707070;" text="Post SSC" textFill="WHITE">
                     <items>
                       <MenuItem fx:id="HSSC" mnemonicParsing="false" text="HSSC" />
                       <MenuItem fx:id="DIPLOMA" mnemonicParsing="false" text="DIPLOMA" />
@@ -81,7 +88,7 @@
                         <Font name="Roboto Bold" size="16.0" />
                      </font>
                   </MenuButton>
-                  <Pane fx:id="HPane" layoutX="581.0" layoutY="98.0" prefHeight="368.0" prefWidth="438.0" style="-fx-background-color: #2F3136; -fx-border-color: #DEA309;">
+                  <Pane fx:id="HPane" layoutX="581.0" layoutY="98.0" prefHeight="368.0" prefWidth="438.0" style="-fx-background-color: #2F3136; -fx-border-color: #DEA309;" visible="false">
                      <children>
                         <JFXTextField fx:id="HPass" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="28.0" onAction="#getHPass" prefHeight="42.0" prefWidth="166.0" promptText="Year of Passing" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1;" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
@@ -93,11 +100,18 @@
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="HBrd" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="99.0" onAction="#getHBrd" prefHeight="42.0" prefWidth="166.0" promptText="Board" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1;" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <MenuButton fx:id="HBrdDrpDwn" layoutX="18.0" layoutY="99.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="166.0" style="-fx-background-color: #2F3136; -fx-border-color: #FFFFFF; -fx-border-width: 1;" text="Board" textFill="WHITE">
                            <font>
-                              <Font name="Roboto" size="16.0" />
+                              <Font name="Arial" size="15.0" />
                            </font>
-                        </JFXTextField>
+                           <items>
+                              <MenuItem fx:id="Hcbse" mnemonicParsing="false" text="CBSE" />
+                              <MenuItem fx:id="Hcisce" mnemonicParsing="false" text="CISCE" />
+                              <MenuItem fx:id="Hstate" mnemonicParsing="false" text="STATE" />
+                              <MenuItem fx:id="Hibo" mnemonicParsing="false" text="IBO" />
+                              <MenuItem fx:id="Hcie" mnemonicParsing="false" text="CIE" />
+                           </items>
+                        </MenuButton>
                         <JFXTextField fx:id="HMed" focusColor="WHITE" labelFloat="true" layoutX="236.0" layoutY="99.0" onAction="#getHMed" prefHeight="42.0" prefWidth="166.0" promptText="Medium" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1;" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
@@ -118,24 +132,24 @@
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <Label layoutX="18.0" layoutY="333.0" prefHeight="18.0" prefWidth="54.0" text="Physics:" textFill="WHITE">
+                        <Label layoutX="18.0" layoutY="333.0" prefHeight="18.0" prefWidth="36.0" text="Math:" textFill="WHITE">
                            <font>
                               <Font name="Roboto" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="HP" layoutX="72.0" layoutY="329.0" onAction="#getHP" prefHeight="25.0" prefWidth="69.0" />
-                        <Label layoutX="148.0" layoutY="333.0" prefHeight="18.0" prefWidth="72.0" text="Chemistry:" textFill="WHITE">
+                        <TextField fx:id="HM" layoutX="58.0" layoutY="330.0" onAction="#getHM" prefHeight="25.0" prefWidth="69.0" />
+                        <Label layoutX="144.0" layoutY="333.0" prefHeight="18.0" prefWidth="72.0" text="Chemistry:" textFill="WHITE">
                            <font>
                               <Font name="Roboto" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="HC" layoutX="220.0" layoutY="329.0" onAction="#getHC" prefHeight="25.0" prefWidth="69.0" />
-                        <Label layoutX="298.0" layoutY="333.0" prefHeight="18.0" prefWidth="36.0" text="Math:" textFill="WHITE">
+                        <TextField fx:id="HC" layoutX="212.0" layoutY="330.0" onAction="#getHC" prefHeight="25.0" prefWidth="69.0" />
+                        <Label layoutX="298.0" layoutY="333.0" prefHeight="18.0" prefWidth="54.0" text="Physics:" textFill="WHITE">
                            <font>
                               <Font name="Roboto" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="HM" layoutX="343.0" layoutY="329.0" onAction="#getHM" prefHeight="25.0" prefWidth="69.0" />
+                        <TextField fx:id="HP" layoutX="350.0" layoutY="330.0" onAction="#getHP" prefHeight="25.0" prefWidth="69.0" />
                      </children>
                   </Pane>
                   <Pane fx:id="DPane" layoutX="581.0" layoutY="98.0" prefHeight="327.0" prefWidth="438.0" style="-fx-background-color: #2F3136; -fx-border-color: #DEA309;" visible="false">
@@ -260,17 +274,17 @@
             <URL value="@Common.css" />
          </stylesheets>
       </ScrollPane>
-      <Label fx:id="BtnTo1" layoutX="599.0" layoutY="690.0" onMouseClicked="#toEdit1" prefHeight="14.0" prefWidth="14.0">
+      <Label fx:id="BtnTo1" layoutX="599.0" layoutY="670.0" onMouseClicked="#toEdit1" prefHeight="14.0" prefWidth="14.0">
          <graphic>
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
       </Label>
-      <Label contentDisplay="CENTER" layoutX="639.0" layoutY="690.0" prefHeight="14.0" prefWidth="14.0">
+      <Label contentDisplay="CENTER" layoutX="639.0" layoutY="670.0" prefHeight="14.0" prefWidth="14.0">
          <graphic>
             <Circle fill="WHITE" radius="7.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #0078D7;" />
          </graphic>
       </Label>
-      <Label fx:id="BtnTo3" layoutX="679.0" layoutY="690.0" onMouseClicked="#toEdit3" prefHeight="14.0" prefWidth="14.0">
+      <Label fx:id="BtnTo3" layoutX="679.0" layoutY="670.0" onMouseClicked="#toEdit3" prefHeight="14.0" prefWidth="14.0">
          <graphic>
             <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </graphic>
@@ -290,7 +304,15 @@
             </ImageView>
          </graphic>
       </Label>
-      <Label fx:id="takeFocus" layoutX="45.0" layoutY="77.0" prefHeight="2.0" prefWidth="2.0" />
+      <Label fx:id="delData" contentDisplay="TOP" layoutX="1200.0" layoutY="78.0" onMouseClicked="#delEdit2" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE" visible="false">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/rubbish-bin.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
       <fx:define>
           <ArrayList fx:id = "EList" >
               <fx:reference source = "EPentg1" />
@@ -302,7 +324,6 @@
               <fx:reference source = "EPentg7" />
               <fx:reference source = "EPentg8" />
           </ArrayList>
-      
           <ArrayList fx:id = "PList" >
               <fx:reference source = "PPentg1" />
               <fx:reference source = "PPentg2" />

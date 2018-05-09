@@ -4,11 +4,10 @@ package sims;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-
+import java.sql.*;
 
 import javafx.scene.input.MouseEvent;
 import com.jfoenix.controls.JFXTextField;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,11 +42,14 @@ public class Editing2Controller implements Initializable
         
         s1 = Editing1Controller.useName;
         System.out.println(s1);
+        
         j = Editing1Controller.useSem;
         System.out.println(j);
         
         o = Editing1Controller.up;
         hide(o);
+        
+        
                 
         chzPostSSDwn();
        
@@ -57,12 +59,18 @@ public class Editing2Controller implements Initializable
         SSch.setTooltip(new Tooltip("Do not use , or ."));
         HSch.setTooltip(new Tooltip("Do not use , or ."));
         
+        n = DatabaseCon.connect();
+        operation();
+        
     }  
     
     
+    Connection n = null;
     
     public static int i, h;
     public int a;
+    
+    static String s1;
     
     @FXML
     private Label takeFocus;
@@ -82,13 +90,268 @@ public class Editing2Controller implements Initializable
         }
     }
     
+    @FXML
+    private Label delData;
     
+    void operation()
+    {
+        if(Editing1Controller.ui == 0)
+        {
+            update();
+        }
+        else if(Editing1Controller.ui == 1)
+        {
+            insert();
+        }
+    }
     
+    void insert()
+    {
+        s2 = 0; s3 = 0; s8 = 0; t2 = 0; t3 = 0; t8 = 0; t9 = 0; t10 = 0; t11 = 0; d1 = 0; d2 = 0; d3 = 0; d4 = 0; d5 = 0; d6 = 0;
+        e1 = 0; e2 = 0; e3 = 0; e4 = 0; e5 = 0; e6 = 0; e7 = 0; e8 = 0; p1 = 0; p2 = 0; p3 = 0; p4 = 0;
+        s4 = null; s5 = null; s6 = null; s7 = null; t4 = null; t5 = null; t6 = null; t7 = null; 
+        
+        delData.setVisible(false);
+       
+    }
     
+    void update()
+    {
+        delData.setVisible(true);
+         
+        try //to fill ssc 
+        {
+            Statement myStmt = n.createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.ssc_info where name = '" + Editing1Controller.useName +"';");
+            
+            while(myRs.next())
+            {
+                s1 = (myRs.getString(1)).toUpperCase();
+                s2 = myRs.getInt(2);
+                s3 = myRs.getInt(3);
+                s4 = myRs.getString(4).toUpperCase();
+                s5 = myRs.getString(5).toUpperCase();        
+                s6 = myRs.getString(6).toUpperCase();
+                s7 = myRs.getString(7).toUpperCase();        
+                s8 = myRs.getInt(8);
 
+                SPass.setText(Integer.toString(s2));
+                SRoll.setText(Integer.toString(s3));
+                SBrdDrpDwn.setText(s4);
+                SMed.setText(s5);
+                SSch.setText(s6);   
+                SCity.setText(s7);
+                SPentg.setText(Integer.toString(s8));
+
+            } 
+            
+        }
+        catch(Exception n)
+        {
+            System.out.println("check ssc");
+            n.printStackTrace();
+        }
+        
+        try // to fill hssc
+        {
+            Statement myStmt = n.createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.hssc_info where name = '" + Editing1Controller.useName +"';");
+            
+            while(myRs.next())
+            {
+                s1 = (myRs.getString(1)).toUpperCase();
+                t2 = myRs.getInt(2);
+                if(t2 > 0)
+                {
+                    HD = 0;
+                    PostSS.setText("HSSC");
+                    HPane.setVisible(true);
+                    DPane.setVisible(false);
+                }
+                t3 = myRs.getInt(3);
+                
+                t4 = myRs.getString(4);
+                if(myRs.getString(4) != null)
+                {
+                    t4 = myRs.getString(4).toUpperCase();
+                }
+                else
+                {
+                    t4 = myRs.getString(4);
+                }
+                
+                t5 = myRs.getString(5); 
+                if(myRs.getString(5) != null)
+                {
+                    t5 = myRs.getString(5).toUpperCase();
+                }
+                else
+                {
+                    t5 = myRs.getString(5);
+                }
+                
+                t6 = myRs.getString(6);
+                if(myRs.getString(6) != null)
+                {
+                    t6 = myRs.getString(6).toUpperCase();
+                }
+                else
+                {
+                    t6 = myRs.getString(6);
+                }
+                
+                t7 = myRs.getString(7);        
+                if(myRs.getString(7) != null)
+                {
+                    t7 = myRs.getString(7).toUpperCase();
+                }
+                else
+                {
+                    t7 = myRs.getString(7);
+                }
+                
+                t8 = myRs.getInt(8);
+                t9 = myRs.getInt(9);
+                t10 = myRs.getInt(10);
+                t11 = myRs.getInt(11);        
+                
+              
+                HPass.setText(Integer.toString(t2));
+                HRoll.setText(Integer.toString(t3));
+                HBrdDrpDwn.setText(t4);
+                HMed.setText(t5);
+                HSch.setText(t6);   
+                HCity.setText(t7);
+                HPentg.setText(Integer.toString(t8));
+                HM.setText(Integer.toString(t9));
+                HC.setText(Integer.toString(t10));
+                HP.setText(Integer.toString(t11));    
+
+            } 
+            
+        }
+        catch(Exception n)
+        {
+            System.out.println("check hssc");
+            n.printStackTrace();
+        }
+        
+        try // to fill diploma
+        {
+            Statement myStmt = n.createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.diploma_info where name = '" + Editing1Controller.useName +"';");
+            
+            while(myRs.next())
+            {
+                s1 = (myRs.getString(1)).toUpperCase();
+                d1 = myRs.getInt(2);
+                if(d1 > 0)
+                {
+                    HD = 1;
+                    PostSS.setText("DIPLOMA");
+                    HPane.setVisible(false);
+                    DPane.setVisible(true);
+                }
+                d2 = myRs.getInt(3);
+                d3 = myRs.getInt(4);
+                d4 = myRs.getInt(5);
+                d5 = myRs.getInt(6);
+                d6 = myRs.getInt(7);
+
+                DPentg1.setText(Integer.toString(d1));
+                DPentg2.setText(Integer.toString(d2));
+                DPentg3.setText(Integer.toString(d3));
+                DPentg4.setText(Integer.toString(d4));
+                DPentg5.setText(Integer.toString(d5));
+                DPentg6.setText(Integer.toString(d6));
+                
+            } 
+            
+        }
+        catch(Exception n)
+        {
+            System.out.println("check diploma");
+            n.printStackTrace();
+        }
+        
+        if(o == 1)
+        {
+            try // to fill Enginnering
+            {
+                Statement myStmt = n.createStatement();
+                ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.ug_info where name = '" + Editing1Controller.useName +"';");
+
+                while(myRs.next())
+                {
+                    s1 = (myRs.getString(1)).toUpperCase();
+                    selEPentg();                
+
+                    e1 = myRs.getInt(2);
+                    e2 = myRs.getInt(3);
+                    e3 = myRs.getInt(4);
+                    e4 = myRs.getInt(5);
+                    e5 = myRs.getInt(6);
+                    e6 = myRs.getInt(7);
+                    e7 = myRs.getInt(7);
+                    e8 = myRs.getInt(7);
+
+                    EPentg1.setText(Integer.toString(e1));
+                    EPentg2.setText(Integer.toString(e2));
+                    EPentg3.setText(Integer.toString(e3));
+                    EPentg4.setText(Integer.toString(e4));
+                    EPentg5.setText(Integer.toString(e5));
+                    EPentg6.setText(Integer.toString(e6));
+                    EPentg7.setText(Integer.toString(e6));
+                    EPentg8.setText(Integer.toString(e6));
+
+
+                } 
+
+            }
+            catch(Exception n)
+            {
+                System.out.println("check UG");
+                n.printStackTrace();
+            }
+        }
+        
+        else if(o == 0)
+        {
+            try // to fill PG
+            {
+                Statement myStmt = n.createStatement();
+                ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.pg_info where name = '" + Editing1Controller.useName +"';");
+
+                while(myRs.next())
+                {
+                    s1 = (myRs.getString(1)).toUpperCase();
+
+                    selPPentg();                
+
+                    p1 = myRs.getInt(2);
+                    p2 = myRs.getInt(3);
+                    p3 = myRs.getInt(4);
+                    p4 = myRs.getInt(5);
+
+                    PPentg1.setText(Integer.toString(p1));
+                    PPentg2.setText(Integer.toString(p2));
+                    PPentg3.setText(Integer.toString(p3));
+                    PPentg4.setText(Integer.toString(p4));
+                } 
+
+            }
+            catch(Exception n)
+            {
+                System.out.println("check PG");
+                n.printStackTrace();
+            }
+        }
+    }
+    
+    
     /////////////////////////////////////////////**Secondary School Fields**///////////////
-    static int  s3, s2, s8;
-    static String s1;
+    static int s3, s2, s8;
+    
     static String s4, s5, s6, s7;
     
     @FXML
@@ -300,30 +563,33 @@ public class Editing2Controller implements Initializable
     public void chzPostSSDwn()
     {
                 
-       HSSC.setOnAction(new EventHandler<ActionEvent>() 
+       if(Editing1Controller.ui == 1)
        {
-            public void handle(ActionEvent t) 
+            HSSC.setOnAction(new EventHandler<ActionEvent>() 
             {
-                PostSS.setText("HSSC");
-                HD = 1;
-                DPane.setVisible(false);
-                HPane.setVisible(true);
-            }
-       }
-       );
-       
-       
-       DIPLOMA.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                PostSS.setText("DIPLOMA");
-                HD = 2;
-                HPane.setVisible(false);
-                DPane.setVisible(true);
-            }
-       }
-       );
+                public void handle(ActionEvent t) 
+                {
+                    PostSS.setText("HSSC");
+                    HD = 0;
+                    DPane.setVisible(false);
+                    HPane.setVisible(true);
+                }
+           }
+           );
+
+
+           DIPLOMA.setOnAction(new EventHandler<ActionEvent>() 
+           {
+                public void handle(ActionEvent t) 
+                {
+                    PostSS.setText("DIPLOMA");
+                    HD = 1;
+                    HPane.setVisible(false);
+                    DPane.setVisible(true);
+                }
+           }
+           );
+        }
     }
     
     ///////////////////////////////////////////**High School Fields**/////////////////////////
@@ -331,8 +597,8 @@ public class Editing2Controller implements Initializable
     @FXML
     private Pane HPane;
     
-    static int t3, t2, t8, t9, t10, t11;
-    static String t4 = "null", t5 = "null", t6 = "null", t7 = "null";
+    static int t2, t3, t8, t9, t10, t11;
+    static String t4, t5, t6, t7;
     
     @FXML
     private JFXTextField HPass;
@@ -583,6 +849,7 @@ public class Editing2Controller implements Initializable
     private Pane DPane;
     
     static int d1, d2, d3, d4, d5, d6;    
+    
     @FXML
     private JFXTextField DPentg1;
     
@@ -838,7 +1105,7 @@ public class Editing2Controller implements Initializable
     
     public void getEPentg6()
     {   
-        
+
         try
         {
             EPentg6.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -890,7 +1157,7 @@ public class Editing2Controller implements Initializable
     
     public void selEPentg()
     { 
-        for(int count = 0; count<j-1 && o == 2; count++)
+        for(int count = 0; count<j-1 && o == 1; count++)
         {
             EList.get(count).setDisable(false);
         }
@@ -987,7 +1254,7 @@ public class Editing2Controller implements Initializable
     
     public void selPPentg()
     { 
-        for(int count = 0; count<j-1 && o == 1; count++)
+        for(int count = 0; count<j-1 && o == 0; count++)
         {
             PList.get(count).setDisable(false);
         }
@@ -1006,15 +1273,35 @@ public class Editing2Controller implements Initializable
         xyz.setPginfo(s1, p1, p2, p3, p4);
     }
     
-    public void delEdit2()
-    {
-       DatabaseIO d = new DatabaseIO();
-       d.DelSscinfo(Editing1Controller.useName); 
-       d.DelHsscinfo(Editing1Controller.useName); 
-       d.DelDipinfo(Editing1Controller.useName); 
-       d.DelUGinfo(Editing1Controller.useName); 
-       d.DelPGinfo(Editing1Controller.useName); 
+    public static void upValues()
+    {       
+        DatabaseIO xyz = new DatabaseIO();
+        xyz.UpSscinfo(s1, s2, s3, s4, s5, s6, s7, s8); 
+        xyz.UpHsscinfo(s1,  t2,  t3,  t4,  t5,  t6,  t7,  t8,  t11,  t10, t9);
+        xyz.UpDipinfo(s1, d1, d2, d3, d4, d5, d6);
+        xyz.UpUginfo(s1, e1, e2, e3, e4, e5, e6, e7, e8);
+        xyz.UpPginfo(s1, p1, p2, p3, p4);
     }
+    
+    public void delEdit2(MouseEvent event)
+    {
+        DatabaseIO d = new DatabaseIO();
+        d.DelBasicinfo(Editing1Controller.useName);
+       
+        try
+        {
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
     @FXML
     private Pane Edit2;
     
@@ -1073,9 +1360,9 @@ public class Editing2Controller implements Initializable
             appStage.show();
         } 
         catch (Exception ex) 
-          {
-            ex.printStackTrace();
-          }
+        {
+          ex.printStackTrace();
+        }
     }
     
 }

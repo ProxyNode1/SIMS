@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
+import java.sql.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -36,19 +37,108 @@ public class Editing3Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     {
         CEmail.requestFocus();
-        //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
-        try
+
+        if(Editing1Controller.ui  == 1)
         {
-            s1 = Editing1Controller.useName;
-            System.out.println(s1);
+            try
+            {
+                s1 = Editing1Controller.useName;
+                System.out.println(s1);
+                Editing1Controller.setValues();
+                e = 0;
+            }
+            catch(Exception x)
+            {
+                e = 1;
+                errbtn.setText("Check input fields again!"); 
+            }
         }
-        catch(Exception e)
-        {
-            errbtn.setText("Check input fields again!");
-        }
+        
         AddInfoField.setTooltip(new Tooltip("use '. ' after every statement. "));
-        Editing1Controller.setValues();
+                
+        h = DatabaseCon.connect();
+        operation();
+        
     }    
+    
+    int e = 0;
+    
+    Connection h = null;
+    
+    void operation()
+    {
+        if(Editing1Controller.ui == 0)
+        {
+            update();
+        }
+        else if(Editing1Controller.ui == 1)
+        {
+            insert();
+        }
+    }
+    
+    void insert()
+    {
+        h1 = null; h2 = null; h3 = null; h4 = null; h5 = null; h6 = null; 
+        e = 0;
+        delData.setVisible(false);
+       
+    }
+    
+    void update()
+    {
+        delData.setVisible(true);
+         
+        try 
+        {
+            Statement myStmt = h.createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.other_info where name = '" + Editing1Controller.useName +"';");
+            
+            while(myRs.next())
+            {
+                s1 = (myRs.getString(1)).toUpperCase();//
+                h1 = (myRs.getString(2)).toUpperCase();
+                if(myRs.getString(3) != null)
+                {
+                    h2 = myRs.getString(3).toUpperCase();
+                }
+                else
+                {
+                    h2 = myRs.getString(3);
+                }
+                h3 =  myRs.getString(4);
+                h4 =  myRs.getString(5);
+                boolean y =  myRs.getBoolean(6); 
+                h6 =  myRs.getString(7);
+              
+                CEmail.setText(h1);
+                Email.setText(h2);
+                DadCntct.setText(h3);
+                FamCntct.setText(h4);
+                if(y == true)
+                {
+                    CertifTick.setSelected(true);
+                    h5 = "true";
+                }
+                else
+                {
+                    CertifTick.setSelected(false);
+                    h5 = "false";
+                }
+                AddInfoField.setText(h6);      
+                
+                e = 0;
+            } 
+            
+        }
+        catch(Exception n)
+        {
+            System.out.println("check");
+            e = 1;
+            n.printStackTrace();
+        }
+        
+    }
     
 
     @FXML
@@ -57,11 +147,9 @@ public class Editing3Controller implements Initializable {
     @FXML
     private Pane Edit3;
    
-    String s1;
-    String h1 = null, h2 = null, h3 = null, h4 = null, h5 = null, h6 = null;
+    public static String s1;
+    public static String h1, h2, h3, h4, h5, h6;
     
-    @FXML
-    public Label errbtn;
     
     @FXML
     private JFXTextField Email;
@@ -88,7 +176,7 @@ public class Editing3Controller implements Initializable {
         {
             CEmail.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h1 = "'"+CEmail.getText()+"'";
-            System.out.println(h2);
+            System.out.println(h1);
 
         }
         
@@ -133,7 +221,7 @@ public class Editing3Controller implements Initializable {
         
         if(l.length() == 12)
         {
-            DadCntct.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            FamCntct.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h4 = l;
             System.out.println(h4);
             
@@ -141,8 +229,8 @@ public class Editing3Controller implements Initializable {
         else
         {
             System.out.println(l);
-            DadCntct.setText(null);
-            DadCntct.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            FamCntct.setText(null);
+            FamCntct.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h4 = null;
             System.out.println("check");
         }
@@ -175,17 +263,37 @@ public class Editing3Controller implements Initializable {
         }
     }
     
-    public void setValues()
+    public static void setValues()
     {
         DatabaseIO a = new DatabaseIO();
         
         a.setUlinfo(s1, h1, h2, h3, h4, h5, h6); 
     }
     
-    public void delEdit3()
+    public static void upValues()
     {
-       DatabaseIO d = new DatabaseIO();
-       d.DelUlinfo(Editing1Controller.useName); 
+        DatabaseIO a = new DatabaseIO();
+        
+        a.UpUlinfo(s1, h1, h2, h3, h4, h5, h6); 
+    }
+    
+    public void delEdit3(MouseEvent event)
+    {
+        DatabaseIO d = new DatabaseIO();
+        d.DelBasicinfo(Editing1Controller.useName);
+       
+        try
+        {
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     
    @FXML
@@ -227,25 +335,36 @@ public class Editing3Controller implements Initializable {
         }
     }
     
+    
+    @FXML
+    public Label errbtn;
+    
     @FXML
     private JFXButton SavBtn;
     public void toSave(MouseEvent event)
-     {
-        int e = 0;
+    {
+        
         try
         {
-            setValues();
-            Editing2Controller.setValues();
-            e = 0;
+            if(Editing1Controller.ui == 0)
+            {
+                Editing1Controller.upValues();
+                Editing2Controller.upValues();
+                upValues();
+                e = 0;
+            }
+            if(Editing1Controller.ui == 1)
+            {
+                setValues();
+                Editing2Controller.setValues();
+                e = 0;
+            }
         }
          
         catch (Exception ex) 
         {
             e = 1;
-            errbtn.setText("Check input fields again!");
             ex.printStackTrace();
-             
-            
         }
         
         if(e == 0)
@@ -262,6 +381,10 @@ public class Editing3Controller implements Initializable {
             {
                 System.out.println("page changing error!");
             }
+        }
+        if (e == 1)
+        {
+            errbtn.setText("Check input fields again!");
         }
     }
     

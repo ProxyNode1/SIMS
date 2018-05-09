@@ -4,6 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class DatabaseIO 
 {
@@ -328,96 +333,21 @@ public class DatabaseIO
     
     
     void DelBasicinfo(String s1)
-    {   String sql = "DELETE FROM studentinfoschema.basic_info WHERE name = " + s1 + ";";
-        try{
+    {   String sql = "DELETE FROM studentinfoschema.basic_info WHERE name = '" + s1 + "' ;";
+        try
+        {
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
             ps = null;
         }
         catch(Exception e)
         {
+            
             e.printStackTrace();
         }
     }
     
-    void DelSscinfo(String s1)
-    {   String sql = "DELETE FROM studentinfoschema.ssc_info WHERE name = " + s1 + ";";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
-    void DelHsscinfo(String s1)
-    {   String sql = "DELETE FROM studentinfoschema.hssc_info WHERE name = " + s1 + ";";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
-    void DelDipinfo(String s1)
-    {   String sql = "DELETE FROM studentinfoschema.diploma_info WHERE name = " + s1 + ";";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
-    void DelUGinfo(String s1)
-    {   String sql = "DELETE FROM studentinfoschema.ug_info WHERE name = " + s1 + ";";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
-    void DelPGinfo(String s1)
-    {   String sql = "DELETE FROM studentinfoschema.pg_info WHERE name = " + s1 + ";";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-           
-    void DelUlinfo(String s1)
-    {   String sql = "DELETE FROM studentinfoschema.other_info WHERE name = " + s1 + ";";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
+       
     
     void UpBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
     {   

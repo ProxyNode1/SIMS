@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,7 +19,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -125,7 +123,7 @@ public class HomePageController implements Initializable
     private JFXButton addRow;
     public void toEdit(MouseEvent event) //this function allow add new person to the database and show them in table, after filling their details
     {
-        
+        Editing1Controller.ui = 1;
         
         try {
            
@@ -149,13 +147,19 @@ public class HomePageController implements Initializable
     
     public void clickItem(MouseEvent event) //this will allow to view info of students
     {
+        
         if(event.getClickCount() == 2) //on double click
         {
-            //StatusBtn0.setVisible(true);
-            
-            /*try 
+            try 
             {
-
+                InputClass person = Table.getSelectionModel().getSelectedItem();
+                String x = person.getName(); 
+                
+                String b = x.replaceAll("\\s+","");
+                System.out.println(b);
+                Editing1Controller.useName = b;
+                Editing1Controller.ui = 0;
+            
                 Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
                 Scene editPg1Scene = new Scene(editPag1);
                 Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -166,9 +170,8 @@ public class HomePageController implements Initializable
             catch (Exception ex) 
             {
                 ex.printStackTrace();
-            }*/
-            
-            
+            }
+
         }
     }
 

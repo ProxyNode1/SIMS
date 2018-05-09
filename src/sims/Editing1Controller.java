@@ -6,9 +6,9 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 import com.jfoenix.controls.JFXTextField;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -39,26 +39,164 @@ public class Editing1Controller implements Initializable {
         chzEduDrpDwn();
         chzDeptDrpDwn();
         chzDobMnth();
-                
+        
+        h = DatabaseCon.connect();
+        
         NamFld.setTooltip(new Tooltip ("use Fullname"));
         DobYear.setTooltip(new Tooltip("eg. 1997"));
         SemFld.setTooltip(new Tooltip("verify Graduation level before input"));
+        
+        operation();
     }    
     
     
     public static String a, useName;
-    public static int up, useSem, iu = 0;
-    
-    
+    public static int useSem;
+    public static int up, ui = 1;
+
     @FXML
     private Label delData;
     
     @FXML
     private Pane Edit1;
     
+    Connection h = null;   
+    
     public static String s1, s2, s3, s4, s6, s7, s72;
     public static int s5, s71, s73;  
     
+    void operation()
+    {
+        if(ui == 0)
+        {
+            update();
+        }
+        else if(ui == 1)
+        {
+            insert();
+        }
+            
+    }
+    
+    void insert()
+    {
+        s1 = null; s2 = null; s3 = null; s4 = null; s6 = null; s7 = null; s72 = null;
+        s5 = 0; s71 = 0; s73 = 0; 
+        
+        delData.setVisible(false);
+        
+        
+    }
+    void update()
+    {
+        delData.setVisible(true);
+         
+        try 
+        {
+            Statement myStmt = h.createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.basic_info where name = '"+ useName +"'");
+            while(myRs.next())
+            {
+                s1 = (myRs.getString(1)).toUpperCase();
+                s2 = (myRs.getString(2)).toUpperCase();
+                s3 = (myRs.getString(3)).toUpperCase();
+                String n = (myRs.getString(4)).toUpperCase();
+                if(n.equalsIgnoreCase("UG"))
+                {
+                    up = 1;
+                    s4 = n;
+                }
+                else if(n.equalsIgnoreCase("PG"))
+                {
+                    up = 0;
+                    s4 = n;
+                }
+                s5 =  myRs.getInt(5);
+                useSem = s5;
+                
+                s6 = (myRs.getString(6)).toUpperCase(); 
+
+                String xyzs = myRs.getString(7);
+                
+                String[] strArray = xyzs.split("\\-");
+                
+                String[] s = new String[3];
+                for(int i = 0; i<3; i++) 
+                {
+                    s[i] = strArray[i]; 
+                }
+                s71 = Integer.parseInt(s[0]);
+                s72 = s[1];       
+                s73 = Integer.parseInt(s[2]);
+                    
+                NamFld.setText(s1);
+                IdFld.setText(s2);
+                DeptDrpDwn.setText(s3);
+                EduDrpDwn.setText(s4);
+                SemFld.setText(Integer.toString(s5));            
+                CntctFld.setText(s6); 
+                DobYear.setText(s[0]);
+                DobDay.setText(s[2]);
+                int x =  Integer.parseInt(s[1]);
+                if(x == 1)
+                {
+                    DobMnth.setText("January");
+                }
+                else if(x == 2)
+                {
+                    DobMnth.setText("February");
+                }
+                else if(x == 3)
+                {
+                    DobMnth.setText("March");
+                }
+                else if(x == 4)
+                {
+                    DobMnth.setText("April");
+                }
+                else if(x == 5)
+                {
+                    DobMnth.setText("May");
+                }
+                else if(x == 6)
+                {
+                    DobMnth.setText("June");
+                }
+                else if(x == 7)
+                {
+                    DobMnth.setText("July");
+                }
+                else if(x == 8)
+                {
+                    DobMnth.setText("August");
+                }
+                if(x == 9)
+                {
+                    DobMnth.setText("September");
+                }
+                if(x == 10)
+                {
+                    DobMnth.setText("October");
+                }
+                if(x == 11)
+                {
+                    DobMnth.setText("November");
+                }
+                if(x == 12)
+                {
+                    DobMnth.setText("December");
+                }
+                
+            } 
+            //upValues();
+        }
+        catch(Exception e)
+        {
+            System.out.println("check");
+            e.printStackTrace();
+        }
+        
+    }
     @FXML
     private JFXTextField NamFld;
     public void getName()
@@ -170,7 +308,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 EduDrpDwn.setText("Postgraduation");
-                up = 1;
+                up = 0; //set to disable
                 String ab  = "PG";
                 s4 = "'"+ab+"'";
                 System.out.println(s4);
@@ -186,7 +324,7 @@ public class Editing1Controller implements Initializable {
             public void handle(ActionEvent t) 
             {
                 EduDrpDwn.setText("Undergraduation");
-                up = 2;
+                up = 1;//set to disable
                 String ab  = "UG";
                 s4 = "'"+ab+"'";
                 System.out.println(s4);
@@ -203,7 +341,7 @@ public class Editing1Controller implements Initializable {
     public void getSem()
     {       
         int l = Integer.parseInt(SemFld.getText());
-        if(up == 2 && l<=9 && l>0)
+        if(up == 1 && l<=9 && l>0)
         {   
             SemFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s5 = l;
@@ -211,7 +349,7 @@ public class Editing1Controller implements Initializable {
             System.out.println(s5);
         }
         
-        else if(up == 1 && l<=5 && l>0)
+        else if(up == 0 && l<=5 && l>0)
         {   
             SemFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s5 = l;
@@ -508,11 +646,31 @@ public class Editing1Controller implements Initializable {
         d.setBasicinfo(s1, s2, s3, s4, s5, s6, s7); 
     }
     
-    public void delEdit1()
+    public static void upValues()
     {
-       DatabaseIO d = new DatabaseIO();
-       d.DelBasicinfo(useName); 
+        DatabaseIO d = new DatabaseIO();
+        d.UpBasicinfo(s1, s2, s3, s4, s5, s6, s7); 
     }
+    
+    public void delEdit1(MouseEvent event)
+    {
+        DatabaseIO d = new DatabaseIO();
+        d.DelBasicinfo(Editing1Controller.useName);
+       
+        try
+        {
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
     @FXML
     private Label BtnTo2;
     
@@ -562,6 +720,7 @@ public class Editing1Controller implements Initializable {
     {
         try 
         {
+            
             Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
             Scene editPg1Scene = new Scene(editPag1);
             Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();

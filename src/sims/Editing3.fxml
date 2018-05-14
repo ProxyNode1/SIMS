@@ -41,7 +41,7 @@
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="Email" focusColor="WHITE" labelFloat="true" layoutX="598.0" layoutY="140.0" onAction="#getEmail" prefHeight="42.0" prefWidth="212.0" promptText="Personal Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
+      <JFXTextField fx:id="PEmail" focusColor="WHITE" labelFloat="true" layoutX="598.0" layoutY="140.0" onAction="#getPEmail" prefHeight="42.0" prefWidth="212.0" promptText="Personal Email" style="-fx-text-fill: #ffffff; -fx-prompt-text-fill: #ffffff; -fx-border-width: 1; -fx-border-color: #ffffff;" stylesheets="@Common.css" unFocusColor="#212121">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -114,7 +114,7 @@
             <Font name="Roboto" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="delData" contentDisplay="TOP" layoutX="1210.0" layoutY="78.0" onMouseClicked="#delEdit3" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE" visible="false">
+      <Label fx:id="delData" contentDisplay="TOP" layoutX="1200.0" layoutY="68.0" onMouseClicked="#delEdit" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE" visible="false">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -39,7 +39,7 @@ public class HomePageController implements Initializable
         
         h = DatabaseCon.connect();
         
-        String g = Editing1Controller.useName;
+        String g = Editing1Controller.oldName;
         TableOP();
     }
     
@@ -85,11 +85,7 @@ public class HomePageController implements Initializable
             ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.basic_info");
             while(myRs.next())
             {
-                
-                ip.add(new InputClass("   "+myRs.getString(2), "   "+myRs.getString(1), "   "+myRs.getString(3), "   "+myRs.getInt(5), "   "+myRs.getString(4), "   "+myRs.getString(6)));
-                /*String s = myRs.getString(2); //2 is the column number
-                System.out.println(s); 
-                System.out.println(myRs.getInt(1)); */
+                ip.add(new InputClass("   "+myRs.getString(2), "   "+myRs.getString(1).toUpperCase(), "   "+myRs.getString(3).toUpperCase(), "   "+myRs.getInt(5), "   "+myRs.getString(4).toUpperCase(), "   "+myRs.getString(6)));
             }
         }
         
@@ -108,17 +104,11 @@ public class HomePageController implements Initializable
         
         Table.setItems(null);
         Table.setItems(ip);
-        //Table.getColumns().addAll(clgIDCol, nameCol, branchCol, CsemCol, currentEduCol, contactCol);
     }
     
-    
-    
- 
     @FXML
     private Pane Mpage;
-     
-    
-        
+
     @FXML
     private JFXButton addRow;
     public void toEdit(MouseEvent event) //this function allow add new person to the database and show them in table, after filling their details
@@ -155,9 +145,9 @@ public class HomePageController implements Initializable
                 InputClass person = Table.getSelectionModel().getSelectedItem();
                 String x = person.getName(); 
                 
-                String b = x.replaceAll("\\s+","");
+                String b = x.trim();
                 System.out.println(b);
-                Editing1Controller.useName = b;
+                (Editing1Controller.oldName) = b;
                 Editing1Controller.ui = 0;
             
                 Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));

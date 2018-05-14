@@ -10,11 +10,14 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import java.sql.*;
+import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
@@ -42,7 +45,7 @@ public class Editing3Controller implements Initializable {
         {
             try
             {
-                s1 = Editing1Controller.useName;
+                s1 = Editing1Controller.newName;
                 System.out.println(s1);
                 Editing1Controller.setValues();
                 e = 0;
@@ -58,7 +61,7 @@ public class Editing3Controller implements Initializable {
                 
         h = DatabaseCon.connect();
         operation();
-        
+
     }    
     
     int e = 0;
@@ -81,8 +84,7 @@ public class Editing3Controller implements Initializable {
     {
         h1 = null; h2 = null; h3 = null; h4 = null; h5 = null; h6 = null; 
         e = 0;
-        delData.setVisible(false);
-       
+        delData.setVisible(false);       
     }
     
     void update()
@@ -92,41 +94,62 @@ public class Editing3Controller implements Initializable {
         try 
         {
             Statement myStmt = h.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.other_info where name = '" + Editing1Controller.useName +"';");
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.other_info where name = '" + Editing1Controller.oldName +"';");
             
             while(myRs.next())
             {
-                s1 = (myRs.getString(1)).toUpperCase();//
-                h1 = (myRs.getString(2)).toUpperCase();
+                
+                s1 = myRs.getString(1);
+                
+                CEmail.setText((myRs.getString(2)).toUpperCase());
+                                
                 if(myRs.getString(3) != null)
                 {
-                    h2 = myRs.getString(3).toUpperCase();
+                    PEmail.setText(myRs.getString(3).toUpperCase());
                 }
-                else
+                else if(myRs.getString(3) == null)
                 {
-                    h2 = myRs.getString(3);
+                    PEmail.setText("");
                 }
-                h3 =  myRs.getString(4);
-                h4 =  myRs.getString(5);
-                boolean y =  myRs.getBoolean(6); 
-                h6 =  myRs.getString(7);
-              
-                CEmail.setText(h1);
-                Email.setText(h2);
-                DadCntct.setText(h3);
-                FamCntct.setText(h4);
+                
+                DadCntct.setText(myRs.getString(4));
+                
+                if(myRs.getString(5) != null)
+                {
+                    FamCntct.setText(myRs.getString(5).toUpperCase());
+                }
+                else if(myRs.getString(5) == null)
+                {
+                    FamCntct.setText(myRs.getString(5));
+                }
+               
+                boolean y =  myRs.getBoolean(6);
                 if(y == true)
                 {
                     CertifTick.setSelected(true);
-                    h5 = "true";
                 }
                 else
                 {
                     CertifTick.setSelected(false);
-                    h5 = "false";
                 }
-                AddInfoField.setText(h6);      
                 
+                
+                if(myRs.getString(5) != null)
+                {
+                    AddInfoField.setText(myRs.getString(7));
+                }
+                else if(myRs.getString(5) == null)
+                {
+                    AddInfoField.setText("");
+                }
+                
+                h1 = "'"+myRs.getString(2)+"'";
+                h2 = "'"+myRs.getString(3)+"'";
+                h3 = "'"+myRs.getString(4)+"'";
+                h4 = "'"+myRs.getString(5)+"'";
+                h5 = "'"+myRs.getBoolean(6)+"'";
+                h6 = "'"+myRs.getString(7)+"'";
+                         
                 e = 0;
             } 
             
@@ -152,10 +175,10 @@ public class Editing3Controller implements Initializable {
     
     
     @FXML
-    private JFXTextField Email;
-    public void getEmail()
+    private JFXTextField PEmail;
+    public void getPEmail()
     {   
-              h2 = "'"+Email.getText()+"'";
+              h2 = "'"+PEmail.getText()+"'";
             System.out.println(h2);
         
     }
@@ -267,32 +290,45 @@ public class Editing3Controller implements Initializable {
     {
         DatabaseIO a = new DatabaseIO();
         
-        a.setUlinfo(s1, h1, h2, h3, h4, h5, h6); 
+        a.setUlinfo("'"+s1+"'", h1, h2, h3, h4, h5, h6); 
     }
     
     public static void upValues()
     {
         DatabaseIO a = new DatabaseIO();
         
-        a.UpUlinfo(s1, h1, h2, h3, h4, h5, h6); 
+        a.UpUlinfo("'"+s1+"'", h1, h2, h3, h4, h5, h6); 
     }
     
-    public void delEdit3(MouseEvent event)
+    public void delEdit(MouseEvent event)
     {
-        DatabaseIO d = new DatabaseIO();
-        d.DelBasicinfo(Editing1Controller.useName);
-       
-        try
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete data");
+        alert.setHeaderText("Are you sure you want to delete data of "+ Editing1Controller.oldName+ "?");
+        alert.setContentText("If you delete this, it wil be removed from database.");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK)
         {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-        }
-        catch(Exception e)
+            DatabaseIO d = new DatabaseIO();
+            d.DelBasicinfo();
+
+            try
+            {
+                Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+                Scene editPg1Scene = new Scene(editPag1);
+                Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                appStage.setScene(editPg1Scene);
+                appStage.show();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        } 
+        else 
         {
-            e.printStackTrace();
+            // ... user chose CANCEL or closed the dialog
         }
     }
     

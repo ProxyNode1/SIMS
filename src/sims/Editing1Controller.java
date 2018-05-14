@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,6 +17,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton; 
 import javafx.scene.input.MouseEvent;
@@ -50,7 +54,7 @@ public class Editing1Controller implements Initializable {
     }    
     
     
-    public static String a, useName;
+    public static String a, oldName;
     public static int useSem;
     public static int up, ui = 1;
 
@@ -62,7 +66,8 @@ public class Editing1Controller implements Initializable {
     
     Connection h = null;   
     
-    public static String s1, s2, s3, s4, s6, s7, s72;
+    public static String newName;
+    public static String s2, s3, s4, s6, s7, s72;
     public static int s5, s71, s73;  
     
     void operation()
@@ -80,7 +85,7 @@ public class Editing1Controller implements Initializable {
     
     void insert()
     {
-        s1 = null; s2 = null; s3 = null; s4 = null; s6 = null; s7 = null; s72 = null;
+        newName = null; s2 = null; s3 = null; s4 = null; s6 = null; s7 = null; s72 = null;
         s5 = 0; s71 = 0; s73 = 0; 
         
         delData.setVisible(false);
@@ -94,32 +99,38 @@ public class Editing1Controller implements Initializable {
         try 
         {
             Statement myStmt = h.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.basic_info where name = '"+ useName +"'");
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.basic_info where name = '"+ oldName +"'");
             while(myRs.next())
             {
-                s1 = (myRs.getString(1)).toUpperCase();
-                s2 = (myRs.getString(2)).toUpperCase();
-                s3 = (myRs.getString(3)).toUpperCase();
-                String n = (myRs.getString(4)).toUpperCase();
-                if(n.equalsIgnoreCase("UG"))
+                NamFld.setText((myRs.getString(1)).toUpperCase());
+                oldName = myRs.getString(1);
+                newName = oldName;
+                
+                IdFld.setText((myRs.getString(2)).toUpperCase());
+                DeptDrpDwn.setText(myRs.getString(3).toUpperCase());
+                
+                String n = myRs.getString(4);
+                System.out.println(n);
+                if(n.equalsIgnoreCase("Undergraduation"))
                 {
                     up = 1;
-                    s4 = n;
+                    EduDrpDwn.setText("Undergraduation");
+                    s4 = "'"+n+"'";
                 }
-                else if(n.equalsIgnoreCase("PG"))
+                else if(n.equalsIgnoreCase("Postgraduation"))
                 {
+                    System.out.println(n);
                     up = 0;
-                    s4 = n;
+                    EduDrpDwn.setText("Postgraduation");
+                    s4 = "'"+n+"'";
                 }
-                s5 =  myRs.getInt(5);
-                useSem = s5;
                 
-                s6 = (myRs.getString(6)).toUpperCase(); 
-
-                String xyzs = myRs.getString(7);
+                SemFld.setText(Integer.toString(myRs.getInt(5))); 
                 
+                CntctFld.setText((myRs.getString(6)).toUpperCase()); 
+                
+                String xyzs = myRs.getString(7);                
                 String[] strArray = xyzs.split("\\-");
-                
                 String[] s = new String[3];
                 for(int i = 0; i<3; i++) 
                 {
@@ -128,13 +139,6 @@ public class Editing1Controller implements Initializable {
                 s71 = Integer.parseInt(s[0]);
                 s72 = s[1];       
                 s73 = Integer.parseInt(s[2]);
-                    
-                NamFld.setText(s1);
-                IdFld.setText(s2);
-                DeptDrpDwn.setText(s3);
-                EduDrpDwn.setText(s4);
-                SemFld.setText(Integer.toString(s5));            
-                CntctFld.setText(s6); 
                 DobYear.setText(s[0]);
                 DobDay.setText(s[2]);
                 int x =  Integer.parseInt(s[1]);
@@ -187,8 +191,19 @@ public class Editing1Controller implements Initializable {
                     DobMnth.setText("December");
                 }
                 
+                s2 = "'"+myRs.getString(2)+"'";
+                s3 = "'"+myRs.getString(3)+"'";
+                
+                int g =  myRs.getInt(5);
+                System.out.println(g);
+                useSem = g;
+                s5 = g;
+                
+                s6 = "'"+myRs.getString(6)+"'"; 
+                s7 = "'"+ myRs.getString(7) +"'";
+
             } 
-            //upValues();
+            
         }
         catch(Exception e)
         {
@@ -202,22 +217,20 @@ public class Editing1Controller implements Initializable {
     public void getName()
     {       
         String l = NamFld.getText();
-        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        if(l.matches("^[ A-Za-z]+$") == false || l.length() == 0)
         { 
             NamFld.setText(null);
             NamFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("false"); 
-            s1 = null;
+            newName = null;
         } 
         else 
         { 
             NamFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s1 = "'"+l+"'";
-            System.out.println(s1);
-            useName = s1;
+            newName = l;
+            System.out.println(newName);
         }
-        
-        
+
     }
     
     @FXML
@@ -309,7 +322,7 @@ public class Editing1Controller implements Initializable {
             {
                 EduDrpDwn.setText("Postgraduation");
                 up = 0; //set to disable
-                String ab  = "PG";
+                String ab  = "Postgraduation";
                 s4 = "'"+ab+"'";
                 System.out.println(s4);
                 useSem = 0;
@@ -325,7 +338,7 @@ public class Editing1Controller implements Initializable {
             {
                 EduDrpDwn.setText("Undergraduation");
                 up = 1;//set to disable
-                String ab  = "UG";
+                String ab  = "Undergraduation";
                 s4 = "'"+ab+"'";
                 System.out.println(s4);
                 useSem = 0;
@@ -643,31 +656,44 @@ public class Editing1Controller implements Initializable {
     public static void setValues()
     {
         DatabaseIO d = new DatabaseIO();
-        d.setBasicinfo(s1, s2, s3, s4, s5, s6, s7); 
+        d.setBasicinfo("'"+newName+"'", s2, s3, s4, s5, s6, s7); 
     }
     
     public static void upValues()
     {
         DatabaseIO d = new DatabaseIO();
-        d.UpBasicinfo(s1, s2, s3, s4, s5, s6, s7); 
+        d.UpBasicinfo("'"+newName+"'", s2, s3, s4, s5, s6, s7); 
     }
     
-    public void delEdit1(MouseEvent event)
+    public void delEdit(MouseEvent event)
     {
-        DatabaseIO d = new DatabaseIO();
-        d.DelBasicinfo(Editing1Controller.useName);
-       
-        try
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Delete data");
+        alert.setHeaderText("Are you sure you want to delete data of "+ Editing1Controller.oldName+ "?");
+        alert.setContentText("If you delete this, it wil be removed from database.");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK)
         {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-        }
-        catch(Exception e)
+            DatabaseIO d = new DatabaseIO();
+            d.DelBasicinfo();
+
+            try
+            {
+                Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+                Scene editPg1Scene = new Scene(editPag1);
+                Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                appStage.setScene(editPg1Scene);
+                appStage.show();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        } 
+        else 
         {
-            e.printStackTrace();
+            // ... user chose CANCEL or closed the dialog
         }
     }
     
@@ -676,8 +702,7 @@ public class Editing1Controller implements Initializable {
     
     public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {
-        
-        
+
         try {
            
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));

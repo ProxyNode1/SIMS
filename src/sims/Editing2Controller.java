@@ -9,6 +9,7 @@ import java.sql.*;
 import javafx.scene.input.MouseEvent;
 import com.jfoenix.controls.JFXTextField;
 import java.util.List;
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,6 +17,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -40,7 +43,7 @@ public class Editing2Controller implements Initializable
         chzHBrdDrpDwn();
         chzSBrdDrpDwn();
         
-        s1 = Editing1Controller.useName;
+        s1 = Editing1Controller.newName;
         System.out.println(s1);
         
         j = Editing1Controller.useSem;
@@ -72,8 +75,6 @@ public class Editing2Controller implements Initializable
     
     static String s1;
     
-    @FXML
-    private Label takeFocus;
     
     public  void disableGrad()
     {
@@ -122,26 +123,60 @@ public class Editing2Controller implements Initializable
         try //to fill ssc 
         {
             Statement myStmt = n.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.ssc_info where name = '" + Editing1Controller.useName +"';");
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.ssc_info where name = '" + Editing1Controller.oldName +"';");
             
             while(myRs.next())
             {
-                s1 = (myRs.getString(1)).toUpperCase();
+                s1 = myRs.getString(1);
+                SPass.setText(Integer.toString(myRs.getInt(2)));
+                SRoll.setText(Integer.toString(myRs.getInt(3)));
+                
+                String n = myRs.getString(4);
+                System.out.println(n);
+                if(n.equalsIgnoreCase("CBSE"))
+                {
+                    SBrdDrpDwn.setText("CBSE");
+                    s4 = "'"+n+"'";
+                }
+                else if(n.equalsIgnoreCase("CISCE"))
+                {
+                    System.out.println(n);
+                    SBrdDrpDwn.setText("CISCE");
+                    s4 = "'"+n+"'";
+                }
+                
+                else if(n.equalsIgnoreCase("STATE"))
+                {
+                    System.out.println(n);
+                    SBrdDrpDwn.setText("STATE");
+                    s4 = "'"+n+"'";
+                }
+                
+                else if(n.equalsIgnoreCase("IBO"))
+                {
+                    System.out.println(n);
+                    SBrdDrpDwn.setText("IBO");
+                    s4 = "'"+n+"'";
+                }
+                
+                else if(n.equalsIgnoreCase("CIE"))
+                {
+                    System.out.println(n);
+                    SBrdDrpDwn.setText("CIE");
+                    s4 = "'"+n+"'";
+                }
+
+                SMed.setText(myRs.getString(5).toUpperCase());
+                SSch.setText(myRs.getString(6).toUpperCase());   
+                SCity.setText(myRs.getString(7).toUpperCase());
+                SPentg.setText(Integer.toString(myRs.getInt(8)));
+
                 s2 = myRs.getInt(2);
                 s3 = myRs.getInt(3);
-                s4 = myRs.getString(4).toUpperCase();
-                s5 = myRs.getString(5).toUpperCase();        
-                s6 = myRs.getString(6).toUpperCase();
-                s7 = myRs.getString(7).toUpperCase();        
+                s5 = "'"+myRs.getString(5).toUpperCase()+"'";        
+                s6 = "'"+myRs.getString(6).toUpperCase()+"'";
+                s7 = "'"+myRs.getString(7).toUpperCase()+"'";        
                 s8 = myRs.getInt(8);
-
-                SPass.setText(Integer.toString(s2));
-                SRoll.setText(Integer.toString(s3));
-                SBrdDrpDwn.setText(s4);
-                SMed.setText(s5);
-                SSch.setText(s6);   
-                SCity.setText(s7);
-                SPentg.setText(Integer.toString(s8));
 
             } 
             
@@ -155,80 +190,105 @@ public class Editing2Controller implements Initializable
         try // to fill hssc
         {
             Statement myStmt = n.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.hssc_info where name = '" + Editing1Controller.useName +"';");
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.hssc_info where name = '" + Editing1Controller.oldName +"';");
             
             while(myRs.next())
             {
                 s1 = (myRs.getString(1)).toUpperCase();
-                t2 = myRs.getInt(2);
-                if(t2 > 0)
+                
+                int l = myRs.getInt(2);
+                if(l > 0)
                 {
                     HD = 0;
                     PostSS.setText("HSSC");
                     HPane.setVisible(true);
                     DPane.setVisible(false);
                 }
-                t3 = myRs.getInt(3);
                 
-                t4 = myRs.getString(4);
-                if(myRs.getString(4) != null)
+                HPass.setText(Integer.toString(myRs.getInt(2)));
+                
+                HRoll.setText(Integer.toString(myRs.getInt(3)));
+                
+                               
+                String n = myRs.getString(4);
+                System.out.println(n);
+                if(n.equalsIgnoreCase("CBSE"))
                 {
-                    t4 = myRs.getString(4).toUpperCase();
+                    HBrdDrpDwn.setText("CBSE");
+                    t4 = "'"+n+"'";
                 }
-                else
+                else if(n.equalsIgnoreCase("CISCE"))
                 {
-                    t4 = myRs.getString(4);
+                    System.out.println(n);
+                    HBrdDrpDwn.setText("CISCE");
+                    t4 = "'"+n+"'";
                 }
                 
-                t5 = myRs.getString(5); 
+                else if(n.equalsIgnoreCase("STATE"))
+                {
+                    System.out.println(n);
+                    HBrdDrpDwn.setText("STATE");
+                    t4 = "'"+n+"'";
+                }
+                
+                else if(n.equalsIgnoreCase("IBO"))
+                {
+                    System.out.println(n);
+                    HBrdDrpDwn.setText("IBO");
+                    t4 = "'"+n+"'";
+                }
+                
+                else if(n.equalsIgnoreCase("CIE"))
+                {
+                    System.out.println(n);
+                    HBrdDrpDwn.setText("CIE");
+                    t4 = "'"+n+"'";
+                }
+                
+                
                 if(myRs.getString(5) != null)
                 {
-                    t5 = myRs.getString(5).toUpperCase();
+                    HMed.setText(myRs.getString(5).toUpperCase());
                 }
                 else
                 {
-                    t5 = myRs.getString(5);
+                    HMed.setText(myRs.getString(5));
                 }
-                
-                t6 = myRs.getString(6);
+                                
                 if(myRs.getString(6) != null)
                 {
-                    t6 = myRs.getString(6).toUpperCase();
+                    HSch.setText(myRs.getString(6).toUpperCase());
                 }
                 else
                 {
-                    t6 = myRs.getString(6);
+                    HSch.setText(myRs.getString(6));
                 }
-                
-                t7 = myRs.getString(7);        
+
                 if(myRs.getString(7) != null)
                 {
-                    t7 = myRs.getString(7).toUpperCase();
+                    HCity.setText(myRs.getString(7).toUpperCase());
                 }
                 else
                 {
-                    t7 = myRs.getString(7);
+                    HCity.setText(myRs.getString(7));
                 }
                 
+                HPentg.setText(Integer.toString(t8));
+                HM.setText(Integer.toString(t9));
+                HC.setText(Integer.toString(t10));
+                HP.setText(Integer.toString(t11));
+                
+
+                t2 = myRs.getInt(2);
+                t3 = myRs.getInt(3);
+                t5 = "'"+myRs.getString(5)+"'"; 
+                t6 = "'"+myRs.getString(6)+"'";
+                t7 = "'"+myRs.getString(7)+"'";        
                 t8 = myRs.getInt(8);
                 t9 = myRs.getInt(9);
                 t10 = myRs.getInt(10);
                 t11 = myRs.getInt(11);        
-                
-              
-                HPass.setText(Integer.toString(t2));
-                HRoll.setText(Integer.toString(t3));
-                HBrdDrpDwn.setText(t4);
-                HMed.setText(t5);
-                HSch.setText(t6);   
-                HCity.setText(t7);
-                HPentg.setText(Integer.toString(t8));
-                HM.setText(Integer.toString(t9));
-                HC.setText(Integer.toString(t10));
-                HP.setText(Integer.toString(t11));    
-
-            } 
-            
+            }   
         }
         catch(Exception n)
         {
@@ -239,31 +299,34 @@ public class Editing2Controller implements Initializable
         try // to fill diploma
         {
             Statement myStmt = n.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.diploma_info where name = '" + Editing1Controller.useName +"';");
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.diploma_info where name = '" + Editing1Controller.oldName +"';");
             
             while(myRs.next())
             {
                 s1 = (myRs.getString(1)).toUpperCase();
-                d1 = myRs.getInt(2);
-                if(d1 > 0)
+                int l = myRs.getInt(2);
+                if(l > 0)
                 {
                     HD = 1;
                     PostSS.setText("DIPLOMA");
                     HPane.setVisible(false);
                     DPane.setVisible(true);
                 }
+                
+                DPentg1.setText(Integer.toString(myRs.getInt(2)));
+                DPentg2.setText(Integer.toString(myRs.getInt(3)));
+                DPentg3.setText(Integer.toString(myRs.getInt(4)));
+                DPentg4.setText(Integer.toString(myRs.getInt(5)));
+                DPentg5.setText(Integer.toString(myRs.getInt(6)));
+                DPentg6.setText(Integer.toString(myRs.getInt(7)));
+                
+                
+                d2 = myRs.getInt(2);
                 d2 = myRs.getInt(3);
                 d3 = myRs.getInt(4);
                 d4 = myRs.getInt(5);
                 d5 = myRs.getInt(6);
                 d6 = myRs.getInt(7);
-
-                DPentg1.setText(Integer.toString(d1));
-                DPentg2.setText(Integer.toString(d2));
-                DPentg3.setText(Integer.toString(d3));
-                DPentg4.setText(Integer.toString(d4));
-                DPentg5.setText(Integer.toString(d5));
-                DPentg6.setText(Integer.toString(d6));
                 
             } 
             
@@ -279,31 +342,32 @@ public class Editing2Controller implements Initializable
             try // to fill Enginnering
             {
                 Statement myStmt = n.createStatement();
-                ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.ug_info where name = '" + Editing1Controller.useName +"';");
+                ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.ug_info where name = '" + Editing1Controller.oldName +"';");
 
                 while(myRs.next())
                 {
                     s1 = (myRs.getString(1)).toUpperCase();
                     selEPentg();                
 
+                    EPentg1.setText(Integer.toString(myRs.getInt(2)));
+                    EPentg2.setText(Integer.toString(myRs.getInt(3)));
+                    EPentg3.setText(Integer.toString(myRs.getInt(4)));
+                    EPentg4.setText(Integer.toString(myRs.getInt(5)));
+                    EPentg5.setText(Integer.toString(myRs.getInt(6)));
+                    EPentg6.setText(Integer.toString(myRs.getInt(7)));
+                    EPentg7.setText(Integer.toString(myRs.getInt(8)));
+                    EPentg8.setText(Integer.toString(myRs.getInt(9)));
+                    
                     e1 = myRs.getInt(2);
                     e2 = myRs.getInt(3);
                     e3 = myRs.getInt(4);
                     e4 = myRs.getInt(5);
                     e5 = myRs.getInt(6);
                     e6 = myRs.getInt(7);
-                    e7 = myRs.getInt(7);
-                    e8 = myRs.getInt(7);
+                    e7 = myRs.getInt(8);
+                    e8 = myRs.getInt(9);
 
-                    EPentg1.setText(Integer.toString(e1));
-                    EPentg2.setText(Integer.toString(e2));
-                    EPentg3.setText(Integer.toString(e3));
-                    EPentg4.setText(Integer.toString(e4));
-                    EPentg5.setText(Integer.toString(e5));
-                    EPentg6.setText(Integer.toString(e6));
-                    EPentg7.setText(Integer.toString(e6));
-                    EPentg8.setText(Integer.toString(e6));
-
+                    delEPentg();
 
                 } 
 
@@ -320,7 +384,7 @@ public class Editing2Controller implements Initializable
             try // to fill PG
             {
                 Statement myStmt = n.createStatement();
-                ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.pg_info where name = '" + Editing1Controller.useName +"';");
+                ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.pg_info where name = '" + Editing1Controller.oldName +"';");
 
                 while(myRs.next())
                 {
@@ -333,10 +397,12 @@ public class Editing2Controller implements Initializable
                     p3 = myRs.getInt(4);
                     p4 = myRs.getInt(5);
 
-                    PPentg1.setText(Integer.toString(p1));
-                    PPentg2.setText(Integer.toString(p2));
-                    PPentg3.setText(Integer.toString(p3));
-                    PPentg4.setText(Integer.toString(p4));
+                    PPentg1.setText(Integer.toString(myRs.getInt(2)));
+                    PPentg2.setText(Integer.toString(myRs.getInt(3)));
+                    PPentg3.setText(Integer.toString(myRs.getInt(4)));
+                    PPentg4.setText(Integer.toString(myRs.getInt(5)));
+                    
+                    delPPentg();
                 } 
 
             }
@@ -604,23 +670,29 @@ public class Editing2Controller implements Initializable
     private JFXTextField HPass;
     public void getHPass()
     {              
-        int l = Integer.parseInt(HPass.getText());
-        if(l > s2)
         try
         {
-            HPass.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            t2 = l;
-            System.out.println(t2);          
-        }
+            int l = Integer.parseInt(HPass.getText());
+            if( l-s2 >= 2)
+            {
+                HPass.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                t2 = l;
+                System.out.println(t2);
+            }
+            else
+            {
+                HPass.setText(null);
+                HPass.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                System.out.println("check");
+
+            }
+        }    
         catch(Exception e)
         {
             HPass.setText(null);
             HPass.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
         }
-        else
-        {
-            System.out.println("check");
-        }
+        
     }
     
     @FXML
@@ -1163,6 +1235,14 @@ public class Editing2Controller implements Initializable
         }
     }
     
+    public void delEPentg()
+    { 
+        for(int count = 7; count >= j-1 && o == 1; count--)
+        {
+            EList.get(count).setText(null);
+        }
+    }
+    
     //////////////////////////////////////Postgraduation Fields///////////////////////////
       
     @FXML
@@ -1185,8 +1265,7 @@ public class Editing2Controller implements Initializable
     
     
     public void getPPentg1()
-    {   
-         
+    {    
         try
         {
             PPentg1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -1260,45 +1339,66 @@ public class Editing2Controller implements Initializable
         }
     }
     
+    public void delPPentg()
+    { 
+        for(int count = 3; count <= j-1 && o == 0; count--)
+        {
+            PList.get(count).setText(null);
+        }
+    }
+    
     //////////////////////////////////////////////////////////
    
     
     public static void setValues()
     {       
         DatabaseIO xyz = new DatabaseIO();
-        xyz.setSscinfo(s1, s2, s3, s4, s5, s6, s7, s8); 
-        xyz.setHsscinfo(s1,  t2,  t3,  t4,  t5,  t6,  t7,  t8,  t11,  t10, t9);
-        xyz.setDipinfo(s1, d1, d2, d3, d4, d5, d6);
-        xyz.setUginfo(s1, e1, e2, e3, e4, e5, e6, e7, e8);
-        xyz.setPginfo(s1, p1, p2, p3, p4);
+        xyz.setSscinfo("'"+s1+"'", s2, s3, s4, s5, s6, s7, s8); 
+        xyz.setHsscinfo("'"+s1+"'",  t2,  t3,  t4,  t5,  t6,  t7,  t8,  t11,  t10, t9);
+        xyz.setDipinfo("'"+s1+"'", d1, d2, d3, d4, d5, d6);
+        xyz.setUginfo("'"+s1+"'", e1, e2, e3, e4, e5, e6, e7, e8);
+        xyz.setPginfo("'"+s1+"'", p1, p2, p3, p4);
     }
     
     public static void upValues()
     {       
         DatabaseIO xyz = new DatabaseIO();
-        xyz.UpSscinfo(s1, s2, s3, s4, s5, s6, s7, s8); 
-        xyz.UpHsscinfo(s1,  t2,  t3,  t4,  t5,  t6,  t7,  t8,  t11,  t10, t9);
-        xyz.UpDipinfo(s1, d1, d2, d3, d4, d5, d6);
-        xyz.UpUginfo(s1, e1, e2, e3, e4, e5, e6, e7, e8);
-        xyz.UpPginfo(s1, p1, p2, p3, p4);
+        xyz.UpSscinfo("'"+s1+"'", s2, s3, s4, s5, s6, s7, s8); 
+        xyz.UpHsscinfo("'"+s1+"'",  t2,  t3,  t4,  t5,  t6,  t7,  t8,  t11,  t10, t9);
+        xyz.UpDipinfo("'"+s1+"'", d1, d2, d3, d4, d5, d6);
+        xyz.UpUginfo("'"+s1+"'", e1, e2, e3, e4, e5, e6, e7, e8);
+        xyz.UpPginfo("'"+s1+"'", p1, p2, p3, p4);
     }
     
-    public void delEdit2(MouseEvent event)
+    public void delEdit(MouseEvent event)
     {
-        DatabaseIO d = new DatabaseIO();
-        d.DelBasicinfo(Editing1Controller.useName);
-       
-        try
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete data");
+        alert.setHeaderText("Are you sure you want to delete data of "+ Editing1Controller.oldName+ "?");
+        alert.setContentText("If you delete this, it will be removed from database.");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK)
         {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-        }
-        catch(Exception e)
+            DatabaseIO d = new DatabaseIO();
+            d.DelBasicinfo();
+
+            try
+            {
+                Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+                Scene editPg1Scene = new Scene(editPag1);
+                Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                appStage.setScene(editPg1Scene);
+                appStage.show();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        } 
+        else 
         {
-            e.printStackTrace();
+            // ... user chose CANCEL or closed the dialog
         }
     }
     

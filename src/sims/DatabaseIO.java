@@ -4,11 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public class DatabaseIO 
 {
@@ -332,8 +327,8 @@ public class DatabaseIO
     
     
     
-    void DelBasicinfo(String s1)
-    {   String sql = "DELETE FROM studentinfoschema.basic_info WHERE name = '" + s1 + "' ;";
+    void DelBasicinfo()
+    {   String sql = "DELETE FROM studentinfoschema.basic_info WHERE name = '" + Editing1Controller.oldName + "' ;";
         try
         {
             ps = myConn.prepareCall(sql);
@@ -351,7 +346,8 @@ public class DatabaseIO
     
     void UpBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
     {   
-        String sql = "UPDATE studentinfoschema.basic_info SET name = "+ s1 +", clgID = "+ s2 +", dept = "+ s3 +", currEdu = "+ s4 +", csem = "+ s5 +", contact = "+ s6 +", dob = "+ s7 +"WHERE name ="+ s1 +";";
+        System.out.println(s1);
+        String sql = "UPDATE studentinfoschema.basic_info SET name = "+ s1 +", clgID = "+ s2 +", dept = "+ s3 +", currEdu = "+ s4 +", csem = "+ s5 +", contact = "+ s6 +", dob = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -364,7 +360,7 @@ public class DatabaseIO
     }
     void UpSscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8)
     {   
-        String sql = "UPDATE studentinfoschema.ssc_info SET name = "+ s1 +", clgID = "+ s2 +", dept = "+ s3 +", currEdu = "+ s4 +", csem = "+ s5 +", contact = "+ s6 +", dob = "+ s7 +"WHERE name ="+ s1 +";";
+        String sql = "UPDATE studentinfoschema.ssc_info SET name = "+ s1 +", Syop = "+ s2 +", Srn = "+ s3 +", SBoard = "+ s4 +", SMedium = "+ s5 +", SSch = "+ s6 +", Scity = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -377,7 +373,7 @@ public class DatabaseIO
     }
     void UpHsscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8, int s11, int s10, int s9)
     {   
-        String sql = "UPDATE studentinfoschema.hssc_info SET name = "+ s1 +", Hyop = "+ s2 +", Hrn = "+ s3 +", HBoard = "+ s4 +", HMedium = "+ s5 +", HSch = "+ s6 +", Hcity = "+ s7 +", Hptng = "+ s8 +", math = "+ s11 +", chemistry = "+ s10 +", physics = "+ s9 +"WHERE name = "+ s1 +";";
+        String sql = "UPDATE studentinfoschema.hssc_info SET name = "+ s1 +", Hyop = "+ s2 +", Hrn = "+ s3 +", HBoard = "+ s4 +", HMedium = "+ s5 +", HSch = "+ s6 +", Hcity = "+ s7 +", Hptng = "+ s8 +", math = "+ s11 +", chemistry = "+ s10 +", physics = "+ s9 +" WHERE name = '"+ Editing1Controller.oldName +"';";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -390,7 +386,7 @@ public class DatabaseIO
     }
     void UpDipinfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7)
     {   
-        String sql = "UPDATE studentinfoschema.diploma_info SET name ="+ s1 +", Dptng1 = "+ s2 +", Dptng2 = "+ s3 +", Dptng3 = "+ s4 +", Dptng4 = "+ s5 +", Dptng5 = "+ s6 +", Dptng6 = "+ s7 +"WHERE name = "+ s1 +";";
+        String sql = "UPDATE studentinfoschema.diploma_info SET name ="+ s1 +", Dptng1 = "+ s2 +", Dptng2 = "+ s3 +", Dptng3 = "+ s4 +", Dptng4 = "+ s5 +", Dptng5 = "+ s6 +", Dptng6 = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -403,7 +399,7 @@ public class DatabaseIO
     }
     void UpUginfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9)
     {   
-        String sql = "UPDATE studentinfoschema.ug_info SET name ="+ s1 +", Eptng1 = "+ s2 +", Eptng2 = "+ s3 +", Eptng3 = "+ s4 +", Eptng4 = "+ s5 +", Eptng5 = "+ s6 +", Eptng6 = "+ s7 +", Eptng7 = " + s8 +", Eptng8 = "+ s9 +"WHERE name ="+ s1 +";";
+        String sql = "UPDATE studentinfoschema.ug_info SET name ="+ s1 +", Eptng1 = "+ s2 +", Eptng2 = "+ s3 +", Eptng3 = "+ s4 +", Eptng4 = "+ s5 +", Eptng5 = "+ s6 +", Eptng6 = "+ s7 +", Eptng7 = " + s8 +", Eptng8 = "+ s9 +" WHERE name = '"+ Editing1Controller.oldName +"';";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -416,7 +412,7 @@ public class DatabaseIO
     }
     void UpPginfo(String s1, int s2, int s3, int s4, int s5)
     {   
-        String sql = "UPDATE studentinfoschema.pg_info SET name = "+ s1 +", Pptng1 = "+ s2 +", Pptng2 = "+ s3 +", Pptng3 = "+ s4 +", Pptng4 = "+ s5 +"WHERE name = "+ s1 +";";
+        String sql = "UPDATE studentinfoschema.pg_info SET name = "+ s1 +", Pptng1 = "+ s2 +", Pptng2 = "+ s3 +", Pptng3 = "+ s4 +", Pptng4 = "+ s5 +" WHERE name = '"+ Editing1Controller.oldName +"';";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();
@@ -429,7 +425,8 @@ public class DatabaseIO
     }
     void UpUlinfo(String s1, String s2, String s3, String s4, String s5, String s6, String s7)
     {   
-        String sql = "UPDATE studentinfoschema.other_info SET name = "+ s1 +", Cemail = "+ s2 +", PEmail = "+ s3 +", FatherCntct = "+ s4 +", FamCntct = "+ s5 +", certification = "+ s6 +", AddInfo = "+ s7 +"WHERE name = "+ s1 +";";
+       
+        String sql = "UPDATE studentinfoschema.other_info SET name = "+ s1 +", Cemail = "+ s2 +", PEmail = "+ s3 +", FatherCntct = "+ s4 +", FamCntct = "+ s5 +", certification = "+ s6 +", AddInfo = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();

@@ -240,6 +240,7 @@ public class DatabaseIO
     
     void setSscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8)
     {
+        
         String sql = "insert into studentinfoschema.ssc_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +","+ s8 +");";
         try{
             ps = myConn.prepareCall(sql);
@@ -346,7 +347,7 @@ public class DatabaseIO
     
     void UpBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
     {   
-        System.out.println(s1);
+        
         String sql = "UPDATE studentinfoschema.basic_info SET name = "+ s1 +", clgID = "+ s2 +", dept = "+ s3 +", currEdu = "+ s4 +", csem = "+ s5 +", contact = "+ s6 +", dob = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
         try{
             ps = myConn.prepareCall(sql);
@@ -360,6 +361,7 @@ public class DatabaseIO
     }
     void UpSscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8)
     {   
+        System.out.println(s4);
         String sql = "UPDATE studentinfoschema.ssc_info SET name = "+ s1 +", Syop = "+ s2 +", Srn = "+ s3 +", SBoard = "+ s4 +", SMedium = "+ s5 +", SSch = "+ s6 +", Scity = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
         try{
             ps = myConn.prepareCall(sql);

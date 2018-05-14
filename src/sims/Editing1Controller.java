@@ -115,14 +115,14 @@ public class Editing1Controller implements Initializable {
                 {
                     up = 1;
                     EduDrpDwn.setText("Undergraduation");
-                    s4 = "'"+n+"'";
+                    
                 }
                 else if(n.equalsIgnoreCase("Postgraduation"))
                 {
                     System.out.println(n);
                     up = 0;
                     EduDrpDwn.setText("Postgraduation");
-                    s4 = "'"+n+"'";
+                    
                 }
                 
                 SemFld.setText(Integer.toString(myRs.getInt(5))); 
@@ -193,7 +193,7 @@ public class Editing1Controller implements Initializable {
                 
                 s2 = "'"+myRs.getString(2)+"'";
                 s3 = "'"+myRs.getString(3)+"'";
-                
+                s4 = "'"+n+"'";
                 int g =  myRs.getInt(5);
                 System.out.println(g);
                 useSem = g;
@@ -669,7 +669,7 @@ public class Editing1Controller implements Initializable {
     {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Delete data");
-        alert.setHeaderText("Are you sure you want to delete data of "+ Editing1Controller.oldName+ "?");
+        alert.setHeaderText("Are you sure you want to delete data of "+ (Editing1Controller.oldName).toUpperCase()+ "?");
         alert.setContentText("If you delete this, it wil be removed from database.");
 
         Optional<ButtonType> result = alert.showAndWait();

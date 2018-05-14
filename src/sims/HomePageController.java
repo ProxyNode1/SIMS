@@ -41,6 +41,7 @@ public class HomePageController implements Initializable
         
         String g = Editing1Controller.oldName;
         TableOP();
+        
     }
     
     public static String a;

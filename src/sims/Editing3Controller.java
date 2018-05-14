@@ -58,7 +58,7 @@ public class Editing3Controller implements Initializable {
         }
         
         AddInfoField.setTooltip(new Tooltip("use '. ' after every statement. "));
-                
+            
         h = DatabaseCon.connect();
         operation();
 
@@ -114,15 +114,18 @@ public class Editing3Controller implements Initializable {
                 
                 DadCntct.setText(myRs.getString(4));
                 
-                if(myRs.getString(5) != null)
+                
+                System.out.println(myRs.getString(5));
+                String s = myRs.getString(5);
+                if(s == null)
                 {
-                    FamCntct.setText(myRs.getString(5).toUpperCase());
+                    FamCntct.setText(null);
                 }
-                else if(myRs.getString(5) == null)
+                else if(s != null)
                 {
                     FamCntct.setText(myRs.getString(5));
                 }
-               
+
                 boolean y =  myRs.getBoolean(6);
                 if(y == true)
                 {
@@ -133,14 +136,14 @@ public class Editing3Controller implements Initializable {
                     CertifTick.setSelected(false);
                 }
                 
-                
-                if(myRs.getString(5) != null)
-                {
-                    AddInfoField.setText(myRs.getString(7));
-                }
-                else if(myRs.getString(5) == null)
+                System.out.println(myRs.getString(7));
+                if(myRs.getString(7) == null)
                 {
                     AddInfoField.setText("");
+                }
+                else
+                {
+                    AddInfoField.setText(myRs.getString(7));
                 }
                 
                 h1 = "'"+myRs.getString(2)+"'";
@@ -159,8 +162,7 @@ public class Editing3Controller implements Initializable {
             System.out.println("check");
             e = 1;
             n.printStackTrace();
-        }
-        
+        } 
     }
     
 
@@ -200,7 +202,6 @@ public class Editing3Controller implements Initializable {
             CEmail.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h1 = "'"+CEmail.getText()+"'";
             System.out.println(h1);
-
         }
         
     }
@@ -211,15 +212,8 @@ public class Editing3Controller implements Initializable {
     public void getDadCntct()
     {   
         String l = "'"+DadCntct.getText()+"'";
-        if(DadCntct.getText() == null)
-        {
-            System.out.println(l);
-            DadCntct.setText(null);
-            DadCntct.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h3 = null;
-            System.out.println("check");
-        }
-        if(l.length() == 12)
+        
+        if(l.length() == 12 && l.matches(".*\\d+.*"))
         {
             DadCntct.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h3 = l;
@@ -239,22 +233,20 @@ public class Editing3Controller implements Initializable {
     private JFXTextField FamCntct;
     public void getFamCntct()
     {   
-        
         String l = "'"+FamCntct.getText()+"'";
         
-        if(l.length() == 12)
+        if(l.length() == 12 && l.matches(".*\\d+.*"))
         {
             FamCntct.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h4 = l;
             System.out.println(h4);
             
-        }
+        }      
         else
         {
-            System.out.println(l);
-            FamCntct.setText(null);
-            FamCntct.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h4 = null;
+            FamCntct.setText("");
+            FamCntct.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("check");
         }
     }
@@ -274,16 +266,9 @@ public class Editing3Controller implements Initializable {
     private Label saveTxt;
         
     public void savInfo(MouseEvent event)
-     {  //h6 = AddInfoField.getText().replaceAll("\n", System.getProperty("line.separator"));
-        if(AddInfoField.getText() == null || AddInfoField.getText().trim().isEmpty())
-        {
-            h6 = null;
-        }
-        else
-        {
+     {  
             h6 = "'"+AddInfoField.getText()+"'";
             System.out.println(h6);
-        }
     }
     
     public static void setValues()
@@ -304,7 +289,7 @@ public class Editing3Controller implements Initializable {
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete data");
-        alert.setHeaderText("Are you sure you want to delete data of "+ Editing1Controller.oldName+ "?");
+        alert.setHeaderText("Are you sure you want to delete data of "+ (Editing1Controller.oldName).toUpperCase()+ "?");
         alert.setContentText("If you delete this, it wil be removed from database.");
 
         Optional<ButtonType> result = alert.showAndWait();

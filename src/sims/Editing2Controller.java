@@ -137,42 +137,49 @@ public class Editing2Controller implements Initializable
                 {
                     SBrdDrpDwn.setText("CBSE");
                     s4 = "'"+n+"'";
+                    
                 }
                 else if(n.equalsIgnoreCase("CISCE"))
                 {
-                    System.out.println(n);
+                    
                     SBrdDrpDwn.setText("CISCE");
                     s4 = "'"+n+"'";
+                    
                 }
                 
                 else if(n.equalsIgnoreCase("STATE"))
                 {
-                    System.out.println(n);
+                    
                     SBrdDrpDwn.setText("STATE");
                     s4 = "'"+n+"'";
+                    
                 }
                 
                 else if(n.equalsIgnoreCase("IBO"))
                 {
-                    System.out.println(n);
+                    
                     SBrdDrpDwn.setText("IBO");
                     s4 = "'"+n+"'";
+                    
                 }
                 
                 else if(n.equalsIgnoreCase("CIE"))
                 {
-                    System.out.println(n);
+                    
                     SBrdDrpDwn.setText("CIE");
                     s4 = "'"+n+"'";
+                    
                 }
-
+                
+                System.out.println(s4);
                 SMed.setText(myRs.getString(5).toUpperCase());
                 SSch.setText(myRs.getString(6).toUpperCase());   
                 SCity.setText(myRs.getString(7).toUpperCase());
                 SPentg.setText(Integer.toString(myRs.getInt(8)));
-
+                
                 s2 = myRs.getInt(2);
                 s3 = myRs.getInt(3);
+                
                 s5 = "'"+myRs.getString(5).toUpperCase()+"'";        
                 s6 = "'"+myRs.getString(6).toUpperCase()+"'";
                 s7 = "'"+myRs.getString(7).toUpperCase()+"'";        
@@ -215,34 +222,34 @@ public class Editing2Controller implements Initializable
                 if(n.equalsIgnoreCase("CBSE"))
                 {
                     HBrdDrpDwn.setText("CBSE");
-                    t4 = "'"+n+"'";
+                    
                 }
                 else if(n.equalsIgnoreCase("CISCE"))
                 {
                     System.out.println(n);
                     HBrdDrpDwn.setText("CISCE");
-                    t4 = "'"+n+"'";
+                    
                 }
                 
                 else if(n.equalsIgnoreCase("STATE"))
                 {
                     System.out.println(n);
                     HBrdDrpDwn.setText("STATE");
-                    t4 = "'"+n+"'";
+                    
                 }
                 
                 else if(n.equalsIgnoreCase("IBO"))
                 {
                     System.out.println(n);
                     HBrdDrpDwn.setText("IBO");
-                    t4 = "'"+n+"'";
+                    
                 }
                 
                 else if(n.equalsIgnoreCase("CIE"))
                 {
                     System.out.println(n);
                     HBrdDrpDwn.setText("CIE");
-                    t4 = "'"+n+"'";
+                    
                 }
                 
                 
@@ -273,14 +280,19 @@ public class Editing2Controller implements Initializable
                     HCity.setText(myRs.getString(7));
                 }
                 
-                HPentg.setText(Integer.toString(t8));
-                HM.setText(Integer.toString(t9));
-                HC.setText(Integer.toString(t10));
-                HP.setText(Integer.toString(t11));
+                System.out.println(myRs.getInt(8));
+                HPentg.setText(Integer.toString(myRs.getInt(8)));
+                System.out.println(myRs.getInt(11));
+                HM.setText(Integer.toString(myRs.getInt(11)));
+                System.out.println(myRs.getInt(10));
+                HC.setText(Integer.toString(myRs.getInt(10)));
+                System.out.println(myRs.getInt(9));
+                HP.setText(Integer.toString(myRs.getInt(9)));
                 
 
                 t2 = myRs.getInt(2);
                 t3 = myRs.getInt(3);
+                t4 = "'"+n+"'";
                 t5 = "'"+myRs.getString(5)+"'"; 
                 t6 = "'"+myRs.getString(6)+"'";
                 t7 = "'"+myRs.getString(7)+"'";        
@@ -1374,7 +1386,7 @@ public class Editing2Controller implements Initializable
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete data");
-        alert.setHeaderText("Are you sure you want to delete data of "+ Editing1Controller.oldName+ "?");
+        alert.setHeaderText("Are you sure you want to delete data of "+ (Editing1Controller.oldName).toUpperCase()+ "?");
         alert.setContentText("If you delete this, it will be removed from database.");
 
         Optional<ButtonType> result = alert.showAndWait();

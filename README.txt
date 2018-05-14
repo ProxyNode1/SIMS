@@ -9,7 +9,8 @@ Software Requirement:
 How To:
 1> To add data into the table, click on (+) and add data into their respactive field.
   i) after entering data into text field hit enter to save the text.
-  ii) every field of "General" Tab, SSC field of "Education" Tab and "College Email", "Father's Contact" is importent to be filled.
+  ii) every field of "General" Tab, SSC field of "Education" Tab and "College Email", "Father's Contact" 
+      is importent to be filled.
   iii> once every compulsory field is filled, clicking on save on 3rd tab saves data.
 
 once data is entered correctly, the "Homepage" will display the only details required to distinguish the indivisual is displayed.

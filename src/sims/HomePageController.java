@@ -112,7 +112,7 @@ public class HomePageController implements Initializable
 
     @FXML
     private JFXButton addRow;
-    public void toEdit(MouseEvent event) //this function allow add new person to the database and show them in table, after filling their details
+    public void toInsert(MouseEvent event) //this function allow add new person to the database and show them in table, after filling their details
     {
         Editing1Controller.ui = 1;
         

@@ -31,7 +31,7 @@ public class DatabaseIO
                             "name VARCHAR(30) NOT NULL," +
                             "clgId VARCHAR(10) NOT NULL," +
                             "dept VARCHAR(5) NOT NULL," +
-                            "cedu VARCHAR(2) NOT NULL," +
+                            "cedu VARCHAR(15) NOT NULL," +
                             "csem INT(1) UNSIGNED NOT NULL," +
                             "contact VARCHAR(10) NOT NULL," +
                             "dob DATE NOT NULL," +
@@ -343,12 +343,10 @@ public class DatabaseIO
         }
     }
     
-       
-    
     void UpBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
     {   
         
-        String sql = "UPDATE studentinfoschema.basic_info SET name = "+ s1 +", clgID = "+ s2 +", dept = "+ s3 +", currEdu = "+ s4 +", csem = "+ s5 +", contact = "+ s6 +", dob = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
+        String sql = "UPDATE studentinfoschema.basic_info SET name = "+ s1 +", clgID = "+ s2 +", dept = "+ s3 +", cedu = "+ s4 +", csem = "+ s5 +", contact = "+ s6 +", dob = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
         try{
             ps = myConn.prepareCall(sql);
             ps.executeUpdate();

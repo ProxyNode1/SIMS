@@ -207,7 +207,7 @@ public class Editing2Controller implements Initializable
                 if(l > 0)
                 {
                     HD = 0;
-                    PostSS.setText("HSSC");
+                    PostSS.setText("HSC");
                     HPane.setVisible(true);
                     DPane.setVisible(false);
                 }
@@ -647,7 +647,7 @@ public class Editing2Controller implements Initializable
             {
                 public void handle(ActionEvent t) 
                 {
-                    PostSS.setText("HSSC");
+                    PostSS.setText("HSC");
                     HD = 0;
                     DPane.setVisible(false);
                     HPane.setVisible(true);

@@ -81,7 +81,7 @@
                   </Pane>
                   <MenuButton fx:id="PostSS" layoutX="581.0" layoutY="51.0" mnemonicParsing="false" prefHeight="37.58" prefWidth="163.7" style="-fx-background-color: #323640; -fx-border-color: #707070;" text="Post SSC" textFill="WHITE">
                     <items>
-                      <MenuItem fx:id="HSSC" mnemonicParsing="false" text="HSSC" />
+                      <MenuItem fx:id="HSSC" mnemonicParsing="false" text="HSC" />
                       <MenuItem fx:id="DIPLOMA" mnemonicParsing="false" text="DIPLOMA" />
                     </items>
                      <font>
@@ -313,7 +313,7 @@
             </ImageView>
          </graphic>
       </Label>
-       <fx:define>
+      <fx:define>
           <ArrayList fx:id = "EList" >
               <fx:reference source = "EPentg1" />
               <fx:reference source = "EPentg2" />
@@ -330,6 +330,6 @@
               <fx:reference source = "PPentg3" />
               <fx:reference source = "PPentg4" />
           </ArrayList>
-      </fx:define>     
+      </fx:define>            
    </children>
 </Pane>

@@ -50,6 +50,8 @@ public class Editing1Controller implements Initializable {
         DobYear.setTooltip(new Tooltip("eg. 1997"));
         SemFld.setTooltip(new Tooltip("verify Graduation level before input"));
         
+        
+        
         operation();
     }    
     

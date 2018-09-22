@@ -23,7 +23,7 @@ once data is entered correctly, the "Homepage" will display the only details req
   
 3> Clicking on "delete" icon will pop up a confirmation dialogue, and when yes is selected, it will delete every value if that person.
 
-new features:
+features to be added:
 1) filtering.
 2) import data from excel sheet.
-3) search based on keyword(maybe in future)
+3) search based on keyword

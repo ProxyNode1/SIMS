@@ -7,7 +7,8 @@ Software Requirement:
 2> Java JDK 
 
 How To:
-1> To add data into the table, click on (+) and add data into their respactive field.
+1> Open "dist" folder and then open sims.jar .
+2> To add data into the table, click on (+) and add data into their respactive field.
   i) after entering data into text field hit enter to save the text.
   ii) every field of "General" Tab, SSC field of "Education" Tab and "College Email", "Father's Contact" 
       is importent to be filled.
@@ -15,7 +16,7 @@ How To:
 
 once data is entered correctly, the "Homepage" will display the only details required to distinguish the indivisual is displayed.
 
-2> To update data of any row, double click on that row, when at "homepage".
+3> To update data of any row, double click on that row, when at "homepage".
   i)this will open "General" tab, just like inserting, fill the field that needs to be updated.
   ii) hit save to update information.
   iii) Don't forget to hit ENTER when after a text is entered.

@@ -1,9 +1,9 @@
 # Student Information Management System (SIMS)
-This repository is for Java application with same name that handles student information using database(MySQL).
+This repository is for Java application with same name that handles student information using database(MySQL 5.x).
 
 
 Software Requirement:
-1> MySQL
+1> MySQL 
 2> Java JDK 
 
 How To:

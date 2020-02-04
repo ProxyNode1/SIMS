@@ -104,7 +104,7 @@
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/back%20arrow.png" />
+                  <Image url="@../assets/home.png" />
                </image>
             </ImageView>
          </graphic>

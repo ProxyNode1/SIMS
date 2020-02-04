@@ -1,7 +1,8 @@
-
 package sims;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DatabaseCon 
 {   
@@ -10,30 +11,26 @@ public class DatabaseCon
     {   
         try
         {
-            String urlMySql = "jdbc:mysql://localhost/mysql?autoReconnect=true&useSSL=false";
-            String username = "root";
-            String password = "root";
-            
             Class.forName("com.mysql.jdbc.Driver");
             
+            
+            String username = "root";
+            String password = "root";
+            String url = "jdbc:mysql://localhost/mysql?autoReconnect=true&useSSL=false";
+            
             // create a connection to the database
-            Connection myConn = DriverManager.getConnection(urlMySql, username, password);
+            Connection myConn = DriverManager.getConnection(url, username, password);
                               
-            System.out.println("ok");
+            System.out.println("Db Connected");
                         
             return myConn;
             
         }
-        catch(Exception e)
+        catch(SQLException | ClassNotFoundException e)
         {
-            e.printStackTrace();
-            
-            HomePageController.a = "*Warning, Database Missing!";
-          
+            System.err.println(e.getMessage());
+         
             return null;
         }
     }    
 }
-   
-
-

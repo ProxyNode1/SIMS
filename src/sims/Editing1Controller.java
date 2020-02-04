@@ -32,416 +32,33 @@ import javafx.scene.control.Tooltip;
 
 public class Editing1Controller implements Initializable {
 
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {  
-        Edit1.requestFocus();
-        //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
-                
-        
-        chzEduDrpDwn();
-        chzDeptDrpDwn();
-        chzDobMnth();
-        
-        h = DatabaseCon.connect();
-        
-        NamFld.setTooltip(new Tooltip ("use Fullname"));
-        DobYear.setTooltip(new Tooltip("eg. 1997"));
-        SemFld.setTooltip(new Tooltip("verify Graduation level before input"));
-        
-        
-        
-        operation();
-    }    
-    
+    public static int up, ui = 1;
     
     public static String a, oldName;
     public static int useSem;
-    public static int up, ui = 1;
-
-    @FXML
-    private Label delData;
+       
+    public static String newName;
+    public static String s2, s3, s4, s6, s7, s72;
+    public static int s5, s71, s73;
+    
+    Connection h = null; 
+    
     
     @FXML
     private Pane Edit1;
-    
-    Connection h = null;   
-    
-    public static String newName;
-    public static String s2, s3, s4, s6, s7, s72;
-    public static int s5, s71, s73;  
-    
-    void operation()
-    {
-        if(ui == 0)
-        {
-            update();
-        }
-        else if(ui == 1)
-        {
-            insert();
-        }
             
-    }
-    
-    void insert()
-    {
-        newName = null; s2 = null; s3 = null; s4 = null; s6 = null; s7 = null; s72 = null;
-        s5 = 0; s71 = 0; s73 = 0; 
-        
-        delData.setVisible(false);
-        
-        
-    }
-    void update()
-    {
-        delData.setVisible(true);
-         
-        try 
-        {
-            Statement myStmt = h.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.basic_info where name = '"+ oldName +"'");
-            while(myRs.next())
-            {
-                NamFld.setText((myRs.getString(1)).toUpperCase());
-                oldName = myRs.getString(1);
-                newName = oldName;
-                
-                IdFld.setText((myRs.getString(2)).toUpperCase());
-                DeptDrpDwn.setText(myRs.getString(3).toUpperCase());
-                
-                String n = myRs.getString(4);
-                System.out.println(n);
-                if(n.equalsIgnoreCase("Undergraduation"))
-                {
-                    up = 1;
-                    EduDrpDwn.setText("Undergraduation");
-                    
-                }
-                else if(n.equalsIgnoreCase("Postgraduation"))
-                {
-                    System.out.println(n);
-                    up = 0;
-                    EduDrpDwn.setText("Postgraduation");
-                    
-                }
-                
-                SemFld.setText(Integer.toString(myRs.getInt(5))); 
-                
-                CntctFld.setText((myRs.getString(6)).toUpperCase()); 
-                
-                String xyzs = myRs.getString(7);                
-                String[] strArray = xyzs.split("\\-");
-                String[] s = new String[3];
-                for(int i = 0; i<3; i++) 
-                {
-                    s[i] = strArray[i]; 
-                }
-                s71 = Integer.parseInt(s[0]);
-                s72 = s[1];       
-                s73 = Integer.parseInt(s[2]);
-                DobYear.setText(s[0]);
-                DobDay.setText(s[2]);
-                int x =  Integer.parseInt(s[1]);
-                if(x == 1)
-                {
-                    DobMnth.setText("January");
-                }
-                else if(x == 2)
-                {
-                    DobMnth.setText("February");
-                }
-                else if(x == 3)
-                {
-                    DobMnth.setText("March");
-                }
-                else if(x == 4)
-                {
-                    DobMnth.setText("April");
-                }
-                else if(x == 5)
-                {
-                    DobMnth.setText("May");
-                }
-                else if(x == 6)
-                {
-                    DobMnth.setText("June");
-                }
-                else if(x == 7)
-                {
-                    DobMnth.setText("July");
-                }
-                else if(x == 8)
-                {
-                    DobMnth.setText("August");
-                }
-                if(x == 9)
-                {
-                    DobMnth.setText("September");
-                }
-                if(x == 10)
-                {
-                    DobMnth.setText("October");
-                }
-                if(x == 11)
-                {
-                    DobMnth.setText("November");
-                }
-                if(x == 12)
-                {
-                    DobMnth.setText("December");
-                }
-                
-                s2 = "'"+myRs.getString(2)+"'";
-                s3 = "'"+myRs.getString(3)+"'";
-                s4 = "'"+n+"'";
-                int g =  myRs.getInt(5);
-                System.out.println(g);
-                useSem = g;
-                s5 = g;
-                
-                s6 = "'"+myRs.getString(6)+"'"; 
-                s7 = "'"+ myRs.getString(7) +"'";
-
-            } 
-            
-        }
-        catch(Exception e)
-        {
-            System.out.println("check");
-            e.printStackTrace();
-        }
-        
-    }
     @FXML
-    private JFXTextField NamFld;
-    public void getName()
-    {       
-        String l = NamFld.getText();
-        if(l.matches("^[ A-Za-z]+$") == false || l.length() == 0)
-        { 
-            NamFld.setText(null);
-            NamFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            newName = null;
-        } 
-        else 
-        { 
-            NamFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            newName = l;
-            System.out.println(newName);
-        }
-
-    }
+    private JFXTextField Name;
     
     @FXML
-    public JFXTextField IdFld;
-    public void getID()
-    {   s2 = "'"+IdFld.getText()+"'";
-        System.out.println(s2);
-    }
-    
-    @FXML
-    private MenuButton DeptDrpDwn;
-         
-    @FXML
-    private MenuItem mech;
-
-    @FXML
-    private MenuItem cs;
-    
-    @FXML
-    private MenuItem enc;
-
-    @FXML
-    private MenuItem civ;
-    
-    public void chzDeptDrpDwn()
-    {
-              
-       mech.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                DeptDrpDwn.setText("MECH");
-                String ab  = "MECH";
-                s3 = "'"+ab+"'";
-                System.out.println(s3);
-
-            }
-       } );
-       
-       cs.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                DeptDrpDwn.setText("CSE");
-                String ab  = "CSE";
-                s3 = "'"+ab+"'";   
-                System.out.println(s3);
-            }
-       } );
-       
-       enc.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                DeptDrpDwn.setText("EnC");
-                String ab  = "EnC";
-                s3 = "'"+ab+"'";
-                System.out.println(s3);
-            }
-       } );
-       
-       civ.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                DeptDrpDwn.setText("CIVIL");
-                String ab  = "CIVIL";
-                s3 = "'"+ab+"'";
-                System.out.println(s3);
-            }
-       } );
-    }
-
-    @FXML
-    private MenuButton EduDrpDwn;
- 
-    @FXML
-    private MenuItem pg;
-    
-    @FXML
-    private MenuItem ug;
-    
-    public void chzEduDrpDwn()
-    {
-              
-       pg.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                EduDrpDwn.setText("Postgraduation");
-                up = 0; //set to disable
-                String ab  = "Postgraduation";
-                s4 = "'"+ab+"'";
-                System.out.println(s4);
-                useSem = 0;
-                s5 = 0;
-                SemFld.setText(null);
-            
-            }
-       });
-       
-       ug.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                EduDrpDwn.setText("Undergraduation");
-                up = 1;//set to disable
-                String ab  = "Undergraduation";
-                s4 = "'"+ab+"'";
-                System.out.println(s4);
-                useSem = 0;
-                s5 = 0;
-                SemFld.setText(null);
-                
-            }
-        });
-    }
-    
-    @FXML
-    private JFXTextField SemFld;
-    public void getSem()
-    {       
-        int l = Integer.parseInt(SemFld.getText());
-        if(up == 1 && l<=9 && l>0)
-        {   
-            SemFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s5 = l;
-            useSem = s5;
-            System.out.println(s5);
-        }
-        
-        else if(up == 0 && l<=5 && l>0)
-        {   
-            SemFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s5 = l;
-            useSem = s5;
-            System.out.println(s5);
-        } 
-        
-        else
-        {
-            SemFld.setText(null);
-            SemFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s5 = 0;
-            System.out.println("check");
-        }
-
-    }
-    
-    @FXML
-    private JFXTextField CntctFld;
-    public void getCntct()
-    {  
-        String l = "'"+CntctFld.getText()+"'";
-        
-        if(l.length() == 12)
-        {
-            CntctFld.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s6 = l;
-            System.out.println(s6);
-            
-        }
-        else
-        {
-            System.out.println(l);
-            CntctFld.setText(null);
-            CntctFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s6 = null;
-            System.out.println("check");
-            
-        }
-    } 
+    public JFXTextField ClgID;
     
     @FXML
     private JFXTextField DobYear;
-    public void DobYear()
-    {      
-        String l = DobYear.getText();
-        if(l.length() == 4)
-        {
-            try
-            {
-                DobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                s71 = Integer.parseInt(DobYear.getText());
-                System.out.println(s71);
-            }
-            catch(Exception e)
-            {
-                DobYear.setText(null);
-                DobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            }
-        }
-        else
-        {
-            DobYear.setText(null);
-            DobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-            
-    }
-    
-    int dd;
-    
-    @FXML
-    private Label MnthLbl;
     
     @FXML
     private MenuButton DobMnth;
-    
-    
+               
     @FXML
     private MenuItem jan;
     
@@ -477,6 +94,296 @@ public class Editing1Controller implements Initializable {
     
     @FXML
     private MenuItem dec;
+    
+    @FXML
+    private Label MnthLbl;
+    
+    @FXML
+    private JFXTextField DobDay;
+    
+    @FXML
+    private JFXTextField Course;
+    
+    @FXML
+    private JFXTextField CurrSem;
+    
+    @FXML
+    private JFXTextField Contact;
+        
+    @FXML
+    private Label BtnTo2;
+    
+    @FXML
+    private Label BtnTo3; 
+    
+    @FXML
+    private Label bck;
+        
+    @FXML
+    private Label delData;
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) 
+    {  
+        Edit1.requestFocus();
+        //ClgID.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
+                
+        
+        chzDobMnth();
+        
+        h = DatabaseCon.connect();
+        
+        Name.setTooltip(new Tooltip ("use Fullname"));
+        DobYear.setTooltip(new Tooltip("eg. 1997"));
+        Course.setTooltip(new Tooltip("eg. BE Computer Science"));
+          
+        operation();
+    }    
+    
+    
+    
+    
+    void operation()
+    {
+        if(ui == 0)
+        {
+            update();
+        }
+        else if(ui == 1)
+        {
+            insert();
+        }
+            
+    }
+    
+    void insert()
+    {
+        newName = null; s2 = null; s3 = null; s4 = null; s6 = null; s7 = null; s72 = null;
+        s5 = 0; s71 = 0; s73 = 0; 
+        
+        delData.setVisible(false); 
+    }
+    
+    
+    void update()
+    {
+        delData.setVisible(true);
+         
+        try 
+        {
+            Statement myStmt = h.createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.basic_info where name = '"+ oldName +"'");
+            while(myRs.next())
+            {
+                Name.setText((myRs.getString(1)).toUpperCase());
+                oldName = myRs.getString(1);
+                newName = oldName;
+                
+                ClgID.setText((myRs.getString(2)).toUpperCase());
+                     
+                CurrSem.setText(Integer.toString(myRs.getInt(5))); 
+                
+                Contact.setText((myRs.getString(6)).toUpperCase()); 
+                
+                String xyzs = myRs.getString(7);                
+                String[] strArray = xyzs.split("\\-");
+                String[] s = new String[3];
+                
+                System.arraycopy(strArray, 0, s, 0, 3); //copies strArray into s till 2nd index
+                
+                s71 = Integer.parseInt(s[0]);
+                s72 = s[1];       
+                s73 = Integer.parseInt(s[2]);
+                DobYear.setText(s[0]);
+                DobDay.setText(s[2]);
+                int x =  Integer.parseInt(s[1]);
+                
+                switch (x) {
+                    case 1:
+                        DobMnth.setText("January");
+                        break;
+                        
+                    case 2:
+                        DobMnth.setText("February");
+                        break;
+                        
+                    case 3:
+                        DobMnth.setText("March");
+                        break;
+                        
+                    case 4:
+                        DobMnth.setText("April");
+                        break;
+                        
+                    case 5:
+                        DobMnth.setText("May");
+                        break;
+                        
+                    case 6:
+                        DobMnth.setText("June");
+                        break;
+                        
+                    case 7:
+                        DobMnth.setText("July");
+                        break;
+                        
+                    case 8:
+                        DobMnth.setText("August");
+                        break;
+                    
+                    case 9:
+                        DobMnth.setText("September");
+                        break;
+                        
+                    case 10:
+                        DobMnth.setText("October");
+                        break;
+                        
+                    case 11:
+                        DobMnth.setText("November");
+                        break;
+                        
+                    case 12:
+                        DobMnth.setText("December");
+                        break;
+                    
+                    default:
+                        break;
+                }
+                
+                s2 = "'"+myRs.getString(2)+"'";
+                s3 = "'"+myRs.getString(3)+"'";
+                
+                int g =  myRs.getInt(5);
+                System.out.println(g);
+                useSem = g;
+                s5 = g;
+                
+                s6 = "'"+myRs.getString(6)+"'"; 
+                s7 = "'"+ myRs.getString(7) +"'";
+
+            } 
+            
+        }
+        catch(Exception e)
+        {
+            System.out.println("check");
+            e.printStackTrace();
+        }
+        
+    }
+    
+    
+    
+    public void getName()
+    {       
+        String l = Name.getText();
+        if(l.matches("^[ A-Za-z]+$") == false || l.length() == 0)
+        { 
+            Name.setText(null);
+            Name.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            newName = null;
+        } 
+        else 
+        { 
+            Name.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            newName = l;
+            System.out.println(newName);
+        }
+
+    }
+    
+    
+    public void getID()
+    {   s2 = "'"+ClgID.getText()+"'";
+        System.out.println(s2);
+    }
+     
+    
+    public void getSem()
+    {       
+        int l = Integer.parseInt(CurrSem.getText());
+        if(up == 1 && l<=9 && l>0)
+        {   
+            CurrSem.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s5 = l;
+            useSem = s5;
+            System.out.println(s5);
+        }
+        
+        else if(up == 0 && l<=5 && l>0)
+        {   
+            CurrSem.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s5 = l;
+            useSem = s5;
+            System.out.println(s5);
+        } 
+        
+        else
+        {
+            CurrSem.setText(null);
+            CurrSem.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s5 = 0;
+            System.out.println("check");
+        }
+
+    }
+    
+    
+    
+    
+    public void getCntct()
+    {  
+        String l = "'"+Contact.getText()+"'";
+        
+        if(l.length() == 12)
+        {
+            Contact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s6 = l;
+            System.out.println(s6);
+            
+        }
+        else
+        {
+            System.out.println(l);
+            Contact.setText(null);
+            Contact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s6 = null;
+            System.out.println("check");
+            
+        }
+    } 
+    
+    
+    public void DobYear()
+    {      
+        String l = DobYear.getText();
+        if(l.length() == 4)
+        {
+            try
+            {
+                DobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                s71 = Integer.parseInt(DobYear.getText());
+                System.out.println(s71);
+            }
+            catch(Exception e)
+            {
+                DobYear.setText(null);
+                DobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            }
+        }
+        else
+        {
+            DobYear.setText(null);
+            DobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
+            
+    }
+    
+    int dd;
+    
+    
     
     public void chzDobMnth()
     {
@@ -633,8 +540,8 @@ public class Editing1Controller implements Initializable {
        
     }
     
-    @FXML
-    private JFXTextField DobDay;
+    
+    
     public void DobDay()
     {  
         int l = Integer.parseInt(DobDay.getText());
@@ -699,9 +606,7 @@ public class Editing1Controller implements Initializable {
         }
     }
     
-    @FXML
-    private Label BtnTo2;
-    
+        
     public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {
 
@@ -720,8 +625,7 @@ public class Editing1Controller implements Initializable {
         }
     }
  
-    @FXML
-    private Label BtnTo3;  
+    
     
     public void toEdit3(MouseEvent event)
     {
@@ -740,8 +644,7 @@ public class Editing1Controller implements Initializable {
           }
     }
     
-    @FXML
-    private Label bck;
+    
     
     public void bck2HP(MouseEvent event)
     {

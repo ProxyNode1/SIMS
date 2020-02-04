@@ -2,30 +2,40 @@ package sims;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+//import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+
 
 public class DatabaseIO 
 {
     Connection myConn = null;
     Statement stmt = null;
-    PreparedStatement ps = null;
-    ResultSet res = null;
-
+    PreparedStatement prepStmt = null;
+    //ResultSet res = null;
+    
+    String schemaName = "studentinfoschema";
+    
     public DatabaseIO() 
     {
-        myConn = DatabaseCon.connect();
-        if(myConn != null){
-            System.out.println("Database connection established!");
-            createTables();
-        }else{
-            System.out.println("Connection could not be established!");
+        try
+        {
+            myConn = DatabaseCon.connect();
+            stmt = myConn.createStatement();
+            createTables();               
+        }
+        
+        catch(SQLException e)
+        {
+           System.out.println("Connection could not be established!"); 
+           System.err.println(e.getMessage());
         }
     }
     
-    public void createTables()
+    
+    final public void createTables()
     {
-        String cr8schema = "CREATE SCHEMA studentinfoschema;";
+        String cr8schema = "CREATE SCHEMA " + schemaName;
         
         String basicInfo =  "CREATE TABLE IF NOT EXISTS studentinfoschema.basic_info (" + 
                             "name VARCHAR(30) NOT NULL," +
@@ -137,100 +147,36 @@ public class DatabaseIO
                        " ON UPDATE CASCADE);";
         
         try
-        {
-            stmt = myConn.createStatement();
-            stmt.executeUpdate(cr8schema);
-            
-        }
-        catch(Exception e)
-        {
-            System.out.println("schema already there!");
-            
-        }
-        try{
-            stmt = myConn.createStatement();
+        { 
+            stmt.executeUpdate(cr8schema);  
             stmt.executeUpdate(basicInfo);
-            
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            
-        }
-        
-        try{
-            stmt = myConn.createStatement();
             stmt.executeUpdate(sscInfo);
-            
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            
-        }
-        
-        try{
-            stmt = myConn.createStatement();
             stmt.executeUpdate(hsscInfo);
-            
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            
-        }
-        
-        try{
-            stmt = myConn.createStatement();
             stmt.executeUpdate(dipInfo);
-            
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            
-        }
-        
-        try{
-            stmt = myConn.createStatement();
             stmt.executeUpdate(uInfo);
-            
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            
-        }
-        
-        try{
-            stmt = myConn.createStatement();
             stmt.executeUpdate(pInfo);
-           
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            
-        }
-        
-        try{
-            stmt = myConn.createStatement();
             stmt.executeUpdate(oInfo);
-            System.out.println("succ 7");
+            
+            System.out.println("Tables Created");
         }
-        catch(Exception e)
+       
+        catch(SQLException e)
         {
-            e.printStackTrace();
-            System.out.println("err 7");
+            System.err.println(e.getMessage());
         }
-        
+               
     }
-    void setBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
-    {   String sql = "insert into studentinfoschema.basic_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +");";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
+    
+    ///////////////////Insert Values//////////////////////////
+    void setBasicinfo(String s1, String s2, String s3, String s4, int s5, 
+            String s6, String s7)
+    {   String query = "insert into studentinfoschema.basic_info VALUES(" + s1 
+            + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 + ");";
+        try
+        {
+            prepStmt = myConn.prepareCall(query);
+            prepStmt.executeUpdate();
+            prepStmt = null;
         }
         catch(Exception e)
         {
@@ -238,14 +184,18 @@ public class DatabaseIO
         }
     }
     
-    void setSscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8)
+    void setSscinfo(String s1, int s2, int s3, String s4, String s5, String s6, 
+            String s7, int s8)
     {
         
-        String sql = "insert into studentinfoschema.ssc_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +","+ s8 +");";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
+        String query = "insert into studentinfoschema.ssc_info VALUES(" + s1 
+                + "," + s2 + "," + s3 + "," + s4 + "," + s5 + "," + s6 + "," 
+                + s7 + "," + s8 + ");";
+        try
+        {
+            prepStmt = myConn.prepareCall(query);
+            prepStmt.executeUpdate();
+            prepStmt = null;
         }
         catch(Exception e)
         {
@@ -253,13 +203,17 @@ public class DatabaseIO
         }   
     }
     
-    void setHsscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8, int s11, int s10, int s9)
+    void setHsscinfo(String s1, int s2, int s3, String s4, String s5, String s6,
+             String s7, int s8, int s11, int s10, int s9)
     {
-        String sql = "insert into studentinfoschema.hssc_info VALUES("+ s1 + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +","+ s8 +","+ s11 +","+ s10 +","+ s9 +");";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
+        String query = "insert into studentinfoschema.hssc_info VALUES(" + s1 
+                + "," + s2 + "," + s3  +"," + s4 + "," + s5 + "," + s6 + "," 
+                + s7 + "," + s8 + "," + s11 + "," + s10 + "," + s9 + ");";
+        try
+        {
+            prepStmt = myConn.prepareCall(query);
+            prepStmt.executeUpdate();
+            prepStmt = null;
         }
         catch(Exception e)
         {
@@ -269,11 +223,14 @@ public class DatabaseIO
     
     void setDipinfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7)
     {
-        String sql = "insert into studentinfoschema.diploma_info VALUES("+ s1 +", "+ s2 +", "+ s3 +", "+ s4 +", "+ s5 +", "+ s6 +", "+ s7 +");";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
+        String query = "insert into studentinfoschema.diploma_info VALUES(" + s1 
+                + ", " + s2 + ", " + s3 + ", " + s4 + ", " + s5 + ", " + s6 
+                + ", " + s7 + ");";
+        try
+        {
+            prepStmt = myConn.prepareCall(query);
+            prepStmt.executeUpdate();
+            prepStmt = null;
         }
         catch(Exception e)
         {
@@ -281,13 +238,17 @@ public class DatabaseIO
         }   
     }
     
-    void setUginfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9)
+    void setUginfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7, 
+            int s8, int s9)
     {
-        String sql = "insert into studentinfoschema.ug_info VALUES ("+ s1 + ", "+ s2 +", "+ s3 +", "+ s4 +", "+ s5 +", "+ s6 +", "+ s7 +", "+ s8 +", "+ s9 +" );";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
+        String query = "insert into studentinfoschema.ug_info VALUES (" + s1 
+                + ", " + s2 + ", " + s3 + ", " + s4 + ", " + s5 + ", " + s6 
+                + ", " + s7 + ", " + s8 +", "+ s9 + " );";
+        try
+        {
+            prepStmt = myConn.prepareCall(query);
+            prepStmt.executeUpdate();
+            prepStmt = null;
         }
         catch(Exception e)
         {
@@ -297,11 +258,13 @@ public class DatabaseIO
     
     void setPginfo(String s1, int s2, int s3, int s4, int s5)
     {
-        String sql = "insert into studentinfoschema.pg_info VALUES("+ s1 +", "+ s2 +", "+ s3 +", "+ s4 +", "+ s5 +");";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
+        String query = "insert into studentinfoschema.pg_info VALUES(" + s1 + ", " 
+                + s2 + ", " + s3 + ", " + s4 + ", " + s5 + ");";
+        try
+        {
+            prepStmt = myConn.prepareCall(query);
+            prepStmt.executeUpdate();
+            prepStmt = null;
         }
         catch(Exception e)
         {
@@ -309,14 +272,18 @@ public class DatabaseIO
         }   
     }
     
-    void setUlinfo(String s1, String s2, String s3, String s4, String s5, String s6, String s7)
+    void setUlinfo(String s1, String s2, String s3, String s4, String s5, 
+            String s6, String s7)
     {
-        String sql = "insert into studentinfoschema.other_info VALUES ("+ s1 + "," + s2 + "," + s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 +");";
+        String query = "insert into studentinfoschema.other_info VALUES (" + s1
+                + "," + s2 + "," + s3 + "," + s4 + "," + s5 + "," + s6 + "," 
+                + s7 + ");";
         
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
+        try
+        {
+            prepStmt = myConn.prepareCall(query);
+            prepStmt.executeUpdate();
+            prepStmt = null;
             System.out.println("sent!");
         }
         catch(Exception e)
@@ -325,115 +292,160 @@ public class DatabaseIO
         } 
     }
     
-    
-    
-    
-    void DelBasicinfo()
-    {   String sql = "DELETE FROM studentinfoschema.basic_info WHERE name = '" + Editing1Controller.oldName + "' ;";
+    //////////////////////////////Update Table////////////////////////////////    
+    void UpBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
+    {   
+        
+        String query = "UPDATE studentinfoschema.basic_info SET name = " + s1 
+                + ", clgID = " + s2 + ", dept = " + s3 + ", cedu = " + s4 
+                + ", csem = " + s5 + ", contact = " + s6 + ", dob = " + s7 
+                + " WHERE name = '" + Editing1Controller.oldName + "';";
         try
         {
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
+            prepStmt = myConn.prepareCall(query);
+            prepStmt.executeUpdate();
+            prepStmt = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    void UpSscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8)
+    {   
+        System.out.println(s4);
+        String sql = "UPDATE studentinfoschema.ssc_info SET name = " + s1 + ", Syop = " 
+                + s2 + ", Srn = " + s3 + ", SBoard = " + s4 + ", SMedium = " + s5 
+                + ", SSch = " + s6 + ", Scity = " + s7 + " WHERE name = '" 
+                + Editing1Controller.oldName +"';";
+        try
+        {
+            prepStmt = myConn.prepareCall(sql);
+            prepStmt.executeUpdate();
+            prepStmt = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    void UpHsscinfo(String s1, int s2, int s3, String s4, String s5, String s6, 
+            String s7, int s8, int s11, int s10, int s9)
+    {   
+        String sql = "UPDATE studentinfoschema.hssc_info SET name = " + s1 + ", Hyop = " 
+                + s2 + ", Hrn = " + s3 + ", HBoard = " + s4 + ", HMedium = " + s5 
+                + ", HSch = " + s6 + ", Hcity = " + s7 + ", Hptg = " + s8 
+                + ", math = " + s11 + ", chemistry = " + s10 + ", physics = " + s9 
+                + " WHERE name = '" + Editing1Controller.oldName + "';";
+        try
+        {
+            prepStmt = myConn.prepareCall(sql);
+            prepStmt.executeUpdate();
+            prepStmt = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    void UpDipinfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7)
+    {   
+        String sql = "UPDATE studentinfoschema.diploma_info SET name =" + s1 
+                + ", Dptng1 = " + s2 + ", Dptng2 = " + s3 + ", Dptng3 = " + s4 
+                + ", Dptng4 = " + s5 + ", Dptng5 = " + s6 + ", Dptng6 = " + s7 
+                + " WHERE name = '" + Editing1Controller.oldName + "';";
+        try
+        {
+            prepStmt = myConn.prepareCall(sql);
+            prepStmt.executeUpdate();
+            prepStmt = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    void UpUginfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7, 
+            int s8, int s9)
+    {   
+        String sql = "UPDATE studentinfoschema.ug_info SET name = " + s1 
+                + ", Eptng1 = " + s2 + ", Eptng2 = " + s3 + ", Eptng3 = " + s4 
+                + ", Eptng4 = " + s5 + ", Eptng5 = " + s6 + ", Eptng6 = " + s7 
+                + ", Eptng7 = " + s8 + ", Eptng8 = " + s9 + " WHERE name = '" 
+                + Editing1Controller.oldName + "';";
+        try
+        {
+            prepStmt = myConn.prepareCall(sql);
+            prepStmt.executeUpdate();
+            prepStmt = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    void UpPginfo(String s1, int s2, int s3, int s4, int s5)
+    {   
+        String sql = "UPDATE studentinfoschema.pg_info SET name = " + s1 
+                + ", Pptng1 = " + s2 + ", Pptng2 = " + s3 + ", Pptng3 = " + s4 
+                + ", Pptng4 = " + s5 + " WHERE name = '" + Editing1Controller.oldName + "';";
+        try
+        {
+            prepStmt = myConn.prepareCall(sql);
+            prepStmt.executeUpdate();
+            prepStmt = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    void UpUlinfo(String s1, String s2, String s3, String s4, String s5, String s6, String s7)
+    {   
+       
+        String sql = "UPDATE studentinfoschema.other_info SET name = " + s1 
+                + ", Cemail = " + s2 + ", PEmail = " + s3 + ", FatherCntct = " 
+                + s4 + ", FamCntct = " + s5 + ", certification = " + s6 + ", AddInfo = " 
+                + s7 + " WHERE name = '" + Editing1Controller.oldName + "';";
+        try
+        {
+            prepStmt = myConn.prepareCall(sql);
+            prepStmt.executeUpdate();
+            prepStmt = null;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    //////////////////////////////Delete Table///////////////////////////// 
+    void DelBasicinfo()
+    {   String sql = "DELETE FROM studentinfoschema.basic_info WHERE name = '" 
+            + Editing1Controller.oldName + "' ;";
+        try
+        {
+            prepStmt = myConn.prepareCall(sql);
+            prepStmt.executeUpdate();
+            prepStmt = null;
         }
         catch(Exception e)
         {
             
-            e.printStackTrace();
-        }
-    }
-    
-    void UpBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
-    {   
-        
-        String sql = "UPDATE studentinfoschema.basic_info SET name = "+ s1 +", clgID = "+ s2 +", dept = "+ s3 +", cedu = "+ s4 +", csem = "+ s5 +", contact = "+ s6 +", dob = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    void UpSscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8)
-    {   
-        System.out.println(s4);
-        String sql = "UPDATE studentinfoschema.ssc_info SET name = "+ s1 +", Syop = "+ s2 +", Srn = "+ s3 +", SBoard = "+ s4 +", SMedium = "+ s5 +", SSch = "+ s6 +", Scity = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    void UpHsscinfo(String s1, int s2, int s3, String s4, String s5, String s6, String s7, int s8, int s11, int s10, int s9)
-    {   
-        String sql = "UPDATE studentinfoschema.hssc_info SET name = "+ s1 +", Hyop = "+ s2 +", Hrn = "+ s3 +", HBoard = "+ s4 +", HMedium = "+ s5 +", HSch = "+ s6 +", Hcity = "+ s7 +", Hptng = "+ s8 +", math = "+ s11 +", chemistry = "+ s10 +", physics = "+ s9 +" WHERE name = '"+ Editing1Controller.oldName +"';";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    void UpDipinfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7)
-    {   
-        String sql = "UPDATE studentinfoschema.diploma_info SET name ="+ s1 +", Dptng1 = "+ s2 +", Dptng2 = "+ s3 +", Dptng3 = "+ s4 +", Dptng4 = "+ s5 +", Dptng5 = "+ s6 +", Dptng6 = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    void UpUginfo(String s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9)
-    {   
-        String sql = "UPDATE studentinfoschema.ug_info SET name ="+ s1 +", Eptng1 = "+ s2 +", Eptng2 = "+ s3 +", Eptng3 = "+ s4 +", Eptng4 = "+ s5 +", Eptng5 = "+ s6 +", Eptng6 = "+ s7 +", Eptng7 = " + s8 +", Eptng8 = "+ s9 +" WHERE name = '"+ Editing1Controller.oldName +"';";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    void UpPginfo(String s1, int s2, int s3, int s4, int s5)
-    {   
-        String sql = "UPDATE studentinfoschema.pg_info SET name = "+ s1 +", Pptng1 = "+ s2 +", Pptng2 = "+ s3 +", Pptng3 = "+ s4 +", Pptng4 = "+ s5 +" WHERE name = '"+ Editing1Controller.oldName +"';";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    void UpUlinfo(String s1, String s2, String s3, String s4, String s5, String s6, String s7)
-    {   
-       
-        String sql = "UPDATE studentinfoschema.other_info SET name = "+ s1 +", Cemail = "+ s2 +", PEmail = "+ s3 +", FatherCntct = "+ s4 +", FamCntct = "+ s5 +", certification = "+ s6 +", AddInfo = "+ s7 +" WHERE name = '"+ Editing1Controller.oldName +"';";
-        try{
-            ps = myConn.prepareCall(sql);
-            ps.executeUpdate();
-            ps = null;
-        }
-        catch(Exception e)
-        {
             e.printStackTrace();
         }
     }

@@ -5,11 +5,11 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 
-
-import com.jfoenix.controls.JFXButton;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,39 +17,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
+import com.jfoenix.controls.JFXButton;
+import javafx.scene.paint.Paint;
 
 
 
 public class HomePageController implements Initializable 
 {
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-      
-        StatusBtn0.setText(a);
-        
-        h = DatabaseCon.connect();
-        
-        String g = Editing1Controller.oldName;
-        TableOP();
-        
-    }
-    
-    public static String a;
-    
     @FXML 
     private  TableView<InputClass> Table = new TableView<>();
     
-       
     @FXML 
     private  TableColumn<InputClass, Integer> clgIDCol = new TableColumn<>();  
             
@@ -66,16 +50,69 @@ public class HomePageController implements Initializable
     private  TableColumn<InputClass, String> currentEduCol = new TableColumn<>();   
     
     @FXML 
-    private  TableColumn<InputClass, String> contactCol = new TableColumn<>();   
+    private  TableColumn<InputClass, String> contactCol = new TableColumn<>();     
     
     
+    @FXML
+    private Pane homePage;
     
+    @FXML
+    public Label StatusBtn;
     
+    @FXML
+    private JFXButton addData;
+    
+    Connection h = null;   
     ObservableList<InputClass> ip;
-    Connection h;
+     
     
     
-    public void TableOP()
+    @Override
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        homePage.requestFocus();
+        h = DatabaseCon.connect();
+             
+        if(h == null)
+        {
+            StatusBtn.setTextFill(Paint.valueOf("RED"));
+            StatusBtn.setText("*Warning, Database Connection Cannot Be Established!"); 
+        }
+        
+        else
+        {
+            StatusBtn.setTextFill(Paint.valueOf("SPRINGGREEN"));
+            StatusBtn.setText("Database Connection Established!"); 
+        }
+        
+        //String g = Editing1Controller.oldName;
+        
+        FillTable();
+    }
+    
+    
+    public void AddData(MouseEvent event) 
+    {
+        Editing1Controller.ui = 1;
+        
+        try 
+        {
+           
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();
+            
+        } 
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+        }
+    }
+    
+    
+    public void FillTable()
     {
 
         ip = FXCollections.observableArrayList();
@@ -107,36 +144,8 @@ public class HomePageController implements Initializable
         Table.setItems(ip);
     }
     
-    @FXML
-    private Pane Mpage;
-
-    @FXML
-    private JFXButton addRow;
-    public void toInsert(MouseEvent event) //this function allow add new person to the database and show them in table, after filling their details
-    {
-        Editing1Controller.ui = 1;
-        
-        try {
-           
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-            
-        } 
-        catch (Exception ex) 
-        {
-            ex.printStackTrace();
-        }
-    }
     
-    @FXML
-    public Label StatusBtn0;
-    
-
-    
-    public void clickItem(MouseEvent event) //this will allow to view info of students
+    public void OpenEntry(MouseEvent event) 
     {
         
         if(event.getClickCount() == 2) //on double click
@@ -165,5 +174,5 @@ public class HomePageController implements Initializable
 
         }
     }
-
+  
 }   

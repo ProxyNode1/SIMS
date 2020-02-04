@@ -1,10 +1,10 @@
 ##############################
 ## NetBeans
 ##############################
-nbproject\private/*
+nbproject/private/*
 build/*
 nbbuild/*
 nbdist/*
 nbactions.xml
 nb-configuration.xml
-
+*.class

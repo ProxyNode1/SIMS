@@ -1,7 +1,5 @@
 package sims;
 
-
-
 public class InputClass 
 {   
     private String name,branch, currentEdu, contact, collegeId, Csem;

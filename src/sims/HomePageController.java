@@ -92,9 +92,7 @@ public class HomePageController implements Initializable
     
     
     public void AddData(MouseEvent event) 
-    {
-        Editing1Controller.ui = 1;
-        
+    {        
         try 
         {
            
@@ -145,7 +143,7 @@ public class HomePageController implements Initializable
     }
     
     
-    public void OpenEntry(MouseEvent event) 
+    /* public void OpenEntry(MouseEvent event) 
     {
         
         if(event.getClickCount() == 2) //on double click
@@ -157,8 +155,8 @@ public class HomePageController implements Initializable
                 
                 String b = x.trim();
                 System.out.println(b);
-                (Editing1Controller.oldName) = b;
-                Editing1Controller.ui = 0;
+                //(Editing1Controller.oldName) = b;
+                //Editing1Controller.ui = 0;
             
                 Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
                 Scene editPg1Scene = new Scene(editPag1);
@@ -173,6 +171,6 @@ public class HomePageController implements Initializable
             }
 
         }
-    }
+    }*/
   
 }   

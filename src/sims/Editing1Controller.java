@@ -30,34 +30,35 @@ import javafx.scene.control.Tooltip;
 
 
 
-public class Editing1Controller implements Initializable {
+public class Editing1Controller implements Initializable 
+{
 
-    public static int up, ui = 1;
+    //public static int up, ui = 1;
     
-    public static String a, oldName;
-    public static int useSem;
+    //public static String a, oldName;
+    //public static int useSem;
        
-    public static String newName;
-    public static String s2, s3, s4, s6, s7, s72;
-    public static int s5, s71, s73;
+    //public static String newName;
+    public static String s1, s2, s3b, s3, s4, s6;
+    public static int s3a, s3c, s5;
     
     Connection h = null; 
     
     
     @FXML
-    private Pane Edit1;
+    private Pane edit1;
             
     @FXML
-    private JFXTextField Name;
+    private JFXTextField name;
     
     @FXML
-    public JFXTextField ClgID;
+    public JFXTextField clgID;
     
     @FXML
-    private JFXTextField DobYear;
+    private JFXTextField dobYear;
     
     @FXML
-    private MenuButton DobMnth;
+    private MenuButton dobMonth;
                
     @FXML
     private MenuItem jan;
@@ -96,54 +97,46 @@ public class Editing1Controller implements Initializable {
     private MenuItem dec;
     
     @FXML
-    private Label MnthLbl;
+    private Label monthLbl;
     
     @FXML
-    private JFXTextField DobDay;
+    private JFXTextField dobDay;
     
     @FXML
-    private JFXTextField Course;
+    private JFXTextField course;
     
     @FXML
-    private JFXTextField CurrSem;
+    private JFXTextField currSem;
     
     @FXML
-    private JFXTextField Contact;
+    private JFXTextField contact;
         
     @FXML
-    private Label BtnTo2;
+    private Label home;
     
-    @FXML
-    private Label BtnTo3; 
-    
-    @FXML
-    private Label bck;
-        
-    @FXML
-    private Label delData;
-    
+            
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {  
-        Edit1.requestFocus();
+        edit1.requestFocus();
         //ClgID.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
                 
         
-        chzDobMnth();
+        //chzDobMnth();
         
         h = DatabaseCon.connect();
         
-        Name.setTooltip(new Tooltip ("use Fullname"));
-        DobYear.setTooltip(new Tooltip("eg. 1997"));
-        Course.setTooltip(new Tooltip("eg. BE Computer Science"));
+        name.setTooltip(new Tooltip ("use Fullname"));
+        dobYear.setTooltip(new Tooltip("eg. 1997"));
+        course.setTooltip(new Tooltip("eg. BE Computer Science"));
           
-        operation();
+        //operation();
     }    
     
     
     
     
-    void operation()
+    /*void operation()
     {
         if(ui == 0)
         {
@@ -154,18 +147,18 @@ public class Editing1Controller implements Initializable {
             insert();
         }
             
-    }
+    }*/
     
-    void insert()
+    /*void insert()
     {
         newName = null; s2 = null; s3 = null; s4 = null; s6 = null; s7 = null; s72 = null;
         s5 = 0; s71 = 0; s73 = 0; 
         
         delData.setVisible(false); 
-    }
+    }*/
     
     
-    void update()
+    /*void update()
     {
         delData.setVisible(true);
          
@@ -271,309 +264,311 @@ public class Editing1Controller implements Initializable {
             e.printStackTrace();
         }
         
-    }
+    }*/
     
     
-    
+    ////////////////////////////// GET and SET DATA /////////////////////////////////
     public void getName()
     {       
-        String l = Name.getText();
-        if(l.matches("^[ A-Za-z]+$") == false || l.length() == 0)
+        String tmp = name.getText();
+        
+        if( !tmp.matches("^[ A-Za-z]+$") || tmp.length() == 0)
         { 
-            Name.setText(null);
-            Name.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            //name.setText(null);
+            name.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("false"); 
-            newName = null;
+            s1 = null;
         } 
+        
         else 
         { 
-            Name.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            newName = l;
-            System.out.println(newName);
+            name.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s1 = tmp;
+            System.out.println(s1);
         }
-
     }
     
     
-    public void getID()
-    {   s2 = "'"+ClgID.getText()+"'";
+    public void getClgID()
+    {   
+        s2 = "'"+clgID.getText()+"'";
         System.out.println(s2);
     }
      
     
-    public void getSem()
-    {       
-        int l = Integer.parseInt(CurrSem.getText());
-        if(up == 1 && l<=9 && l>0)
-        {   
-            CurrSem.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s5 = l;
-            useSem = s5;
-            System.out.println(s5);
+    public void getDobYear()
+    {      
+        String tmp = dobYear.getText();
+        if(tmp.length() == 4)
+        {
+            try
+            {
+                s3a = Integer.parseInt(dobYear.getText());
+                dobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                System.out.println(s3a);
+            }
+            catch(Exception e)
+            {
+                dobYear.setText(null);
+                dobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            }
         }
-        
-        else if(up == 0 && l<=5 && l>0)
-        {   
-            CurrSem.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s5 = l;
-            useSem = s5;
-            System.out.println(s5);
-        } 
-        
         else
         {
-            CurrSem.setText(null);
-            CurrSem.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s5 = 0;
-            System.out.println("check");
+            dobYear.setText(null);
+            dobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
         }
+            
+    }
+    
+    int numDays = 0;
+    
+    public void getDobMonth()
+    {
+        monthLbl.setVisible(true);    
+       
+        jan.setOnAction
+        ( 
+                new EventHandler<ActionEvent>() 
+                {
+                    public void handle(ActionEvent t) 
+                    {
+                        numDays = 31;
+                        dobMonth.setText("January");
+                        s3b = "1";
+                    }
+                }
+        );
+       
+        fab.setOnAction
+        (
+                new EventHandler<ActionEvent>() 
+                {
+                    public void handle(ActionEvent t) 
+                    {
+                        if (s3a % 4 == 0) {
+                            numDays = 29;
+                        } else {
+                            numDays = 28;
+                        }
+                        dobMonth.setText("Fabruary");
+                        s3b = "2";
+                    }
+                }
+        );
+       
+        march.setOnAction
+        (
+                new EventHandler<ActionEvent>()        
+                {            
+                    public void handle(ActionEvent t) 
+                    {
+                        numDays = 31;
+                        dobMonth.setText("March");
+                        s3b = "3";
+                    }
+                }
+        );
+       
+        april.setOnAction
+        (
+            new EventHandler<ActionEvent>() 
+            {
+                public void handle(ActionEvent t) 
+                {
+                    numDays = 30;
+                    dobMonth.setText("April");
+                    s3b = "4";
+                }
+            }
+        );
+       
+        may.setOnAction
+        (
+            new EventHandler<ActionEvent>() 
+            {
+                public void handle(ActionEvent t) 
+                {
+                    numDays = 31;
+                    dobMonth.setText("May");
+                    s3b = "5";
+                }
+            }
+        );
+              
+        june.setOnAction
+        (
+                new EventHandler<ActionEvent>() 
+                {
+                    public void handle(ActionEvent t) 
+                    {
+                        numDays = 30;
+                        dobMonth.setText("June");
+                        s3b = "6";
+                    }
+                }
+        );
+       
+        july.setOnAction
+        (
+            new EventHandler<ActionEvent>()
+            {
+                public void handle(ActionEvent t) 
+                {
+                    numDays = 31;
+                    dobMonth.setText("July");
+                    s3b = "7";
+                }
+            }
+        );
+       
+        aug.setOnAction
+        (
+            new EventHandler<ActionEvent>() 
+            {
+                public void handle(ActionEvent t) 
+                {
+                    numDays = 31;
+                    dobMonth.setText("August");
+                    s3b = "8";
+                }
+            }
+        );
+       
+        sept.setOnAction
+        (
+                new EventHandler<ActionEvent>() 
+                {
+                    public void handle(ActionEvent t) 
+                    {
+                        numDays = 30;
+                        dobMonth.setText("September");
+                        s3b = "9";
+                    }
+                }
+        );
 
+        oct.setOnAction
+        (
+            new EventHandler<ActionEvent>() 
+            {
+                public void handle(ActionEvent t) 
+                {
+                    numDays = 31;
+                    dobMonth.setText("October");
+                    s3b = "10";
+                }
+            }
+        );
+
+        nov.setOnAction
+        (
+                new EventHandler<ActionEvent>() 
+                {
+                    public void handle(ActionEvent t) 
+                    {
+                        numDays = 30;
+                        dobMonth.setText("November");
+                        s3b = "11";
+                    }
+                }
+        );
+
+        dec.setOnAction
+        (
+                new EventHandler<ActionEvent>() 
+                {
+                    public void handle(ActionEvent t) 
+                    {
+                        numDays = 31;
+                        dobMonth.setText("December");
+                        s3b = "12";
+                    }
+                }
+        );
+       
+    }
+        
+    public void getDobDay()
+    {  
+        int tmp = Integer.parseInt(dobDay.getText());
+        if(tmp <= numDays)
+        {
+            dobDay.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s3c = tmp;
+            System.out.println(s3c); 
+        }
+        else
+        {
+            dobDay.setText(null);
+            dobDay.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
+    }  
+    
+    public void getDOB()
+    {
+        s3 = "'"+ s3a + "-" + s3b + "-" + s3c + "'"; 
+        System.out.println(s3);
     }
     
     
+    public void getCourse()
+    {       
+        s4 = "'"+course.getText()+"'";
+        System.out.println(s4);
+    }
     
     
-    public void getCntct()
+    public void getCurrSem()
+    {       
+        s5 = Integer.parseInt(currSem.getText());
+        System.out.println(s5);
+    }
+    
+    
+    public void getContact()
     {  
-        String l = "'"+Contact.getText()+"'";
+        String tmp = "'"+contact.getText()+"'";
         
-        if(l.length() == 12)
+        if(tmp.length() == 12)
         {
-            Contact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s6 = l;
+            contact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s6 = tmp;
             System.out.println(s6);
             
         }
         else
         {
-            System.out.println(l);
-            Contact.setText(null);
-            Contact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println(tmp);
+            contact.setText(null);
+            contact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             s6 = null;
-            System.out.println("check");
+            System.out.println("check contact");
             
         }
     } 
     
     
-    public void DobYear()
-    {      
-        String l = DobYear.getText();
-        if(l.length() == 4)
-        {
-            try
-            {
-                DobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                s71 = Integer.parseInt(DobYear.getText());
-                System.out.println(s71);
-            }
-            catch(Exception e)
-            {
-                DobYear.setText(null);
-                DobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            }
-        }
-        else
-        {
-            DobYear.setText(null);
-            DobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-            
-    }
     
-    int dd;
-    
-    
-    
-    public void chzDobMnth()
-    {
-              
-       jan.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 31;
-                DobMnth.setText("January");
-                MnthLbl.setVisible(true);
-                s72 = "1";
-            }
-       }       );
-       
-       fab.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                if(s71%4 == 0)
-                {
-                    dd = 29;
-                }
-                else
-                {
-                    dd = 28;
-                }
-                DobMnth.setText("Fabruary");
-                MnthLbl.setVisible(true);
-                s72 = "2";
-            }
-       }       );
-       
-       march.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 31;
-                DobMnth.setText("March");
-                MnthLbl.setVisible(true);
-                s72 = "3";
-            }
-       }
-       );
-       
-       april.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 30;
-                DobMnth.setText("April");
-                MnthLbl.setVisible(true);
-                s72 = "4";
-            }
-       }
-       );
-       
-       may.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 31;
-                DobMnth.setText("May");
-                MnthLbl.setVisible(true);
-                s72 = "5";
-            }
-       }
-       );
-       
-       june.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 30;
-                DobMnth.setText("June");
-                MnthLbl.setVisible(true);
-                s72 = "6";
-            }
-       }
-       );
-       
-       july.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 31;
-                DobMnth.setText("July");
-                MnthLbl.setVisible(true);
-                s72 = "7";
-            }
-       }
-       );
-       
-       aug.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 31;
-                DobMnth.setText("August");
-                MnthLbl.setVisible(true);
-                s72 = "8";
-            }
-       }
-       );
-       
-       sept.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 30;
-                DobMnth.setText("September");
-                MnthLbl.setVisible(true);
-                s72 = "9";
-            }
-       }
-       );
-       
-       oct.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 31;
-                DobMnth.setText("October");
-                MnthLbl.setVisible(true);
-                s72 = "10";
-            }
-       }
-       );
-       
-       nov.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 30;
-                DobMnth.setText("November");
-                MnthLbl.setVisible(true);
-                s72 = "11";
-            }
-       }
-       );
-       
-       dec.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                dd = 31;
-                DobMnth.setText("December");
-                MnthLbl.setVisible(true);
-                s72 = "12";
-    
-            }
-       }
-       );
-       
-    }
-    
-    
-    
-    public void DobDay()
-    {  
-        int l = Integer.parseInt(DobDay.getText());
-        if(l <= dd)
-        {
-            DobDay.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s73 = l;
-            System.out.println(s73);
-            s7 = "'"+ s71 + "-" + s72 + "-" + s73 + "'"; 
-            System.out.println(s7);
-        }
-        else
-        {
-            DobDay.setText(null);
-            DobDay.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
-    
-    
-   
+   //inserting value 
     public static void setValues()
     {
         DatabaseIO d = new DatabaseIO();
-        d.setBasicinfo("'"+newName+"'", s2, s3, s4, s5, s6, s7); 
+        d.setBasicinfo("'"+s1+"'", s2, s3, s4, s5, s6, s7); 
     }
     
-    public static void upValues()
+    
+    
+    //Updating existing value
+    /*public static void upValues()
     {
         DatabaseIO d = new DatabaseIO();
         d.UpBasicinfo("'"+newName+"'", s2, s3, s4, s5, s6, s7); 
     }
     
+    
+    
+    //delete existing value
     public void delEdit(MouseEvent event)
     {
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -602,16 +597,15 @@ public class Editing1Controller implements Initializable {
         } 
         else 
         {
-            // ... user chose CANCEL or closed the dialog
+            // ... user either CLOSES or CANCELs the dialog
         }
-    }
+    }*/
     
         
     public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {
-
-        try {
-           
+        try 
+        {
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
             Scene editPg1Scene = new Scene(editPag1);
             Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -624,33 +618,11 @@ public class Editing1Controller implements Initializable {
             ex.printStackTrace();
         }
     }
- 
     
-    
-    public void toEdit3(MouseEvent event)
-    {
-        
-        try 
-        {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing3.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-        } 
-        catch (Exception ex) 
-          {
-            ex.printStackTrace();
-          }
-    }
-    
-    
-    
-    public void bck2HP(MouseEvent event)
+    public void toHomepg(MouseEvent event)
     {
         try 
         {
-            
             Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
             Scene editPg1Scene = new Scene(editPag1);
             Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();

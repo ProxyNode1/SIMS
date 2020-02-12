@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +11,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -29,44 +29,44 @@
                            </font>
                         </Label>
                         <Line endX="100.0" layoutX="216.0" layoutY="72.0" startX="-100.0" stroke="WHITE" />
-                        <JFXTextField fx:id="SPass" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="122.0" onAction="#getSPass" prefHeight="42.0" prefWidth="166.0" promptText="Year of Passing" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="sPassYear" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="122.0" onAction="#getSPass" prefHeight="42.0" prefWidth="166.0" promptText="Year of Passing" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="SRoll" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="122.0" onAction="#getSRoll" prefHeight="42.0" prefWidth="166.0" promptText="Roll No" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="sRNo" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="122.0" onAction="#getSRoll" prefHeight="42.0" prefWidth="166.0" promptText="Roll No" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Arial" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <MenuButton fx:id="SBrdDrpDwn" layoutX="23.0" layoutY="193.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="166.0" style="-fx-background-color: #2F3136;" stylesheets="@Common.css" text="Board" textFill="WHITE">
+                        <MenuButton fx:id="sBoard" layoutX="23.0" layoutY="193.0" mnemonicParsing="false" onAction="#getSBoard" prefHeight="42.0" prefWidth="166.0" style="-fx-background-color: #2F3136;" stylesheets="@Common.css" text="Board" textFill="WHITE">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                            <items>
-                              <MenuItem fx:id="Scbse" mnemonicParsing="false" text="CBSE" />
-                              <MenuItem fx:id="Scisce" mnemonicParsing="false" text="CISCE" />
-                              <MenuItem fx:id="Sstate" mnemonicParsing="false" text="STATE" />
-                              <MenuItem fx:id="Sibo" mnemonicParsing="false" text="IBO" />
-                              <MenuItem fx:id="Scie" mnemonicParsing="false" text="CIE" />
+                              <MenuItem fx:id="scbse" mnemonicParsing="false" text="CBSE" />
+                              <MenuItem fx:id="scisce" mnemonicParsing="false" text="CISCE" />
+                              <MenuItem fx:id="sstate" mnemonicParsing="false" text="STATE" />
+                              <MenuItem fx:id="sibo" mnemonicParsing="false" text="IBO" />
+                              <MenuItem fx:id="scie" mnemonicParsing="false" text="CIE" />
                            </items>
                         </MenuButton>
-                        <JFXTextField fx:id="SMed" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="193.0" onAction="#getSMed" prefHeight="42.0" prefWidth="166.0" promptText="Medium" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="sMedium" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="193.0" onAction="#getSMed" prefHeight="42.0" prefWidth="166.0" promptText="Medium" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="SSch" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="274.0" onAction="#getSSch" prefHeight="42.0" prefWidth="166.0" promptText="School Name" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="sSchool" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="274.0" onAction="#getSSch" prefHeight="42.0" prefWidth="166.0" promptText="School Name" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="SCity" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="274.0" onAction="#getSCity" prefHeight="42.0" prefWidth="166.0" promptText="City" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="sCity" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="274.0" onAction="#getSCity" prefHeight="42.0" prefWidth="166.0" promptText="City" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="SPentg" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="355.0" onAction="#getSPtng" prefHeight="42.0" prefWidth="166.0" promptText="Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="SPercent" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="355.0" onAction="#getSPtng" prefHeight="42.0" prefWidth="166.0" promptText="Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
@@ -268,41 +268,21 @@
             <URL value="@Common.css" />
          </stylesheets>
       </ScrollPane>
-      <Label fx:id="BtnTo1" layoutX="599.0" layoutY="670.0" onMouseClicked="#toEdit1" prefHeight="14.0" prefWidth="14.0">
-         <graphic>
-            <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-         </graphic>
-      </Label>
-      <Label contentDisplay="CENTER" layoutX="639.0" layoutY="670.0" prefHeight="14.0" prefWidth="14.0">
-         <graphic>
-            <Circle fill="WHITE" radius="7.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #0078D7;" />
-         </graphic>
-      </Label>
-      <Label fx:id="BtnTo3" layoutX="679.0" layoutY="670.0" onMouseClicked="#toEdit3" prefHeight="14.0" prefWidth="14.0">
-         <graphic>
-            <Circle fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-         </graphic>
-      </Label>
-      <Text fill="WHITE" layoutX="566.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDUCATION">
+      <JFXButton fx:id="nxtBtn1" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="660.0" onMouseClicked="#toSave" prefHeight="32.0" prefWidth="93.0" ripplerFill="#9b7206" style="-fx-background-color: #DEA309;" text="Previous" textAlignment="CENTER" textFill="#212121">
          <font>
-            <Font name="Roboto Bold" size="27.0" />
+            <Font name="Arial" size="17.0" />
          </font>
-      </Text>
-      <Line endX="577.0" layoutX="355.0" layoutY="99.0" stroke="#dea309" />
+      </JFXButton>
+      <JFXButton fx:id="nxtBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1130.0" layoutY="660.0" onMouseClicked="#toSave" prefHeight="24.45" prefWidth="76.79" ripplerFill="#9b7206" style="-fx-background-color: #DEA309;" text="Next" textAlignment="CENTER" textFill="#212121">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font>
+      </JFXButton>
       <Label fx:id="bck" contentDisplay="CENTER" layoutX="19.0" layoutY="15.0" onMouseClicked="#bck2HP" prefHeight="26.0" prefWidth="26.0">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/home.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="delData" contentDisplay="TOP" layoutX="1200.0" layoutY="68.0" onMouseClicked="#delEdit" prefHeight="43.0" prefWidth="41.0" text="Delete" textFill="WHITE" visible="false">
-         <graphic>
-            <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/rubbish-bin.png" />
                </image>
             </ImageView>
          </graphic>
@@ -324,6 +304,12 @@
               <fx:reference source="PPentg3" />
               <fx:reference source="PPentg4" />
           </ArrayList>
-      </fx:define>                            
+      </fx:define>
+      <Text fill="WHITE" layoutX="566.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDUCATION">
+         <font>
+            <Font name="Roboto Bold" size="27.0" />
+         </font>
+      </Text>
+      <Line endX="577.0" layoutX="355.0" layoutY="99.0" stroke="#dea309" />                            
    </children>
 </Pane>

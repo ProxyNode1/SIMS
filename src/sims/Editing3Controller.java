@@ -36,12 +36,49 @@ import javafx.stage.Stage;
  */
 public class Editing3Controller implements Initializable {
 
+    public static String s1;
+    public static String h1, h2, h3, h4, h5, h6;
+    
+    int e = 0;
+    
+    Connection h = null;
+    
+    @FXML
+    private Pane Edit3;
+       
+    @FXML
+    private JFXTextField univMail;
+    
+    @FXML
+    private JFXTextField personMail;
+        
+    @FXML
+    private JFXTextField dadContact;
+    
+    @FXML
+    private JFXTextField famContact;
+       
+    @FXML
+    private TextArea addInfo;
+    
+    @FXML
+    private Label saveAddInfo;
+    
+    @FXML
+    private JFXButton savData;
+    
+    @FXML
+    public Label errbtn; //?
+     
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        CEmail.requestFocus();
+        univMail.requestFocus();
 
-        if(Editing1Controller.ui  == 1)
+        /*if(Editing1Controller.ui  == 1)
         {
             try
             {
@@ -55,20 +92,18 @@ public class Editing3Controller implements Initializable {
                 e = 1;
                 errbtn.setText("Check input fields again!"); 
             }
-        }
+        }*/
         
-        AddInfoField.setTooltip(new Tooltip("use '. ' after every statement. "));
+        addInfo.setTooltip(new Tooltip("use '. ' after every statement. "));
             
-        h = DatabaseCon.connect();
-        operation();
+        //h = DatabaseCon.connect();
+        //operation();
 
     }    
     
-    int e = 0;
     
-    Connection h = null;
     
-    void operation()
+    /*void operation()
     {
         if(Editing1Controller.ui == 0)
         {
@@ -78,16 +113,16 @@ public class Editing3Controller implements Initializable {
         {
             insert();
         }
-    }
+    }*/
     
-    void insert()
+    /*void insert()
     {
         h1 = null; h2 = null; h3 = null; h4 = null; h5 = null; h6 = null; 
         e = 0;
         delData.setVisible(false);       
-    }
+    }*/
     
-    void update()
+    /*void update()
     {
         delData.setVisible(true);
          
@@ -163,59 +198,45 @@ public class Editing3Controller implements Initializable {
             e = 1;
             n.printStackTrace();
         } 
-    }
-    
-
-    @FXML
-    private Label delData;
-    
-    @FXML
-    private Pane Edit3;
-   
-    public static String s1;
-    public static String h1, h2, h3, h4, h5, h6;
+    }*/ 
     
     
-    @FXML
-    private JFXTextField PEmail;
-    public void getPEmail()
+    public void getPersonMail()
     {   
-              h2 = "'"+PEmail.getText()+"'";
+              h2 = "'"+personMail.getText()+"'";
             System.out.println(h2);
         
     }
     
-    @FXML
-    private JFXTextField CEmail;
-    public void getCEmail()
+    
+    public void getUnivMail()
     {   
         
-        if(CEmail.getText() == null)
+        if(univMail.getText() == null)
         {
             System.out.println(h1);
-            CEmail.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            univMail.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h1 = null;
             
         }
         else 
         {
-            CEmail.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h1 = "'"+CEmail.getText()+"'";
+            univMail.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            h1 = "'"+univMail.getText()+"'";
             System.out.println(h1);
         }
         
     }
     
 
-    @FXML
-    private JFXTextField DadCntct;
-    public void getDadCntct()
+    
+    public void getDadContact()
     {   
-        String l = "'"+DadCntct.getText()+"'";
+        String l = "'"+dadContact.getText()+"'";
         
         if(l.length() == 12 && l.matches(".*\\d+.*"))
         {
-            DadCntct.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dadContact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h3 = l;
             System.out.println(h3);
             
@@ -223,21 +244,20 @@ public class Editing3Controller implements Initializable {
         else
         {
             System.out.println(l);
-            DadCntct.setText(null);
-            DadCntct.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dadContact.setText(null);
+            dadContact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h3 = null;
             System.out.println("check");
         }
     }
-    @FXML
-    private JFXTextField FamCntct;
-    public void getFamCntct()
+    
+    public void getFamContact()
     {   
-        String l = "'"+FamCntct.getText()+"'";
+        String l = "'"+famContact.getText()+"'";
         
         if(l.length() == 12 && l.matches(".*\\d+.*"))
         {
-            FamCntct.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            famContact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             h4 = l;
             System.out.println(h4);
             
@@ -245,47 +265,34 @@ public class Editing3Controller implements Initializable {
         else
         {
             h4 = null;
-            FamCntct.setText("");
-            FamCntct.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            famContact.setText("");
+            famContact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("check");
         }
     }
-    
-    @FXML
-    private JFXCheckBox CertifTick;
-    public void getCertifTick()
-    {   
-        h5 = "'"+CertifTick.isSelected()+"'"; 
-        System.out.println(h5);          
-    }
-    
-    @FXML
-    private TextArea AddInfoField;
-    
-    @FXML
-    private Label saveTxt;
-        
+           
     public void savInfo(MouseEvent event)
      {  
-            h6 = "'"+AddInfoField.getText()+"'";
+            h6 = "'"+addInfo.getText()+"'";
             System.out.println(h6);
     }
     
-    public static void setValues()
+    /*public static void setValues()
     {
         DatabaseIO a = new DatabaseIO();
         
         a.setUlinfo("'"+s1+"'", h1, h2, h3, h4, h5, h6); 
-    }
+    }*/
     
-    public static void upValues()
+    /*public static void upValues()
     {
         DatabaseIO a = new DatabaseIO();
         
         a.UpUlinfo("'"+s1+"'", h1, h2, h3, h4, h5, h6); 
     }
+    */
     
-    public void delEdit(MouseEvent event)
+    /*public void delEdit(MouseEvent event)
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete data");
@@ -315,13 +322,12 @@ public class Editing3Controller implements Initializable {
         {
             // ... user chose CANCEL or closed the dialog
         }
-    }
+    }*/
     
-   @FXML
-    private Label BtnTo1;
     
-     public void toEdit1(MouseEvent event)
-     {
+    
+    public void toEdit1(MouseEvent event)
+    {
         try 
         {
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
@@ -338,8 +344,7 @@ public class Editing3Controller implements Initializable {
     }
 
     
-    @FXML
-    private Label BtnTo2;
+    
     
     public void toEdit2(MouseEvent event)
     {
@@ -357,12 +362,10 @@ public class Editing3Controller implements Initializable {
     }
     
     
-    @FXML
-    public Label errbtn;
     
-    @FXML
-    private JFXButton SavBtn;
-    public void toSave(MouseEvent event)
+    
+    
+    /*public void toSave(MouseEvent event)
     {
         
         try
@@ -408,9 +411,8 @@ public class Editing3Controller implements Initializable {
             errbtn.setText("Check input fields again!");
         }
     }
+    */
     
-    @FXML
-    private Label bck;
     
     public void bck2HP(MouseEvent event)
     {

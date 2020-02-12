@@ -293,7 +293,7 @@ public class DatabaseIO
     }
     
     //////////////////////////////Update Table////////////////////////////////    
-    void UpBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
+    /*void UpBasicinfo(String s1, String s2, String s3, String s4, int s5, String s6, String s7)
     {   
         
         String query = "UPDATE studentinfoschema.basic_info SET name = " + s1 
@@ -448,6 +448,6 @@ public class DatabaseIO
             
             e.printStackTrace();
         }
-    }
+    }*/
     
 }

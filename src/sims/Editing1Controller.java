@@ -29,7 +29,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tooltip;
 
 
-
 public class Editing1Controller implements Initializable 
 {
 
@@ -37,10 +36,10 @@ public class Editing1Controller implements Initializable
     
     //public static String a, oldName;
     //public static int useSem;
-       
     //public static String newName;
-    public static String s1, s2, s3b, s3, s4, s6;
-    public static int s3a, s3c, s5;
+    
+    public String nameVal, clgIDVal, monthVal, dobVal, courseVal, contactVal;
+    public int yearVal, dayVal, currSemVal;
     
     Connection h = null; 
     
@@ -110,10 +109,7 @@ public class Editing1Controller implements Initializable
     
     @FXML
     private JFXTextField contact;
-        
-    @FXML
-    private Label home;
-    
+            
             
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -124,7 +120,7 @@ public class Editing1Controller implements Initializable
         
         //chzDobMnth();
         
-        h = DatabaseCon.connect();
+        //h = DatabaseCon.connect();
         
         name.setTooltip(new Tooltip ("use Fullname"));
         dobYear.setTooltip(new Tooltip("eg. 1997"));
@@ -265,10 +261,9 @@ public class Editing1Controller implements Initializable
         }
         
     }*/
-    
-    
-    ////////////////////////////// GET and SET DATA /////////////////////////////////
-    public void getName()
+      
+    ////////////////////////////// SET DATA /////////////////////////////////
+    public void setNameVal()
     {       
         String tmp = name.getText();
         
@@ -277,35 +272,35 @@ public class Editing1Controller implements Initializable
             //name.setText(null);
             name.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("false"); 
-            s1 = null;
+            nameVal = null;
         } 
         
         else 
         { 
             name.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s1 = tmp;
-            System.out.println(s1);
+            nameVal = tmp;
+            System.out.println(nameVal);
         }
     }
     
     
-    public void getClgID()
+    public void setClgIDVal()
     {   
-        s2 = "'"+clgID.getText()+"'";
-        System.out.println(s2);
+        clgIDVal = "'"+clgID.getText()+"'";
+        System.out.println(clgIDVal);
     }
      
     
-    public void getDobYear()
+    public void setYearVal()
     {      
         String tmp = dobYear.getText();
         if(tmp.length() == 4)
         {
             try
             {
-                s3a = Integer.parseInt(dobYear.getText());
+                yearVal = Integer.parseInt(dobYear.getText());
                 dobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                System.out.println(s3a);
+                System.out.println(yearVal);
             }
             catch(Exception e)
             {
@@ -323,7 +318,7 @@ public class Editing1Controller implements Initializable
     
     int numDays = 0;
     
-    public void getDobMonth()
+    public void setMonthVal()
     {
         monthLbl.setVisible(true);    
        
@@ -335,7 +330,7 @@ public class Editing1Controller implements Initializable
                     {
                         numDays = 31;
                         dobMonth.setText("January");
-                        s3b = "1";
+                        monthVal = "1";
                     }
                 }
         );
@@ -346,13 +341,13 @@ public class Editing1Controller implements Initializable
                 {
                     public void handle(ActionEvent t) 
                     {
-                        if (s3a % 4 == 0) {
+                        if (yearVal % 4 == 0) {
                             numDays = 29;
                         } else {
                             numDays = 28;
                         }
                         dobMonth.setText("Fabruary");
-                        s3b = "2";
+                        monthVal = "2";
                     }
                 }
         );
@@ -365,7 +360,7 @@ public class Editing1Controller implements Initializable
                     {
                         numDays = 31;
                         dobMonth.setText("March");
-                        s3b = "3";
+                        monthVal = "3";
                     }
                 }
         );
@@ -378,7 +373,7 @@ public class Editing1Controller implements Initializable
                 {
                     numDays = 30;
                     dobMonth.setText("April");
-                    s3b = "4";
+                    monthVal = "4";
                 }
             }
         );
@@ -391,7 +386,7 @@ public class Editing1Controller implements Initializable
                 {
                     numDays = 31;
                     dobMonth.setText("May");
-                    s3b = "5";
+                    monthVal = "5";
                 }
             }
         );
@@ -404,7 +399,7 @@ public class Editing1Controller implements Initializable
                     {
                         numDays = 30;
                         dobMonth.setText("June");
-                        s3b = "6";
+                        monthVal = "6";
                     }
                 }
         );
@@ -417,7 +412,7 @@ public class Editing1Controller implements Initializable
                 {
                     numDays = 31;
                     dobMonth.setText("July");
-                    s3b = "7";
+                    monthVal = "7";
                 }
             }
         );
@@ -430,7 +425,7 @@ public class Editing1Controller implements Initializable
                 {
                     numDays = 31;
                     dobMonth.setText("August");
-                    s3b = "8";
+                    monthVal = "8";
                 }
             }
         );
@@ -443,7 +438,7 @@ public class Editing1Controller implements Initializable
                     {
                         numDays = 30;
                         dobMonth.setText("September");
-                        s3b = "9";
+                        monthVal = "9";
                     }
                 }
         );
@@ -456,7 +451,7 @@ public class Editing1Controller implements Initializable
                 {
                     numDays = 31;
                     dobMonth.setText("October");
-                    s3b = "10";
+                    monthVal = "10";
                 }
             }
         );
@@ -469,7 +464,7 @@ public class Editing1Controller implements Initializable
                     {
                         numDays = 30;
                         dobMonth.setText("November");
-                        s3b = "11";
+                        monthVal = "11";
                     }
                 }
         );
@@ -482,21 +477,21 @@ public class Editing1Controller implements Initializable
                     {
                         numDays = 31;
                         dobMonth.setText("December");
-                        s3b = "12";
+                        monthVal = "12";
                     }
                 }
         );
        
     }
         
-    public void getDobDay()
+    public void setDayVal()
     {  
         int tmp = Integer.parseInt(dobDay.getText());
         if(tmp <= numDays)
         {
             dobDay.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s3c = tmp;
-            System.out.println(s3c); 
+            dayVal = tmp;
+            System.out.println(dayVal); 
         }
         else
         {
@@ -505,36 +500,36 @@ public class Editing1Controller implements Initializable
         }
     }  
     
-    public void getDOB()
+    public void setDOBVal()
     {
-        s3 = "'"+ s3a + "-" + s3b + "-" + s3c + "'"; 
-        System.out.println(s3);
+        dobVal = "'"+ yearVal + "-" + monthVal + "-" + dayVal + "'"; 
+        System.out.println(dobVal);
     }
     
     
-    public void getCourse()
+    public void setCourseVal()
     {       
-        s4 = "'"+course.getText()+"'";
-        System.out.println(s4);
+        courseVal = "'"+course.getText()+"'";
+        System.out.println(courseVal);
     }
     
     
-    public void getCurrSem()
+    public void setCurrSemVal()
     {       
-        s5 = Integer.parseInt(currSem.getText());
-        System.out.println(s5);
+        currSemVal = Integer.parseInt(currSem.getText());
+        System.out.println(currSemVal);
     }
     
     
-    public void getContact()
+    public void setContactVal()
     {  
         String tmp = "'"+contact.getText()+"'";
         
         if(tmp.length() == 12)
         {
             contact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s6 = tmp;
-            System.out.println(s6);
+            contactVal = tmp;
+            System.out.println(contactVal);
             
         }
         else
@@ -542,21 +537,43 @@ public class Editing1Controller implements Initializable
             System.out.println(tmp);
             contact.setText(null);
             contact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s6 = null;
+            contactVal = null;
             System.out.println("check contact");
             
         }
     } 
     
+    /////////////////////////////// GET DATA  /////////////////////////////
     
-    
-   //inserting value 
-    public static void setValues()
+    public String getNameVal()
     {
-        DatabaseIO d = new DatabaseIO();
-        d.setBasicinfo("'"+s1+"'", s2, s3, s4, s5, s6, s7); 
+        return nameVal;
     }
     
+    public String getClgIDVal()
+    {
+        return clgIDVal;
+    }
+    
+    public String getDOBVal()
+    {
+        return dobVal;
+    }
+    
+    public String getCourseVal()
+    {
+        return courseVal;
+    }
+    
+    public int getCurrSemVal()
+    {
+        return currSemVal;
+    }
+    
+    public String getContactVal()
+    {
+        return contactVal;
+    }
     
     
     //Updating existing value

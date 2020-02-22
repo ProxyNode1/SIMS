@@ -32,201 +32,13 @@ import javafx.stage.Stage;
 public class Editing2Controller implements Initializable 
 {
     
-    Connection n = null;
-    
-    public static int i, h;
-    public int a;
-    
-    static String s1;
+    //Connection n = null;
+          
+    //static String name;
     
     @FXML
     private Pane Edit2;
-    
-    ///////////////////////////// Secondary School Variables /////////////////////
-    
-    static int s3, s2, s8;
-    
-    static String s4, s5, s6, s7;
-    
-    @FXML
-    private JFXTextField sPassYear;
-    
-    @FXML
-    private JFXTextField sRNo;
-    
-    @FXML
-    private MenuButton sBoard;
-    
-    @FXML
-    private MenuItem scbse;
-
-    @FXML
-    private MenuItem scisce;
-    
-    @FXML
-    private MenuItem sstate;
-
-    @FXML
-    private MenuItem sibo;
-    
-    @FXML
-    private MenuItem scie;
-    
-    @FXML
-    private JFXTextField sMedium;
-    
-    @FXML
-    private JFXTextField sSchool;
-    
-    @FXML
-    private JFXTextField sCity;
-    
-    @FXML
-    private JFXTextField sPercent;
-    
-    /////////////////////////////////// POST SSC Drop Down Menu /////////////////////
-    
-    static int HD;
-    
-    @FXML
-    private MenuButton PostSS;
-             
-    ///////////////////////////// High School Variables /////////////////////
-    
-    static int t2, t3, t8, t9, t10, t11;
-    static String t4, t5, t6, t7;
-    
-    @FXML
-    private MenuItem HSSC;
-    
-    @FXML
-    private Pane HPane;
-      
-    @FXML
-    private JFXTextField hPassYear;
-    
-    @FXML
-    private JFXTextField hRNo;
-    
-    @FXML
-    private MenuButton hBoard;
-         
-    @FXML
-    private MenuItem hcbse;
-
-    @FXML
-    private MenuItem hcisce;
-    
-    @FXML
-    private MenuItem hstate;
-
-    @FXML
-    private MenuItem hibo;
-    
-    @FXML
-    private MenuItem hcie;
-    
-    @FXML
-    private JFXTextField hMedium;
-    
-    @FXML
-    private JFXTextField hSchool;
-    
-    @FXML
-    private JFXTextField hCity;
-    
-    @FXML
-    private JFXTextField hPercent;
-    
-    @FXML
-    private TextField hphysics;
-    
-    @FXML
-    private TextField hchemistry;
-    
-    @FXML
-    private TextField hmath;
-    
-    ///////////////////////////// Diploma School Variables /////////////////////
-    
-    @FXML
-    private MenuItem DIPLOMA;
-    
-    @FXML
-    private Pane DPane;
-    
-    static int d1, d2, d3, d4, d5, d6;    
-    
-    @FXML
-    private JFXTextField DPentg1;
-    
-    @FXML
-    private JFXTextField DPentg2;
-    
-    @FXML
-    private JFXTextField DPentg3;
-    
-    @FXML
-    private JFXTextField DPentg4;
-    
-    @FXML
-    private JFXTextField DPentg5;
-    
-    @FXML
-    private JFXTextField DPentg6;
-    
-    ///////////////////////////// UG School Variables /////////////////////
-    
-    @FXML
-    private static Pane EPane;
-
-    @FXML
-    private JFXTextField EPentg1;
-    
-    @FXML
-    private JFXTextField EPentg2;
-    
-    @FXML
-    private JFXTextField EPentg3;
-    
-    @FXML
-    private JFXTextField EPentg4;
-    
-    @FXML
-    private JFXTextField EPentg5;
-    
-    @FXML
-    private JFXTextField EPentg6;
-    
-    @FXML
-    private JFXTextField EPentg7;
-    
-    @FXML
-    private JFXTextField EPentg8;
-
-    static int e1, e2, e3, e4, e5, e6, e7, e8;
-    
-    ///////////////////////////// PG School Variables /////////////////////
-        
-    @FXML
-    private static Pane PPane;
-
-    @FXML
-    private JFXTextField PPentg1; 
-    
-    @FXML
-    private JFXTextField PPentg2;
-    
-    @FXML
-    private JFXTextField PPentg3;
-    
-    @FXML
-    private JFXTextField PPentg4;
-    
-    static int p1, p2, p3, p4;
-    
-    
-    
+              
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -273,31 +85,89 @@ public class Editing2Controller implements Initializable
     }*/
     
        
-    /////////////////////////////////////////////**Secondary School Fields**///////////////
+    ////////////////////////////////////////////////////////////////////////////
+    // Secondary School Fields
+    
+    @FXML
+    private JFXTextField sPassYear;
         
-    public void getSPassYear()
-    {    
-        try
+    @FXML
+    private JFXTextField sRNo;
+    
+    @FXML
+    private MenuButton sBoard;
+    
+    @FXML
+    private MenuItem scbse;
+
+    @FXML
+    private MenuItem scisce;
+    
+    @FXML
+    private MenuItem sstate;
+
+    @FXML
+    private MenuItem sibo;
+    
+    @FXML
+    private MenuItem scie;
+    
+    @FXML
+    private JFXTextField sMedium;
+    
+    @FXML
+    private JFXTextField sSchool;
+    
+    @FXML
+    private JFXTextField sCity;
+    
+    @FXML
+    private JFXTextField sPercent;
+    
+    static int s1, s2;
+    
+    static float s7;
+    
+    static String s3, s4, s5, s6;
+    
+        
+    public void setSPassYear()
+    {   
+        String tmp1 = sPassYear.getText();
+        if( tmp1.length() == 4)  
         {
-            sPassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s2 = Integer.parseInt(sPassYear.getText());
-            System.out.println(s2);     
+            try 
+            {
+                int tmp2 = Integer.parseInt(tmp1);
+                sPassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                s1 = tmp2;
+                System.out.println(s1);
+            }
+            
+            catch (Exception e) 
+            {
+                sPassYear.setText(null);
+                sPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            } 
         }
-        catch(Exception e)
+        
+        else
         {
             sPassYear.setText(null);
             sPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
+            System.out.println("year length < 4");
+
+        }        
     }
     
     
-    public void getSRNo()
+    public void setSRNo()
     {   
         try
         {
             sRNo.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s3 = Integer.parseInt(sRNo.getText());
-            System.out.println(s3);     
+            s2 = Integer.parseInt(sRNo.getText());
+            System.out.println(s2);     
         }
         catch(Exception e)
         {
@@ -306,7 +176,7 @@ public class Editing2Controller implements Initializable
         }
     }
     
-    public void getSBoard()
+    public void setSBoard()
     {
               
        scbse.setOnAction(new EventHandler<ActionEvent>() 
@@ -315,8 +185,8 @@ public class Editing2Controller implements Initializable
             {
                 sBoard.setText("CBSE");
                 String ab  = "CBSE";
-                s4 = "'"+ab+"'";
-                System.out.println(s4);
+                s3 = "'"+ab+"'";
+                System.out.println(s3);
 
             }
        } );
@@ -327,8 +197,8 @@ public class Editing2Controller implements Initializable
             {
                 sBoard.setText("CISCE");
                 String ab  = "CISCE";
-                s4 = "'"+ab+"'";   
-                System.out.println(s4);
+                s3 = "'"+ab+"'";   
+                System.out.println(s3);
             }
        } );
        
@@ -338,8 +208,8 @@ public class Editing2Controller implements Initializable
             {
                 sBoard.setText("STATE");
                 String ab  = "STATE";
-                s4 = "'"+ab+"'";
-                System.out.println(s4);
+                s3 = "'"+ab+"'";
+                System.out.println(s3);
             }
        } );
        
@@ -349,8 +219,8 @@ public class Editing2Controller implements Initializable
             {
                 sBoard.setText("IBO");
                 String ab  = "IBO";
-                s4 = "'"+ab+"'";
-                System.out.println(s4);
+                s3 = "'"+ab+"'";
+                System.out.println(s3);
             }
        } );
        
@@ -360,79 +230,78 @@ public class Editing2Controller implements Initializable
             {
                 sBoard.setText("CIE");
                 String ab  = "CIE";
-                s4 = "'"+ab+"'";
-                System.out.println(s4);
+                s3 = "'"+ab+"'";
+                System.out.println(s3);
             }
        } );
     }
     
     
-    public void getSMedium()
+    public void setSMedium()
     {   
-        String l = sMedium.getText();
-        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        String tmp = sMedium.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
         { 
             sMedium.setText(null);
             sMedium.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("false"); 
-            s5 = null;
+            s4 = null;
         } 
         else 
         { 
             sMedium.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s5 = "'"+l+"'";
-            System.out.println(s5);
+            s4 = "'"+tmp+"'";
+            System.out.println(s4);
         }
     }
     
     
-    public void getSSchool()
+    public void setSSchool()
     {    
-        String l = sSchool.getText();
-        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        String tmp = sSchool.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
         { 
             sSchool.setText(null);
             sSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("false"); 
-            s6 = null;
+            s5 = null;
             
         } 
         else 
         { 
             sSchool.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s6 = "'"+l+"'";
+            s5 = "'"+tmp+"'";
+            System.out.println(s5);
+        }
+    }
+    
+        
+    public void setSCity()
+    {   
+        String tmp = sCity.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        { 
+            sCity.setText(null);
+            sCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            s6 = null;
+        } 
+        else 
+        { 
+            sCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            s6 = "'"+tmp+"'";
             System.out.println(s6);
         }
     }
     
     
-    
-    public void getSCity()
-    {   
-        String l = sCity.getText();
-        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
-        { 
-            sCity.setText(null);
-            sCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            s7 = null;
-        } 
-        else 
-        { 
-            sCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s7 = "'"+l+"'";
-            System.out.println(s7);
-        }
-    }
-    
-    
-    public void getSPercent()
+    public void setSPercent()
     {          
         try
         {
             sPercent.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s8 = Integer.parseInt(sPercent.getText());
-            System.out.println(s8);     
+            s7 = Float.parseFloat(sPercent.getText());
+            System.out.println(s7);       
         }
         catch(Exception e)
         {
@@ -441,79 +310,161 @@ public class Editing2Controller implements Initializable
         }
     }
 
-    
-    //////////////////////////////// **Post SSC Drop Down** ////////////////////////
+     
+    ////////////////////////////////////////////////////////////////////////////
+    //PreUniversity Drop Down
  
-    /*public void chzPostSSDwn()
+    
+    @FXML
+    private MenuButton preUnivesity;
+    
+    @FXML
+    private MenuItem hss;
+    
+    @FXML
+    private MenuItem diploma;
+    
+    @FXML
+    private Pane hPane;
+       
+    @FXML
+    private Pane dPane;
+    
+    
+    
+    public void setPreUnivesity()
     {
-                
-       if(Editing1Controller.ui == 1)
-       {
-            HSSC.setOnAction(new EventHandler<ActionEvent>() 
-            {
-                public void handle(ActionEvent t) 
-                {
-                    PostSS.setText("HSC");
-                    HD = 0;
-                    DPane.setVisible(false);
-                    HPane.setVisible(true);
-                }
-           }
-           );
-
-
-           DIPLOMA.setOnAction(new EventHandler<ActionEvent>() 
-           {
-                public void handle(ActionEvent t) 
-                {
-                    PostSS.setText("DIPLOMA");
-                    HD = 1;
-                    HPane.setVisible(false);
-                    DPane.setVisible(true);
-                }
-           }
-           );
-        }
-    }*/
-    
-    
-    ///////////////////////////////////////////**High School Fields**/////////////////////////
-        
-    public void getHPassYear()
-    {              
-        try
+        hss.setOnAction(new EventHandler<ActionEvent>() 
         {
-            int l = Integer.parseInt(hPassYear.getText());
-            if( l-s2 >= 2)
+            public void handle(ActionEvent t) 
             {
-                hPassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                t2 = l;
-                System.out.println(t2);
+               
             }
-            else
+        });
+
+        diploma.setOnAction(new EventHandler<ActionEvent>() 
+        {
+            public void handle(ActionEvent t) 
+            {
+                preUnivesity.setText("Diploma");
+                hPane.setVisible(false);
+                dPane.setVisible(true);
+            }
+        });
+    }
+      
+    void setHSS()
+    {
+        preUnivesity.setText("Higher Secondary School");
+        dPane.setVisible(false);
+        hPane.setVisible(true);
+    }
+    
+    void setDiploma()
+    {
+        preUnivesity.setText("Diploma");
+        hPane.setVisible(false);
+        dPane.setVisible(true);
+    }
+            
+    
+    
+    //static int HD;
+    
+    
+             
+    
+    ///////////////////////////////////////////////////////////////////////////
+    // Set High School Fields
+                 
+    @FXML
+    private JFXTextField hPassYear;
+    
+    @FXML
+    private JFXTextField hRNo;
+    
+    @FXML
+    private MenuButton hBoard;
+         
+    @FXML
+    private MenuItem hcbse;
+
+    @FXML
+    private MenuItem hcisce;
+    
+    @FXML
+    private MenuItem hstate;
+
+    @FXML
+    private MenuItem hibo;
+    
+    @FXML
+    private MenuItem hcie;
+    
+    @FXML
+    private JFXTextField hMedium;
+    
+    @FXML
+    private JFXTextField hSchool;
+    
+    @FXML
+    private JFXTextField hCity;
+    
+    @FXML
+    private JFXTextField hPercent;
+    
+    @FXML
+    private TextField hPhysics;
+    
+    @FXML
+    private TextField hChemistry;
+    
+    @FXML
+    private TextField hMath;
+    
+    static int h1, h2, h8, h9, h10;
+    
+    static float h7;
+    
+    static String h3, h4, h5, h6;
+    
+        
+    public void setHPassYear()
+    {
+        String tmp1 = hPassYear.getText();
+        if (tmp1.length() == 4) 
+        {
+            try 
+            {
+                int tmp2 = Integer.parseInt(tmp1);
+                hPassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                h1 = tmp2;
+                System.out.println(h1);
+            } 
+            
+            catch (Exception e) 
             {
                 hPassYear.setText(null);
                 hPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                System.out.println("check");
-
             }
-        }    
-        catch(Exception e)
+        } 
+        
+        else 
         {
             hPassYear.setText(null);
             hPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("year length < 4");
         }
-        
     }
-    
         
-    public void getHRNo()
+       
+    public void setHRNo()
     {         
         try
         {
             hRNo.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            t3 = Integer.parseInt(hRNo.getText());
-            System.out.println(t3);     
+            h2 = Integer.parseInt(hRNo.getText());
+            System.out.println(h2);     
         }
         catch(Exception e)
         {
@@ -523,7 +474,7 @@ public class Editing2Controller implements Initializable
     }
     
 
-    public void getHBoard()
+    public void setHBoard()
     {
               
        hcbse.setOnAction(new EventHandler<ActionEvent>() 
@@ -532,8 +483,8 @@ public class Editing2Controller implements Initializable
             {
                 hBoard.setText("CBSE");
                 String ab  = "CBSE";
-                t4 = "'"+ab+"'";
-                System.out.println(t4);
+                h3 = "'"+ab+"'";
+                System.out.println(h3);
 
             }
        } );
@@ -544,8 +495,8 @@ public class Editing2Controller implements Initializable
             {
                 hBoard.setText("CISCE");
                 String ab  = "CISCE";
-                t4 = "'"+ab+"'";   
-                System.out.println(t4);
+                h3 = "'"+ab+"'";   
+                System.out.println(h3);
             }
        } );
        
@@ -555,8 +506,8 @@ public class Editing2Controller implements Initializable
             {
                 hBoard.setText("STATE");
                 String ab  = "STATE";
-                t4 = "'"+ab+"'";
-                System.out.println(t4);
+                h3 = "'"+ab+"'";
+                System.out.println(h3);
             }
        } );
        
@@ -566,8 +517,8 @@ public class Editing2Controller implements Initializable
             {
                 hBoard.setText("IBO");
                 String ab  = "IBO";
-                t4 = "'"+ab+"'";
-                System.out.println(t4);
+                h3 = "'"+ab+"'";
+                System.out.println(h3);
             }
        } );
        
@@ -577,77 +528,77 @@ public class Editing2Controller implements Initializable
             {
                 hBoard.setText("CIE");
                 String ab  = "CIE";
-                t4 = "'"+ab+"'";
-                System.out.println(t4);
+                h3 = "'"+ab+"'";
+                System.out.println(h3);
             }
        } );
     }
         
         
-    public void getHMedium()
+    public void setHMedium()
     {   
-        String l = hMedium.getText();
-        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        String tmp = hMedium.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
         { 
             hMedium.setText(null);
             hMedium.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("false"); 
-            t5 = null;
+            h4 = null;
         } 
         else 
         { 
             hMedium.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            t5 = "'"+l+"'";
-            System.out.println(t5);
+            h4 = "'"+tmp+"'";
+            System.out.println(h4);
         }
     }
     
         
-    public void getHSchool()
+    public void setHSchool()
     {   
-        String l = hSchool.getText();
-        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        String tmp = hSchool.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
         { 
             hSchool.setText(null);
             hSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("false"); 
-            t6 = null;
+            h5 = null;
         } 
         else 
         { 
             hSchool.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            t6 = "'"+l+"'";
-            System.out.println(t6);
+            h5 = "'"+tmp+"'";
+            System.out.println(h5);
         }
     }
     
     
-    public void getHCity()
+    public void setHCity()
     {   
-        String l = hCity.getText();
-        if(l.matches("[a-zA-Z]+") == false || l.length() == 0)
+        String tmp = hCity.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
         { 
             hCity.setText(null);
             hCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("false"); 
-            t7 = null;
+            h6 = null;
         } 
         else 
         { 
             hCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            t7 = "'"+l+"'";
-            System.out.println(t7);
+            h6 = "'"+tmp+"'";
+            System.out.println(h6);
         }
     }
     
     
-    public void getHPercent()
+    public void setHPercent()
     {   
         try
         {
             hPercent.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            t8 = Integer.parseInt(hPercent.getText());
-            System.out.println(t8);       
+            h7 = Float.parseFloat(hPercent.getText());
+            System.out.println(h7);       
         }
         catch(Exception e)
         {
@@ -657,158 +608,259 @@ public class Editing2Controller implements Initializable
     }
     
     
-    public void getHPhysics()
+    public void setHPhysics()
     {    
         try
         {   
-            t9 = Integer.parseInt(hphysics.getText());
-            System.out.println(t9);     
+            h8 = Integer.parseInt(hPhysics.getText());
+            System.out.println(h8);     
         }
         catch(Exception e)
         {
-            hphysics.setText(null);
-            
+            hPhysics.setText(null);
+            //hphysics.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
         }
     }
     
     
-    public void getHChemistry()
+    public void setHChemistry()
     {   
         try
         {    
-            t10 = Integer.parseInt(hchemistry.getText());
-            System.out.println(t10);      
+            h9 = Integer.parseInt(hChemistry.getText());
+            System.out.println(h9);      
         }
         catch(Exception e)
         {
-            hchemistry.setText(null);
-            
+            hChemistry.setText(null);  
+            //hchemistry.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
         }
     }
     
     
-    public void getHMath()
+    public void setHMath()
     {    
         try
         {
-            t11 = Integer.parseInt(hmath.getText());
-            System.out.println(t11);   
+            h10 = Integer.parseInt(hMath.getText());
+            System.out.println(h10);   
         }
         catch(Exception e)
         {
-            hmath.setText(null);
+            hMath.setText(null);
+            //hmath.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
+    }
+    
+    
+    ////////////////////////////////////////////////////
+    // Set Diploma Fields 
+  
+    
+    @FXML
+    private JFXTextField dPassYear;
+    
+    @FXML
+    private JFXTextField dSchool;
+    
+    @FXML
+    private JFXTextField dCity;
+    
+    @FXML 
+    private JFXTextField dPercent1;
+    
+    @FXML
+    private JFXTextField dPercent2;
+    
+    @FXML
+    private JFXTextField dPercent3;
+    
+    @FXML
+    private JFXTextField dPercent4;
+    
+    @FXML
+    private JFXTextField dPercent5;
+    
+    @FXML
+    private JFXTextField dPercent6;
+    
+    static int d1;
+    
+    static float d4, d5, d6, d7, d8, d9;   
+    
+    static String d2, d3;
+    
+    
+    
+    public void setDPassYear()
+    {                  
+        String tmp1 = dPassYear.getText();
+        if (tmp1.length() == 4) 
+        {
+            try 
+            {
+                int tmp2 = Integer.parseInt(tmp1);
+                dPassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                d1 = tmp2;
+                System.out.println(d1);
+            } 
             
-        }
-    }
-    
-    
-    ////////////////////////// Diploma Fields //////////////////////
-          
-    public void getDPentg1()
-    {   
-         
-        try
-        {
-            DPentg1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d1 = Integer.parseInt(DPentg1.getText());
-            System.out.println(d1);     
-        }
-        catch(Exception e)
-        {
-            DPentg1.setText(null);
-            DPentg1.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
-    
-    
-    public void getDPentg2()
-    {   
-
-        try
-        {
-            DPentg2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d2 = Integer.parseInt(DPentg2.getText());
-            System.out.println(d2);    
-        }
-        catch(Exception e)
-        {
-            DPentg2.setText(null);
-            DPentg2.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
-    
-    
-    public void getDPentg3()
-    {   
-
-        try
-        {
-            DPentg3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d3 = Integer.parseInt(DPentg3.getText());
-            System.out.println(d3);      
-        }
-        catch(Exception e)
-        {
-            DPentg3.setText(null);
-            DPentg3.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
-    
-    
-    public void getDPentg4()
-    {   
- 
-        try
-        {
-            DPentg4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d4 = Integer.parseInt(DPentg4.getText());
-            System.out.println(d4);     
-        }
-        catch(Exception e)
-        {
-            DPentg4.setText(null);
-            DPentg4.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
+            catch (Exception e) 
+            {
+                dPassYear.setText(null);
+                dPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            }
+        } 
         
+        else 
+        {
+            dPassYear.setText(null);
+            dPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("year length < 4");
+        }
     }
     
     
-    public void getDPentg5()
+    public void setDSchool()
+    {    
+        String tmp= dSchool.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        { 
+            dSchool.setText(null);
+            dSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            d2 = null;
+            
+        } 
+        else 
+        { 
+            dSchool.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            d2 = "'"+tmp+"'";
+            System.out.println(d2);
+        }
+    }
+    
+    
+    public void setDCity()
     {   
+        String tmp = dCity.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        { 
+            dCity.setText(null);
+            dCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            d3 = null;
+        } 
+        else 
+        { 
+            dCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            d3 = "'"+tmp+"'";
+            System.out.println(d3);
+        }
+    }
+    
+    
+    public void setDPercent1()
+    {                 
         try
         {
-            DPentg5.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d5 = Integer.parseInt(DPentg5.getText());
-            System.out.println(d5);      
+            dPercent1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            d4 = Float.parseFloat(dPercent1.getText());
+            System.out.println(d4);       
         }
         catch(Exception e)
         {
-            DPentg5.setText(null);
-            DPentg5.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dPercent1.setText(null);
+            dPercent1.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
         }
-        
     }
     
     
-    public void getDPentg6()
-    {  
+    public void setDPercent2()
+    {   
         try
         {
-            DPentg6.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d6 = Integer.parseInt(DPentg6.getText());
+            dPercent2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            d5 = Float.parseFloat(dPercent2.getText());
+            System.out.println(d5);       
+        }
+        catch(Exception e)
+        {
+            dPercent2.setText(null);
+            dPercent2.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
+    }
+    
+    
+    public void setDPercent3()
+    {   
+        try
+        {
+            dPercent3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            d6 = Float.parseFloat(dPercent3.getText());
             System.out.println(d6);       
         }
         catch(Exception e)
         {
-            DPentg6.setText(null);
-            DPentg6.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dPercent3.setText(null);
+            dPercent3.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
+    }
+    
+    
+    public void setDPercent4()
+    {    
+        try
+        {
+            dPercent4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            d7 = Float.parseFloat(dPercent4.getText());
+            System.out.println(d7);       
+        }
+        catch(Exception e)
+        {
+            dPercent4.setText(null);
+            dPercent4.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
+        
+    }
+    
+    
+    public void setDPercent5()
+    {   
+        try
+        {
+            dPercent5.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            d8 = Float.parseFloat(dPercent5.getText());
+            System.out.println(d8);       
+        }
+        catch(Exception e)
+        {
+            dPercent5.setText(null);
+            dPercent5.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
+        
+    }
+    
+    
+    public void setDPercent6()
+    {  
+        try
+        {
+            dPercent6.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            d9 = Float.parseFloat(dPercent6.getText());
+            System.out.println(d9);       
+        }
+        catch(Exception e)
+        {
+            dPercent6.setText(null);
+            dPercent6.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
         }
     }
        
     
     //////////////////////////////////////////////////////////
     
-    int j, o;
+    /*int j, o;
     
     public void hide(int o)
     {   
@@ -832,141 +884,248 @@ public class Editing2Controller implements Initializable
             PPentg4.setDisable(true);
            
         }
-    }
+    }*/
     
-    ////////////////////////////Engineering Fields/////////////////////
-         
-    public void getEPentg1()
-    {   
-          
-        try
-        {
-            EPentg1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e1 = Integer.parseInt(EPentg1.getText());
-            System.out.println(e1);     
-        }
-        catch(Exception e)
-        {
-            EPentg1.setText(null);
-            EPentg1.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
+    //////////////////////////////////////////////////////////
+    // Set Undergraduation Fields
     
-    public void getEPentg2()
-    {   
-        
-        try
-        {
-            EPentg2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e2 = Integer.parseInt(EPentg2.getText());
-            System.out.println(e2);      
-        }
-        catch(Exception e)
-        {
-            EPentg2.setText(null);
-            EPentg2.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-        
-    }
-    
-    public void getEPentg3()
-    {   
-         
-        try
-        {
-            EPentg3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e3 = Integer.parseInt(EPentg3.getText());
-            System.out.println(e3);     
-        }
-        catch(Exception e)
-        {
-            EPentg3.setText(null);
-            EPentg3.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
-    
-    public void getEPentg4()
-    {   
-        
-        try
-        {
-            EPentg4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e4 = Integer.parseInt(EPentg4.getText());
-            System.out.println(e4);      
-        }
-        catch(Exception e)
-        {
-            EPentg4.setText(null);
-            EPentg4.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
-    
-    public void getEPentg5()
-    {   
-            
-        try
-        {
-            EPentg5.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e5 = Integer.parseInt(EPentg5.getText());
-            System.out.println(e5);    
-        }
-        catch(Exception e)
-        {
-            EPentg5.setText(null);
-            EPentg5.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
-    
-    public void getEPentg6()
-    {   
-
-        try
-        {
-            EPentg6.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e6 = Integer.parseInt(EPentg6.getText());
-            System.out.println(e6);     
-        }
-        catch(Exception e)
-        {
-            EPentg6.setText(null);
-            EPentg6.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
-    
-    public void getEPentg7()
-    {   
-        
-        try
-        {
-            EPentg7.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e7 = Integer.parseInt(EPentg7.getText());
-            System.out.println(e7);     
-        }
-        catch(Exception e)
-        {
-            EPentg7.setText(null);
-            EPentg7.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-        
-    }
-    
-    public void getEPentg8()
-    {   
-
-        try
-        {
-            EPentg8.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e8 = Integer.parseInt(EPentg8.getText());
-            System.out.println(e8);     
-        }
-        catch(Exception e)
-        {
-            EPentg8.setText(null);
-            EPentg8.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
     
     @FXML
+    private JFXTextField ePassYear;
+    
+    @FXML
+    private JFXTextField eSchool;
+    
+    @FXML
+    private JFXTextField eCity;
+       
+    @FXML
+    private JFXTextField ePercent1;
+    
+    @FXML
+    private JFXTextField ePercent2;
+    
+    @FXML
+    private JFXTextField ePercent3;
+    
+    @FXML
+    private JFXTextField ePercent4;
+    
+    @FXML
+    private JFXTextField ePercent5;
+    
+    @FXML
+    private JFXTextField ePercent6;
+    
+    @FXML
+    private JFXTextField ePercent7;
+    
+    @FXML
+    private JFXTextField ePercent8;
+
+    static int e1;
+    
+    static float e4, e5, e6, e7, e8, e9, e10, e11;
+    
+    static String e2, e3;
+    
+    
+    public void setEPassYear()
+    {                   
+        String tmp1 = ePassYear.getText();
+        if (tmp1.length() == 4) 
+        {
+            try 
+            {
+                int tmp2 = Integer.parseInt(tmp1);
+                ePassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                e1 = tmp2;
+                System.out.println(e1);
+            } 
+            
+            catch (Exception e) 
+            {
+                ePassYear.setText(null);
+                ePassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            }
+        } 
+        
+        else 
+        {
+            ePassYear.setText(null);
+            ePassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("year length < 4");
+        }
+    }
+    
+    
+    public void setESchool()
+    {    
+        String tmp = eSchool.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        { 
+            eSchool.setText(null);
+            eSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            e2 = null;
+            
+        } 
+        else 
+        { 
+            eSchool.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            e2 = "'"+tmp+"'";
+            System.out.println(e2);
+        }
+    }
+    
+    
+    public void setECity()
+    {   
+        String tmp = eCity.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        { 
+            eCity.setText(null);
+            eCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            e3 = null;
+        } 
+        else 
+        { 
+            eCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            e3 = "'"+tmp+"'";
+            System.out.println(e3);
+        }
+    }
+    
+    
+    public void setEPercent1()
+    {             
+        try
+        {
+            ePercent1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            e4 = Float.parseFloat(ePercent1.getText());
+            System.out.println(e4);       
+        }
+        catch(Exception e)
+        {
+            ePercent1.setText(null);
+            ePercent1.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }
+    }
+    
+    
+    public void setEPercent2()
+    {           
+        try
+        {
+            ePercent2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            e5 = Float.parseFloat(ePercent2.getText());
+            System.out.println(e5);       
+        }
+        catch(Exception e)
+        {
+            ePercent2.setText(null);
+            ePercent2.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }        
+    }
+    
+    
+    public void setEPercent3()
+    {           
+        try
+        {
+            ePercent3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            e6 = Float.parseFloat(ePercent3.getText());
+            System.out.println(e6);       
+        }
+        catch(Exception e)
+        {
+            ePercent3.setText(null);
+            ePercent3.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }  
+    }
+    
+    
+    public void setEPercent4()
+    {           
+        try
+        {
+            ePercent4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            e7 = Float.parseFloat(ePercent4.getText());
+            System.out.println(e7);       
+        }
+        catch(Exception e)
+        {
+            ePercent4.setText(null);
+            ePercent4.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }  
+    }
+    
+    
+    public void setEPercent5()
+    {               
+        try
+        {
+            ePercent5.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            e8 = Float.parseFloat(ePercent5.getText());
+            System.out.println(e8);       
+        }
+        catch(Exception e)
+        {
+            ePercent5.setText(null);
+            ePercent5.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }  
+    }
+    
+    
+    public void setEPercent6()
+    {   
+        try
+        {
+            ePercent6.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            e9 = Float.parseFloat(ePercent6.getText());
+            System.out.println(e9);       
+        }
+        catch(Exception e)
+        {
+            ePercent6.setText(null);
+            ePercent6.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }  
+    }
+    
+    
+    public void setEPercent7()
+    {           
+        try
+        {
+            ePercent7.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            e10 = Float.parseFloat(ePercent7.getText());
+            System.out.println(e10);       
+        }
+        catch(Exception e)
+        {
+            ePercent7.setText(null);
+            ePercent7.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }          
+    }
+    
+    
+    public void setEPercent8()
+    {  
+        try
+        {
+            ePercent8.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            e11 = Float.parseFloat(ePercent8.getText());
+            System.out.println(e11);       
+        }
+        catch(Exception e)
+        {
+            ePercent8.setText(null);
+            ePercent8.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }  
+    }
+    
+    /*@FXML
     private List<JFXTextField> EList; //see Editing2.fxml to more info
     
     public void selEPentg()
@@ -985,73 +1144,190 @@ public class Editing2Controller implements Initializable
         }
     }
     
-    //////////////////////////////////////Postgraduation Fields///////////////////////////
-        
-    public void getPPentg1()
-    {    
-        try
-        {
-            PPentg1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            p1 = Integer.parseInt(PPentg1.getText());
-            System.out.println(p1);    
-        }
-        catch(Exception e)
-        {
-            PPentg1.setText(null);
-            PPentg1.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
+    <fx:define>
+          <ArrayList fx:id="EList">
+              <fx:reference source="ePercent1" />
+              <fx:reference source="ePercent2" />
+              <fx:reference source="ePercent3" />
+              <fx:reference source="ePercent4" />
+              <fx:reference source="ePercent5" />
+              <fx:reference source="ePercent6" />
+              <fx:reference source="ePercent7" />
+              <fx:reference source="ePercent8" />
+          </ArrayList>
+          <ArrayList fx:id="PList">
+              <fx:reference source="pPercent1" />
+              <fx:reference source="pPercent2" />
+              <fx:reference source="pPercent3" />
+              <fx:reference source="pPercent4" />
+          </ArrayList>
+      </fx:define>
     
-    public void getPPentg2()
-    {   
-        
-        try
-        {
-            PPentg2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            p2 = Integer.parseInt(PPentg2.getText());
-            System.out.println(p2);      
-        }
-        catch(Exception e)
-        {
-            PPentg2.setText(null);
-            PPentg2.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
     
-    public void getPPentg3()
-    {   
-        
-        try
-        {
-            PPentg3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            p3 = Integer.parseInt(PPentg3.getText());
-            System.out.println(p3);     
-        }
-        catch(Exception e)
-        {
-            PPentg3.setText(null);
-            PPentg3.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-        
-    }
     
-    public void getPPentg4()
-    {   
-           
-        try
-        {
-            PPentg4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            p4 = Integer.parseInt(PPentg4.getText());
-            System.out.println(p4);      
-        }
-        catch(Exception e)
-        {
-            PPentg4.setText(null);
-            PPentg4.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-    }
+    */
+    
+    /////////////////////////////////////////////////////////////////
+    // Set Postgraduation Fields
+    
     
     @FXML
+    private JFXTextField pPassYear;
+    
+    @FXML
+    private JFXTextField pSchool;
+    
+    @FXML
+    private JFXTextField pCity;
+       
+    @FXML
+    private JFXTextField pPercent1;
+    
+    @FXML
+    private JFXTextField pPercent2;
+    
+    @FXML
+    private JFXTextField pPercent3;
+    
+    @FXML
+    private JFXTextField pPercent4;
+    
+    static int p1;    
+    
+    static float p4, p5, p6, p7;
+
+    static String p2, p3;
+    
+    
+    public void setPPassYear()
+    {           
+        String tmp1 = pPassYear.getText();
+        if (tmp1.length() == 4) 
+        {
+            try 
+            {
+                int tmp2 = Integer.parseInt(tmp1);
+                pPassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                p1 = tmp2;
+                System.out.println(p1);
+            } 
+            
+            catch (Exception e) 
+            {
+                pPassYear.setText(null);
+                pPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            }
+        } 
+        
+        else 
+        {
+            pPassYear.setText(null);
+            pPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("year length < 4");
+        }
+    }
+    
+    
+    public void setPSchool()
+    {    
+        String tmp = pSchool.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        { 
+            pSchool.setText(null);
+            pSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            p2 = null;
+            
+        } 
+        else 
+        { 
+            pSchool.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            p2 = "'"+tmp+"'";
+            System.out.println(p2);
+        }
+    }
+    
+    
+    public void setPCity()
+    {   
+        String tmp = pCity.getText();
+        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        { 
+            pCity.setText(null);
+            pCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            p3 = null;
+        } 
+        else 
+        { 
+            pCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            p3 = "'"+tmp+"'";
+            System.out.println(p3);
+        }
+    }
+    
+    
+    public void setPPercent1()
+    {           
+        try
+        {
+            pPercent1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            p4 = Float.parseFloat(pPercent1.getText());
+            System.out.println(p4);       
+        }
+        catch(Exception e)
+        {
+            pPercent1.setText(null);
+            pPercent1.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        } 
+    }
+    
+    public void setPPercent2()
+    {           
+        try
+        {
+            pPercent2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            p5 = Float.parseFloat(pPercent2.getText());
+            System.out.println(p5);       
+        }
+        catch(Exception e)
+        {
+            pPercent2.setText(null);
+            pPercent2.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        } 
+    }
+    
+    public void setPPercent3()
+    {           
+        try
+        {
+            pPercent3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            p6 = Float.parseFloat(pPercent3.getText());
+            System.out.println(p6);       
+        }
+        catch(Exception e)
+        {
+            pPercent3.setText(null);
+            pPercent3.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        } 
+    }
+    
+    public void setPPercent4()
+    {           
+        try
+        {
+            pPercent4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            p7 = Float.parseFloat(pPercent4.getText());
+            System.out.println(p7);       
+        }
+        catch(Exception e)
+        {
+            pPercent4.setText(null);
+            pPercent4.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        } 
+    }
+    
+    /*@FXML
     private List<JFXTextField> PList; //see Editing2.fxml to more info
     
     public void selPPentg()
@@ -1068,7 +1344,7 @@ public class Editing2Controller implements Initializable
         {
             PList.get(count).setText(null);
         }
-    }
+    }*/
     
     //////////////////////////////////////////////////////////
    
@@ -1129,10 +1405,10 @@ public class Editing2Controller implements Initializable
     
         
     
-    @FXML
-    public static Label BtnTo1;
+    /*@FXML
+    public static Label BtnTo1;*/
     
-    public void toEdit1(MouseEvent event)
+    public void toPrevPg(MouseEvent event)
      {  
         try 
         {
@@ -1149,10 +1425,8 @@ public class Editing2Controller implements Initializable
         }
     }
     
-    @FXML
-    private Label BtnTo3;  
     
-    public void toEdit3(MouseEvent event)
+    public void toNextPg(MouseEvent event)
     {
         
         try 
@@ -1169,10 +1443,8 @@ public class Editing2Controller implements Initializable
           }
     }
     
-    @FXML
-    private Label bck;
-    
-    public void bck2HP(MouseEvent event)
+        
+    public void toHomePg(MouseEvent event)
     {
         try 
         {

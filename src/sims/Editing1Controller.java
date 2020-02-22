@@ -262,7 +262,9 @@ public class Editing1Controller implements Initializable
         
     }*/
       
-    ////////////////////////////// SET DATA /////////////////////////////////
+    ///////////////////////////////////////////////////////////////
+    // SET DATA 
+    
     public void setNameVal()
     {       
         String tmp = name.getText();
@@ -543,7 +545,8 @@ public class Editing1Controller implements Initializable
         }
     } 
     
-    /////////////////////////////// GET DATA  /////////////////////////////
+    ///////////////////////////////////////////////////////////////
+    // GET DATA
     
     public String getNameVal()
     {
@@ -619,7 +622,7 @@ public class Editing1Controller implements Initializable
     }*/
     
         
-    public void toEdit2(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
+    public void toNextPg(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {
         try 
         {

@@ -1,15 +1,12 @@
-
 package sims;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import java.sql.*;
+
 
 import javafx.scene.input.MouseEvent;
 import com.jfoenix.controls.JFXTextField;
-import java.util.List;
-import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,15 +14,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import java.util.regex.Pattern;
+
+
+import java.util.List;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
+
 
 
 
@@ -124,11 +127,11 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField sPercent;
     
-    static int s1, s2;
+    int s1, s2;
     
-    static float s7;
+    float s7;
     
-    static String s3, s4, s5, s6;
+    String s3, s4, s5, s6;
     
         
     public void setSPassYear()
@@ -240,7 +243,7 @@ public class Editing2Controller implements Initializable
     public void setSMedium()
     {   
         String tmp = sMedium.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             sMedium.setText(null);
             sMedium.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -259,13 +262,12 @@ public class Editing2Controller implements Initializable
     public void setSSchool()
     {    
         String tmp = sSchool.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             sSchool.setText(null);
             sSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("false"); 
-            s5 = null;
-            
+            s5 = null;  
         } 
         else 
         { 
@@ -279,7 +281,7 @@ public class Editing2Controller implements Initializable
     public void setSCity()
     {   
         String tmp = sCity.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             sCity.setText(null);
             sCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -317,50 +319,22 @@ public class Editing2Controller implements Initializable
     
     @FXML
     private MenuButton preUnivesity;
-    
-    @FXML
-    private MenuItem hss;
-    
-    @FXML
-    private MenuItem diploma;
-    
+       
     @FXML
     private Pane hPane;
        
     @FXML
     private Pane dPane;
-    
-    
-    
-    public void setPreUnivesity()
-    {
-        hss.setOnAction(new EventHandler<ActionEvent>() 
-        {
-            public void handle(ActionEvent t) 
-            {
-               
-            }
-        });
-
-        diploma.setOnAction(new EventHandler<ActionEvent>() 
-        {
-            public void handle(ActionEvent t) 
-            {
-                preUnivesity.setText("Diploma");
-                hPane.setVisible(false);
-                dPane.setVisible(true);
-            }
-        });
-    }
+       
       
-    void setHSS()
+    public void setHSS()
     {
         preUnivesity.setText("Higher Secondary School");
         dPane.setVisible(false);
         hPane.setVisible(true);
     }
     
-    void setDiploma()
+    public void setDiploma()
     {
         preUnivesity.setText("Diploma");
         hPane.setVisible(false);
@@ -422,11 +396,11 @@ public class Editing2Controller implements Initializable
     @FXML
     private TextField hMath;
     
-    static int h1, h2, h8, h9, h10;
+    int h1, h2;
     
-    static float h7;
+    float h7, h8, h9, h10;
     
-    static String h3, h4, h5, h6;
+    String h3, h4, h5, h6;
     
         
     public void setHPassYear()
@@ -538,7 +512,7 @@ public class Editing2Controller implements Initializable
     public void setHMedium()
     {   
         String tmp = hMedium.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             hMedium.setText(null);
             hMedium.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -557,7 +531,7 @@ public class Editing2Controller implements Initializable
     public void setHSchool()
     {   
         String tmp = hSchool.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             hSchool.setText(null);
             hSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -576,7 +550,7 @@ public class Editing2Controller implements Initializable
     public void setHCity()
     {   
         String tmp = hCity.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             hCity.setText(null);
             hCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -612,7 +586,7 @@ public class Editing2Controller implements Initializable
     {    
         try
         {   
-            h8 = Integer.parseInt(hPhysics.getText());
+            h8 = Float.parseFloat(hPhysics.getText());
             System.out.println(h8);     
         }
         catch(Exception e)
@@ -627,7 +601,7 @@ public class Editing2Controller implements Initializable
     {   
         try
         {    
-            h9 = Integer.parseInt(hChemistry.getText());
+            h9 = Float.parseFloat(hChemistry.getText());
             System.out.println(h9);      
         }
         catch(Exception e)
@@ -642,7 +616,7 @@ public class Editing2Controller implements Initializable
     {    
         try
         {
-            h10 = Integer.parseInt(hMath.getText());
+            h10 = Float.parseFloat(hMath.getText());
             System.out.println(h10);   
         }
         catch(Exception e)
@@ -684,11 +658,11 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField dPercent6;
     
-    static int d1;
+    int d1;
     
-    static float d4, d5, d6, d7, d8, d9;   
+    float d4, d5, d6, d7, d8, d9;   
     
-    static String d2, d3;
+    String d2, d3;
     
     
     
@@ -724,7 +698,7 @@ public class Editing2Controller implements Initializable
     public void setDSchool()
     {    
         String tmp= dSchool.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             dSchool.setText(null);
             dSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -744,7 +718,7 @@ public class Editing2Controller implements Initializable
     public void setDCity()
     {   
         String tmp = dCity.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             dCity.setText(null);
             dCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -923,11 +897,11 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField ePercent8;
 
-    static int e1;
+    int e1;
     
-    static float e4, e5, e6, e7, e8, e9, e10, e11;
+    float e4, e5, e6, e7, e8, e9, e10, e11;
     
-    static String e2, e3;
+    String e2, e3;
     
     
     public void setEPassYear()
@@ -962,7 +936,7 @@ public class Editing2Controller implements Initializable
     public void setESchool()
     {    
         String tmp = eSchool.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             eSchool.setText(null);
             eSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -982,7 +956,7 @@ public class Editing2Controller implements Initializable
     public void setECity()
     {   
         String tmp = eCity.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             eCity.setText(null);
             eCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -1192,11 +1166,11 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField pPercent4;
     
-    static int p1;    
+    int p1;    
     
-    static float p4, p5, p6, p7;
+    float p4, p5, p6, p7;
 
-    static String p2, p3;
+    String p2, p3;
     
     
     public void setPPassYear()
@@ -1231,7 +1205,7 @@ public class Editing2Controller implements Initializable
     public void setPSchool()
     {    
         String tmp = pSchool.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             pSchool.setText(null);
             pSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -1251,7 +1225,7 @@ public class Editing2Controller implements Initializable
     public void setPCity()
     {   
         String tmp = pCity.getText();
-        if(tmp.matches("[a-zA-Z]+") == false || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             pCity.setText(null);
             pCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");

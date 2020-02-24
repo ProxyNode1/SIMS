@@ -1,4 +1,3 @@
-
 package sims;
 
 import java.net.URL;
@@ -7,25 +6,26 @@ import javafx.fxml.Initializable;
 
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
-import java.sql.*;
-import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import java.util.regex.Pattern;
 
 
+import com.jfoenix.controls.JFXCheckBox;
+import java.sql.*;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 
 
@@ -36,22 +36,22 @@ import javafx.stage.Stage;
  */
 public class Editing3Controller implements Initializable {
 
-    public static String s1;
-    public static String h1, h2, h3, h4, h5, h6;
-    
     int e = 0;
     
-    Connection h = null;
+    //Connection h = null;
+    
+    //public String s1;
+    public String personMailVal, univMailVal, dadContactVal, famContactVal, addInfoVal;
     
     @FXML
     private Pane Edit3;
        
     @FXML
-    private JFXTextField univMail;
+    private JFXTextField personMail;
     
     @FXML
-    private JFXTextField personMail;
-        
+    private JFXTextField univMail;
+                
     @FXML
     private JFXTextField dadContact;
     
@@ -100,8 +100,95 @@ public class Editing3Controller implements Initializable {
         //operation();
 
     }    
+        
+    
+    public void setPersonMail()
+    {           
+        String tmp = personMail.getText();
+        if(!Pattern.compile("^(.+@.+)$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )            
+        { 
+            personMail.setText(null);
+            personMail.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            personMail = null;
+        } 
+        else 
+        { 
+            personMail.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            personMailVal = "'"+tmp+"'";
+            System.out.println(personMailVal);
+        }
+         
+    }
     
     
+    public void setUnivMail()
+    {   
+        String tmp = univMail.getText();
+        if(!Pattern.compile("^(.+@.+)$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )            
+        {            
+            univMail.setText(null);
+            univMail.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            univMail = null;  
+        }
+        else 
+        {
+            univMail.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            univMailVal = "'"+univMail.getText()+"'";
+            System.out.println(univMailVal);
+        }        
+    }
+    
+    
+    public void setDadContact() 
+    {   
+        String tmp = dadContact.getText();
+        
+        if(Pattern.compile("", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() && tmp.length() == 10 )  aasadas
+        {
+            dadContact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dadContactVal = "'"+tmp+"'";
+            System.out.println(dadContactVal);
+            
+        }
+        else
+        {
+            System.out.println(tmp);
+            dadContact.setText(null);
+            dadContact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dadContactVal = null;
+            System.out.println("got Fathers Contact");
+        }
+    }
+    
+    
+    public void setFamContact()
+    {   
+        String tmp = famContact.getText();
+        
+        if(Pattern.compile("", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() && tmp.length() == 10 ) asdasdas
+        {
+            famContact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            famContactVal = "'"+tmp+"'";
+            System.out.println(famContactVal);
+            
+        }      
+        else
+        {
+            famContactVal = null;
+            famContact.setText("");
+            famContact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("got Familys Contact");
+        }
+    }
+    
+    
+    public void setAddInfo(MouseEvent event)
+     {  
+            addInfoVal = "'"+addInfo.getText()+"'";
+            System.out.println(addInfoVal);
+    }
     
     /*void operation()
     {
@@ -201,82 +288,6 @@ public class Editing3Controller implements Initializable {
     }*/ 
     
     
-    public void getPersonMail()
-    {   
-              h2 = "'"+personMail.getText()+"'";
-            System.out.println(h2);
-        
-    }
-    
-    
-    public void getUnivMail()
-    {   
-        
-        if(univMail.getText() == null)
-        {
-            System.out.println(h1);
-            univMail.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h1 = null;
-            
-        }
-        else 
-        {
-            univMail.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h1 = "'"+univMail.getText()+"'";
-            System.out.println(h1);
-        }
-        
-    }
-    
-
-    
-    public void getDadContact()
-    {   
-        String l = "'"+dadContact.getText()+"'";
-        
-        if(l.length() == 12 && l.matches(".*\\d+.*"))
-        {
-            dadContact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h3 = l;
-            System.out.println(h3);
-            
-        }
-        else
-        {
-            System.out.println(l);
-            dadContact.setText(null);
-            dadContact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h3 = null;
-            System.out.println("check");
-        }
-    }
-    
-    public void getFamContact()
-    {   
-        String l = "'"+famContact.getText()+"'";
-        
-        if(l.length() == 12 && l.matches(".*\\d+.*"))
-        {
-            famContact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h4 = l;
-            System.out.println(h4);
-            
-        }      
-        else
-        {
-            h4 = null;
-            famContact.setText("");
-            famContact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("check");
-        }
-    }
-           
-    public void savInfo(MouseEvent event)
-     {  
-            h6 = "'"+addInfo.getText()+"'";
-            System.out.println(h6);
-    }
-    
     /*public static void setValues()
     {
         DatabaseIO a = new DatabaseIO();
@@ -326,7 +337,7 @@ public class Editing3Controller implements Initializable {
     
     
     
-    public void toEdit1(MouseEvent event)
+    /*public void toEdit1(MouseEvent event)
     {
         try 
         {
@@ -341,34 +352,12 @@ public class Editing3Controller implements Initializable {
             ex.printStackTrace();
             
         }
-    }
+    }*/
 
     
-    
-    
-    public void toEdit2(MouseEvent event)
-    {
-        try {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();        
-        } 
-        catch (Exception ex) 
-        {
-            ex.printStackTrace();
-        }
-    }
-    
-    
-    
-    
-    
-    /*public void toSave(MouseEvent event)
-    {
-        
-        try
+    public void toSave(MouseEvent event)
+    {        
+        /*try
         {
             if(Editing1Controller.ui == 0)
             {
@@ -409,12 +398,28 @@ public class Editing3Controller implements Initializable {
         if (e == 1)
         {
             errbtn.setText("Check input fields again!");
+        }*/
+    }
+    
+    
+    public void toPrevPg(MouseEvent event)
+    {
+        try 
+        {
+            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
+            Scene editPg1Scene = new Scene(editPag1);
+            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            appStage.setScene(editPg1Scene);
+            appStage.show();        
+        } 
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
         }
     }
-    */
+       
     
-    
-    public void bck2HP(MouseEvent event)
+    public void toHomepg(MouseEvent event)
     {
         try 
         {

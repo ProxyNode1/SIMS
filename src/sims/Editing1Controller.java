@@ -1,15 +1,11 @@
-
 package sims;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
+
 import com.jfoenix.controls.JFXTextField;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,16 +13,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton; 
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.Label;
+import java.util.regex.Pattern;
+
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+
 
 
 public class Editing1Controller implements Initializable 
@@ -41,7 +45,7 @@ public class Editing1Controller implements Initializable
     public String nameVal, clgIDVal, monthVal, dobVal, courseVal, contactVal;
     public int yearVal, dayVal, currSemVal;
     
-    Connection h = null; 
+    //Connection h = null; 
     
     
     @FXML
@@ -268,10 +272,9 @@ public class Editing1Controller implements Initializable
     public void setNameVal()
     {       
         String tmp = name.getText();
-        
-        if( !tmp.matches("^[ A-Za-z]+$") || tmp.length() == 0)
+        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
-            //name.setText(null);
+            name.setText(null);
             name.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
             System.out.println("false"); 
             nameVal = null;
@@ -292,32 +295,7 @@ public class Editing1Controller implements Initializable
         System.out.println(clgIDVal);
     }
      
-    
-    public void setYearVal()
-    {      
-        String tmp = dobYear.getText();
-        if(tmp.length() == 4)
-        {
-            try
-            {
-                yearVal = Integer.parseInt(dobYear.getText());
-                dobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                System.out.println(yearVal);
-            }
-            catch(Exception e)
-            {
-                dobYear.setText(null);
-                dobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            }
-        }
-        else
-        {
-            dobYear.setText(null);
-            dobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
-            
-    }
-    
+           
     int numDays = 0;
     
     public void setMonthVal()
@@ -485,7 +463,8 @@ public class Editing1Controller implements Initializable
         );
        
     }
-        
+       
+    
     public void setDayVal()
     {  
         int tmp = Integer.parseInt(dobDay.getText());
@@ -502,17 +481,56 @@ public class Editing1Controller implements Initializable
         }
     }  
     
+    
+    public void setYearVal()
+    {      
+        String tmp = dobYear.getText();
+        if(tmp.length() == 4)
+        {
+            try
+            {
+                yearVal = Integer.parseInt(dobYear.getText());
+                dobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                System.out.println(yearVal);
+            }
+            catch(Exception e)
+            {
+                dobYear.setText(null);
+                dobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            }
+        }
+        else
+        {
+            dobYear.setText(null);
+            dobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+        }            
+    }
+    
+    
     public void setDOBVal()
     {
-        dobVal = "'"+ yearVal + "-" + monthVal + "-" + dayVal + "'"; 
+        dobVal = "'"+ monthVal + "-" + dayVal + "-" + yearVal + "'"; 
         System.out.println(dobVal);
     }
     
     
     public void setCourseVal()
     {       
-        courseVal = "'"+course.getText()+"'";
-        System.out.println(courseVal);
+        String tmp = course.getText();               
+        if(!Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        { 
+            course.setText(null);
+            course.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
+            courseVal = null;
+        } 
+        
+        else 
+        { 
+            course.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            courseVal = "'"+tmp+"'";
+            System.out.println(courseVal);
+        }        
     }
     
     
@@ -525,23 +543,20 @@ public class Editing1Controller implements Initializable
     
     public void setContactVal()
     {  
-        String tmp = "'"+contact.getText()+"'";
-        
-        if(tmp.length() == 12)
-        {
-            contact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            contactVal = tmp;
-            System.out.println(contactVal);
-            
-        }
-        else
-        {
-            System.out.println(tmp);
+        String tmp = contact.getText();    asdasdas           
+        if(!Pattern.compile("", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 10 )
+        { 
             contact.setText(null);
             contact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            System.out.println("false"); 
             contactVal = null;
-            System.out.println("check contact");
-            
+        } 
+        
+        else 
+        { 
+            contact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            contactVal = "'"+tmp+"'";
+            System.out.println(contactVal);
         }
     } 
     

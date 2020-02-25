@@ -698,7 +698,7 @@ public class Editing2Controller implements Initializable
     public void setDSchool()
     {    
         String tmp= dSchool.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(!Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             dSchool.setText(null);
             dSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
@@ -718,7 +718,7 @@ public class Editing2Controller implements Initializable
     public void setDCity()
     {   
         String tmp = dCity.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(!Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
         { 
             dCity.setText(null);
             dCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");

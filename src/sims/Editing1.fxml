@@ -45,32 +45,32 @@
                   <Font name="Arial" size="15.0" />
                </font>
             </Label>
-            <MenuButton fx:id="dobMonth" layoutX="5.0" layoutY="45.0" mnemonicParsing="false" onAction="#setMonthVal" prefHeight="36.0" prefWidth="113.0" style="-fx-border-width: 1;" stylesheets="@Common.css" text="Month" textFill="WHITE">
+            <MenuButton fx:id="dobMonth" layoutX="105.0" layoutY="45.0" mnemonicParsing="false" onAction="#setMonthVal" prefHeight="36.0" prefWidth="113.0" style="-fx-border-width: 1;" stylesheets="@Common.css" text="Month" textFill="WHITE">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
                <items>
-                  <MenuItem fx:id="jan" mnemonicParsing="false" text="January" />
-                  <MenuItem fx:id="fab" mnemonicParsing="false" text="Fabruary" />
-                  <MenuItem fx:id="march" mnemonicParsing="false" text="March" />
-                  <MenuItem fx:id="april" mnemonicParsing="false" text="April" />
-                  <MenuItem fx:id="may" mnemonicParsing="false" text="May" />
-                  <MenuItem fx:id="june" mnemonicParsing="false" text="June" />
-                  <MenuItem fx:id="july" mnemonicParsing="false" text="July" />
-                  <MenuItem fx:id="aug" mnemonicParsing="false" text="August" />
-                  <MenuItem fx:id="sept" mnemonicParsing="false" text="September" />
-                  <MenuItem fx:id="oct" mnemonicParsing="false" text="October" />
-                  <MenuItem fx:id="nov" mnemonicParsing="false" text="November" />
-                  <MenuItem fx:id="dec" mnemonicParsing="false" text="December" />
+                  <MenuItem fx:id="january" mnemonicParsing="false" onAction="#setJanuary" text="January" />
+                  <MenuItem fx:id="faburary" mnemonicParsing="false" onAction="#setFabruary" text="Fabruary" />
+                  <MenuItem fx:id="march" mnemonicParsing="false" onAction="#setMarch" text="March" />
+                  <MenuItem fx:id="april" mnemonicParsing="false" onAction="#setApril" text="April" />
+                  <MenuItem fx:id="may" mnemonicParsing="false" onAction="#setMay" text="May" />
+                  <MenuItem fx:id="june" mnemonicParsing="false" onAction="#setJune" text="June" />
+                  <MenuItem fx:id="july" mnemonicParsing="false" onAction="#setJuly" text="July" />
+                  <MenuItem fx:id="august" mnemonicParsing="false" onAction="#setAugust" text="August" />
+                  <MenuItem fx:id="september" mnemonicParsing="false" onAction="#setSeptember" text="September" />
+                  <MenuItem fx:id="october" mnemonicParsing="false" onAction="#setOctober" text="October" />
+                  <MenuItem fx:id="november" mnemonicParsing="false" onAction="#setNovember" text="November" />
+                  <MenuItem fx:id="december" mnemonicParsing="false" onAction="#setDecember" text="December" />
                </items>
             </MenuButton>
-            <Label fx:id="monthLbl" focusTraversable="false" layoutX="7.0" layoutY="27.0" text="Month" textFill="WHITE" visible="false" />
-            <JFXTextField fx:id="dobDay" focusColor="WHITE" labelFloat="true" layoutX="135.0" layoutY="45.0" onAction="#setDayVal" prefHeight="36.4" prefWidth="83.0" promptText="  Day" stylesheets="@Common.css" unFocusColor="#212121">
+            <Label fx:id="monthLbl" focusTraversable="false" layoutX="107.0" layoutY="27.0" text="Month" textFill="WHITE" visible="false" />
+            <JFXTextField fx:id="dobDay" focusColor="WHITE" labelFloat="true" layoutX="235.0" layoutY="45.0" onAction="#setDayVal" prefHeight="36.4" prefWidth="83.0" promptText="  Day" stylesheets="@Common.css" unFocusColor="#212121">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="dobYear" focusColor="WHITE" labelFloat="true" layoutX="235.0" layoutY="45.0" onAction="#setYearVal" prefHeight="36.4" prefWidth="83.0" promptText="  Year" stylesheets="@Common.css" unFocusColor="#212121">
+            <JFXTextField fx:id="dobYear" focusColor="WHITE" labelFloat="true" layoutX="5.0" layoutY="45.0" onAction="#setYearVal" prefHeight="36.4" prefWidth="83.0" promptText="  Year" stylesheets="@Common.css" unFocusColor="#212121">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>

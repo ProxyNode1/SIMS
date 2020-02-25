@@ -64,10 +64,10 @@ public class Editing1Controller implements Initializable
     private MenuButton dobMonth;
                
     @FXML
-    private MenuItem jan;
+    private MenuItem january;
     
     @FXML
-    private MenuItem fab;
+    private MenuItem faburary;
 
     @FXML
     private MenuItem march; 
@@ -85,19 +85,19 @@ public class Editing1Controller implements Initializable
     private MenuItem july;
     
     @FXML
-    private MenuItem aug;
+    private MenuItem august;
     
     @FXML
-    private MenuItem sept;
+    private MenuItem september;
     
     @FXML
-    private MenuItem oct;
+    private MenuItem october;
 
     @FXML
-    private MenuItem nov;
+    private MenuItem november;
     
     @FXML
-    private MenuItem dec;
+    private MenuItem december;
     
     @FXML
     private Label monthLbl;
@@ -122,10 +122,7 @@ public class Editing1Controller implements Initializable
         //ClgID.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
                 
         
-        //chzDobMnth();
-        
-        //h = DatabaseCon.connect();
-        
+                
         name.setTooltip(new Tooltip ("use Fullname"));
         dobYear.setTooltip(new Tooltip("eg. 1997"));
         course.setTooltip(new Tooltip("eg. BE Computer Science"));
@@ -298,170 +295,97 @@ public class Editing1Controller implements Initializable
            
     int numDays = 0;
     
+    public void setJanuary()
+    {
+        numDays = 31;
+        dobMonth.setText("January");
+        monthVal = "1";
+    }
+    
+    public void setFabruary()
+    {
+        if (yearVal % 4 == 0) {
+            numDays = 29;
+        } else {
+            numDays = 28;
+        }
+        dobMonth.setText("Fabruary");
+        monthVal = "2";
+    }
+    
+    public void setMarch()
+    {
+        numDays = 31;
+        dobMonth.setText("March");
+        monthVal = "3";
+    }
+    
+    public void setApril()
+    {
+        numDays = 30;
+        dobMonth.setText("April");
+        monthVal = "4";
+    }
+    
+    public void setMay()
+    {
+        numDays = 31;
+        dobMonth.setText("May");
+        monthVal = "5";
+    }
+    
+    public void setJune()
+    {
+        numDays = 30;
+        dobMonth.setText("June");
+        monthVal = "6";
+    }
+    
+    public void setJuly()
+    {
+        numDays = 31;
+        dobMonth.setText("July");
+        monthVal = "7";
+    }
+    
+    public void setAugust()
+    {
+        numDays = 31;
+        dobMonth.setText("August");
+        monthVal = "8";
+    }
+    
+    public void setSeptember()
+    {
+        numDays = 30;
+        dobMonth.setText("September");
+        monthVal = "9";
+    }
+    
+    public void setOctober()
+    {
+        numDays = 31;
+        dobMonth.setText("October");
+        monthVal = "10";
+    }
+    
+    public void setNovember()
+    {
+        numDays = 30;
+        dobMonth.setText("November");
+        monthVal = "11";
+    }
+    
+    public void setDecember()
+    {
+        numDays = 31;
+        dobMonth.setText("December");
+        monthVal = "12";
+    }
+    
     public void setMonthVal()
     {
-        monthLbl.setVisible(true);    
-       
-        jan.setOnAction
-        ( 
-                new EventHandler<ActionEvent>() 
-                {
-                    public void handle(ActionEvent t) 
-                    {
-                        numDays = 31;
-                        dobMonth.setText("January");
-                        monthVal = "1";
-                    }
-                }
-        );
-       
-        fab.setOnAction
-        (
-                new EventHandler<ActionEvent>() 
-                {
-                    public void handle(ActionEvent t) 
-                    {
-                        if (yearVal % 4 == 0) {
-                            numDays = 29;
-                        } else {
-                            numDays = 28;
-                        }
-                        dobMonth.setText("Fabruary");
-                        monthVal = "2";
-                    }
-                }
-        );
-       
-        march.setOnAction
-        (
-                new EventHandler<ActionEvent>()        
-                {            
-                    public void handle(ActionEvent t) 
-                    {
-                        numDays = 31;
-                        dobMonth.setText("March");
-                        monthVal = "3";
-                    }
-                }
-        );
-       
-        april.setOnAction
-        (
-            new EventHandler<ActionEvent>() 
-            {
-                public void handle(ActionEvent t) 
-                {
-                    numDays = 30;
-                    dobMonth.setText("April");
-                    monthVal = "4";
-                }
-            }
-        );
-       
-        may.setOnAction
-        (
-            new EventHandler<ActionEvent>() 
-            {
-                public void handle(ActionEvent t) 
-                {
-                    numDays = 31;
-                    dobMonth.setText("May");
-                    monthVal = "5";
-                }
-            }
-        );
-              
-        june.setOnAction
-        (
-                new EventHandler<ActionEvent>() 
-                {
-                    public void handle(ActionEvent t) 
-                    {
-                        numDays = 30;
-                        dobMonth.setText("June");
-                        monthVal = "6";
-                    }
-                }
-        );
-       
-        july.setOnAction
-        (
-            new EventHandler<ActionEvent>()
-            {
-                public void handle(ActionEvent t) 
-                {
-                    numDays = 31;
-                    dobMonth.setText("July");
-                    monthVal = "7";
-                }
-            }
-        );
-       
-        aug.setOnAction
-        (
-            new EventHandler<ActionEvent>() 
-            {
-                public void handle(ActionEvent t) 
-                {
-                    numDays = 31;
-                    dobMonth.setText("August");
-                    monthVal = "8";
-                }
-            }
-        );
-       
-        sept.setOnAction
-        (
-                new EventHandler<ActionEvent>() 
-                {
-                    public void handle(ActionEvent t) 
-                    {
-                        numDays = 30;
-                        dobMonth.setText("September");
-                        monthVal = "9";
-                    }
-                }
-        );
-
-        oct.setOnAction
-        (
-            new EventHandler<ActionEvent>() 
-            {
-                public void handle(ActionEvent t) 
-                {
-                    numDays = 31;
-                    dobMonth.setText("October");
-                    monthVal = "10";
-                }
-            }
-        );
-
-        nov.setOnAction
-        (
-                new EventHandler<ActionEvent>() 
-                {
-                    public void handle(ActionEvent t) 
-                    {
-                        numDays = 30;
-                        dobMonth.setText("November");
-                        monthVal = "11";
-                    }
-                }
-        );
-
-        dec.setOnAction
-        (
-                new EventHandler<ActionEvent>() 
-                {
-                    public void handle(ActionEvent t) 
-                    {
-                        numDays = 31;
-                        dobMonth.setText("December");
-                        monthVal = "12";
-                    }
-                }
-        );
-       
+        monthLbl.setVisible(true);               
     }
        
     
@@ -509,7 +433,7 @@ public class Editing1Controller implements Initializable
     
     public void setDOBVal()
     {
-        dobVal = "'"+ monthVal + "-" + dayVal + "-" + yearVal + "'"; 
+        dobVal = "'" + yearVal + "-" + monthVal + "-" + dayVal +  "'"; 
         System.out.println(dobVal);
     }
     
@@ -543,8 +467,8 @@ public class Editing1Controller implements Initializable
     
     public void setContactVal()
     {  
-        String tmp = contact.getText();    asdasdas           
-        if(!Pattern.compile("", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 10 )
+        String tmp = contact.getText();       
+        if(!Pattern.compile("^[+]?([0-9]{2,3})?[-]?[0-9]{10}$").matcher(tmp).matches())
         { 
             contact.setText(null);
             contact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");

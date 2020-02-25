@@ -2,10 +2,10 @@ package sims;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+//import java.sql.ResultSet;
 
 public class DatabaseIO 
 {
@@ -37,114 +37,111 @@ public class DatabaseIO
     {
         String cr8schema = "CREATE SCHEMA " + schemaName;
         
-        String basicInfo =  "CREATE TABLE IF NOT EXISTS studentinfoschema.basic_info (" + 
-                            "name VARCHAR(30) NOT NULL," +
-                            "clgId VARCHAR(10) NOT NULL," +
-                            "dept VARCHAR(5) NOT NULL," +
-                            "cedu VARCHAR(15) NOT NULL," +
-                            "csem INT(1) UNSIGNED NOT NULL," +
-                            "contact VARCHAR(10) NOT NULL," +
-                            "dob DATE NOT NULL," +
-                            " PRIMARY KEY (name)," +
-                            " UNIQUE INDEX clgId_UNIQUE (clgId ASC)," +
-                            " UNIQUE INDEX contact_UNIQUE (contact ASC));" ;
+        String basicInfo =  "CREATE TABLE IF NOT EXISTS" + schemaName +".basic_info ("+ 
+                            "basic_info_Name VARCHAR(30) NOT NULL, "+
+                            "ClgId VARCHAR(10) NOT NULL, "+
+                            "DOB DATE NOT NULL, "+
+                            "Course VARCHAR(15) NOT NULL, "+
+                            "CurrentSem INT(1) UNSIGNED NOT NULL, "+
+                            "Contact VARCHAR(10) NOT NULL, "+
+                            "PRIMARY KEY (basic_info_Name);";
         
-        String sscInfo =    "CREATE TABLE IF NOT EXISTS studentinfoschema.ssc_info ("+
-                            "name VARCHAR(30) NULL,"+
-                            "SYop INT(4) UNSIGNED NOT NULL,"+
-                            "SRn INT(10) UNSIGNED NOT NULL,"+
-                            "SBoard VARCHAR(5) NOT NULL,"+
-                            "SMedium VARCHAR(10) NOT NULL,"+
-                            "SSch VARCHAR(30) NOT NULL,"+
-                            "SCity VARCHAR(10) NOT NULL,"+
-                            "SPtng INT(3) UNSIGNED NOT NULL,"+
-                            " INDEX Sname_idx (name ASC),"+
-                            " CONSTRAINT Sname"+
-                            " FOREIGN KEY (name)"+
-                            " REFERENCES studentinfoschema.basic_info (name) " +
-                            " ON DELETE CASCADE " +
-                            " ON UPDATE CASCADE);";
+        String sscInfo =    "CREATE TABLE IF NOT EXISTS" + schemaName +".ssc_info ("+
+                            "basic_info_Name VARCHAR(30) NULL,"+
+                            "PassYear INT(4) UNSIGNED NOT NULL,"+
+                            "RollNo INT(10) UNSIGNED NOT NULL,"+
+                            "Board VARCHAR(5) NOT NULL,"+
+                            "Medium VARCHAR(10) NOT NULL,"+
+                            "School VARCHAR(30) NOT NULL,"+
+                            "City VARCHAR(10) NOT NULL,"+
+                            "Percentage INT(3) UNSIGNED NOT NULL,"+
+                            "INDEX Name_idx (basic_info_Name ASC) VISIBLE, "+ //ASC = Ascending
+                            "CONSTRAINT FK_SName FOREIGN KEY (basic_info_Name) REFERENCES "+
+                            ""+ schemaName +".basic_info (basic_info_Name) "+
+                            "ON DELETE CASCADE "+
+                            "ON UPDATE CASCADE);";
         
-        String hsscInfo = "CREATE TABLE IF NOT EXISTS studentinfoschema.hssc_info (" +
-                          "name VARCHAR(30) NULL," +
-                          "HYop INT(4) UNSIGNED NULL," +
-                          "HRn INT(10) UNSIGNED NULL," +
-                          "HBoard VARCHAR(5) NULL," +
-                          "HMedium VARCHAR(10) NULL," +
-                          "HSch VARCHAR(30) NULL," +
-                          "HCity VARCHAR(10) NULL," +
-                          "HPtng INT(3) UNSIGNED NULL," +
-                          "math INT(3) UNSIGNED NULL," +
-                          "chemistry INT(3) UNSIGNED NULL," +
-                          "physics INT(3) NULL," +
-                          " INDEX Hname_idx (name ASC)," +
-                          " CONSTRAINT Hname" +
-                          " FOREIGN KEY (name)" +
-                          " REFERENCES studentinfoschema.basic_info (name) " +
-                          " ON DELETE CASCADE " +
-                          " ON UPDATE CASCADE);";
+        String hsscInfo = "CREATE TABLE IF NOT EXISTS" + schemaName +".hssc_info ("+
+                          "basic_info_Name VARCHAR(30) NULL, "+
+                          "PassYear INT(4) UNSIGNED NULL, "+
+                          "RollNo INT(10) UNSIGNED NULL, "+
+                          "Board VARCHAR(5) NULL, "+
+                          "Medium VARCHAR(10) NULL, "+
+                          "School VARCHAR(30) NULL, "+
+                          "City VARCHAR(10) NULL, "+
+                          "Percentage INT(3) UNSIGNED NULL, "+
+                          "MathPercentage INT(3) UNSIGNED NULL, "+
+                          "ChemistryPercentage INT(3) UNSIGNED NULL, "+
+                          "PhysicsPercentage INT(3) NULL, "+
+                          "INDEX Name_idx (basic_info_Name ASC), "+
+                          "CONSTRAINT FK_HName FOREIGN KEY (basic_info_Name) "+
+                          "REFERENCES "+ schemaName +".basic_info (basic_info_Name) "+
+                          "ON DELETE CASCADE " +
+                          "ON UPDATE CASCADE);";
         
-        String dipInfo = "CREATE TABLE IF NOT EXISTS studentinfoschema.diploma_info (" +
-                         "name VARCHAR(30) NULL," +
-                         "DPtng1 INT(3) UNSIGNED NULL," +
-                         "DPtng2 INT(3) UNSIGNED NULL," +
-                         "DPtng3 INT(3) UNSIGNED NULL," +
-                         "DPtng4 INT(3) UNSIGNED NULL," +
-                         "DPtng5 INT(3) UNSIGNED NULL," +
-                         "DPtng6 INT(3) UNSIGNED NULL," +
-                         "INDEX Dname_idx (name ASC)," +
-                         " CONSTRAINT Dname" +
-                         " FOREIGN KEY (name)" +
-                         " REFERENCES studentinfoschema.basic_info (name) " +
-                         " ON DELETE CASCADE " +
-                         " ON UPDATE CASCADE );";
+        String dipInfo = "CREATE TABLE IF NOT EXISTS" + schemaName +".diploma_info (" +
+                         "basic_info_Name VARCHAR(30) NULL, "+
+                         "PassYear INT(4) UNSIGNED NULL, "+
+                         "School VARCHAR(30) NULL, "+
+                         "City VARCHAR(10) NULL, "+
+                         "Percentage1 INT(3) UNSIGNED NULL, "+
+                         "Percentage2 INT(3) UNSIGNED NULL, "+
+                         "Percentage3 INT(3) UNSIGNED NULL, "+
+                         "Percentage4 INT(3) UNSIGNED NULL, "+
+                         "Percentage5 INT(3) UNSIGNED NULL, "+
+                         "Percentage6 INT(3) UNSIGNED NULL, "+
+                         "INDEX Name_idx (basic_info_Name ASC), "+
+                         "CONSTRAINT FK_DName FOREIGN KEY (basic_info_Name) "+
+                         "REFERENCES "+ schemaName +".basic_info (basic_info_Name) "+
+                         "ON DELETE CASCADE "+
+                         "ON UPDATE CASCADE );";
         
-        String uInfo = "CREATE TABLE IF NOT EXISTS studentinfoschema.ug_info (" +
-                       "name VARCHAR(30) NULL," +
-                       "EPtng1 INT(3) UNSIGNED NULL," +
-                       "EPtng2 INT(3) UNSIGNED NULL," +
-                       "EPtng3 INT(3) UNSIGNED NULL," +
-                       "EPtng4 INT(3) UNSIGNED NULL," +
-                       "EPtng5 INT(3) UNSIGNED NULL," +
-                       "EPtng6 INT(3) UNSIGNED NULL," +
-                       "EPtng7 INT(3) UNSIGNED NULL," +
-                       "EPtng8 INT(3) UNSIGNED NULL," +
-                       "INDEX Uname_idx (name ASC)," +
-                       " CONSTRAINT Uname" +
-                       " FOREIGN KEY (name)" +
-                       " REFERENCES studentinfoschema.basic_info (name) " +
-                       " ON DELETE CASCADE " +
-                       " ON UPDATE CASCADE);";
+        String uInfo = "CREATE TABLE IF NOT EXISTS" + schemaName +".ug_info (" +
+                       "basic_info_Name VARCHAR(30) NULL," +
+                       "School VARCHAR(30) NULL," +
+                       "City VARCHAR(10) NULL," +
+                       "Percentage1 INT(3) UNSIGNED NULL," +
+                       "Percentage2 INT(3) UNSIGNED NULL," +
+                       "Percentage3 INT(3) UNSIGNED NULL," +
+                       "Percentage4 INT(3) UNSIGNED NULL," +
+                       "Percentage5 INT(3) UNSIGNED NULL," +
+                       "Percentage6 INT(3) UNSIGNED NULL," +
+                       "Percentage7 INT(3) UNSIGNED NULL," +
+                       "Percentage8 INT(3) UNSIGNED NULL," +
+                       "INDEX Name_idx (basic_info_Name ASC), "+
+                       "CONSTRAINT FK_UName FOREIGN KEY (basic_info_Name) "+
+                       "REFERENCES "+ schemaName +".basic_info (basic_info_Name) "+
+                       "ON DELETE CASCADE " +
+                       "ON UPDATE CASCADE);";
         
-        String pInfo = "CREATE TABLE IF NOT EXISTS studentinfoschema.pg_info (" +
-                       "name VARCHAR(30) NULL," +
-                       "PPtng1 INT(3) UNSIGNED NULL," +
-                       "PPtng2 INT(3) UNSIGNED NULL," +
-                       "PPtng3 INT(3) UNSIGNED NULL," +
-                       "PPtng4 INT(3) UNSIGNED NULL," +
-                       " INDEX Pname_idx (name ASC)," +
-                       " CONSTRAINT Pname" +
-                       " FOREIGN KEY (name)" +
-                       " REFERENCES studentinfoschema.basic_info (name) " +
-                       " ON DELETE CASCADE " +
-                       " ON UPDATE CASCADE);";
+        String pInfo = "CREATE TABLE IF NOT EXISTS" + schemaName +".pg_info (" +
+                       "basic_info_Name VARCHAR(30) NULL, "+
+                       "School VARCHAR(30) NULL, "+
+                       "City VARCHAR(10) NULL, "+
+                       "Percentage1 INT(3) UNSIGNED NULL, "+
+                       "Percentage2 INT(3) UNSIGNED NULL, "+
+                       "Percentage3 INT(3) UNSIGNED NULL, "+
+                       "Percentage4 INT(3) UNSIGNED NULL, "+
+                       "INDEX Name_idx (basic_info_Name ASC), "+
+                       "CONSTRAINT FK_PName FOREIGN KEY (basic_info_Name) "+
+                       "REFERENCES "+ schemaName +".basic_info (basic_info_Name) "+
+                       "ON DELETE CASCADE "+
+                       "ON UPDATE CASCADE);";
         
-        String oInfo = "CREATE TABLE IF NOT EXISTS studentinfoschema.other_info (" +
-                       "name VARCHAR(30) NULL," +
-                       "CEmail VARCHAR(50) NOT NULL," +
-                       "PEmail VARCHAR(50) NULL," +
-                       "FatherCntct VARCHAR(10) NOT NULL," +
-                       "FamCntct VARCHAR(10) NULL," +
-                       "Certification VARCHAR(5) NULL," +
-                       "AddInfo TEXT NULL," +
-                       "INDEX Oname_idx (name ASC)," +
-                       "UNIQUE INDEX PEmail_UNIQUE (PEmail ASC)," +
-                       "UNIQUE INDEX CEmail_UNIQUE (CEmail ASC)," +
-                       " CONSTRAINT Oname" +
-                       " FOREIGN KEY (name)" +
-                       " REFERENCES studentinfoschema.basic_info (name) " +
-                       " ON DELETE CASCADE " +
-                       " ON UPDATE CASCADE);";
+        String oInfo = "CREATE TABLE IF NOT EXISTS" + schemaName +".other_info (" +
+                       "basic_info_Name VARCHAR(30) NULL, "+
+                       "CollegeEmail VARCHAR(50) NOT NULL, "+
+                       "PersonalEmail VARCHAR(50) NULL, "+
+                       "FatherContact VARCHAR(10) NOT NULL, "+
+                       "FamilyContact VARCHAR(10) NULL, "+
+                       "AdditionalInfo TEXT NULL, "+
+                       "INDEX Name_idx (basic_info_Name ASC), "+
+                       "UNIQUE INDEX PEmail_UNIQUE (PersonalEmail ASC), "+
+                       "UNIQUE INDEX CEmail_UNIQUE (CollegeEmail ASC), "+
+                       "CONSTRAINT FK_OName FOREIGN KEY (basic_info_Name) "+
+                       "REFERENCES "+ schemaName +".basic_info (basic_info_Name) "+                                       
+                       "ON DELETE CASCADE "+
+                       "ON UPDATE CASCADE);";
         
         try
         { 
@@ -167,7 +164,25 @@ public class DatabaseIO
                
     }
     
-    ///////////////////Insert Values//////////////////////////
+    ////////////////////////////////////////////////////////////////////
+    //Insert Values
+    
+    void InsertValues()
+    {
+        Editing1Controller Edit1 = new Editing1Controller();
+        
+        /*String query = "insert into " + schemaName+".basic_info VALUES(" 
+                + Edit1.getNameVal(),  
+            + ","+ s2 +","+ s3 +","+ s4 +","+ s5 +","+ s6 +","+ s7 + ");"*/
+        
+        
+        
+    }
+    
+    
+    
+    
+    
     void setBasicinfo(String s1, String s2, String s3, String s4, int s5, 
             String s6, String s7)
     {   String query = "insert into studentinfoschema.basic_info VALUES(" + s1 

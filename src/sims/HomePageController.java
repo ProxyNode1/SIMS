@@ -60,7 +60,7 @@ public class HomePageController implements Initializable
     private  TableColumn<HomePageData, Integer> currSemColumn = new TableColumn<HomePageData, Integer>();    
         
     @FXML 
-    private  TableColumn<HomePageData, String> contactCol = new TableColumn<HomePageData, String>();     
+    private  TableColumn<HomePageData, String> contactColumn = new TableColumn<HomePageData, String>();     
     
         
     @Override
@@ -103,11 +103,11 @@ public class HomePageController implements Initializable
                 
                 
                 observableList.add(new HomePageData(
-                        resultSet.getString(2) ,
-                        resultSet.getString(1) ,  
-                        resultSet.getString(4).toUpperCase() , 
-                        resultSet.getInt(5), 
-                        resultSet.getString(6) 
+                        resultSet.getString(2) ,                // College ID
+                        resultSet.getString(1) ,                // Name
+                        resultSet.getString(4).toUpperCase() ,  // Course
+                        resultSet.getInt(5),                    // Current Sem
+                        resultSet.getString(6)                 //Contact
                 ));
                 
                 
@@ -132,8 +132,7 @@ public class HomePageController implements Initializable
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         courseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
         currSemColumn.setCellValueFactory(new PropertyValueFactory<>("currSem"));
-        contactCol.setCellValueFactory(new PropertyValueFactory<>("contact"));
-        
+        contactColumn.setCellValueFactory(new PropertyValueFactory<>("contact"));        
         
         //Table.setItems(null);
         Table.setItems(observableList);

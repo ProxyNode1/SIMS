@@ -2,18 +2,18 @@ package sims;
 
 public class HomePageData 
 {   
-    private String name, course, contact, collegeId;
+    private String collegeId, name, course;
     private int currSem;
+    private String contact;
      
     
     public HomePageData(String collegeId, String name, String course, int currSem, String contact)
     {
-       
+        this.collegeId = collegeId;        
         this.name = name;
-        this.course = course;
-        this.contact = contact;
-        this.collegeId = collegeId;
+        this.course = course;        
         this.currSem = currSem;
+        this.contact = contact;        
     }
 
     
@@ -21,7 +21,6 @@ public class HomePageData
     {
         return collegeId;
     }
-
     
     public void setCollegeId(String collegeId) 
     {
@@ -33,19 +32,17 @@ public class HomePageData
     {
         return name;
     }
-
     
     public void setName(String name) 
     {
         this.name = name;
     }
-
+    
     
     public String getCourse() 
     {
         return course;
     }
-
     
     public void setCourse(String course) 
     {
@@ -53,27 +50,25 @@ public class HomePageData
     }
 
     
+    public int getCurrSem() 
+    {
+        return currSem;
+    }
+    
+    public void setCurrSem(int currSem) 
+    {
+        this.currSem = currSem;
+    }
+    
+    
     public String getContact() 
     {
         return contact;
     }
-
     
     public void setContact(String contact) 
     {
         this.contact = contact;
     }
-    
-    
-    public int getCurrSem() 
-    {
-        return currSem;
-    }
-
-    
-    public void setCsem(int currSem) 
-    {
-        this.currSem = currSem;
-    }
-        
+            
 }

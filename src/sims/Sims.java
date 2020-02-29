@@ -13,15 +13,15 @@ public class Sims extends Application
     @Override
     public void start(Stage stage) throws Exception 
     {        
-        DatabaseIO a = new DatabaseIO();
+        //DatabaseIO a = new DatabaseIO();
+        
         Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         
-        stage.setResizable(false);
-        stage.setScene(new Scene(root, 1280, 720)); 
-        
-        //stage.sizeToScene(); //?
-        
-        stage.show(); //Display Screen
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.setScene(new Scene(root, 1280, 720));  
+        //stage.setResizable(false);
+        stage.sizeToScene();
+        stage.show();
 
     }
    

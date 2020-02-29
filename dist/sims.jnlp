@@ -10,7 +10,7 @@
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="lib\jfoenix.jar" size="2414497" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.45-bin.jar" size="999810" download="eager" />
-    <jar href="sims.jar" size="155508" download="eager" />
+    <jar href="sims.jar" size="57363" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="sims" >
     <param name="requiredFXVersion" value="8.0+"/>

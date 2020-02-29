@@ -7,8 +7,6 @@ import javafx.fxml.Initializable;
 
 import javafx.scene.input.MouseEvent;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -22,6 +20,8 @@ import javafx.stage.Stage;
 import java.util.regex.Pattern;
 
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import java.util.List;
 import java.util.Optional;
 import javafx.scene.control.Alert;
@@ -35,58 +35,25 @@ import javafx.scene.control.Tooltip;
 public class Editing2Controller implements Initializable 
 {
     
-    //Connection n = null;
-          
-    //static String name;
+    private String errorStyle = "-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
+    private String successStyle = "-fx-border-color: #23ff23; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
     
     @FXML
-    private Pane Edit2;
+    private Pane edit2;
               
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        Edit2.requestFocus();
+        edit2.requestFocus();
         
-        //IdFld.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
-        
-        //chzHBrdDrpDwn();
-        //chzSBrdDrpDwn();
-        
-        /*s1 = Editing1Controller.newName;
-        System.out.println(s1);
-        
-        j = Editing1Controller.useSem;
-        System.out.println(j);
-        
-        o = Editing1Controller.up;
-        hide(o);*/
-        
-        
-                
-        //chzPostSSDwn();
-       
-        //selEPentg();
-        //selPPentg();
-        
+        //IdFld.setStyle(errorStyle); when error occurs or not filled    
         //SSch.setTooltip(new Tooltip("Do not use , or ."));
         //HSch.setTooltip(new Tooltip("Do not use , or ."));
         
-        //n = DatabaseCon.connect();
-        //operation();
-        
     }  
-       
-    
-    /*void insert()
-    {
-        s2 = 0; s3 = 0; s8 = 0; t2 = 0; t3 = 0; t8 = 0; t9 = 0; t10 = 0; t11 = 0; d1 = 0; d2 = 0; d3 = 0; d4 = 0; d5 = 0; d6 = 0;
-        e1 = 0; e2 = 0; e3 = 0; e4 = 0; e5 = 0; e6 = 0; e7 = 0; e8 = 0; p1 = 0; p2 = 0; p3 = 0; p4 = 0;
-        s4 = null; s5 = null; s6 = null; s7 = null; t4 = null; t5 = null; t6 = null; t7 = null; 
-        
-        delData.setVisible(false);
-       
-    }*/
-    
+          
+    ////////////////////////////////////////////////////////////////////////////
+    // Set Values
        
     ////////////////////////////////////////////////////////////////////////////
     // Secondary School Fields
@@ -127,134 +94,115 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField sPercent;
     
-    int s1, s2;
+    private int sPassYearVal;
     
-    float s7;
+    private float sPercentVal = 0.f;
     
-    String s3, s4, s5, s6;
+    private String sRNoVal, sBoardVal, sSchoolVal, sMediumVal, sCityVal;
     
-        
+       
     public void setSPassYear()
-    {   
-        String tmp1 = sPassYear.getText();
-        if( tmp1.length() == 4)  
+    {           
+        String tmp = sPassYear.getText();
+        if (tmp != null && tmp.length() == 4) 
         {
             try 
             {
-                int tmp2 = Integer.parseInt(tmp1);
-                sPassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                s1 = tmp2;
-                System.out.println(s1);
-            }
-            
-            catch (Exception e) 
+                sPassYearVal = Integer.parseInt(tmp);
+                sPassYear.setStyle(successStyle);
+                System.out.println(sPassYearVal);
+            } 
+            catch (NumberFormatException e) 
             {
                 sPassYear.setText(null);
-                sPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            } 
+                sPassYearVal = 0;
+                sPassYear.setStyle(errorStyle);
+                System.out.println("sPassYearVal not an integer");
+            }
         }
-        
         else
         {
             sPassYear.setText(null);
-            sPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("year length < 4");
-
-        }        
+            sPassYearVal = 0;
+            sPassYear.setStyle(errorStyle);
+            System.out.println("sPassYearVal not an integer");
+        }
     }
     
     
     public void setSRNo()
     {   
-        try
-        {
-            sRNo.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s2 = Integer.parseInt(sRNo.getText());
-            System.out.println(s2);     
-        }
-        catch(Exception e)
+        String tmp = sRNo.getText();
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9-/]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         {
             sRNo.setText(null);
-            sRNo.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
+            sRNoVal = null;
+            sRNo.setStyle(errorStyle);
+        }        
+        else
+        {
+            sRNoVal = sRNo.getText();
+            sRNo.setStyle(successStyle);                
+            System.out.println(sRNoVal);     
+        }        
     }
     
-    public void setSBoard()
+    public void setSCBSE()
     {
-              
-       scbse.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                sBoard.setText("CBSE");
-                String ab  = "CBSE";
-                s3 = "'"+ab+"'";
-                System.out.println(s3);
-
-            }
-       } );
-       
-       scisce.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                sBoard.setText("CISCE");
-                String ab  = "CISCE";
-                s3 = "'"+ab+"'";   
-                System.out.println(s3);
-            }
-       } );
-       
-       sstate.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                sBoard.setText("STATE");
-                String ab  = "STATE";
-                s3 = "'"+ab+"'";
-                System.out.println(s3);
-            }
-       } );
-       
-       sibo.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                sBoard.setText("IBO");
-                String ab  = "IBO";
-                s3 = "'"+ab+"'";
-                System.out.println(s3);
-            }
-       } );
-       
-       scie.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                sBoard.setText("CIE");
-                String ab  = "CIE";
-                s3 = "'"+ab+"'";
-                System.out.println(s3);
-            }
-       } );
+        sBoard.setText("CBSE");
+        sBoardVal = "CBSE";        
+        sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
+        System.out.println(sBoardVal);
     }
     
+    public void setSCISCE()
+    {
+        sBoard.setText("CISCE");
+        sBoardVal = "CISCE";
+        sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
+        System.out.println(sBoardVal);
+    }
+    
+    public void setSState()
+    {
+        sBoard.setText("STATE");
+        sBoardVal = "STATE";
+        sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
+        System.out.println(sBoardVal);
+    }
+    
+    public void setSIBO()
+    {
+        sBoard.setText("IBO");
+        sBoardVal = "IBO";
+        sBoard.setStyle("-fx-border-color: #23ff23");
+        System.out.println(sBoardVal);
+    }
+     
+    public void setSCIE()
+    {
+        sBoard.setText("CIE");
+        sBoardVal = "CIE";
+        sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
+        System.out.println(sBoardVal);
+    }
+      
     
     public void setSMedium()
     {   
         String tmp = sMedium.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             sMedium.setText(null);
-            sMedium.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            s4 = null;
+            sMediumVal = null;
+            sMedium.setStyle(errorStyle);
+            System.out.println("false");             
         } 
         else 
         { 
-            sMedium.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s4 = "'"+tmp+"'";
-            System.out.println(s4);
+            sMedium.setStyle(successStyle);                
+            sMediumVal = tmp;
+            System.out.println(sMediumVal);
         }
     }
     
@@ -262,18 +210,18 @@ public class Editing2Controller implements Initializable
     public void setSSchool()
     {    
         String tmp = sSchool.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             sSchool.setText(null);
-            sSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            s5 = null;  
+            sSchoolVal = null;
+            sSchool.setStyle(errorStyle);
+            System.out.println("false");           
         } 
         else 
         { 
-            sSchool.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s5 = "'"+tmp+"'";
-            System.out.println(s5);
+            sSchool.setStyle(successStyle);                
+            sSchoolVal = tmp;
+            System.out.println(sSchoolVal);
         }
     }
     
@@ -281,35 +229,49 @@ public class Editing2Controller implements Initializable
     public void setSCity()
     {   
         String tmp = sCity.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             sCity.setText(null);
-            sCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            s6 = null;
+            sCityVal = null;
+            sCity.setStyle(errorStyle);
+            System.out.println("false");             
         } 
         else 
         { 
-            sCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s6 = "'"+tmp+"'";
-            System.out.println(s6);
+            sCity.setStyle(successStyle);                
+            sCityVal = tmp;
+            System.out.println(sCityVal);
         }
     }
     
     
     public void setSPercent()
-    {          
-        try
+    {           
+        String tmp = sPercent.getText();
+        if (tmp != null) 
         {
-            sPercent.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            s7 = Float.parseFloat(sPercent.getText());
-            System.out.println(s7);       
+            try 
+            {
+                sPercentVal = Float.parseFloat(tmp);
+                sPercent.setStyle(successStyle);
+                System.out.println(sPercentVal);
+            } 
+            catch (NumberFormatException e) 
+            {
+                sPercent.setText(null);
+                sPercentVal = 0.f;
+                sPercent.setStyle(errorStyle);
+                System.out.println("sPercentVal not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             sPercent.setText(null);
-            sPercent.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            sPercentVal = 0.f;
+            sPercent.setStyle(errorStyle);
+            System.out.println("sPercentVal not a float");
         }
+        
     }
 
      
@@ -340,16 +302,10 @@ public class Editing2Controller implements Initializable
         hPane.setVisible(false);
         dPane.setVisible(true);
     }
-            
     
-    
-    //static int HD;
-    
-    
-             
     
     ///////////////////////////////////////////////////////////////////////////
-    // Set High School Fields
+    // Set Higher Secondary School Fields
                  
     @FXML
     private JFXTextField hPassYear;
@@ -396,134 +352,118 @@ public class Editing2Controller implements Initializable
     @FXML
     private TextField hMath;
     
-    int h1, h2;
+    private int hPassYearVal;
     
-    float h7, h8, h9, h10;
+    private float hPercentVal, hPhysicsVal, hChemistryVal, hMathVal;
     
-    String h3, h4, h5, h6;
+    private String hRNoVal, hBoardVal, hMediumVal, hSchoolVal, hCityVal;
     
         
     public void setHPassYear()
     {
-        String tmp1 = hPassYear.getText();
-        if (tmp1.length() == 4) 
+        String tmp = hPassYear.getText();
+        if (tmp != null && tmp.length() == 4) 
         {
             try 
             {
-                int tmp2 = Integer.parseInt(tmp1);
-                hPassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                h1 = tmp2;
-                System.out.println(h1);
+                hPassYearVal = Integer.parseInt(tmp);
+                hPassYear.setStyle(successStyle);                
+                System.out.println(hPassYearVal);
             } 
             
-            catch (Exception e) 
+            catch (NumberFormatException e) 
             {
                 hPassYear.setText(null);
-                hPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                hPassYearVal = 0;
+                hPassYear.setStyle(errorStyle);
+                System.out.println("hPassYear not an integer");
             }
         } 
         
         else 
         {
             hPassYear.setText(null);
-            hPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            hPassYearVal = 0;
+            hPassYear.setStyle(errorStyle);
             System.out.println("year length < 4");
-        }
+        }       
     }
         
        
     public void setHRNo()
-    {         
-        try
-        {
-            hRNo.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h2 = Integer.parseInt(hRNo.getText());
-            System.out.println(h2);     
-        }
-        catch(Exception e)
+    {          
+        String tmp = hRNo.getText();
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9-/]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         {
             hRNo.setText(null);
-            hRNo.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
+            hRNoVal = null;
+            hRNo.setStyle(errorStyle);
+        }        
+        else
+        {
+            hRNoVal = hRNo.getText();
+            hRNo.setStyle(successStyle);                
+            System.out.println(hRNoVal);     
+        }  
     }
     
 
-    public void setHBoard()
+    public void setHCBSE()
     {
-              
-       hcbse.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                hBoard.setText("CBSE");
-                String ab  = "CBSE";
-                h3 = "'"+ab+"'";
-                System.out.println(h3);
-
-            }
-       } );
-       
-       hcisce.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                hBoard.setText("CISCE");
-                String ab  = "CISCE";
-                h3 = "'"+ab+"'";   
-                System.out.println(h3);
-            }
-       } );
-       
-       hstate.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                hBoard.setText("STATE");
-                String ab  = "STATE";
-                h3 = "'"+ab+"'";
-                System.out.println(h3);
-            }
-       } );
-       
-       hibo.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                hBoard.setText("IBO");
-                String ab  = "IBO";
-                h3 = "'"+ab+"'";
-                System.out.println(h3);
-            }
-       } );
-       
-       hcie.setOnAction(new EventHandler<ActionEvent>() 
-       {
-            public void handle(ActionEvent t) 
-            {
-                hBoard.setText("CIE");
-                String ab  = "CIE";
-                h3 = "'"+ab+"'";
-                System.out.println(h3);
-            }
-       } );
+        hBoard.setText("CBSE");
+        hBoardVal = "CBSE"; 
+        hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
+        System.out.println(hBoardVal);
     }
-        
-        
+    
+    public void setHCISCE()
+    {
+        hBoard.setText("CISCE");
+        hBoardVal = "CISCE";
+        hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
+        System.out.println(hBoardVal);
+    }
+    
+    public void setHState()
+    {
+        hBoard.setText("STATE");
+        hBoardVal = "STATE";
+        hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
+        System.out.println(hBoardVal);
+    }
+    
+    public void setHIBO()
+    {
+        hBoard.setText("IBO");
+        hBoardVal = "IBO";
+        hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
+        System.out.println(hBoardVal);
+    }
+     
+    public void setHCIE()
+    {
+        hBoard.setText("CIE");
+        hBoardVal = "CIE";
+        hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
+        System.out.println(hBoardVal);
+    }  
+       
+    
     public void setHMedium()
     {   
         String tmp = hMedium.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             hMedium.setText(null);
-            hMedium.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            h4 = null;
+            hMediumVal = null;
+            hMedium.setStyle(errorStyle);
+            System.out.println("false");             
         } 
         else 
         { 
-            hMedium.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h4 = "'"+tmp+"'";
-            System.out.println(h4);
+            hMedium.setStyle(successStyle);                
+            hMediumVal = tmp;
+            System.out.println(hMediumVal);
         }
     }
     
@@ -531,18 +471,18 @@ public class Editing2Controller implements Initializable
     public void setHSchool()
     {   
         String tmp = hSchool.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             hSchool.setText(null);
-            hSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            h5 = null;
+            hSchoolVal = null;
+            hSchool.setStyle(errorStyle);
+            System.out.println("false");             
         } 
         else 
         { 
-            hSchool.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h5 = "'"+tmp+"'";
-            System.out.println(h5);
+            hSchool.setStyle(successStyle);                
+            hSchoolVal = tmp;
+            System.out.println(hSchoolVal);
         }
     }
     
@@ -550,83 +490,137 @@ public class Editing2Controller implements Initializable
     public void setHCity()
     {   
         String tmp = hCity.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             hCity.setText(null);
-            hCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            h6 = null;
+            hCityVal = null;
+            hCity.setStyle(errorStyle);
+            System.out.println("false");             
         } 
         else 
         { 
-            hCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h6 = "'"+tmp+"'";
-            System.out.println(h6);
+            hCity.setStyle(successStyle);                
+            hCityVal = tmp;
+            System.out.println(hCityVal);
         }
     }
     
     
     public void setHPercent()
     {   
-        try
+        String tmp = hPercent.getText();
+        if (tmp != null) 
         {
-            hPercent.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            h7 = Float.parseFloat(hPercent.getText());
-            System.out.println(h7);       
+            try 
+            {
+                hPercentVal = Float.parseFloat(tmp);
+                hPercent.setStyle(successStyle);
+                System.out.println(hPercentVal);
+            } 
+            catch (NumberFormatException e) 
+            {
+                hPercent.setText(null);
+                hPercentVal = 0.f;
+                hPercent.setStyle(errorStyle);
+                System.out.println("hPercentVal not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             hPercent.setText(null);
-            hPercent.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            hPercentVal = 0.f;
+            hPercent.setStyle(errorStyle);
+            System.out.println("hPercentVal not a float");
         }
     }
     
     
     public void setHPhysics()
-    {    
-        try
-        {   
-            h8 = Float.parseFloat(hPhysics.getText());
-            System.out.println(h8);     
+    {        
+        String tmp = hPhysics.getText();
+        if (tmp != null) 
+        {
+            try 
+            {
+                hPhysicsVal = Float.parseFloat(tmp);
+                hPhysics.setStyle(successStyle);
+                System.out.println(hPhysicsVal);
+            } 
+            catch (NumberFormatException e) 
+            {
+                hPhysics.setText(null);
+                hPhysicsVal = 0.f;
+                hPhysics.setStyle(errorStyle);
+                System.out.println("hPhysicsVal not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             hPhysics.setText(null);
-            //hphysics.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            hPhysicsVal = 0.f;
+            hPhysics.setStyle(errorStyle);
+            System.out.println("hPhysicsVal not a float");
         }
     }
     
     
     public void setHChemistry()
     {   
-        try
-        {    
-            h9 = Float.parseFloat(hChemistry.getText());
-            System.out.println(h9);      
-        }
-        catch(Exception e)
+        String tmp = hChemistry.getText();
+        if (tmp != null) 
         {
-            hChemistry.setText(null);  
-            //hchemistry.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            try 
+            {
+                hChemistryVal = Float.parseFloat(tmp);
+                hChemistry.setStyle(successStyle);
+                System.out.println(hChemistryVal);
+            } 
+            catch (NumberFormatException e) 
+            {
+                hChemistry.setText(null);
+                hChemistryVal = 0.f;
+                hChemistry.setStyle(errorStyle);
+                System.out.println("hChemistryVal not a float");
+            }
+        }
+        else
+        {
+            hChemistry.setText(null);
+            hChemistryVal = 0.f;
+            hChemistry.setStyle(errorStyle);
+            System.out.println("hChemistryVal not a float");
         }
     }
     
     
     public void setHMath()
-    {    
-        try
+    {   
+        String tmp = hMath.getText();
+        if (tmp != null) 
         {
-            h10 = Float.parseFloat(hMath.getText());
-            System.out.println(h10);   
+            try 
+            {
+                hMathVal = Float.parseFloat(tmp);
+                hMath.setStyle(successStyle);
+                System.out.println(hMathVal);
+            } 
+            catch (NumberFormatException e) 
+            {
+                hMath.setText(null);
+                hMathVal = 0.f;
+                hMath.setStyle(errorStyle);
+                System.out.println("hMathVal not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             hMath.setText(null);
-            //hmath.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            hMathVal = 0.f;
+            hMath.setStyle(errorStyle);
+            System.out.println("hMathVal not a float");
         }
     }
-    
-    
+        
     ////////////////////////////////////////////////////
     // Set Diploma Fields 
   
@@ -658,38 +652,40 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField dPercent6;
     
-    int d1;
+    private int dPassYearVal;
     
-    float d4, d5, d6, d7, d8, d9;   
+    private float dPercent1Val, dPercent2Val, dPercent3Val, dPercent4Val, dPercent5Val, dPercent6Val;   
     
-    String d2, d3;
+    private String dSchoolVal, dCityVal;
     
     
     
     public void setDPassYear()
     {                  
-        String tmp1 = dPassYear.getText();
-        if (tmp1.length() == 4) 
+        String tmp = dPassYear.getText();
+        if (tmp != null && tmp.length() == 4) 
         {
             try 
             {
-                int tmp2 = Integer.parseInt(tmp1);
-                dPassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                d1 = tmp2;
-                System.out.println(d1);
+                dPassYearVal = Integer.parseInt(tmp);
+                dPassYear.setStyle(successStyle);                
+                System.out.println(dPassYearVal);
             } 
             
-            catch (Exception e) 
+            catch (NumberFormatException e) 
             {
                 dPassYear.setText(null);
-                dPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                dPassYearVal = 0;
+                dPassYear.setStyle(errorStyle);
+                System.out.println("dPassYear not an integer");
             }
         } 
         
         else 
         {
             dPassYear.setText(null);
-            dPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dPassYearVal = 0;
+            dPassYear.setStyle(errorStyle);
             System.out.println("year length < 4");
         }
     }
@@ -698,19 +694,19 @@ public class Editing2Controller implements Initializable
     public void setDSchool()
     {    
         String tmp= dSchool.getText();
-        if(!Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             dSchool.setText(null);
-            dSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            d2 = null;
+            dSchoolVal = null;
+            dSchool.setStyle(errorStyle);
+            System.out.println("false");             
             
         } 
         else 
         { 
-            dSchool.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d2 = "'"+tmp+"'";
-            System.out.println(d2);
+            dSchool.setStyle(successStyle);                
+            dSchoolVal = tmp;
+            System.out.println(dSchoolVal);
         }
     }
     
@@ -718,82 +714,134 @@ public class Editing2Controller implements Initializable
     public void setDCity()
     {   
         String tmp = dCity.getText();
-        if(!Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             dCity.setText(null);
-            dCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            d3 = null;
+            dCityVal = null;
+            dCity.setStyle(errorStyle);
+            System.out.println("false");
         } 
         else 
         { 
-            dCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d3 = "'"+tmp+"'";
-            System.out.println(d3);
+            dCity.setStyle(successStyle);                
+            dCityVal = tmp;
+            System.out.println(dCityVal);
         }
     }
     
     
     public void setDPercent1()
-    {                 
-        try
+    {           
+        String tmp = dPercent1.getText();
+        if (tmp != null) 
         {
-            dPercent1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d4 = Float.parseFloat(dPercent1.getText());
-            System.out.println(d4);       
+            try 
+            {
+                dPercent1Val = Float.parseFloat(tmp);
+                dPercent1.setStyle(successStyle);
+                System.out.println(dPercent1Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                dPercent1.setText(null);
+                dPercent1Val = 0.f;
+                dPercent1.setStyle(errorStyle);
+                System.out.println("dPercent1Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             dPercent1.setText(null);
-            dPercent1.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dPercent1Val = 0.f;
+            dPercent1.setStyle(errorStyle);
+            System.out.println("dPercent1Val not a float");
         }
     }
     
     
     public void setDPercent2()
     {   
-        try
+        String tmp = dPercent2.getText();
+        if (tmp != null) 
         {
-            dPercent2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d5 = Float.parseFloat(dPercent2.getText());
-            System.out.println(d5);       
+            try 
+            {
+                dPercent2Val = Float.parseFloat(tmp);
+                dPercent2.setStyle(successStyle);
+                System.out.println(dPercent2Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                dPercent2.setText(null);
+                dPercent2Val = 0.f;
+                dPercent2.setStyle(errorStyle);
+                System.out.println("dPercent2Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             dPercent2.setText(null);
-            dPercent2.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dPercent2Val = 0.f;
+            dPercent2.setStyle(errorStyle);
+            System.out.println("dPercent2Val not a float");
         }
     }
     
     
     public void setDPercent3()
     {   
-        try
+        String tmp = dPercent3.getText();
+        if (tmp != null) 
         {
-            dPercent3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d6 = Float.parseFloat(dPercent3.getText());
-            System.out.println(d6);       
+            try 
+            {
+                dPercent3Val = Float.parseFloat(tmp);
+                dPercent3.setStyle(successStyle);
+                System.out.println(dPercent3Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                dPercent3.setText(null);
+                dPercent3Val = 0.f;
+                dPercent3.setStyle(errorStyle);
+                System.out.println("dPercent3Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             dPercent3.setText(null);
-            dPercent3.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dPercent3Val = 0.f;
+            dPercent3.setStyle(errorStyle);
+            System.out.println("dPercent3Val not a float");
         }
     }
     
     
     public void setDPercent4()
     {    
-        try
+        String tmp = dPercent4.getText();
+        if (tmp != null) 
         {
-            dPercent4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d7 = Float.parseFloat(dPercent4.getText());
-            System.out.println(d7);       
+            try 
+            {
+                dPercent4Val = Float.parseFloat(tmp);
+                dPercent4.setStyle(successStyle);
+                System.out.println(dPercent4Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                dPercent4.setText(null);
+                dPercent4Val = 0.f;
+                dPercent4.setStyle(errorStyle);
+                System.out.println("dPercent4Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             dPercent4.setText(null);
-            dPercent4.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dPercent4Val = 0.f;
+            dPercent4.setStyle(errorStyle);
+            System.out.println("dPercent4Val not a float");
         }
         
     }
@@ -801,16 +849,29 @@ public class Editing2Controller implements Initializable
     
     public void setDPercent5()
     {   
-        try
+        String tmp = dPercent5.getText();
+        if (tmp != null) 
         {
-            dPercent5.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d8 = Float.parseFloat(dPercent5.getText());
-            System.out.println(d8);       
+            try 
+            {
+                dPercent5Val = Float.parseFloat(tmp);
+                dPercent5.setStyle(successStyle);
+                System.out.println(dPercent5Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                dPercent5.setText(null);
+                dPercent5Val = 0.f;
+                dPercent5.setStyle(errorStyle);
+                System.out.println("dPercent5Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             dPercent5.setText(null);
-            dPercent5.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dPercent5Val = 0.f;
+            dPercent5.setStyle(errorStyle);
+            System.out.println("dPercent5Val not a float");
         }
         
     }
@@ -818,16 +879,29 @@ public class Editing2Controller implements Initializable
     
     public void setDPercent6()
     {  
-        try
+        String tmp = dPercent6.getText();
+        if (tmp != null) 
         {
-            dPercent6.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            d9 = Float.parseFloat(dPercent6.getText());
-            System.out.println(d9);       
+            try 
+            {
+                dPercent6Val = Float.parseFloat(tmp);
+                dPercent6.setStyle(successStyle);
+                System.out.println(dPercent6Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                dPercent6.setText(null);
+                dPercent6Val = 0.f;
+                dPercent6.setStyle(errorStyle);
+                System.out.println("dPercent6Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             dPercent6.setText(null);
-            dPercent6.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            dPercent6Val = 0.f;
+            dPercent6.setStyle(errorStyle);
+            System.out.println("dPercent6Val not a float");
         }
     }
        
@@ -897,37 +971,40 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField ePercent8;
 
-    int e1;
+    private int ePassYearVal;
     
-    float e4, e5, e6, e7, e8, e9, e10, e11;
+    private float ePercent1Val, ePercent2Val, ePercent3Val, ePercent4Val, 
+          ePercent5Val, ePercent6Val, ePercent7Val, ePercent8Val;
     
-    String e2, e3;
+    private String eSchoolVal, eCityVal;
     
     
     public void setEPassYear()
-    {                   
-        String tmp1 = ePassYear.getText();
-        if (tmp1.length() == 4) 
+    {                  
+        String tmp = ePassYear.getText();
+        if (tmp != null && tmp.length() == 4)
         {
             try 
             {
-                int tmp2 = Integer.parseInt(tmp1);
-                ePassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                e1 = tmp2;
-                System.out.println(e1);
+                ePassYearVal = Integer.parseInt(tmp);
+                ePassYear.setStyle(successStyle);
+                System.out.println(ePassYearVal);
             } 
             
-            catch (Exception e) 
+            catch (NumberFormatException e) 
             {
                 ePassYear.setText(null);
-                ePassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                ePassYearVal = 0;
+                ePassYear.setStyle(errorStyle);
+                System.out.println("ePassYear not an integer");
             }
         } 
         
         else 
         {
             ePassYear.setText(null);
-            ePassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            ePassYearVal = 0;
+            ePassYear.setStyle(errorStyle);
             System.out.println("year length < 4");
         }
     }
@@ -936,210 +1013,276 @@ public class Editing2Controller implements Initializable
     public void setESchool()
     {    
         String tmp = eSchool.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             eSchool.setText(null);
-            eSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            e2 = null;
+            eSchoolVal = null;
+            eSchool.setStyle(errorStyle);
+            System.out.println("false");
             
         } 
         else 
         { 
-            eSchool.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e2 = "'"+tmp+"'";
-            System.out.println(e2);
+            eSchool.setStyle(successStyle);
+            eSchoolVal = tmp;
+            System.out.println(eSchoolVal);
         }
     }
     
     
     public void setECity()
-    {   
+    {           
         String tmp = eCity.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             eCity.setText(null);
-            eCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            e3 = null;
+            eCityVal = null;
+            eCity.setStyle(errorStyle);
+            System.out.println("false");
         } 
         else 
         { 
-            eCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e3 = "'"+tmp+"'";
-            System.out.println(e3);
+            eCity.setStyle(successStyle);
+            eCityVal = tmp;
+            System.out.println(eCityVal);
         }
     }
     
     
     public void setEPercent1()
-    {             
-        try
+    {           
+        String tmp = ePercent1.getText();
+        if (tmp != null) 
         {
-            ePercent1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e4 = Float.parseFloat(ePercent1.getText());
-            System.out.println(e4);       
+            try 
+            {
+                ePercent1Val = Float.parseFloat(tmp);
+                ePercent1.setStyle(successStyle);
+                System.out.println(ePercent1Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                ePercent1.setText(null);
+                ePercent1Val = 0.f;
+                ePercent1.setStyle(errorStyle);
+                System.out.println("ePercent1Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             ePercent1.setText(null);
-            ePercent1.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            ePercent1Val = 0.f;
+            ePercent1.setStyle(errorStyle);
+            System.out.println("ePercent1Val not a float");
         }
     }
     
     
     public void setEPercent2()
-    {           
-        try
+    {   
+        String tmp = ePercent2.getText();
+        if (tmp != null) 
         {
-            ePercent2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e5 = Float.parseFloat(ePercent2.getText());
-            System.out.println(e5);       
+            try 
+            {
+                ePercent2Val = Float.parseFloat(tmp);
+                ePercent2.setStyle(successStyle);
+                System.out.println(ePercent2Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                ePercent2.setText(null);
+                ePercent2Val = 0.f;
+                ePercent2.setStyle(errorStyle);
+                System.out.println("ePercent2Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             ePercent2.setText(null);
-            ePercent2.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }        
+            ePercent2Val = 0.f;
+            ePercent2.setStyle(errorStyle);
+            System.out.println("ePercent2Val not a float");
+        }
     }
     
     
     public void setEPercent3()
-    {           
-        try
+    {   
+        String tmp = ePercent3.getText();
+        if (tmp != null) 
         {
-            ePercent3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e6 = Float.parseFloat(ePercent3.getText());
-            System.out.println(e6);       
+            try 
+            {
+                ePercent3Val = Float.parseFloat(tmp);
+                ePercent3.setStyle(successStyle);
+                System.out.println(ePercent3Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                ePercent3.setText(null);
+                ePercent3Val = 0.f;
+                ePercent3.setStyle(errorStyle);
+                System.out.println("ePercent3Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             ePercent3.setText(null);
-            ePercent3.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }  
+            ePercent3Val = 0.f;
+            ePercent3.setStyle(errorStyle);
+            System.out.println("ePercent3Val not a float");
+        }
     }
     
     
     public void setEPercent4()
-    {           
-        try
+    {    
+        String tmp = ePercent4.getText();
+        if (tmp != null) 
         {
-            ePercent4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e7 = Float.parseFloat(ePercent4.getText());
-            System.out.println(e7);       
+            try 
+            {
+                ePercent4Val = Float.parseFloat(tmp);
+                ePercent4.setStyle(successStyle);
+                System.out.println(ePercent4Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                ePercent4.setText(null);
+                ePercent4Val = 0.f;
+                ePercent4.setStyle(errorStyle);
+                System.out.println("ePercent4Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             ePercent4.setText(null);
-            ePercent4.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }  
+            ePercent4Val = 0.f;
+            ePercent4.setStyle(errorStyle);
+            System.out.println("ePercent4Val not a float");
+        }
+        
     }
     
     
     public void setEPercent5()
-    {               
-        try
+    {   
+        String tmp = ePercent5.getText();
+        if (tmp != null) 
         {
-            ePercent5.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e8 = Float.parseFloat(ePercent5.getText());
-            System.out.println(e8);       
+            try 
+            {
+                ePercent5Val = Float.parseFloat(tmp);
+                ePercent5.setStyle(successStyle);
+                System.out.println(ePercent5Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                ePercent5.setText(null);
+                ePercent5Val = 0.f;
+                ePercent5.setStyle(errorStyle);
+                System.out.println("ePercent5Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             ePercent5.setText(null);
-            ePercent5.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }  
+            ePercent5Val = 0.f;
+            ePercent5.setStyle(errorStyle);
+            System.out.println("ePercent5Val not a float");
+        }
+        
     }
     
     
     public void setEPercent6()
-    {   
-        try
+    {  
+        String tmp = ePercent6.getText();
+        if (tmp != null) 
         {
-            ePercent6.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e9 = Float.parseFloat(ePercent6.getText());
-            System.out.println(e9);       
+            try 
+            {
+                ePercent6Val = Float.parseFloat(tmp);
+                ePercent6.setStyle(successStyle);
+                System.out.println(ePercent6Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                ePercent6.setText(null);
+                ePercent6Val = 0.f;
+                ePercent6.setStyle(errorStyle);
+                System.out.println("ePercent6Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             ePercent6.setText(null);
-            ePercent6.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }  
+            ePercent6Val = 0.f;
+            ePercent6.setStyle(errorStyle);
+            System.out.println("ePercent6Val not a float");
+        }
     }
     
     
     public void setEPercent7()
-    {           
-        try
+    {  
+        String tmp = ePercent7.getText();
+        if (tmp != null) 
         {
-            ePercent7.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e10 = Float.parseFloat(ePercent7.getText());
-            System.out.println(e10);       
+            try 
+            {
+                ePercent7Val = Float.parseFloat(tmp);
+                ePercent7.setStyle(successStyle);
+                System.out.println(ePercent7Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                ePercent7.setText(null);
+                ePercent7Val = 0.f;
+                ePercent7.setStyle(errorStyle);
+                System.out.println("ePercent7Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             ePercent7.setText(null);
-            ePercent7.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            ePercent7Val = 0.f;
+            ePercent7.setStyle(errorStyle);
+            System.out.println("ePercent7Val not a float");
         }          
     }
     
     
     public void setEPercent8()
     {  
-        try
+        String tmp = ePercent8.getText();
+        if (tmp != null) 
         {
-            ePercent8.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            e11 = Float.parseFloat(ePercent8.getText());
-            System.out.println(e11);       
+            try 
+            {
+                ePercent8Val = Float.parseFloat(tmp);
+                ePercent8.setStyle(successStyle);
+                System.out.println(ePercent8Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                ePercent8.setText(null);
+                ePercent8Val = 0.f;
+                ePercent8.setStyle(errorStyle);
+                System.out.println("ePercent8Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             ePercent8.setText(null);
-            ePercent8.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            ePercent8Val = 0.f;
+            ePercent8.setStyle(errorStyle);
+            System.out.println("ePercent8Val not a float");
         }  
     }
     
-    /*@FXML
-    private List<JFXTextField> EList; //see Editing2.fxml to more info
-    
-    public void selEPentg()
-    { 
-        for(int count = 0; count<j-1 && o == 1; count++)
-        {
-            EList.get(count).setDisable(false);
-        }
-    }
-    
-    public void delEPentg()
-    { 
-        for(int count = 7; count >= j-1 && o == 1; count--)
-        {
-            EList.get(count).setText(null);
-        }
-    }
-    
-    <fx:define>
-          <ArrayList fx:id="EList">
-              <fx:reference source="ePercent1" />
-              <fx:reference source="ePercent2" />
-              <fx:reference source="ePercent3" />
-              <fx:reference source="ePercent4" />
-              <fx:reference source="ePercent5" />
-              <fx:reference source="ePercent6" />
-              <fx:reference source="ePercent7" />
-              <fx:reference source="ePercent8" />
-          </ArrayList>
-          <ArrayList fx:id="PList">
-              <fx:reference source="pPercent1" />
-              <fx:reference source="pPercent2" />
-              <fx:reference source="pPercent3" />
-              <fx:reference source="pPercent4" />
-          </ArrayList>
-      </fx:define>
-    
-    
-    
-    */
+   
     
     /////////////////////////////////////////////////////////////////
     // Set Postgraduation Fields
@@ -1166,37 +1309,39 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField pPercent4;
     
-    int p1;    
+    private int pPassYearVal;    
     
-    float p4, p5, p6, p7;
+    private float pPercent1Val, pPercent2Val, pPercent3Val, pPercent4Val;
 
-    String p2, p3;
+    private String pSchoolVal, pCityVal;
     
     
     public void setPPassYear()
     {           
-        String tmp1 = pPassYear.getText();
-        if (tmp1.length() == 4) 
+        String tmp = pPassYear.getText();
+        if (tmp != null && tmp.length() == 4)
         {
             try 
             {
-                int tmp2 = Integer.parseInt(tmp1);
-                pPassYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-                p1 = tmp2;
-                System.out.println(p1);
+                pPassYearVal = Integer.parseInt(tmp);
+                pPassYear.setStyle(successStyle);
+                System.out.println(pPassYearVal);
             } 
             
-            catch (Exception e) 
+            catch (NumberFormatException e) 
             {
                 pPassYear.setText(null);
-                pPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                pPassYearVal = 0;
+                pPassYear.setStyle(errorStyle);
+                System.out.println("pPassYear not an integer");
             }
         } 
         
         else 
         {
             pPassYear.setText(null);
-            pPassYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            pPassYearVal = 0;
+            pPassYear.setStyle(errorStyle);
             System.out.println("year length < 4");
         }
     }
@@ -1205,19 +1350,18 @@ public class Editing2Controller implements Initializable
     public void setPSchool()
     {    
         String tmp = pSchool.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             pSchool.setText(null);
-            pSchool.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
-            p2 = null;
-            
+            pSchoolVal = null;
+            pSchool.setStyle(errorStyle);
+            System.out.println("false");             
         } 
         else 
         { 
-            pSchool.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            p2 = "'"+tmp+"'";
-            System.out.println(p2);
+            pSchool.setStyle(successStyle);
+            pSchoolVal = tmp;
+            System.out.println(pSchoolVal);
         }
     }
     
@@ -1225,163 +1369,380 @@ public class Editing2Controller implements Initializable
     public void setPCity()
     {   
         String tmp = pCity.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             pCity.setText(null);
-            pCity.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            pCityVal = null;
+            pCity.setStyle(errorStyle);
             System.out.println("false"); 
-            p3 = null;
         } 
         else 
         { 
-            pCity.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            p3 = "'"+tmp+"'";
-            System.out.println(p3);
+            pCity.setStyle(successStyle);
+            pCityVal = tmp;
+            System.out.println(pCityVal);
         }
     }
     
     
     public void setPPercent1()
     {           
-        try
+        String tmp = pPercent1.getText();
+        if (tmp != null) 
         {
-            pPercent1.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            p4 = Float.parseFloat(pPercent1.getText());
-            System.out.println(p4);       
+            try 
+            {
+                pPercent1Val = Float.parseFloat(tmp);
+                pPercent1.setStyle(successStyle);
+                System.out.println(pPercent1Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                pPercent1.setText(null);
+                pPercent1Val = 0.f;
+                pPercent1.setStyle(errorStyle);
+                System.out.println("ePercent1Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             pPercent1.setText(null);
-            pPercent1.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        } 
+            pPercent1Val = 0.f;
+            pPercent1.setStyle(errorStyle);
+            System.out.println("ePercent1Val not a float");
+        }
     }
+    
     
     public void setPPercent2()
-    {           
-        try
+    {   
+        String tmp = pPercent2.getText();
+        if (tmp != null) 
         {
-            pPercent2.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            p5 = Float.parseFloat(pPercent2.getText());
-            System.out.println(p5);       
+            try 
+            {
+                pPercent2Val = Float.parseFloat(tmp);
+                pPercent2.setStyle(successStyle);
+                System.out.println(pPercent2Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                pPercent2.setText(null);
+                pPercent2Val = 0.f;
+                pPercent2.setStyle(errorStyle);
+                System.out.println("ePercent2Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             pPercent2.setText(null);
-            pPercent2.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        } 
+            pPercent2Val = 0.f;
+            pPercent2.setStyle(errorStyle);
+            System.out.println("ePercent2Val not a float");
+        }
     }
+    
     
     public void setPPercent3()
-    {           
-        try
+    {   
+        String tmp = pPercent3.getText();
+        if (tmp != null) 
         {
-            pPercent3.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            p6 = Float.parseFloat(pPercent3.getText());
-            System.out.println(p6);       
+            try 
+            {
+                pPercent3Val = Float.parseFloat(tmp);
+                pPercent3.setStyle(successStyle);
+                System.out.println(pPercent3Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                pPercent3.setText(null);
+                pPercent3Val = 0.f;
+                pPercent3.setStyle(errorStyle);
+                System.out.println("ePercent3Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             pPercent3.setText(null);
-            pPercent3.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        } 
+            pPercent3Val = 0.f;
+            pPercent3.setStyle(errorStyle);
+            System.out.println("ePercent3Val not a float");
+        }
     }
+    
     
     public void setPPercent4()
-    {           
-        try
+    {    
+        String tmp = pPercent4.getText();
+        if (tmp != null) 
         {
-            pPercent4.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            p7 = Float.parseFloat(pPercent4.getText());
-            System.out.println(p7);       
+            try 
+            {
+                pPercent4Val = Float.parseFloat(tmp);
+                pPercent4.setStyle(successStyle);
+                System.out.println(pPercent4Val);
+            } 
+            catch (NumberFormatException e) 
+            {
+                pPercent4.setText(null);
+                pPercent4Val = 0.f;
+                pPercent4.setStyle(errorStyle);
+                System.out.println("ePercent4Val not a float");
+            }
         }
-        catch(Exception e)
+        else
         {
             pPercent4.setText(null);
-            pPercent4.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        } 
-    }
-    
-    /*@FXML
-    private List<JFXTextField> PList; //see Editing2.fxml to more info
-    
-    public void selPPentg()
-    { 
-        for(int count = 0; count<j-1 && o == 0; count++)
-        {
-            PList.get(count).setDisable(false);
+            pPercent4Val = 0.f;
+            pPercent4.setStyle(errorStyle);
+            System.out.println("ePercent4Val not a float");
         }
-    }
-    
-    public void delPPentg()
-    { 
-        for(int count = 3; count <= j-1 && o == 0; count--)
-        {
-            PList.get(count).setText(null);
-        }
-    }*/
-    
-    //////////////////////////////////////////////////////////
-   
-    
-    /*
-    public static void setValues()
-    {       
-        DatabaseIO xyz = new DatabaseIO();
-        xyz.setSscinfo("'"+s1+"'", s2, s3, s4, s5, s6, s7, s8); 
-        xyz.setHsscinfo("'"+s1+"'",  t2,  t3,  t4,  t5,  t6,  t7,  t8,  t11,  t10, t9);
-        xyz.setDipinfo("'"+s1+"'", d1, d2, d3, d4, d5, d6);
-        xyz.setUginfo("'"+s1+"'", e1, e2, e3, e4, e5, e6, e7, e8);
-        xyz.setPginfo("'"+s1+"'", p1, p2, p3, p4);
-    }
-    
-    public static void upValues()
-    {       
-        DatabaseIO xyz = new DatabaseIO();
-        xyz.UpSscinfo("'"+s1+"'", s2, s3, s4, s5, s6, s7, s8); 
-        xyz.UpHsscinfo("'"+s1+"'",  t2,  t3,  t4,  t5,  t6,  t7,  t8,  t11,  t10, t9);
-        xyz.UpDipinfo("'"+s1+"'", d1, d2, d3, d4, d5, d6);
-        xyz.UpUginfo("'"+s1+"'", e1, e2, e3, e4, e5, e6, e7, e8);
-        xyz.UpPginfo("'"+s1+"'", p1, p2, p3, p4);
-    }
-    
-    public void delEdit(MouseEvent event)
-    {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Delete data");
-        alert.setHeaderText("Are you sure you want to delete data of "+ (Editing1Controller.oldName).toUpperCase()+ "?");
-        alert.setContentText("If you delete this, it will be removed from database.");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK)
-        {
-            DatabaseIO d = new DatabaseIO();
-            d.DelBasicinfo();
-
-            try
-            {
-                Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-                Scene editPg1Scene = new Scene(editPag1);
-                Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                appStage.setScene(editPg1Scene);
-                appStage.show();
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-            }
-        } 
-        else 
-        {
-            // ... user chose CANCEL or closed the dialog
-        }
-    }
-    */
-    
         
+    }
     
-    /*@FXML
-    public static Label BtnTo1;*/
     
+    ///////////////////////////////////////////////////////////////////////////
+    // Get Values
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // Secondary School
+    
+    int getSPassYearVal()
+    {
+        return sPassYearVal;
+    }
+    
+    String getSRNoVal()
+    {
+        return sRNoVal;
+    }
+    
+    String getSBoardVal()
+    {
+        return sBoardVal;
+    }
+    
+    String getSMediumVal()
+    {
+        return sMediumVal;  
+    }
+        
+    String getSSchoolVal()
+    {
+       return sSchoolVal;
+    }
+    
+    String getSCityVal()
+    {
+        return sCityVal;        
+    }
+    
+    float getSPercentVal()
+    {
+        return sPercentVal;
+    }
+       
+       
+    ////////////////////////////////////////////////////////////////////////////
+    // Senior Secondary School
+       
+    int getHPassYearVal()
+    {
+        return hPassYearVal;
+    }
+    
+    String getHRNoVal()
+    {
+        return hRNoVal;
+    }
+    
+    String getHBoardVal()
+    {
+        return hBoardVal;
+    }
+    
+    String getHMediumVal()
+    {
+        return hMediumVal;  
+    }
+        
+    String getHSchoolVal()
+    {
+       return hSchoolVal;
+    }
+    
+    String getHCityVal()
+    {
+        return hCityVal;        
+    }
+    
+    float getHPercentVal()
+    {
+        return hPercentVal;
+    }
+    
+    float getHPhysicsVal()
+    {
+        return hPhysicsVal;
+    }
+    
+    float getHChemistryVal()
+    {
+        return hChemistryVal;
+    }
+    
+    float getHMathVal()
+    {
+        return hMathVal;
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // Diploma
+      
+    int getDPassYearVal()
+    {
+        return dPassYearVal;
+    }
+    
+    String getDSchoolVal()
+    {
+       return dSchoolVal;
+    }
+    
+    String getDCityVal()
+    {
+        return dCityVal;        
+    }
+    
+    float getDPercent1Val()
+    {
+        return dPercent1Val;
+    }
+    
+    float getDPercent2Val()
+    {
+        return dPercent2Val;
+    }
+    
+    float getDPercent3Val()
+    {
+        return dPercent3Val;
+    }
+    
+    float getDPercent4Val()
+    {
+        return dPercent4Val;
+    }
+    
+    float getDPercent5Val()
+    {
+        return dPercent5Val;
+    }
+    
+    float getDPercent6Val()
+    {
+        return dPercent6Val;
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // Undergraduation
+        
+    int getEPassYearVal()
+    {
+        return ePassYearVal;
+    }
+    
+    String getESchoolVal()
+    {
+       return eSchoolVal;
+    }
+    
+    String getECityVal()
+    {
+        return eCityVal;        
+    }
+    
+    float getEPercent1Val()
+    {
+        return ePercent1Val;
+    }
+    
+    float getEPercent2Val()
+    {
+        return ePercent2Val;
+    }
+    
+    float getEPercent3Val()
+    {
+        return ePercent3Val;
+    }
+    
+    float getEPercent4Val()
+    {
+        return ePercent4Val;
+    }
+    
+    float getEPercent5Val()
+    {
+        return ePercent5Val;
+    }
+    
+    float getEPercent6Val()
+    {
+        return ePercent6Val;
+    }
+    
+    float getEPercent7Val()
+    {
+        return ePercent7Val;
+    }
+    
+    float getEPercent8Val()
+    {
+        return ePercent8Val;
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // Postgraduation
+        
+    int getPPassYearVal()
+    {
+        return pPassYearVal;
+    }
+    
+    String getPSchoolVal()
+    {
+       return pSchoolVal;
+    }
+    
+    String getPCityVal()
+    {
+        return pCityVal;        
+    }
+    
+    float getPPercent1Val()
+    {
+        return pPercent1Val;
+    }
+    
+    float getPPercent2Val()
+    {
+        return pPercent2Val;
+    }
+    
+    float getPPercent3Val()
+    {
+        return pPercent3Val;
+    }
+    
+    float getPPercent4Val()
+    {
+        return pPercent4Val;
+    }
+    
+         
     public void toPrevPg(MouseEvent event)
      {  
         try 

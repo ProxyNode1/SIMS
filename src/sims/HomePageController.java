@@ -5,11 +5,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,56 +19,56 @@ import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import com.jfoenix.controls.JFXButton;
 import javafx.scene.paint.Paint;
+import java.io.IOException;
+import java.sql.SQLException;
+
+
+import java.sql.ResultSet;
+
+
+import java.sql.Statement;
+import com.jfoenix.controls.JFXButton;
+import com.sun.javafx.collections.ElementObservableListDecorator;
+
 
 
 
 public class HomePageController implements Initializable 
 {
-    @FXML 
-    private  TableView<InputClass> Table = new TableView<>();
+    DatabaseIO dbIO = new DatabaseIO();    
+    
+    @FXML
+    private Pane homePage = new Pane();
+    
+    @FXML
+    public Label StatusBtn = new Label();
     
     @FXML 
-    private  TableColumn<InputClass, Integer> clgIDCol = new TableColumn<>();  
+    private  TableView<HomePageData> Table = new TableView<HomePageData>();
+    
+    @FXML 
+    private  TableColumn<HomePageData, String> clgIDColumn = new TableColumn<HomePageData, String>();  
             
     @FXML
-    private  TableColumn<InputClass, String> nameCol = new TableColumn<>();   
+    private  TableColumn<HomePageData, String> nameColumn = new TableColumn<HomePageData, String>();   
     
     @FXML 
-    private  TableColumn<InputClass, String> branchCol = new TableColumn<>();   
+    private  TableColumn<HomePageData, String> courseColumn = new TableColumn<HomePageData, String>();   
     
     @FXML 
-    private  TableColumn<InputClass, Integer> CsemCol = new TableColumn<>();    
-    
+    private  TableColumn<HomePageData, Integer> currSemColumn = new TableColumn<HomePageData, Integer>();    
+        
     @FXML 
-    private  TableColumn<InputClass, String> currentEduCol = new TableColumn<>();   
+    private  TableColumn<HomePageData, String> contactCol = new TableColumn<HomePageData, String>();     
     
-    @FXML 
-    private  TableColumn<InputClass, String> contactCol = new TableColumn<>();     
-    
-    
-    @FXML
-    private Pane homePage;
-    
-    @FXML
-    public Label StatusBtn;
-    
-    @FXML
-    private JFXButton addData;
-    
-    Connection h = null;   
-    ObservableList<InputClass> ip;
-     
-    
-    
+        
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
         homePage.requestFocus();
-        h = DatabaseCon.connect();
-             
-        if(h == null)
+                
+        if(DatabaseCon.connect() == null)
         {
             StatusBtn.setTextFill(Paint.valueOf("RED"));
             StatusBtn.setText("*Warning, Database Connection Cannot Be Established!"); 
@@ -85,17 +80,70 @@ public class HomePageController implements Initializable
             StatusBtn.setText("Database Connection Established!"); 
         }
         
-        //String g = Editing1Controller.oldName;
-        
         FillTable();
+    }
+    
+    
+    public void FillTable()
+    {
+        ObservableList<HomePageData> observableList = FXCollections.observableArrayList(); //Observalble List with on ArrayList Feature
+                 
+        try
+        {                        
+            ResultSet resultSet = dbIO.getBasicInfo();
+            
+            if(resultSet == null)
+            {
+                System.out.println("fked");
+                return;
+            }
+            
+            while(resultSet.next()) //while there is one more row....
+            {
+                
+                
+                observableList.add(new HomePageData(
+                        resultSet.getString(2) ,
+                        resultSet.getString(1) ,  
+                        resultSet.getString(4).toUpperCase() , 
+                        resultSet.getInt(5), 
+                        resultSet.getString(6) 
+                ));
+                
+                
+                /*String tmp = "This: "+ resultSet.getString(2) +
+                        "   "+ resultSet.getString(1) +  
+                        "   "+ resultSet.getString(4).toUpperCase() + 
+                        "   "+ resultSet.getInt(5) + 
+                        "   "+ resultSet.getString(6); 
+            
+                System.out.println(tmp);*/
+                //System.out.println(observableList.get(0).getName());
+            }
+            
+        }
+        
+        catch(SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        
+        clgIDColumn.setCellValueFactory(new PropertyValueFactory<>("collegeId")); //
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        courseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
+        currSemColumn.setCellValueFactory(new PropertyValueFactory<>("currSem"));
+        contactCol.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        
+        
+        //Table.setItems(null);
+        Table.setItems(observableList);
     }
     
     
     public void AddData(MouseEvent event) 
     {        
         try 
-        {
-           
+        {           
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
             Scene editPg1Scene = new Scene(editPag1);
             Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -103,50 +151,17 @@ public class HomePageController implements Initializable
             appStage.show();
             
         } 
-        catch (Exception ex) 
+        catch (IOException e) 
         {
-            ex.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
     
     
-    public void FillTable()
-    {
-
-        ip = FXCollections.observableArrayList();
-
-        try
-        {
-            Statement myStmt = h.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.basic_info");
-            while(myRs.next())
-            {
-                ip.add(new InputClass("   "+myRs.getString(2), "   "+myRs.getString(1).toUpperCase(), "   "+myRs.getString(3).toUpperCase(), "   "+myRs.getInt(5), "   "+myRs.getString(4).toUpperCase(), "   "+myRs.getString(6)));
-            }
-        }
-        
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        
-        clgIDCol.setCellValueFactory(new PropertyValueFactory<>("collegeId")); //take value from sno from its class
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        branchCol.setCellValueFactory(new PropertyValueFactory<>("branch"));
-        CsemCol.setCellValueFactory(new PropertyValueFactory<>("Csem"));
-        currentEduCol.setCellValueFactory(new PropertyValueFactory<>("currentEdu"));
-        contactCol.setCellValueFactory(new PropertyValueFactory<>("contact"));
-        
-        
-        Table.setItems(null);
-        Table.setItems(ip);
-    }
-    
-    
-    /* public void OpenEntry(MouseEvent event) 
+    public void OpenEntry(MouseEvent event) 
     {
         
-        if(event.getClickCount() == 2) //on double click
+        /*if(event.getClickCount() == 2) //on double click
         {
             try 
             {
@@ -170,7 +185,7 @@ public class HomePageController implements Initializable
                 ex.printStackTrace();
             }
 
-        }
-    }*/
+        }*/
+    }
   
 }   

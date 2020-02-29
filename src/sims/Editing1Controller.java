@@ -6,8 +6,7 @@ import javafx.fxml.Initializable;
 
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,6 +22,8 @@ import javafx.scene.control.Label;
 import java.util.regex.Pattern;
 
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -36,18 +37,13 @@ import javafx.scene.control.ButtonType;
 public class Editing1Controller implements Initializable 
 {
 
-    //public static int up, ui = 1;
+    private String errorStyle = "-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
+    private String successStyle = "-fx-border-color: #23ff23; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
     
-    //public static String a, oldName;
-    //public static int useSem;
-    //public static String newName;
-    
-    public String nameVal, clgIDVal, monthVal, dobVal, courseVal, contactVal;
-    public int yearVal, dayVal, currSemVal;
-    
-    //Connection h = null; 
-    
-    
+    private String nameVal = null, clgIDVal = null, monthVal = null, dobVal = null, courseVal = null, contactVal = null;
+    int yearVal = 0, dayVal = 0, currSemVal = 0;
+       
+        
     @FXML
     private Pane edit1;
             
@@ -113,173 +109,48 @@ public class Editing1Controller implements Initializable
     
     @FXML
     private JFXTextField contact;
-            
+         
+    
+    public Editing1Controller()
+    {
+        nameVal = null;
+        clgIDVal = null; 
+        monthVal = null; 
+        dobVal = null;
+        courseVal = null;
+        contactVal = null;
+        yearVal = 0; 
+        dayVal = 0;
+        currSemVal = 0;        
+    }
             
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {  
         edit1.requestFocus();
-        //ClgID.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;"); when error occurs or not filled
-                
-        
-                
+                       
         name.setTooltip(new Tooltip ("use Fullname"));
-        dobYear.setTooltip(new Tooltip("eg. 1997"));
+        dobYear.setTooltip(new Tooltip("eg. YYYY"));
         course.setTooltip(new Tooltip("eg. BE Computer Science"));
-          
-        //operation();
     }    
-    
-    
-    
-    
-    /*void operation()
-    {
-        if(ui == 0)
-        {
-            update();
-        }
-        else if(ui == 1)
-        {
-            insert();
-        }
-            
-    }*/
-    
-    /*void insert()
-    {
-        newName = null; s2 = null; s3 = null; s4 = null; s6 = null; s7 = null; s72 = null;
-        s5 = 0; s71 = 0; s73 = 0; 
-        
-        delData.setVisible(false); 
-    }*/
-    
-    
-    /*void update()
-    {
-        delData.setVisible(true);
-         
-        try 
-        {
-            Statement myStmt = h.createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from studentinfoschema.basic_info where name = '"+ oldName +"'");
-            while(myRs.next())
-            {
-                Name.setText((myRs.getString(1)).toUpperCase());
-                oldName = myRs.getString(1);
-                newName = oldName;
-                
-                ClgID.setText((myRs.getString(2)).toUpperCase());
-                     
-                CurrSem.setText(Integer.toString(myRs.getInt(5))); 
-                
-                Contact.setText((myRs.getString(6)).toUpperCase()); 
-                
-                String xyzs = myRs.getString(7);                
-                String[] strArray = xyzs.split("\\-");
-                String[] s = new String[3];
-                
-                System.arraycopy(strArray, 0, s, 0, 3); //copies strArray into s till 2nd index
-                
-                s71 = Integer.parseInt(s[0]);
-                s72 = s[1];       
-                s73 = Integer.parseInt(s[2]);
-                DobYear.setText(s[0]);
-                DobDay.setText(s[2]);
-                int x =  Integer.parseInt(s[1]);
-                
-                switch (x) {
-                    case 1:
-                        DobMnth.setText("January");
-                        break;
-                        
-                    case 2:
-                        DobMnth.setText("February");
-                        break;
-                        
-                    case 3:
-                        DobMnth.setText("March");
-                        break;
-                        
-                    case 4:
-                        DobMnth.setText("April");
-                        break;
-                        
-                    case 5:
-                        DobMnth.setText("May");
-                        break;
-                        
-                    case 6:
-                        DobMnth.setText("June");
-                        break;
-                        
-                    case 7:
-                        DobMnth.setText("July");
-                        break;
-                        
-                    case 8:
-                        DobMnth.setText("August");
-                        break;
-                    
-                    case 9:
-                        DobMnth.setText("September");
-                        break;
-                        
-                    case 10:
-                        DobMnth.setText("October");
-                        break;
-                        
-                    case 11:
-                        DobMnth.setText("November");
-                        break;
-                        
-                    case 12:
-                        DobMnth.setText("December");
-                        break;
-                    
-                    default:
-                        break;
-                }
-                
-                s2 = "'"+myRs.getString(2)+"'";
-                s3 = "'"+myRs.getString(3)+"'";
-                
-                int g =  myRs.getInt(5);
-                System.out.println(g);
-                useSem = g;
-                s5 = g;
-                
-                s6 = "'"+myRs.getString(6)+"'"; 
-                s7 = "'"+ myRs.getString(7) +"'";
-
-            } 
-            
-        }
-        catch(Exception e)
-        {
-            System.out.println("check");
-            e.printStackTrace();
-        }
-        
-    }*/
-      
-    ///////////////////////////////////////////////////////////////
-    // SET DATA 
+     
+    ////////////////////////////////////////////////////////////////////////////
+    // Set Values 
     
     public void setNameVal()
     {       
         String tmp = name.getText();
-        if(!Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             name.setText(null);
-            name.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
             nameVal = null;
+            name.setStyle(errorStyle);
+            System.out.println("false");
         } 
         
         else 
         { 
-            name.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            name.setStyle(successStyle);
             nameVal = tmp;
             System.out.println(nameVal);
         }
@@ -288,8 +159,21 @@ public class Editing1Controller implements Initializable
     
     public void setClgIDVal()
     {   
-        clgIDVal = "'"+clgID.getText()+"'";
-        System.out.println(clgIDVal);
+        String tmp = clgID.getText();
+        
+        if(tmp == null || tmp.trim().isEmpty())
+        {
+            clgID.setText(null);
+            clgIDVal = null;
+            clgID.setStyle(errorStyle);   
+        }
+        else
+        {
+            clgIDVal = tmp;
+            clgID.setStyle(successStyle);
+            System.out.println(clgIDVal);            
+        }       
+        
     }
      
            
@@ -300,17 +184,36 @@ public class Editing1Controller implements Initializable
         numDays = 31;
         dobMonth.setText("January");
         monthVal = "1";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;            
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setFabruary()
     {
-        if (yearVal % 4 == 0) {
+        if (yearVal % 4 == 0) 
+        {
             numDays = 29;
-        } else {
+        } 
+        else 
+        {
             numDays = 28;
         }
         dobMonth.setText("Fabruary");
         monthVal = "2";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;            
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setMarch()
@@ -318,6 +221,14 @@ public class Editing1Controller implements Initializable
         numDays = 31;
         dobMonth.setText("March");
         monthVal = "3";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;            
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setApril()
@@ -325,6 +236,14 @@ public class Editing1Controller implements Initializable
         numDays = 30;
         dobMonth.setText("April");
         monthVal = "4";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;            
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setMay()
@@ -332,6 +251,14 @@ public class Editing1Controller implements Initializable
         numDays = 31;
         dobMonth.setText("May");
         monthVal = "5";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;            
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setJune()
@@ -339,6 +266,14 @@ public class Editing1Controller implements Initializable
         numDays = 30;
         dobMonth.setText("June");
         monthVal = "6";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;            
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setJuly()
@@ -346,6 +281,14 @@ public class Editing1Controller implements Initializable
         numDays = 31;
         dobMonth.setText("July");
         monthVal = "7";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;            
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setAugust()
@@ -353,6 +296,15 @@ public class Editing1Controller implements Initializable
         numDays = 31;
         dobMonth.setText("August");
         monthVal = "8";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;
+            dobDay.setStyle(errorStyle);
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setSeptember()
@@ -360,6 +312,15 @@ public class Editing1Controller implements Initializable
         numDays = 30;
         dobMonth.setText("September");
         monthVal = "9";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;
+            dobDay.setStyle(errorStyle);
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setOctober()
@@ -367,6 +328,15 @@ public class Editing1Controller implements Initializable
         numDays = 31;
         dobMonth.setText("October");
         monthVal = "10";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;
+            dobDay.setStyle(errorStyle);
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setNovember()
@@ -374,6 +344,15 @@ public class Editing1Controller implements Initializable
         numDays = 30;
         dobMonth.setText("November");
         monthVal = "11";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;
+            dobDay.setStyle(errorStyle);
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
     
     public void setDecember()
@@ -381,188 +360,207 @@ public class Editing1Controller implements Initializable
         numDays = 31;
         dobMonth.setText("December");
         monthVal = "12";
+        dobMonth.setStyle(successStyle);
+        
+        if (dayVal < 1 || dayVal > numDays) 
+        {
+            dobDay.setText(null);
+            dayVal = 0;
+            dobDay.setStyle(errorStyle);
+            System.out.println("'day' out of limit or not initilized");
+        }
     }
+    
     
     public void setMonthVal()
     {
         monthLbl.setVisible(true);               
     }
        
-    
+        
     public void setDayVal()
     {  
-        int tmp = Integer.parseInt(dobDay.getText());
-        if(tmp <= numDays)
+        try
         {
-            dobDay.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            dayVal = tmp;
-            System.out.println(dayVal); 
+            int tmp = Integer.parseInt(dobDay.getText()); 
+            if (tmp != 0 && tmp <= 31 && tmp <= numDays ) 
+            {
+                dobDay.setStyle(successStyle);
+                dayVal = tmp;
+                System.out.println(dayVal);
+            }
+            else
+            {
+                dobDay.setText(null);
+                dayVal = 0;
+                dobDay.setStyle(errorStyle);
+                System.out.println("'day' out of limit or not initilized");
+            }
+                       
         }
-        else
+        
+        catch(NumberFormatException e)
         {
             dobDay.setText(null);
-            dobDay.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-        }
+            dayVal = 0;
+            dobDay.setStyle(errorStyle);
+            System.out.println("dayVal not an integer");
+        }       
     }  
     
     
     public void setYearVal()
     {      
         String tmp = dobYear.getText();
-        if(tmp.length() == 4)
+        if(tmp != null && tmp.length() == 4)
         {
             try
             {
-                yearVal = Integer.parseInt(dobYear.getText());
-                dobYear.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                yearVal = Integer.parseInt(tmp);
+                dobYear.setStyle(successStyle);
                 System.out.println(yearVal);
             }
-            catch(Exception e)
+            catch(NumberFormatException e)
             {
                 dobYear.setText(null);
-                dobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+                yearVal = 0;
+                dobYear.setStyle(errorStyle);
             }
         }
         else
         {
             dobYear.setText(null);
-            dobYear.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
+            yearVal = 0;
+            dobYear.setStyle(errorStyle);
         }            
     }
-    
-    
-    public void setDOBVal()
-    {
-        dobVal = "'" + yearVal + "-" + monthVal + "-" + dayVal +  "'"; 
-        System.out.println(dobVal);
-    }
-    
+         
     
     public void setCourseVal()
     {       
         String tmp = course.getText();               
-        if(!Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches() || tmp.length() == 0 )
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             course.setText(null);
-            course.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
             courseVal = null;
+            course.setStyle(errorStyle);
+            System.out.println("false");             
         } 
         
         else 
         { 
-            course.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            courseVal = "'"+tmp+"'";
+            course.setStyle(successStyle);
+            courseVal = tmp;
             System.out.println(courseVal);
         }        
     }
     
     
     public void setCurrSemVal()
-    {       
-        currSemVal = Integer.parseInt(currSem.getText());
-        System.out.println(currSemVal);
+    {          
+        String tmp = currSem.getText();
+        if (tmp != null) 
+        {
+            try 
+            {
+                currSemVal = Integer.parseInt(tmp);
+                currSem.setStyle(successStyle);
+                System.out.println(currSemVal);
+            } 
+            catch (NumberFormatException e) 
+            {
+                currSem.setText(null);
+                currSemVal = 0;
+                currSem.setStyle(errorStyle);
+                System.out.println("currSemVal not an integer");
+            }
+        }
+        else
+        {
+            currSem.setText(null);
+            currSemVal = 0;
+            currSem.setStyle(errorStyle);
+            System.out.println("currSemVal not an integer");
+        }
     }
     
     
     public void setContactVal()
     {  
         String tmp = contact.getText();       
-        if(!Pattern.compile("^[+]?([0-9]{2,3})?[-]?[0-9]{10}$").matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("^[+]?([0-9]{2,3})?[-]?[0-9]{10}$").matcher(tmp).matches())
         { 
             contact.setText(null);
-            contact.setStyle("-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            System.out.println("false"); 
             contactVal = null;
+            contact.setStyle(errorStyle);
+            System.out.println("false");
         } 
         
         else 
         { 
-            contact.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white; -fx-prompt-text-fill: white;");
-            contactVal = "'"+tmp+"'";
+            contact.setStyle(successStyle);
+            contactVal = tmp;
             System.out.println(contactVal);
         }
     } 
     
-    ///////////////////////////////////////////////////////////////
-    // GET DATA
+    
+    ///////////////////////////////////////////////////////////////////////////
+    // Get Values
     
     public String getNameVal()
     {
-        return nameVal;
+        return this.nameVal;
     }
+    
     
     public String getClgIDVal()
     {
-        return clgIDVal;
+        return this.clgIDVal;
     }
     
-    public String getDOBVal()
+    
+    public String getMonthVal()
     {
-        return dobVal;
+        return this.monthVal;
     }
+    
+    
+    public int getYearVal()
+    {
+        return this.yearVal;
+    }
+    
+    
+    public int getDayVal()
+    {
+        return this.dayVal;
+    }
+    
     
     public String getCourseVal()
     {
-        return courseVal;
+        return this.courseVal;
     }
+    
     
     public int getCurrSemVal()
     {
-        return currSemVal;
+        return this.currSemVal;
     }
+    
     
     public String getContactVal()
     {
-        return contactVal;
+        return this.contactVal;
     }
     
     
-    //Updating existing value
-    /*public static void upValues()
-    {
-        DatabaseIO d = new DatabaseIO();
-        d.UpBasicinfo("'"+newName+"'", s2, s3, s4, s5, s6, s7); 
-    }
-    
-    
-    
-    //delete existing value
-    public void delEdit(MouseEvent event)
-    {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Delete data");
-        alert.setHeaderText("Are you sure you want to delete data of "+ (Editing1Controller.oldName).toUpperCase()+ "?");
-        alert.setContentText("If you delete this, it wil be removed from database.");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK)
-        {
-            DatabaseIO d = new DatabaseIO();
-            d.DelBasicinfo();
-
-            try
-            {
-                Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-                Scene editPg1Scene = new Scene(editPag1);
-                Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                appStage.setScene(editPg1Scene);
-                appStage.show();
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-            }
-        } 
-        else 
-        {
-            // ... user either CLOSES or CANCELs the dialog
-        }
-    }*/
-    
-        
     public void toNextPg(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
-    {
+    {  
+        DatabaseIO Connection = new DatabaseIO();
+        
+        Connection.InsertValues();
         try 
         {
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
@@ -572,9 +570,9 @@ public class Editing1Controller implements Initializable
             appStage.show();
             
         } 
-        catch (Exception ex) 
+        catch (IOException e) 
         {
-            ex.printStackTrace();
+            e.printStackTrace();
         }
     }
     
@@ -588,10 +586,9 @@ public class Editing1Controller implements Initializable
             appStage.setScene(editPg1Scene);
             appStage.show();
         } 
-        catch (Exception ex) 
+        catch (IOException e) 
           {
-            ex.printStackTrace();
+            e.printStackTrace();
           }
     }
-
 }

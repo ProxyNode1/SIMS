@@ -19,7 +19,7 @@
          </font>
       </Label>
       <Line endX="620.0" layoutX="338.0" layoutY="127.0" stroke="#dea309" />
-      <Label fx:id="home" contentDisplay="CENTER" layoutX="19.0" layoutY="15.0" onDragDetected="#toHomepg" onMouseClicked="#toHomepg" prefHeight="26.0" prefWidth="26.0">
+      <Label fx:id="home" contentDisplay="CENTER" layoutX="19.0" layoutY="15.0" onMouseClicked="#toHomepg" prefHeight="26.0" prefWidth="26.0">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -40,12 +40,17 @@
       </JFXTextField>
       <Pane layoutX="317.0" layoutY="280.0" prefHeight="94.0" prefWidth="325.0">
          <children>
+            <JFXTextField fx:id="dobYear" focusColor="WHITE" labelFloat="true" layoutX="5.0" layoutY="45.0" onAction="#setYearVal" prefHeight="36.4" prefWidth="83.0" promptText="  Year" stylesheets="@Common.css" unFocusColor="#212121">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </JFXTextField>
             <Label focusTraversable="false" layoutX="3.0" layoutY="5.0" text="Date of Birth" textFill="WHITE">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>
             </Label>
-            <MenuButton fx:id="dobMonth" layoutX="105.0" layoutY="45.0" mnemonicParsing="false" onAction="#setMonthVal" prefHeight="36.0" prefWidth="113.0" style="-fx-border-width: 1;" stylesheets="@Common.css" text="Month" textFill="WHITE">
+            <MenuButton fx:id="dobMonth" layoutX="105.0" layoutY="45.0" mnemonicParsing="false" onAction="#setMonthVal" prefHeight="36.0" prefWidth="113.0" stylesheets="@Common.css" text="Month" textFill="WHITE">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
@@ -70,11 +75,6 @@
                   <Font name="Arial" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="dobYear" focusColor="WHITE" labelFloat="true" layoutX="5.0" layoutY="45.0" onAction="#setYearVal" prefHeight="36.4" prefWidth="83.0" promptText="  Year" stylesheets="@Common.css" unFocusColor="#212121">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font>
-            </JFXTextField>
          </children>
       </Pane>
       <JFXTextField fx:id="course" focusColor="WHITE" labelFloat="true" layoutX="743.0" layoutY="318.0" onAction="#setCourseVal" prefHeight="42.0" prefWidth="212.0" promptText="  Course" stylesheets="@Common.css" unFocusColor="#212121">
@@ -92,7 +92,7 @@
             <Font name="Arial" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="nxtBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1130.0" layoutY="660.0" onAction="#toNextPg" prefHeight="24.45" prefWidth="76.79" ripplerFill="#9b7206" style="-fx-background-color: #DEA309;" text="Next" textAlignment="CENTER">
+      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="1130.0" layoutY="660.0" onMouseClicked="#toNextPg" prefHeight="24.45" prefWidth="76.79" ripplerFill="#9b7206" style="-fx-background-color: #DEA309;" text="Next" textAlignment="CENTER">
          <font>
             <Font name="Arial" size="17.0" />
          </font>

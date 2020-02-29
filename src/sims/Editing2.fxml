@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="Edit2" focusTraversable="true" maxHeight="720.0" maxWidth="1280.0" minHeight="480.0" minWidth="855.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 1;" stylesheets="@Common.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing2Controller">
+<Pane fx:id="edit2" focusTraversable="true" maxHeight="720.0" maxWidth="1280.0" minHeight="480.0" minWidth="855.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121; -fx-border-color: #1883D7; -fx-border-width: 1;" stylesheets="@Common.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.Editing2Controller">
    <children>
       <ScrollPane hbarPolicy="NEVER" layoutX="90.0" layoutY="115.0" prefHeight="604.0" prefWidth="1183.0" style="-fx-background: #212121; -fx-border-color: #212121; -fx-border-width: 1;" vbarPolicy="ALWAYS">
          <content>
@@ -38,16 +38,16 @@
                               <Font name="Arial" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <MenuButton fx:id="sBoard" layoutX="23.0" layoutY="193.0" mnemonicParsing="false" onAction="#setSBoard" prefHeight="42.0" prefWidth="166.0" style="-fx-background-color: #2F3136;" stylesheets="@Common.css" text="Board" textFill="WHITE">
+                        <MenuButton fx:id="sBoard" layoutX="23.0" layoutY="193.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="166.0" style="-fx-background-color: #2F3136;" stylesheets="@Common.css" text="Board" textFill="WHITE">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                            <items>
-                              <MenuItem fx:id="scbse" mnemonicParsing="false" text="CBSE" />
-                              <MenuItem fx:id="scisce" mnemonicParsing="false" text="CISCE" />
-                              <MenuItem fx:id="sstate" mnemonicParsing="false" text="STATE" />
-                              <MenuItem fx:id="sibo" mnemonicParsing="false" text="IBO" />
-                              <MenuItem fx:id="scie" mnemonicParsing="false" text="CIE" />
+                              <MenuItem fx:id="scbse" mnemonicParsing="false" onAction="#setSCBSE" text="CBSE" />
+                              <MenuItem fx:id="scisce" mnemonicParsing="false" onAction="#setSCISCE" text="CISCE" />
+                              <MenuItem fx:id="sstate" mnemonicParsing="false" onAction="#setSState" text="STATE" />
+                              <MenuItem fx:id="sibo" mnemonicParsing="false" onAction="#setSIBO" text="IBO" />
+                              <MenuItem fx:id="scie" mnemonicParsing="false" onAction="#setSCIE" text="CIE" />
                            </items>
                         </MenuButton>
                         <JFXTextField fx:id="sMedium" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="193.0" onAction="#setSMedium" prefHeight="42.0" prefWidth="166.0" promptText="Medium" stylesheets="@Common.css" unFocusColor="#2f3136">
@@ -72,7 +72,7 @@
                         </JFXTextField>
                      </children>
                   </Pane>
-                  <MenuButton fx:id="preUnivesity" layoutX="581.0" layoutY="49.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="204.0" stylesheets="@Common.css" text="Pre University Course" textFill="WHITE">
+                  <MenuButton fx:id="preUnivesity" layoutX="581.0" layoutY="49.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="257.0" style="-fx-background-color: #212121;" stylesheets="@Common.css" text="Pre University Course" textFill="WHITE">
                     <items>
                       <MenuItem fx:id="hss" mnemonicParsing="false" onAction="#setHSS" text="Higher Secondary School" />
                       <MenuItem fx:id="diploma" mnemonicParsing="false" onAction="#setDiploma" text="Diploma" />
@@ -93,16 +93,16 @@
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <MenuButton fx:id="hBoard" layoutX="18.0" layoutY="99.0" mnemonicParsing="false" onAction="#setHBoard" prefHeight="42.0" prefWidth="166.0" style="-fx-background-color: #2F3136;" text="Board" textFill="WHITE">
+                        <MenuButton fx:id="hBoard" layoutX="18.0" layoutY="99.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="166.0" style="-fx-background-color: #2F3136;" text="Board" textFill="WHITE">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                            <items>
-                              <MenuItem fx:id="Hcbse" mnemonicParsing="false" text="CBSE" />
-                              <MenuItem fx:id="Hcisce" mnemonicParsing="false" text="CISCE" />
-                              <MenuItem fx:id="Hstate" mnemonicParsing="false" text="STATE" />
-                              <MenuItem fx:id="Hibo" mnemonicParsing="false" text="IBO" />
-                              <MenuItem fx:id="Hcie" mnemonicParsing="false" text="CIE" />
+                              <MenuItem fx:id="Hcbse" mnemonicParsing="false" onAction="#setHCBSE" text="CBSE" />
+                              <MenuItem fx:id="Hcisce" mnemonicParsing="false" onAction="#setHCISCE" text="CISCE" />
+                              <MenuItem fx:id="Hstate" mnemonicParsing="false" onAction="#setHState" text="STATE" />
+                              <MenuItem fx:id="Hibo" mnemonicParsing="false" onAction="#setHIBO" text="IBO" />
+                              <MenuItem fx:id="Hcie" mnemonicParsing="false" onAction="#setHCIE" text="CIE" />
                            </items>
                         </MenuButton>
                         <JFXTextField fx:id="hMedium" focusColor="WHITE" labelFloat="true" layoutX="236.0" layoutY="99.0" onAction="#setHMedium" prefHeight="42.0" prefWidth="166.0" promptText="Medium" stylesheets="@Common.css" unFocusColor="#2f3136">
@@ -159,32 +159,32 @@
                               <Font size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="dPercent1" focusColor="WHITE" labelFloat="true" layoutX="235.0" layoutY="99.0" onAction="#setDPercent1" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 1)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="dPercent1" focusColor="WHITE" labelFloat="true" layoutX="235.0" layoutY="99.0" onAction="#setDPercent1" prefHeight="42.0" prefWidth="166.0" promptText="Sem 1 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="dPercent2" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="170.0" onAction="#setDPercent2" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 2)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="dPercent2" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="170.0" onAction="#setDPercent2" prefHeight="42.0" prefWidth="166.0" promptText="Sem 2 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="dPercent3" focusColor="WHITE" labelFloat="true" layoutX="235.0" layoutY="170.0" onAction="#setDPercent3" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 3)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="dPercent3" focusColor="WHITE" labelFloat="true" layoutX="235.0" layoutY="170.0" onAction="#setDPercent3" prefHeight="42.0" prefWidth="166.0" promptText="Sem 3 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="dPercent4" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="241.0" onAction="#setDPercent4" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 4)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="dPercent4" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="241.0" onAction="#setDPercent4" prefHeight="42.0" prefWidth="166.0" promptText="Sem 4 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="dPercent5" focusColor="WHITE" labelFloat="true" layoutX="235.0" layoutY="241.0" onAction="#setDPercent5" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 5)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="dPercent5" focusColor="WHITE" labelFloat="true" layoutX="235.0" layoutY="241.0" onAction="#setDPercent5" prefHeight="42.0" prefWidth="166.0" promptText="Sem 5 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="dPercent6" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="312.0" onAction="#setDPercent6" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 6)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="dPercent6" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="312.0" onAction="#setDPercent6" prefHeight="42.0" prefWidth="166.0" promptText="Sem 6 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
@@ -199,57 +199,57 @@
                            </font>
                         </Label>
                         <Line endX="105.0" layoutX="219.0" layoutY="72.0" startX="-105.0" stroke="WHITE" />
-                        <JFXTextField fx:id="ePassYear" disable="true" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="122.0" onAction="#setEPassYear" prefHeight="42.0" prefWidth="166.0" promptText="Year of Passing" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="ePassYear" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="122.0" onAction="#setEPassYear" prefHeight="42.0" prefWidth="166.0" promptText="Year of Passing" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="eSchool" disable="true" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="122.0" onAction="#setESchool" prefHeight="42.0" prefWidth="166.0" promptText="School" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="eSchool" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="122.0" onAction="#setESchool" prefHeight="42.0" prefWidth="166.0" promptText="School" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="eCity" disable="true" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="193.0" onAction="#setECity" prefHeight="42.0" prefWidth="166.0" promptText="City" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="eCity" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="193.0" onAction="#setECity" prefHeight="42.0" prefWidth="166.0" promptText="City" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="ePercent1" disable="true" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="193.0" onAction="#setEPercent1" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 1)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="ePercent1" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="193.0" onAction="#setEPercent1" prefHeight="42.0" prefWidth="166.0" promptText="Sem 1 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="ePercent2" disable="true" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="264.0" onAction="#setEPercent2" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 2)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="ePercent2" focusColor="WHITE" labelFloat="true" layoutX="23.0" layoutY="264.0" onAction="#setEPercent2" prefHeight="42.0" prefWidth="166.0" promptText="Sem 2 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="ePercent3" disable="true" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="264.0" onAction="#setEPercent3" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 3)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="ePercent3" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="264.0" onAction="#setEPercent3" prefHeight="42.0" prefWidth="166.0" promptText="Sem 3 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="ePercent4" disable="true" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="335.0" onAction="#setEPercent4" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 4)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="ePercent4" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="335.0" onAction="#setEPercent4" prefHeight="42.0" prefWidth="166.0" promptText="Sem 4 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="ePercent5" disable="true" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="335.0" onAction="#setEPercent5" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 5)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="ePercent5" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="335.0" onAction="#setEPercent5" prefHeight="42.0" prefWidth="166.0" promptText="Sem 5 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="ePercent6" disable="true" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="406.0" onAction="#setEPercent6" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 6)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="ePercent6" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="406.0" onAction="#setEPercent6" prefHeight="42.0" prefWidth="166.0" promptText="Sem 6 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="ePercent7" disable="true" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="406.0" onAction="#setEPercent7" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 7)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="ePercent7" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="406.0" onAction="#setEPercent7" prefHeight="42.0" prefWidth="166.0" promptText="Sem 7 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="ePercent8" disable="true" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="477.0" onAction="#setEPercent8" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 8)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="ePercent8" focusColor="WHITE" labelFloat="true" layoutX="18.0" layoutY="477.0" onAction="#setEPercent8" prefHeight="42.0" prefWidth="166.0" promptText="Sem 8 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
@@ -264,37 +264,37 @@
                            </font>
                         </Label>
                         <Line endX="95.0" layoutX="219.0" layoutY="72.0" startX="-95.0" stroke="WHITE" />
-                        <JFXTextField fx:id="pPassYear" disable="true" focusColor="WHITE" layoutX="26.0" layoutY="122.0" onAction="#setPPassYear" prefHeight="42.0" prefWidth="166.0" promptText="Year of Passing" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="pPassYear" focusColor="WHITE" layoutX="26.0" layoutY="122.0" onAction="#setPPassYear" prefHeight="42.0" prefWidth="166.0" promptText="Year of Passing" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="pSchool" disable="true" focusColor="WHITE" layoutX="240.0" layoutY="122.0" onAction="#setPSchool" prefHeight="42.0" prefWidth="166.0" promptText="School" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="pSchool" focusColor="WHITE" layoutX="240.0" layoutY="122.0" onAction="#setPSchool" prefHeight="42.0" prefWidth="166.0" promptText="School" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="pCity" disable="true" focusColor="WHITE" layoutX="26.0" layoutY="193.0" onAction="#setPCity" prefHeight="42.0" prefWidth="166.0" promptText="City" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="pCity" focusColor="WHITE" layoutX="26.0" layoutY="193.0" onAction="#setPCity" prefHeight="42.0" prefWidth="166.0" promptText="City" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="pPercent1" disable="true" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="193.0" onAction="#setPPercent1" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 1)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="pPercent1" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="193.0" onAction="#setPPercent1" prefHeight="42.0" prefWidth="166.0" promptText="Sem 1 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="pPercent2" disable="true" focusColor="WHITE" labelFloat="true" layoutX="26.0" layoutY="264.0" onAction="#setPPercent2" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 2)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="pPercent2" focusColor="WHITE" labelFloat="true" layoutX="26.0" layoutY="264.0" onAction="#setPPercent2" prefHeight="42.0" prefWidth="166.0" promptText="Sem 2 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="pPercent3" disable="true" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="264.0" onAction="#setPPercent3" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 3)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="pPercent3" focusColor="WHITE" labelFloat="true" layoutX="240.0" layoutY="264.0" onAction="#setPPercent3" prefHeight="42.0" prefWidth="166.0" promptText="Sem 3 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="pPercent4" disable="true" focusColor="WHITE" labelFloat="true" layoutX="26.0" layoutY="335.0" onAction="#setPPercent4" prefHeight="42.0" prefWidth="166.0" promptText="Percentage (Sem 4)" stylesheets="@Common.css" unFocusColor="#2f3136">
+                        <JFXTextField fx:id="pPercent4" focusColor="WHITE" labelFloat="true" layoutX="26.0" layoutY="335.0" onAction="#setPPercent4" prefHeight="42.0" prefWidth="166.0" promptText="Sem 4 Percentage" stylesheets="@Common.css" unFocusColor="#2f3136">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
@@ -309,12 +309,12 @@
             <URL value="@Common.css" />
          </stylesheets>
       </ScrollPane>
-      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="1130.0" layoutY="660.0" onAction="#toNextPg" onMouseClicked="#toNextPg" prefHeight="24.45" prefWidth="76.79" ripplerFill="#9b7206" style="-fx-background-color: #DEA309;" text="Next" textAlignment="CENTER" textFill="#212121">
+      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="1130.0" layoutY="660.0" onMouseClicked="#toNextPg" prefHeight="24.45" prefWidth="76.79" ripplerFill="#9b7206" style="-fx-background-color: #DEA309;" text="Next" textAlignment="CENTER" textFill="#212121">
          <font>
             <Font name="Arial" size="17.0" />
          </font>
       </JFXButton>
-      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="660.0" onAction="#toPrevPg" onMouseClicked="#toPrevPg" prefHeight="32.0" prefWidth="93.0" ripplerFill="#9b7206" style="-fx-background-color: #DEA309;" text="Previous" textAlignment="CENTER" textFill="#212121">
+      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="660.0" onMouseClicked="#toPrevPg" prefHeight="32.0" prefWidth="93.0" ripplerFill="#9b7206" style="-fx-background-color: #DEA309;" text="Previous" textAlignment="CENTER" textFill="#212121">
          <font>
             <Font name="Arial" size="17.0" />
          </font>

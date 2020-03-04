@@ -556,11 +556,15 @@ public class Editing1Controller implements Initializable
     }
     
     
+    ////////////////////////////////////////////////////////////////////////////
+    // Changing to different page
+    
     public void toNextPg(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {  
         DatabaseIO Connection = new DatabaseIO();
         
         Connection.InsertValues();
+        
         try 
         {
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));

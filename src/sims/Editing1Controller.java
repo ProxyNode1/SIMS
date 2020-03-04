@@ -37,12 +37,10 @@ import javafx.scene.control.ButtonType;
 public class Editing1Controller implements Initializable 
 {
 
-    private String errorStyle = "-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
-    private String successStyle = "-fx-border-color: #23ff23; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
+    private final String errorStyle = "-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
+    private final String successStyle = "-fx-border-color: #23ff23; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
     
-    private String nameVal = null, clgIDVal = null, monthVal = null, dobVal = null, courseVal = null, contactVal = null;
-    int yearVal = 0, dayVal = 0, currSemVal = 0;
-       
+    Editing1Data dataclass;       
         
     @FXML
     private Pane edit1;
@@ -113,15 +111,7 @@ public class Editing1Controller implements Initializable
     
     public Editing1Controller()
     {
-        nameVal = null;
-        clgIDVal = null; 
-        monthVal = null; 
-        dobVal = null;
-        courseVal = null;
-        contactVal = null;
-        yearVal = 0; 
-        dayVal = 0;
-        currSemVal = 0;        
+        dataclass = Editing1Data.getInstance();
     }
             
     @Override
@@ -143,16 +133,15 @@ public class Editing1Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             name.setText(null);
-            nameVal = null;
+            dataclass.setNameVal(null);
             name.setStyle(errorStyle);
-            System.out.println("false");
         } 
         
         else 
         { 
+            name.setText(tmp);
             name.setStyle(successStyle);
-            nameVal = tmp;
-            System.out.println(nameVal);
+            dataclass.setNameVal(tmp);            
         }
     }
     
@@ -164,39 +153,37 @@ public class Editing1Controller implements Initializable
         if(tmp == null || tmp.trim().isEmpty())
         {
             clgID.setText(null);
-            clgIDVal = null;
+            dataclass.setClgIDVal(null);
             clgID.setStyle(errorStyle);   
         }
         else
         {
-            clgIDVal = tmp;
-            clgID.setStyle(successStyle);
-            System.out.println(clgIDVal);            
-        }       
-        
+            clgID.setText(tmp);
+            dataclass.setClgIDVal(tmp);
+            clgID.setStyle(successStyle);         
+        }              
     }
-     
-           
+    
+    
     int numDays = 0;
     
     public void setJanuary()
     {
         numDays = 31;
         dobMonth.setText("January");
-        monthVal = "1";
+        dataclass.setMonthVal("1");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;            
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0);
         }
     }
     
     public void setFabruary()
     {
-        if (yearVal % 4 == 0) 
+        if (dataclass.getYearVal() % 4 == 0) 
         {
             numDays = 29;
         } 
@@ -205,14 +192,13 @@ public class Editing1Controller implements Initializable
             numDays = 28;
         }
         dobMonth.setText("Fabruary");
-        monthVal = "2";
+        dataclass.setMonthVal("2");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;            
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0); 
         }
     }
     
@@ -220,14 +206,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("March");
-        monthVal = "3";
+        dataclass.setMonthVal("3");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;            
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0);
         }
     }
     
@@ -235,14 +220,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 30;
         dobMonth.setText("April");
-        monthVal = "4";
+        dataclass.setMonthVal("4");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;            
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0);
         }
     }
     
@@ -250,14 +234,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("May");
-        monthVal = "5";
+        dataclass.setMonthVal("5");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;            
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0);
         }
     }
     
@@ -265,14 +248,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 30;
         dobMonth.setText("June");
-        monthVal = "6";
+        dataclass.setMonthVal("6");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;            
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0);
         }
     }
     
@@ -280,14 +262,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("July");
-        monthVal = "7";
+        dataclass.setMonthVal("7");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;            
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0);
         }
     }
     
@@ -295,15 +276,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("August");
-        monthVal = "8";
+        dataclass.setMonthVal("8");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;
-            dobDay.setStyle(errorStyle);
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0); 
         }
     }
     
@@ -311,15 +290,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 30;
         dobMonth.setText("September");
-        monthVal = "9";
+        dataclass.setMonthVal("9");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;
-            dobDay.setStyle(errorStyle);
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0);
         }
     }
     
@@ -327,15 +304,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("October");
-        monthVal = "10";
+        dataclass.setMonthVal("10");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;
-            dobDay.setStyle(errorStyle);
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0);
         }
     }
     
@@ -343,15 +318,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 30;
         dobMonth.setText("November");
-        monthVal = "11";
+        dataclass.setMonthVal("11");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;
-            dobDay.setStyle(errorStyle);
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0);
         }
     }
     
@@ -359,15 +332,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("December");
-        monthVal = "12";
+        dataclass.setMonthVal("12");
         dobMonth.setStyle(successStyle);
         
-        if (dayVal < 1 || dayVal > numDays) 
+        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dayVal = 0;
-            dobDay.setStyle(errorStyle);
-            System.out.println("'day' out of limit or not initilized");
+            dataclass.setDayVal(0);
         }
     }
     
@@ -385,16 +356,15 @@ public class Editing1Controller implements Initializable
             int tmp = Integer.parseInt(dobDay.getText()); 
             if (tmp != 0 && tmp <= 31 && tmp <= numDays ) 
             {
+                dobDay.setText(String.valueOf(tmp)); 
+                dataclass.setDayVal(tmp);
                 dobDay.setStyle(successStyle);
-                dayVal = tmp;
-                System.out.println(dayVal);
             }
             else
             {
                 dobDay.setText(null);
-                dayVal = 0;
+                dataclass.setDayVal(0);
                 dobDay.setStyle(errorStyle);
-                System.out.println("'day' out of limit or not initilized");
             }
                        
         }
@@ -402,9 +372,8 @@ public class Editing1Controller implements Initializable
         catch(NumberFormatException e)
         {
             dobDay.setText(null);
-            dayVal = 0;
+            dataclass.setDayVal(0);
             dobDay.setStyle(errorStyle);
-            System.out.println("dayVal not an integer");
         }       
     }  
     
@@ -416,21 +385,21 @@ public class Editing1Controller implements Initializable
         {
             try
             {
-                yearVal = Integer.parseInt(tmp);
-                dobYear.setStyle(successStyle);
-                System.out.println(yearVal);
-            }
+                dataclass.setYearVal(Integer.parseInt(tmp));                
+                dobYear.setText(tmp);
+                dobYear.setStyle(successStyle);                
+            }            
             catch(NumberFormatException e)
             {
                 dobYear.setText(null);
-                yearVal = 0;
+                dataclass.setYearVal(0);
                 dobYear.setStyle(errorStyle);
             }
         }
         else
         {
             dobYear.setText(null);
-            yearVal = 0;
+            dataclass.setYearVal(0);
             dobYear.setStyle(errorStyle);
         }            
     }
@@ -439,19 +408,18 @@ public class Editing1Controller implements Initializable
     public void setCourseVal()
     {       
         String tmp = course.getText();               
-        if(tmp == null || !Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9_ -]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             course.setText(null);
-            courseVal = null;
-            course.setStyle(errorStyle);
-            System.out.println("false");             
+            dataclass.setCourseVal(null);
+            course.setStyle(errorStyle);            
         } 
         
         else 
         { 
+            course.setText(tmp);
+            dataclass.setCourseVal(tmp);
             course.setStyle(successStyle);
-            courseVal = tmp;
-            System.out.println(courseVal);
         }        
     }
     
@@ -463,24 +431,22 @@ public class Editing1Controller implements Initializable
         {
             try 
             {
-                currSemVal = Integer.parseInt(tmp);
+                dataclass.setCurrSemVal(Integer.parseInt(tmp));
+                currSem.setText(tmp);                
                 currSem.setStyle(successStyle);
-                System.out.println(currSemVal);
             } 
             catch (NumberFormatException e) 
             {
                 currSem.setText(null);
-                currSemVal = 0;
+                dataclass.setCurrSemVal(0);
                 currSem.setStyle(errorStyle);
-                System.out.println("currSemVal not an integer");
             }
         }
         else
         {
             currSem.setText(null);
-            currSemVal = 0;
+            dataclass.setCurrSemVal(0);
             currSem.setStyle(errorStyle);
-            System.out.println("currSemVal not an integer");
         }
     }
     
@@ -491,69 +457,18 @@ public class Editing1Controller implements Initializable
         if(tmp == null || !Pattern.compile("^[+]?([0-9]{2,3})?[-]?[0-9]{10}$").matcher(tmp).matches())
         { 
             contact.setText(null);
-            contactVal = null;
+            dataclass.setContactVal(null);
             contact.setStyle(errorStyle);
-            System.out.println("false");
         } 
         
         else 
         { 
+            contact.setText(tmp);
             contact.setStyle(successStyle);
-            contactVal = tmp;
-            System.out.println(contactVal);
+            dataclass.setContactVal(tmp);
         }
     } 
     
-    
-    ///////////////////////////////////////////////////////////////////////////
-    // Get Values
-    
-    public String getNameVal()
-    {
-        return this.nameVal;
-    }
-    
-    
-    public String getClgIDVal()
-    {
-        return this.clgIDVal;
-    }
-    
-    
-    public String getMonthVal()
-    {
-        return this.monthVal;
-    }
-    
-    
-    public int getYearVal()
-    {
-        return this.yearVal;
-    }
-    
-    
-    public int getDayVal()
-    {
-        return this.dayVal;
-    }
-    
-    
-    public String getCourseVal()
-    {
-        return this.courseVal;
-    }
-    
-    
-    public int getCurrSemVal()
-    {
-        return this.currSemVal;
-    }
-    
-    
-    public String getContactVal()
-    {
-        return this.contactVal;
-    }
     
     
     ////////////////////////////////////////////////////////////////////////////
@@ -561,9 +476,9 @@ public class Editing1Controller implements Initializable
     
     public void toNextPg(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {  
-        DatabaseIO Connection = new DatabaseIO();
+        DatabaseIO db = new DatabaseIO();
         
-        Connection.InsertValues();
+        db.InsertValues();
         
         try 
         {

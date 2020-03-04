@@ -173,16 +173,16 @@ public class DatabaseIO
     
     void InsertValues()
     {
-        Editing1Controller edit1 = new Editing1Controller();
-        System.out.println( edit1.getNameVal());
+        Editing1Data edit1 = Editing1Data.getInstance();
+        //System.out.println( edit1.getNameVal());
         
-        /*String query = "INSERT INTO "+ schemaName +".basic_info VALUES("+
+        String query = "INSERT INTO "+ schemaName +".basic_info VALUES("+
                 edit1.getNameVal() +", "+ edit1.getClgIDVal() +", "+
                 edit1.getYearVal() +"-"+ edit1.getMonthVal() +"-"+ edit1.getDayVal() +", "+
                 edit1.getCourseVal() +", "+ edit1.getCurrSemVal() +", "+ 
                 edit1.getContactVal() +");";              
                    
-        System.out.println(query);*/
+        System.out.println(query);
             
             
         //Editing2Controller Edit2 = new Editing2Controller();

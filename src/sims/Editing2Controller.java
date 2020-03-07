@@ -93,14 +93,11 @@ public class Editing2Controller implements Initializable
     
     @FXML
     private JFXTextField sPercent;
+
+
+    Editing2DataSSC edit2Ssc = Editing2DataSSC.getInstance();
     
-    private int sPassYearVal;
-    
-    private float sPercentVal = 0.f;
-    
-    private String sRNoVal, sBoardVal, sSchoolVal, sMediumVal, sCityVal;
-    
-       
+          
     public void setSPassYear()
     {           
         String tmp = sPassYear.getText();
@@ -108,14 +105,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                sPassYearVal = Integer.parseInt(tmp);
+                edit2Ssc.setPassYearVal(Integer.parseInt(tmp));
                 sPassYear.setStyle(successStyle);
-                System.out.println(sPassYearVal);
             } 
             catch (NumberFormatException e) 
             {
                 sPassYear.setText(null);
-                sPassYearVal = 0;
+                edit2Ssc.setPassYearVal(0);
                 sPassYear.setStyle(errorStyle);
                 System.out.println("sPassYearVal not an integer");
             }
@@ -123,7 +119,7 @@ public class Editing2Controller implements Initializable
         else
         {
             sPassYear.setText(null);
-            sPassYearVal = 0;
+            edit2Ssc.setPassYearVal(0);
             sPassYear.setStyle(errorStyle);
             System.out.println("sPassYearVal not an integer");
         }
@@ -133,58 +129,52 @@ public class Editing2Controller implements Initializable
     public void setSRNo()
     {   
         String tmp = sRNo.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z0-9-/]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9 -/]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         {
             sRNo.setText(null);
-            sRNoVal = null;
+            edit2Ssc.setRNoVal(null);
             sRNo.setStyle(errorStyle);
         }        
         else
         {
-            sRNoVal = sRNo.getText();
-            sRNo.setStyle(successStyle);                
-            System.out.println(sRNoVal);     
+            edit2Ssc.setRNoVal(tmp);
+            sRNo.setStyle(successStyle); 
         }        
     }
     
     public void setSCBSE()
     {
         sBoard.setText("CBSE");
-        sBoardVal = "CBSE";        
+        edit2Ssc.setBoardVal("CBSE");   
         sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
-        System.out.println(sBoardVal);
     }
     
     public void setSCISCE()
     {
         sBoard.setText("CISCE");
-        sBoardVal = "CISCE";
+        edit2Ssc.setBoardVal("CISCE");
         sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
-        System.out.println(sBoardVal);
     }
     
     public void setSState()
     {
         sBoard.setText("STATE");
-        sBoardVal = "STATE";
+        edit2Ssc.setBoardVal("STATE");
         sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
-        System.out.println(sBoardVal);
     }
     
     public void setSIBO()
     {
         sBoard.setText("IBO");
-        sBoardVal = "IBO";
+        edit2Ssc.setBoardVal("IBO");
         sBoard.setStyle("-fx-border-color: #23ff23");
-        System.out.println(sBoardVal);
     }
      
     public void setSCIE()
     {
         sBoard.setText("CIE");
-        sBoardVal = "CIE";
+        edit2Ssc.setBoardVal("CIE");
         sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
-        System.out.println(sBoardVal);
     }
       
     
@@ -194,15 +184,14 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             sMedium.setText(null);
-            sMediumVal = null;
+            edit2Ssc.setMediumVal(null);
             sMedium.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
         { 
-            sMedium.setStyle(successStyle);                
-            sMediumVal = tmp;
-            System.out.println(sMediumVal);
+           edit2Ssc.setMediumVal(tmp);
+           sMedium.setStyle(successStyle); 
         }
     }
     
@@ -210,18 +199,17 @@ public class Editing2Controller implements Initializable
     public void setSSchool()
     {    
         String tmp = sSchool.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("^[a-zA-Z0-9. -]+$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             sSchool.setText(null);
-            sSchoolVal = null;
+            edit2Ssc.setSchoolVal(null);
             sSchool.setStyle(errorStyle);
             System.out.println("false");           
         } 
         else 
         { 
-            sSchool.setStyle(successStyle);                
-            sSchoolVal = tmp;
-            System.out.println(sSchoolVal);
+            edit2Ssc.setSchoolVal(tmp);
+            sSchool.setStyle(successStyle);
         }
     }
     
@@ -229,18 +217,17 @@ public class Editing2Controller implements Initializable
     public void setSCity()
     {   
         String tmp = sCity.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             sCity.setText(null);
-            sCityVal = null;
+            edit2Ssc.setCityVal(null);
             sCity.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
         { 
-            sCity.setStyle(successStyle);                
-            sCityVal = tmp;
-            System.out.println(sCityVal);
+            edit2Ssc.setCityVal(tmp);
+            sCity.setStyle(successStyle);
         }
     }
     
@@ -252,14 +239,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                sPercentVal = Float.parseFloat(tmp);
+                edit2Ssc.setPercentVal(Float.parseFloat(tmp));
                 sPercent.setStyle(successStyle);
-                System.out.println(sPercentVal);
             } 
             catch (NumberFormatException e) 
             {
                 sPercent.setText(null);
-                sPercentVal = 0.f;
+                edit2Ssc.setPercentVal(0.f);
                 sPercent.setStyle(errorStyle);
                 System.out.println("sPercentVal not a float");
             }
@@ -267,7 +253,7 @@ public class Editing2Controller implements Initializable
         else
         {
             sPercent.setText(null);
-            sPercentVal = 0.f;
+            edit2Ssc.setPercentVal(0.f);
             sPercent.setStyle(errorStyle);
             System.out.println("sPercentVal not a float");
         }
@@ -352,13 +338,8 @@ public class Editing2Controller implements Initializable
     @FXML
     private TextField hMath;
     
-    private int hPassYearVal;
+    Editing2DataHSS edit2Hss = Editing2DataHSS.getInstance();
     
-    private float hPercentVal, hPhysicsVal, hChemistryVal, hMathVal;
-    
-    private String hRNoVal, hBoardVal, hMediumVal, hSchoolVal, hCityVal;
-    
-        
     public void setHPassYear()
     {
         String tmp = hPassYear.getText();
@@ -366,15 +347,14 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                hPassYearVal = Integer.parseInt(tmp);
-                hPassYear.setStyle(successStyle);                
-                System.out.println(hPassYearVal);
+                edit2Hss.setPassYearVal(Integer.parseInt(tmp));
+                hPassYear.setStyle(successStyle);
             } 
             
             catch (NumberFormatException e) 
             {
                 hPassYear.setText(null);
-                hPassYearVal = 0;
+                 edit2Hss.setPassYearVal(0);
                 hPassYear.setStyle(errorStyle);
                 System.out.println("hPassYear not an integer");
             }
@@ -383,7 +363,7 @@ public class Editing2Controller implements Initializable
         else 
         {
             hPassYear.setText(null);
-            hPassYearVal = 0;
+            edit2Hss.setPassYearVal(0);
             hPassYear.setStyle(errorStyle);
             System.out.println("year length < 4");
         }       
@@ -393,17 +373,16 @@ public class Editing2Controller implements Initializable
     public void setHRNo()
     {          
         String tmp = hRNo.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z0-9-/]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9-/ ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         {
             hRNo.setText(null);
-            hRNoVal = null;
+            edit2Hss.setRNoVal(null);
             hRNo.setStyle(errorStyle);
         }        
         else
         {
-            hRNoVal = hRNo.getText();
-            hRNo.setStyle(successStyle);                
-            System.out.println(hRNoVal);     
+            edit2Hss.setRNoVal(tmp);
+            hRNo.setStyle(successStyle);  
         }  
     }
     
@@ -411,41 +390,36 @@ public class Editing2Controller implements Initializable
     public void setHCBSE()
     {
         hBoard.setText("CBSE");
-        hBoardVal = "CBSE"; 
+        edit2Hss.setBoardVal("CBSE"); 
         hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
-        System.out.println(hBoardVal);
     }
     
     public void setHCISCE()
     {
         hBoard.setText("CISCE");
-        hBoardVal = "CISCE";
+        edit2Hss.setBoardVal("CISCE");
         hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
-        System.out.println(hBoardVal);
     }
     
     public void setHState()
     {
         hBoard.setText("STATE");
-        hBoardVal = "STATE";
+        edit2Hss.setBoardVal("STATE");
         hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
-        System.out.println(hBoardVal);
     }
     
     public void setHIBO()
     {
         hBoard.setText("IBO");
-        hBoardVal = "IBO";
+        edit2Hss.setBoardVal("IBO");
         hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
-        System.out.println(hBoardVal);
     }
      
     public void setHCIE()
     {
         hBoard.setText("CIE");
-        hBoardVal = "CIE";
+        edit2Hss.setBoardVal("CIE");
         hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
-        System.out.println(hBoardVal);
     }  
        
     
@@ -455,15 +429,14 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             hMedium.setText(null);
-            hMediumVal = null;
+            edit2Hss.setMediumVal(null);
             hMedium.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
         { 
-            hMedium.setStyle(successStyle);                
-            hMediumVal = tmp;
-            System.out.println(hMediumVal);
+           edit2Hss.setMediumVal(tmp);
+           hMedium.setStyle(successStyle);
         }
     }
     
@@ -471,18 +444,17 @@ public class Editing2Controller implements Initializable
     public void setHSchool()
     {   
         String tmp = hSchool.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("^[a-zA-Z0-9. -]+$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             hSchool.setText(null);
-            hSchoolVal = null;
+            edit2Hss.setSchoolVal(null);
             hSchool.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
         { 
-            hSchool.setStyle(successStyle);                
-            hSchoolVal = tmp;
-            System.out.println(hSchoolVal);
+            edit2Hss.setSchoolVal(tmp);
+            hSchool.setStyle(successStyle);
         }
     }
     
@@ -490,18 +462,17 @@ public class Editing2Controller implements Initializable
     public void setHCity()
     {   
         String tmp = hCity.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             hCity.setText(null);
-            hCityVal = null;
+            edit2Hss.setCityVal(null);
             hCity.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
         { 
             hCity.setStyle(successStyle);                
-            hCityVal = tmp;
-            System.out.println(hCityVal);
+            edit2Hss.setCityVal(tmp);         
         }
     }
     
@@ -513,14 +484,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                hPercentVal = Float.parseFloat(tmp);
+                edit2Hss.setPercentVal(Float.parseFloat(tmp));
                 hPercent.setStyle(successStyle);
-                System.out.println(hPercentVal);
             } 
             catch (NumberFormatException e) 
             {
                 hPercent.setText(null);
-                hPercentVal = 0.f;
+                edit2Hss.setPercentVal(0.f);
                 hPercent.setStyle(errorStyle);
                 System.out.println("hPercentVal not a float");
             }
@@ -528,7 +498,7 @@ public class Editing2Controller implements Initializable
         else
         {
             hPercent.setText(null);
-            hPercentVal = 0.f;
+            edit2Hss.setPercentVal(0.f);
             hPercent.setStyle(errorStyle);
             System.out.println("hPercentVal not a float");
         }
@@ -542,14 +512,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                hPhysicsVal = Float.parseFloat(tmp);
+                edit2Hss.setPhysicsVal(Float.parseFloat(tmp));
                 hPhysics.setStyle(successStyle);
-                System.out.println(hPhysicsVal);
             } 
             catch (NumberFormatException e) 
             {
                 hPhysics.setText(null);
-                hPhysicsVal = 0.f;
+                edit2Hss.setPhysicsVal(0.f);
                 hPhysics.setStyle(errorStyle);
                 System.out.println("hPhysicsVal not a float");
             }
@@ -557,7 +526,7 @@ public class Editing2Controller implements Initializable
         else
         {
             hPhysics.setText(null);
-            hPhysicsVal = 0.f;
+            edit2Hss.setPhysicsVal(0.f);
             hPhysics.setStyle(errorStyle);
             System.out.println("hPhysicsVal not a float");
         }
@@ -571,14 +540,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                hChemistryVal = Float.parseFloat(tmp);
+                edit2Hss.setChemistryVal(Float.parseFloat(tmp));
                 hChemistry.setStyle(successStyle);
-                System.out.println(hChemistryVal);
             } 
             catch (NumberFormatException e) 
             {
                 hChemistry.setText(null);
-                hChemistryVal = 0.f;
+                edit2Hss.setChemistryVal(0.f);
                 hChemistry.setStyle(errorStyle);
                 System.out.println("hChemistryVal not a float");
             }
@@ -586,7 +554,7 @@ public class Editing2Controller implements Initializable
         else
         {
             hChemistry.setText(null);
-            hChemistryVal = 0.f;
+            edit2Hss.setChemistryVal(0.f);
             hChemistry.setStyle(errorStyle);
             System.out.println("hChemistryVal not a float");
         }
@@ -600,14 +568,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                hMathVal = Float.parseFloat(tmp);
+                edit2Hss.setMathVal(Float.parseFloat(tmp));
                 hMath.setStyle(successStyle);
-                System.out.println(hMathVal);
             } 
             catch (NumberFormatException e) 
             {
                 hMath.setText(null);
-                hMathVal = 0.f;
+                edit2Hss.setMathVal(0.f);
                 hMath.setStyle(errorStyle);
                 System.out.println("hMathVal not a float");
             }
@@ -615,7 +582,7 @@ public class Editing2Controller implements Initializable
         else
         {
             hMath.setText(null);
-            hMathVal = 0.f;
+            edit2Hss.setMathVal(0.f);
             hMath.setStyle(errorStyle);
             System.out.println("hMathVal not a float");
         }
@@ -694,7 +661,7 @@ public class Editing2Controller implements Initializable
     public void setDSchool()
     {    
         String tmp= dSchool.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("^[a-zA-Z0-9. -]+$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             dSchool.setText(null);
             dSchoolVal = null;
@@ -714,7 +681,7 @@ public class Editing2Controller implements Initializable
     public void setDCity()
     {   
         String tmp = dCity.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             dCity.setText(null);
             dCityVal = null;
@@ -1013,7 +980,7 @@ public class Editing2Controller implements Initializable
     public void setESchool()
     {    
         String tmp = eSchool.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("^[a-zA-Z0-9. -]+$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             eSchool.setText(null);
             eSchoolVal = null;
@@ -1033,7 +1000,7 @@ public class Editing2Controller implements Initializable
     public void setECity()
     {           
         String tmp = eCity.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             eCity.setText(null);
             eCityVal = null;
@@ -1350,7 +1317,7 @@ public class Editing2Controller implements Initializable
     public void setPSchool()
     {    
         String tmp = pSchool.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("^[a-zA-Z0-9. -]+$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             pSchool.setText(null);
             pSchoolVal = null;
@@ -1369,7 +1336,7 @@ public class Editing2Controller implements Initializable
     public void setPCity()
     {   
         String tmp = pCity.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             pCity.setText(null);
             pCityVal = null;
@@ -1504,99 +1471,6 @@ public class Editing2Controller implements Initializable
     
     ///////////////////////////////////////////////////////////////////////////
     // Get Values
-    
-    ////////////////////////////////////////////////////////////////////////////
-    // Secondary School
-    
-    int getSPassYearVal()
-    {
-        return sPassYearVal;
-    }
-    
-    String getSRNoVal()
-    {
-        return sRNoVal;
-    }
-    
-    String getSBoardVal()
-    {
-        return sBoardVal;
-    }
-    
-    String getSMediumVal()
-    {
-        return sMediumVal;  
-    }
-        
-    String getSSchoolVal()
-    {
-       return sSchoolVal;
-    }
-    
-    String getSCityVal()
-    {
-        return sCityVal;        
-    }
-    
-    float getSPercentVal()
-    {
-        return sPercentVal;
-    }
-       
-       
-    ////////////////////////////////////////////////////////////////////////////
-    // Senior Secondary School
-       
-    int getHPassYearVal()
-    {
-        return hPassYearVal;
-    }
-    
-    String getHRNoVal()
-    {
-        return hRNoVal;
-    }
-    
-    String getHBoardVal()
-    {
-        return hBoardVal;
-    }
-    
-    String getHMediumVal()
-    {
-        return hMediumVal;  
-    }
-        
-    String getHSchoolVal()
-    {
-       return hSchoolVal;
-    }
-    
-    String getHCityVal()
-    {
-        return hCityVal;        
-    }
-    
-    float getHPercentVal()
-    {
-        return hPercentVal;
-    }
-    
-    float getHPhysicsVal()
-    {
-        return hPhysicsVal;
-    }
-    
-    float getHChemistryVal()
-    {
-        return hChemistryVal;
-    }
-    
-    float getHMathVal()
-    {
-        return hMathVal;
-    }
-    
     
     ////////////////////////////////////////////////////////////////////////////
     // Diploma
@@ -1763,6 +1637,8 @@ public class Editing2Controller implements Initializable
     
     public void toNextPg(MouseEvent event)
     {
+        DatabaseIO dbIO = new DatabaseIO();
+        dbIO.InsertValues();
         
         try 
         {

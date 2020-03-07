@@ -408,7 +408,7 @@ public class Editing1Controller implements Initializable
     public void setCourseVal()
     {       
         String tmp = course.getText();               
-        if(tmp == null || !Pattern.compile("[a-zA-Z0-9_ -]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9 -]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             course.setText(null);
             dataclass.setCourseVal(null);

@@ -58,7 +58,7 @@ public class DatabaseIO
                             "Medium VARCHAR(10) NOT NULL,"+
                             "School VARCHAR(30) NOT NULL,"+
                             "City VARCHAR(10) NOT NULL,"+
-                            "Percentage INT(3) UNSIGNED NOT NULL,"+
+                            "Percentage FLOAT UNSIGNED NOT NULL,"+
                             "INDEX Name_idx (basic_info_Name ASC) VISIBLE, "+ //ASC = Ascending
                             "CONSTRAINT FK_SName FOREIGN KEY (basic_info_Name) REFERENCES "+
                             ""+ schemaName +".basic_info (basic_info_Name) "+
@@ -73,10 +73,10 @@ public class DatabaseIO
                           "Medium VARCHAR(10) NULL, "+
                           "School VARCHAR(30) NULL, "+
                           "City VARCHAR(10) NULL, "+
-                          "Percentage INT(3) UNSIGNED NULL, "+
-                          "MathPercentage INT(3) UNSIGNED NULL, "+
-                          "ChemistryPercentage INT(3) UNSIGNED NULL, "+
-                          "PhysicsPercentage INT(3) NULL, "+
+                          "Percentage FLOAT UNSIGNED NULL, "+
+                          "MathPercentage FLOAT UNSIGNED NULL, "+
+                          "ChemistryPercentage FLOAT UNSIGNED NULL, "+
+                          "PhysicsPercentage FLOAT NULL, "+
                           "INDEX Name_idx (basic_info_Name ASC), "+
                           "CONSTRAINT FK_HName FOREIGN KEY (basic_info_Name) "+
                           "REFERENCES "+ schemaName +".basic_info (basic_info_Name) "+
@@ -88,12 +88,12 @@ public class DatabaseIO
                          "PassYear INT(4) UNSIGNED NULL, "+
                          "School VARCHAR(30) NULL, "+
                          "City VARCHAR(10) NULL, "+
-                         "Percentage1 INT(3) UNSIGNED NULL, "+
-                         "Percentage2 INT(3) UNSIGNED NULL, "+
-                         "Percentage3 INT(3) UNSIGNED NULL, "+
-                         "Percentage4 INT(3) UNSIGNED NULL, "+
-                         "Percentage5 INT(3) UNSIGNED NULL, "+
-                         "Percentage6 INT(3) UNSIGNED NULL, "+
+                         "Percentage1 FLOAT UNSIGNED NULL, "+
+                         "Percentage2 FLOAT UNSIGNED NULL, "+
+                         "Percentage3 FLOAT UNSIGNED NULL, "+
+                         "Percentage4 FLOAT UNSIGNED NULL, "+
+                         "Percentage5 FLOAT UNSIGNED NULL, "+
+                         "Percentage6 FLOAT UNSIGNED NULL, "+
                          "INDEX Name_idx (basic_info_Name ASC), "+
                          "CONSTRAINT FK_DName FOREIGN KEY (basic_info_Name) "+
                          "REFERENCES "+ schemaName +".basic_info (basic_info_Name) "+
@@ -104,14 +104,14 @@ public class DatabaseIO
                        "basic_info_Name VARCHAR(30) NULL," +
                        "School VARCHAR(30) NULL," +
                        "City VARCHAR(10) NULL," +
-                       "Percentage1 INT(3) UNSIGNED NULL," +
-                       "Percentage2 INT(3) UNSIGNED NULL," +
-                       "Percentage3 INT(3) UNSIGNED NULL," +
-                       "Percentage4 INT(3) UNSIGNED NULL," +
-                       "Percentage5 INT(3) UNSIGNED NULL," +
-                       "Percentage6 INT(3) UNSIGNED NULL," +
-                       "Percentage7 INT(3) UNSIGNED NULL," +
-                       "Percentage8 INT(3) UNSIGNED NULL," +
+                       "Percentage1 FLOAT UNSIGNED NULL," +
+                       "Percentage2 FLOAT UNSIGNED NULL," +
+                       "Percentage3 FLOAT UNSIGNED NULL," +
+                       "Percentage4 FLOAT UNSIGNED NULL," +
+                       "Percentage5 FLOAT UNSIGNED NULL," +
+                       "Percentage6 FLOAT UNSIGNED NULL," +
+                       "Percentage7 FLOAT UNSIGNED NULL," +
+                       "Percentage8 FLOAT UNSIGNED NULL," +
                        "INDEX Name_idx (basic_info_Name ASC), "+
                        "CONSTRAINT FK_UName FOREIGN KEY (basic_info_Name) "+
                        "REFERENCES "+ schemaName +".basic_info (basic_info_Name) "+
@@ -122,10 +122,10 @@ public class DatabaseIO
                        "basic_info_Name VARCHAR(30) NULL, "+
                        "School VARCHAR(30) NULL, "+
                        "City VARCHAR(10) NULL, "+
-                       "Percentage1 INT(3) UNSIGNED NULL, "+
-                       "Percentage2 INT(3) UNSIGNED NULL, "+
-                       "Percentage3 INT(3) UNSIGNED NULL, "+
-                       "Percentage4 INT(3) UNSIGNED NULL, "+
+                       "Percentage1 FLOAT UNSIGNED NULL, "+
+                       "Percentage2 FLOAT UNSIGNED NULL, "+
+                       "Percentage3 FLOAT UNSIGNED NULL, "+
+                       "Percentage4 FLOAT UNSIGNED NULL, "+
                        "INDEX Name_idx (basic_info_Name ASC), "+
                        "CONSTRAINT FK_PName FOREIGN KEY (basic_info_Name) "+
                        "REFERENCES "+ schemaName +".basic_info (basic_info_Name) "+
@@ -174,23 +174,174 @@ public class DatabaseIO
     void InsertValues()
     {
         Editing1Data edit1 = Editing1Data.getInstance();
-        //System.out.println( edit1.getNameVal());
         
-        String query = "INSERT INTO "+ schemaName +".basic_info VALUES("+
-                edit1.getNameVal() +", "+ edit1.getClgIDVal() +", "+
+        /*System.out.println( edit1.getNameVal());
+        
+        String query = "INSERT INTO "+ schemaName +".basic_info VALUES('"+
+                edit1.getNameVal() +"', '"+ edit1.getClgIDVal() +"', "+
                 edit1.getYearVal() +"-"+ edit1.getMonthVal() +"-"+ edit1.getDayVal() +", "+
                 edit1.getCourseVal() +", "+ edit1.getCurrSemVal() +", "+ 
                 edit1.getContactVal() +");";              
                    
         System.out.println(query);
             
-            
-        //Editing2Controller Edit2 = new Editing2Controller();
+        try
+        {
+            prepStatement = connection.prepareCall(query);
+            prepStatement.executeUpdate();
+            prepStatement = null;
+        }
+        
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        */
         
         
-        //Editing3Controller Edit3 = new Editing3Controller();
+        
+        /*Editing2DataSSC edit2SSC = Editing2DataSSC.getInstance();
+        
+                
+        String query = "INSERT INTO "+ schemaName +".ssc_info value ('"+ edit1.getNameVal() 
+                +"', "+ edit2SSC.getPassYearVal() +", '"+ edit2SSC.getRNoVal() 
+                +"', '"+ edit2SSC.getBoardVal() +"', '"+ edit2SSC.getMediumVal() 
+                +"', '"+ edit2SSC.getSchoolVal() +"', '"+ edit2SSC.getCityVal() +"', "+ edit2SSC.getPercentVal() + ");";
+        
+        System.out.println(query);
+        
+        try
+        {
+            prepStatement = connection.prepareCall(query);
+            prepStatement.executeUpdate();
+            prepStatement = null;
+        }
+        
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        */
+                
+        
+        /*Editing2DataHSS edit2Hss = Editing2DataHSS.getInstance();
+                         
+        
+        String query = "INSERT INTO "+ schemaName +".hss_info value ('"+ edit1.getNameVal() 
+                +"', "+ edit2Hss.getPassYearVal() +", '"+ edit2Hss.getRNoVal() 
+                +"', '"+ edit2Hss.getBoardVal() +"', '"+ edit2Hss.getMediumVal() 
+                +"', '"+ edit2Hss.getSchoolVal() +"', '"+ edit2Hss.getCityVal() +"', "+ edit2Hss.getPercentVal()
+                +", "+ edit2Hss.getPhysicsVal() +", "+ edit2Hss.getChemistryVal() +", "+ edit2Hss.getMathVal() +");";
+        
+        System.out.println(query);
+        
+        try
+        {
+            prepStatement = connection.prepareCall(query);
+            prepStatement.executeUpdate();
+            prepStatement = null;
+        }
+        
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }*/
+                
+         
+        /*Editing2DataDiploma edit2Diploma = Editing2DataDiploma.getInstance();
+               
+        String query = "INSERT INTO "+ schemaName +".diploma_info VALUES( '"+ edit1.getNameVal() + "', "+  edit2Diploma.getPassYearVal()
+                +", '"+ edit2Diploma.getSchoolVal() +"', '"+ edit2Diploma.getCityVal() +"', "+ edit2Diploma.getPercent1Val() 
+                + ", "+ edit2Diploma.getPercent2Val() + ", "+ edit2Diploma.getPercent3Val() + ", "+ edit2Diploma.getPercent4Val()
+                + ", "+ edit2Diploma.getPercent5Val() + ", "+ edit2Diploma.getPercent6Val() +");" ;
+               
+                
+        
+        System.out.println(query);
+        
+        try
+        {
+            prepStatement = connection.prepareCall(query);
+            prepStatement.executeUpdate();
+            prepStatement = null;
+        }
+        
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }*/
+                 
+        
+        /*Editing2DataUG edit2UG = Editing2DataUG.getInstance();
+                             
+        String query = "INSERT INTO "+ schemaName +".ug_info VALUES( '"+ edit1.getNameVal() + "', "+  edit2UG.getPassYearVal()
+                +", '"+ edit2UG.getSchoolVal() +"', '"+ edit2UG.getCityVal() +"', "+ edit2UG.getPercent1Val() 
+                + ", "+ edit2UG.getPercent2Val() + ", "+ edit2UG.getPercent3Val() + ", "+ edit2UG.getPercent4Val()
+                + ", "+ edit2UG.getPercent5Val() + ", "+ edit2UG.getPercent6Val() +", "+ edit2UG.getPercent7Val() 
+                + ", "+ edit2UG.getPercent8Val() +");" ;
+        
+        System.out.println(query);
+        
+        try
+        {
+            prepStatement = connection.prepareCall(query);
+            prepStatement.executeUpdate();
+            prepStatement = null;
+        }
+        
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }*/
+        
+                       
+              
+        /*Editing2DataPG edit2PG = Editing2DataPG.getInstance();
+               
+        String query = "INSERT INTO "+ schemaName +".pg_info VALUES( '"+ edit1.getNameVal() + "', "+  edit2PG.getPassYearVal()
+                +", '"+ edit2PG.getSchoolVal() +"', '"+ edit2PG.getCityVal() +"', "+ edit2PG.getPercent1Val() 
+                + ", "+ edit2PG.getPercent2Val() + ", "+ edit2PG.getPercent3Val() + ", "+ edit2PG.getPercent4Val() +");" ;
+                        
+        System.out.println(query);
+        
+        try
+        {
+            prepStatement = connection.prepareCall(query);
+            prepStatement.executeUpdate();
+            prepStatement = null;
+        }
+        
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }*/
         
         
+        /*Editing3Data edit3 = Editing3Data.getInstance();
+        
+        String query = "INSERT INTO "+ schemaName +".other_info VALUES"
+                + "( "
+                +"  '"+ edit1.getNameVal() +"'" 
+                +", '"+ edit3.getUniversityMailVal()  +"'"
+                +", '"+ edit3.getPersonMailVal() +"'"
+                +", '"+ edit3.getDadContactVal() +"'"
+                +", '"+ edit3.getFamContactVal() +"'"
+                +", '"+ edit3.getAddInfoVal() +"'"                
+                +");" ;
+                                        
+        System.out.println(query);
+        
+        try
+        {
+            prepStatement = connection.prepareCall(query);
+            prepStatement.executeUpdate();
+            prepStatement = null;
+        }
+        
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }*/
         
         
     }

@@ -44,7 +44,7 @@ public class Editing2Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        edit2.requestFocus();
+        edit2.requestFocus();                
         
         //IdFld.setStyle(errorStyle); when error occurs or not filled    
         //SSch.setTooltip(new Tooltip("Do not use , or ."));
@@ -93,11 +93,10 @@ public class Editing2Controller implements Initializable
     
     @FXML
     private JFXTextField sPercent;
-
-
-    Editing2DataSSC edit2Ssc = Editing2DataSSC.getInstance();
+            
+    Editing2DataSSC dataClassSSC = Editing2DataSSC.getInstance();
     
-          
+    
     public void setSPassYear()
     {           
         String tmp = sPassYear.getText();
@@ -105,13 +104,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                edit2Ssc.setPassYearVal(Integer.parseInt(tmp));
+                dataClassSSC.setPassYearVal(Integer.parseInt(tmp));
                 sPassYear.setStyle(successStyle);
             } 
             catch (NumberFormatException e) 
             {
                 sPassYear.setText(null);
-                edit2Ssc.setPassYearVal(0);
+                dataClassSSC.setPassYearVal(0);
                 sPassYear.setStyle(errorStyle);
                 System.out.println("sPassYearVal not an integer");
             }
@@ -119,7 +118,7 @@ public class Editing2Controller implements Initializable
         else
         {
             sPassYear.setText(null);
-            edit2Ssc.setPassYearVal(0);
+            dataClassSSC.setPassYearVal(0);
             sPassYear.setStyle(errorStyle);
             System.out.println("sPassYearVal not an integer");
         }
@@ -132,12 +131,12 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z0-9 -/]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         {
             sRNo.setText(null);
-            edit2Ssc.setRNoVal(null);
+            dataClassSSC.setRNoVal(null);
             sRNo.setStyle(errorStyle);
         }        
         else
         {
-            edit2Ssc.setRNoVal(tmp);
+            dataClassSSC.setRNoVal(tmp);
             sRNo.setStyle(successStyle); 
         }        
     }
@@ -145,35 +144,35 @@ public class Editing2Controller implements Initializable
     public void setSCBSE()
     {
         sBoard.setText("CBSE");
-        edit2Ssc.setBoardVal("CBSE");   
+        dataClassSSC.setBoardVal("CBSE");   
         sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
     }
     
     public void setSCISCE()
     {
         sBoard.setText("CISCE");
-        edit2Ssc.setBoardVal("CISCE");
+        dataClassSSC.setBoardVal("CISCE");
         sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
     }
     
     public void setSState()
     {
         sBoard.setText("STATE");
-        edit2Ssc.setBoardVal("STATE");
+        dataClassSSC.setBoardVal("STATE");
         sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
     }
     
     public void setSIBO()
     {
         sBoard.setText("IBO");
-        edit2Ssc.setBoardVal("IBO");
+        dataClassSSC.setBoardVal("IBO");
         sBoard.setStyle("-fx-border-color: #23ff23");
     }
      
     public void setSCIE()
     {
         sBoard.setText("CIE");
-        edit2Ssc.setBoardVal("CIE");
+        dataClassSSC.setBoardVal("CIE");
         sBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
     }
       
@@ -184,13 +183,13 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             sMedium.setText(null);
-            edit2Ssc.setMediumVal(null);
+            dataClassSSC.setMediumVal(null);
             sMedium.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
         { 
-           edit2Ssc.setMediumVal(tmp);
+           dataClassSSC.setMediumVal(tmp);
            sMedium.setStyle(successStyle); 
         }
     }
@@ -202,13 +201,13 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("^[a-zA-Z0-9. -]+$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             sSchool.setText(null);
-            edit2Ssc.setSchoolVal(null);
+            dataClassSSC.setSchoolVal(null);
             sSchool.setStyle(errorStyle);
             System.out.println("false");           
         } 
         else 
         { 
-            edit2Ssc.setSchoolVal(tmp);
+            dataClassSSC.setSchoolVal(tmp);
             sSchool.setStyle(successStyle);
         }
     }
@@ -220,13 +219,13 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             sCity.setText(null);
-            edit2Ssc.setCityVal(null);
+            dataClassSSC.setCityVal(null);
             sCity.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
         { 
-            edit2Ssc.setCityVal(tmp);
+            dataClassSSC.setCityVal(tmp);
             sCity.setStyle(successStyle);
         }
     }
@@ -239,13 +238,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                edit2Ssc.setPercentVal(Float.parseFloat(tmp));
+                dataClassSSC.setPercentVal(Float.parseFloat(tmp));
                 sPercent.setStyle(successStyle);
             } 
             catch (NumberFormatException e) 
             {
                 sPercent.setText(null);
-                edit2Ssc.setPercentVal(0.f);
+                dataClassSSC.setPercentVal(0.f);
                 sPercent.setStyle(errorStyle);
                 System.out.println("sPercentVal not a float");
             }
@@ -253,7 +252,7 @@ public class Editing2Controller implements Initializable
         else
         {
             sPercent.setText(null);
-            edit2Ssc.setPercentVal(0.f);
+            dataClassSSC.setPercentVal(0.f);
             sPercent.setStyle(errorStyle);
             System.out.println("sPercentVal not a float");
         }
@@ -338,7 +337,8 @@ public class Editing2Controller implements Initializable
     @FXML
     private TextField hMath;
     
-    Editing2DataHSS edit2Hss = Editing2DataHSS.getInstance();
+    Editing2DataHSS dataClassHss = Editing2DataHSS.getInstance();
+    
     
     public void setHPassYear()
     {
@@ -347,14 +347,14 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                edit2Hss.setPassYearVal(Integer.parseInt(tmp));
+                dataClassHss.setPassYearVal(Integer.parseInt(tmp));
                 hPassYear.setStyle(successStyle);
             } 
             
             catch (NumberFormatException e) 
             {
                 hPassYear.setText(null);
-                 edit2Hss.setPassYearVal(0);
+                 dataClassHss.setPassYearVal(0);
                 hPassYear.setStyle(errorStyle);
                 System.out.println("hPassYear not an integer");
             }
@@ -363,7 +363,7 @@ public class Editing2Controller implements Initializable
         else 
         {
             hPassYear.setText(null);
-            edit2Hss.setPassYearVal(0);
+            dataClassHss.setPassYearVal(0);
             hPassYear.setStyle(errorStyle);
             System.out.println("year length < 4");
         }       
@@ -376,12 +376,12 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z0-9-/ ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         {
             hRNo.setText(null);
-            edit2Hss.setRNoVal(null);
+            dataClassHss.setRNoVal(null);
             hRNo.setStyle(errorStyle);
         }        
         else
         {
-            edit2Hss.setRNoVal(tmp);
+            dataClassHss.setRNoVal(tmp);
             hRNo.setStyle(successStyle);  
         }  
     }
@@ -390,35 +390,35 @@ public class Editing2Controller implements Initializable
     public void setHCBSE()
     {
         hBoard.setText("CBSE");
-        edit2Hss.setBoardVal("CBSE"); 
+        dataClassHss.setBoardVal("CBSE"); 
         hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
     }
     
     public void setHCISCE()
     {
         hBoard.setText("CISCE");
-        edit2Hss.setBoardVal("CISCE");
+        dataClassHss.setBoardVal("CISCE");
         hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
     }
     
     public void setHState()
     {
         hBoard.setText("STATE");
-        edit2Hss.setBoardVal("STATE");
+        dataClassHss.setBoardVal("STATE");
         hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
     }
     
     public void setHIBO()
     {
         hBoard.setText("IBO");
-        edit2Hss.setBoardVal("IBO");
+        dataClassHss.setBoardVal("IBO");
         hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
     }
      
     public void setHCIE()
     {
         hBoard.setText("CIE");
-        edit2Hss.setBoardVal("CIE");
+        dataClassHss.setBoardVal("CIE");
         hBoard.setStyle("-fx-border-color: #23ff23; -fx-background-color: #2F3136;");
     }  
        
@@ -429,13 +429,13 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             hMedium.setText(null);
-            edit2Hss.setMediumVal(null);
+            dataClassHss.setMediumVal(null);
             hMedium.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
         { 
-           edit2Hss.setMediumVal(tmp);
+           dataClassHss.setMediumVal(tmp);
            hMedium.setStyle(successStyle);
         }
     }
@@ -447,13 +447,13 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("^[a-zA-Z0-9. -]+$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             hSchool.setText(null);
-            edit2Hss.setSchoolVal(null);
+            dataClassHss.setSchoolVal(null);
             hSchool.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
         { 
-            edit2Hss.setSchoolVal(tmp);
+            dataClassHss.setSchoolVal(tmp);
             hSchool.setStyle(successStyle);
         }
     }
@@ -465,14 +465,14 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             hCity.setText(null);
-            edit2Hss.setCityVal(null);
+            dataClassHss.setCityVal(null);
             hCity.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
         { 
             hCity.setStyle(successStyle);                
-            edit2Hss.setCityVal(tmp);         
+            dataClassHss.setCityVal(tmp);         
         }
     }
     
@@ -484,13 +484,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                edit2Hss.setPercentVal(Float.parseFloat(tmp));
+                dataClassHss.setPercentVal(Float.parseFloat(tmp));
                 hPercent.setStyle(successStyle);
             } 
             catch (NumberFormatException e) 
             {
                 hPercent.setText(null);
-                edit2Hss.setPercentVal(0.f);
+                dataClassHss.setPercentVal(0.f);
                 hPercent.setStyle(errorStyle);
                 System.out.println("hPercentVal not a float");
             }
@@ -498,7 +498,7 @@ public class Editing2Controller implements Initializable
         else
         {
             hPercent.setText(null);
-            edit2Hss.setPercentVal(0.f);
+            dataClassHss.setPercentVal(0.f);
             hPercent.setStyle(errorStyle);
             System.out.println("hPercentVal not a float");
         }
@@ -512,13 +512,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                edit2Hss.setPhysicsVal(Float.parseFloat(tmp));
+                dataClassHss.setPhysicsVal(Float.parseFloat(tmp));
                 hPhysics.setStyle(successStyle);
             } 
             catch (NumberFormatException e) 
             {
                 hPhysics.setText(null);
-                edit2Hss.setPhysicsVal(0.f);
+                dataClassHss.setPhysicsVal(0.f);
                 hPhysics.setStyle(errorStyle);
                 System.out.println("hPhysicsVal not a float");
             }
@@ -526,7 +526,7 @@ public class Editing2Controller implements Initializable
         else
         {
             hPhysics.setText(null);
-            edit2Hss.setPhysicsVal(0.f);
+            dataClassHss.setPhysicsVal(0.f);
             hPhysics.setStyle(errorStyle);
             System.out.println("hPhysicsVal not a float");
         }
@@ -540,13 +540,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                edit2Hss.setChemistryVal(Float.parseFloat(tmp));
+                dataClassHss.setChemistryVal(Float.parseFloat(tmp));
                 hChemistry.setStyle(successStyle);
             } 
             catch (NumberFormatException e) 
             {
                 hChemistry.setText(null);
-                edit2Hss.setChemistryVal(0.f);
+                dataClassHss.setChemistryVal(0.f);
                 hChemistry.setStyle(errorStyle);
                 System.out.println("hChemistryVal not a float");
             }
@@ -554,7 +554,7 @@ public class Editing2Controller implements Initializable
         else
         {
             hChemistry.setText(null);
-            edit2Hss.setChemistryVal(0.f);
+            dataClassHss.setChemistryVal(0.f);
             hChemistry.setStyle(errorStyle);
             System.out.println("hChemistryVal not a float");
         }
@@ -568,13 +568,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                edit2Hss.setMathVal(Float.parseFloat(tmp));
+                dataClassHss.setMathVal(Float.parseFloat(tmp));
                 hMath.setStyle(successStyle);
             } 
             catch (NumberFormatException e) 
             {
                 hMath.setText(null);
-                edit2Hss.setMathVal(0.f);
+                dataClassHss.setMathVal(0.f);
                 hMath.setStyle(errorStyle);
                 System.out.println("hMathVal not a float");
             }
@@ -582,7 +582,7 @@ public class Editing2Controller implements Initializable
         else
         {
             hMath.setText(null);
-            edit2Hss.setMathVal(0.f);
+            dataClassHss.setMathVal(0.f);
             hMath.setStyle(errorStyle);
             System.out.println("hMathVal not a float");
         }
@@ -618,13 +618,8 @@ public class Editing2Controller implements Initializable
     
     @FXML
     private JFXTextField dPercent6;
-    
-    private int dPassYearVal;
-    
-    private float dPercent1Val, dPercent2Val, dPercent3Val, dPercent4Val, dPercent5Val, dPercent6Val;   
-    
-    private String dSchoolVal, dCityVal;
-    
+            
+    Editing2DataDiploma dataClassDiploma = Editing2DataDiploma.getInstance();
     
     
     public void setDPassYear()
@@ -634,24 +629,22 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                dPassYearVal = Integer.parseInt(tmp);
-                dPassYear.setStyle(successStyle);                
-                System.out.println(dPassYearVal);
+                dataClassDiploma.setPassYearVal(Integer.parseInt(tmp));
+                dPassYear.setStyle(successStyle);
             } 
             
             catch (NumberFormatException e) 
             {
                 dPassYear.setText(null);
-                dPassYearVal = 0;
+                dataClassDiploma.setPassYearVal(0);
                 dPassYear.setStyle(errorStyle);
                 System.out.println("dPassYear not an integer");
             }
-        } 
-        
+        }       
         else 
         {
             dPassYear.setText(null);
-            dPassYearVal = 0;
+            dataClassDiploma.setPassYearVal(0);
             dPassYear.setStyle(errorStyle);
             System.out.println("year length < 4");
         }
@@ -664,16 +657,15 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("^[a-zA-Z0-9. -]+$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             dSchool.setText(null);
-            dSchoolVal = null;
+            dataClassDiploma.setSchoolVal(null);
             dSchool.setStyle(errorStyle);
             System.out.println("false");             
             
         } 
         else 
-        { 
-            dSchool.setStyle(successStyle);                
-            dSchoolVal = tmp;
-            System.out.println(dSchoolVal);
+        {                             
+            dataClassDiploma.setSchoolVal(tmp);
+            dSchool.setStyle(successStyle);
         }
     }
     
@@ -684,15 +676,14 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             dCity.setText(null);
-            dCityVal = null;
+            dataClassDiploma.setCityVal(null);
             dCity.setStyle(errorStyle);
             System.out.println("false");
         } 
         else 
-        { 
-            dCity.setStyle(successStyle);                
-            dCityVal = tmp;
-            System.out.println(dCityVal);
+        {                             
+            dataClassDiploma.setCityVal(tmp);
+            dCity.setStyle(successStyle);
         }
     }
     
@@ -704,14 +695,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                dPercent1Val = Float.parseFloat(tmp);
+                dataClassDiploma.setPercent1Val(Float.parseFloat(tmp));
                 dPercent1.setStyle(successStyle);
-                System.out.println(dPercent1Val);
             } 
             catch (NumberFormatException e) 
             {
                 dPercent1.setText(null);
-                dPercent1Val = 0.f;
+                dataClassDiploma.setPercent1Val(0.f);
                 dPercent1.setStyle(errorStyle);
                 System.out.println("dPercent1Val not a float");
             }
@@ -719,12 +709,12 @@ public class Editing2Controller implements Initializable
         else
         {
             dPercent1.setText(null);
-            dPercent1Val = 0.f;
+            dataClassDiploma.setPercent1Val(0.f);
             dPercent1.setStyle(errorStyle);
             System.out.println("dPercent1Val not a float");
         }
     }
-    
+          
     
     public void setDPercent2()
     {   
@@ -733,14 +723,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                dPercent2Val = Float.parseFloat(tmp);
+                dataClassDiploma.setPercent2Val(Float.parseFloat(tmp));
                 dPercent2.setStyle(successStyle);
-                System.out.println(dPercent2Val);
             } 
             catch (NumberFormatException e) 
             {
                 dPercent2.setText(null);
-                dPercent2Val = 0.f;
+                dataClassDiploma.setPercent2Val(0.f);
                 dPercent2.setStyle(errorStyle);
                 System.out.println("dPercent2Val not a float");
             }
@@ -748,7 +737,7 @@ public class Editing2Controller implements Initializable
         else
         {
             dPercent2.setText(null);
-            dPercent2Val = 0.f;
+            dataClassDiploma.setPercent2Val(0.f);
             dPercent2.setStyle(errorStyle);
             System.out.println("dPercent2Val not a float");
         }
@@ -762,14 +751,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                dPercent3Val = Float.parseFloat(tmp);
+                dataClassDiploma.setPercent3Val(Float.parseFloat(tmp));
                 dPercent3.setStyle(successStyle);
-                System.out.println(dPercent3Val);
             } 
             catch (NumberFormatException e) 
             {
                 dPercent3.setText(null);
-                dPercent3Val = 0.f;
+               dataClassDiploma.setPercent3Val(0.f);
                 dPercent3.setStyle(errorStyle);
                 System.out.println("dPercent3Val not a float");
             }
@@ -777,7 +765,7 @@ public class Editing2Controller implements Initializable
         else
         {
             dPercent3.setText(null);
-            dPercent3Val = 0.f;
+            dataClassDiploma.setPercent3Val(0.f);
             dPercent3.setStyle(errorStyle);
             System.out.println("dPercent3Val not a float");
         }
@@ -791,14 +779,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                dPercent4Val = Float.parseFloat(tmp);
+                dataClassDiploma.setPercent4Val(Float.parseFloat(tmp));
                 dPercent4.setStyle(successStyle);
-                System.out.println(dPercent4Val);
             } 
             catch (NumberFormatException e) 
             {
                 dPercent4.setText(null);
-                dPercent4Val = 0.f;
+                dataClassDiploma.setPercent4Val(0.f);
                 dPercent4.setStyle(errorStyle);
                 System.out.println("dPercent4Val not a float");
             }
@@ -806,7 +793,7 @@ public class Editing2Controller implements Initializable
         else
         {
             dPercent4.setText(null);
-            dPercent4Val = 0.f;
+            dataClassDiploma.setPercent4Val(0.f);
             dPercent4.setStyle(errorStyle);
             System.out.println("dPercent4Val not a float");
         }
@@ -821,14 +808,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                dPercent5Val = Float.parseFloat(tmp);
+                dataClassDiploma.setPercent5Val(Float.parseFloat(tmp));
                 dPercent5.setStyle(successStyle);
-                System.out.println(dPercent5Val);
             } 
             catch (NumberFormatException e) 
             {
                 dPercent5.setText(null);
-                dPercent5Val = 0.f;
+                dataClassDiploma.setPercent5Val(0.f);
                 dPercent5.setStyle(errorStyle);
                 System.out.println("dPercent5Val not a float");
             }
@@ -836,7 +822,7 @@ public class Editing2Controller implements Initializable
         else
         {
             dPercent5.setText(null);
-            dPercent5Val = 0.f;
+            dataClassDiploma.setPercent5Val(0.f);
             dPercent5.setStyle(errorStyle);
             System.out.println("dPercent5Val not a float");
         }
@@ -851,14 +837,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                dPercent6Val = Float.parseFloat(tmp);
+                dataClassDiploma.setPercent6Val(Float.parseFloat(tmp));
                 dPercent6.setStyle(successStyle);
-                System.out.println(dPercent6Val);
             } 
             catch (NumberFormatException e) 
             {
                 dPercent6.setText(null);
-                dPercent6Val = 0.f;
+                dataClassDiploma.setPercent6Val(0.f);
                 dPercent6.setStyle(errorStyle);
                 System.out.println("dPercent6Val not a float");
             }
@@ -866,7 +851,7 @@ public class Editing2Controller implements Initializable
         else
         {
             dPercent6.setText(null);
-            dPercent6Val = 0.f;
+            dataClassDiploma.setPercent6Val(0.f);
             dPercent6.setStyle(errorStyle);
             System.out.println("dPercent6Val not a float");
         }
@@ -937,13 +922,9 @@ public class Editing2Controller implements Initializable
     
     @FXML
     private JFXTextField ePercent8;
-
-    private int ePassYearVal;
     
-    private float ePercent1Val, ePercent2Val, ePercent3Val, ePercent4Val, 
-          ePercent5Val, ePercent6Val, ePercent7Val, ePercent8Val;
-    
-    private String eSchoolVal, eCityVal;
+        
+    Editing2DataUG dataClassUG = Editing2DataUG.getInstance();
     
     
     public void setEPassYear()
@@ -953,15 +934,14 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                ePassYearVal = Integer.parseInt(tmp);
+                dataClassUG.setPassYearVal(Integer.parseInt(tmp));
                 ePassYear.setStyle(successStyle);
-                System.out.println(ePassYearVal);
             } 
             
             catch (NumberFormatException e) 
             {
                 ePassYear.setText(null);
-                ePassYearVal = 0;
+                dataClassUG.setPassYearVal(0);
                 ePassYear.setStyle(errorStyle);
                 System.out.println("ePassYear not an integer");
             }
@@ -970,7 +950,7 @@ public class Editing2Controller implements Initializable
         else 
         {
             ePassYear.setText(null);
-            ePassYearVal = 0;
+            dataClassUG.setPassYearVal(0);
             ePassYear.setStyle(errorStyle);
             System.out.println("year length < 4");
         }
@@ -983,16 +963,15 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("^[a-zA-Z0-9. -]+$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             eSchool.setText(null);
-            eSchoolVal = null;
+            dataClassUG.setSchoolVal(null);
             eSchool.setStyle(errorStyle);
             System.out.println("false");
             
         } 
         else 
-        { 
+        {             
+            dataClassUG.setSchoolVal(tmp);
             eSchool.setStyle(successStyle);
-            eSchoolVal = tmp;
-            System.out.println(eSchoolVal);
         }
     }
     
@@ -1003,15 +982,14 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             eCity.setText(null);
-            eCityVal = null;
+            dataClassUG.setCityVal(null);
             eCity.setStyle(errorStyle);
             System.out.println("false");
         } 
         else 
-        { 
+        {            
+            dataClassUG.setCityVal(tmp);
             eCity.setStyle(successStyle);
-            eCityVal = tmp;
-            System.out.println(eCityVal);
         }
     }
     
@@ -1023,14 +1001,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                ePercent1Val = Float.parseFloat(tmp);
+                dataClassUG.setPercent1Val(Float.parseFloat(tmp));
                 ePercent1.setStyle(successStyle);
-                System.out.println(ePercent1Val);
             } 
             catch (NumberFormatException e) 
             {
                 ePercent1.setText(null);
-                ePercent1Val = 0.f;
+                dataClassUG.setPercent1Val(0.f);
                 ePercent1.setStyle(errorStyle);
                 System.out.println("ePercent1Val not a float");
             }
@@ -1038,7 +1015,7 @@ public class Editing2Controller implements Initializable
         else
         {
             ePercent1.setText(null);
-            ePercent1Val = 0.f;
+            dataClassUG.setPercent1Val(0.f);
             ePercent1.setStyle(errorStyle);
             System.out.println("ePercent1Val not a float");
         }
@@ -1052,14 +1029,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                ePercent2Val = Float.parseFloat(tmp);
+                dataClassUG.setPercent2Val(Float.parseFloat(tmp));
                 ePercent2.setStyle(successStyle);
-                System.out.println(ePercent2Val);
             } 
             catch (NumberFormatException e) 
             {
                 ePercent2.setText(null);
-                ePercent2Val = 0.f;
+                dataClassUG.setPercent2Val(0.f);
                 ePercent2.setStyle(errorStyle);
                 System.out.println("ePercent2Val not a float");
             }
@@ -1067,7 +1043,7 @@ public class Editing2Controller implements Initializable
         else
         {
             ePercent2.setText(null);
-            ePercent2Val = 0.f;
+            dataClassUG.setPercent2Val(0.f);
             ePercent2.setStyle(errorStyle);
             System.out.println("ePercent2Val not a float");
         }
@@ -1081,14 +1057,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                ePercent3Val = Float.parseFloat(tmp);
+                dataClassUG.setPercent3Val(Float.parseFloat(tmp));
                 ePercent3.setStyle(successStyle);
-                System.out.println(ePercent3Val);
             } 
             catch (NumberFormatException e) 
             {
                 ePercent3.setText(null);
-                ePercent3Val = 0.f;
+                dataClassUG.setPercent3Val(0.f);
                 ePercent3.setStyle(errorStyle);
                 System.out.println("ePercent3Val not a float");
             }
@@ -1096,7 +1071,7 @@ public class Editing2Controller implements Initializable
         else
         {
             ePercent3.setText(null);
-            ePercent3Val = 0.f;
+            dataClassUG.setPercent3Val(0.f);
             ePercent3.setStyle(errorStyle);
             System.out.println("ePercent3Val not a float");
         }
@@ -1110,14 +1085,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                ePercent4Val = Float.parseFloat(tmp);
+                dataClassUG.setPercent4Val(Float.parseFloat(tmp));
                 ePercent4.setStyle(successStyle);
-                System.out.println(ePercent4Val);
             } 
             catch (NumberFormatException e) 
             {
                 ePercent4.setText(null);
-                ePercent4Val = 0.f;
+                dataClassUG.setPercent4Val(0.f);
                 ePercent4.setStyle(errorStyle);
                 System.out.println("ePercent4Val not a float");
             }
@@ -1125,7 +1099,7 @@ public class Editing2Controller implements Initializable
         else
         {
             ePercent4.setText(null);
-            ePercent4Val = 0.f;
+            dataClassUG.setPercent4Val(0.f);
             ePercent4.setStyle(errorStyle);
             System.out.println("ePercent4Val not a float");
         }
@@ -1140,14 +1114,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                ePercent5Val = Float.parseFloat(tmp);
+                dataClassUG.setPercent5Val(Float.parseFloat(tmp));
                 ePercent5.setStyle(successStyle);
-                System.out.println(ePercent5Val);
             } 
             catch (NumberFormatException e) 
             {
                 ePercent5.setText(null);
-                ePercent5Val = 0.f;
+                dataClassUG.setPercent5Val(0.f);
                 ePercent5.setStyle(errorStyle);
                 System.out.println("ePercent5Val not a float");
             }
@@ -1155,7 +1128,7 @@ public class Editing2Controller implements Initializable
         else
         {
             ePercent5.setText(null);
-            ePercent5Val = 0.f;
+            dataClassUG.setPercent5Val(0.f);
             ePercent5.setStyle(errorStyle);
             System.out.println("ePercent5Val not a float");
         }
@@ -1170,14 +1143,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                ePercent6Val = Float.parseFloat(tmp);
+                dataClassUG.setPercent6Val(Float.parseFloat(tmp));
                 ePercent6.setStyle(successStyle);
-                System.out.println(ePercent6Val);
             } 
             catch (NumberFormatException e) 
             {
                 ePercent6.setText(null);
-                ePercent6Val = 0.f;
+                dataClassUG.setPercent6Val(0.f);
                 ePercent6.setStyle(errorStyle);
                 System.out.println("ePercent6Val not a float");
             }
@@ -1185,7 +1157,7 @@ public class Editing2Controller implements Initializable
         else
         {
             ePercent6.setText(null);
-            ePercent6Val = 0.f;
+            dataClassUG.setPercent6Val(0.f);
             ePercent6.setStyle(errorStyle);
             System.out.println("ePercent6Val not a float");
         }
@@ -1199,14 +1171,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                ePercent7Val = Float.parseFloat(tmp);
+                dataClassUG.setPercent7Val(Float.parseFloat(tmp));
                 ePercent7.setStyle(successStyle);
-                System.out.println(ePercent7Val);
             } 
             catch (NumberFormatException e) 
             {
                 ePercent7.setText(null);
-                ePercent7Val = 0.f;
+                dataClassUG.setPercent7Val(0.f);
                 ePercent7.setStyle(errorStyle);
                 System.out.println("ePercent7Val not a float");
             }
@@ -1214,7 +1185,7 @@ public class Editing2Controller implements Initializable
         else
         {
             ePercent7.setText(null);
-            ePercent7Val = 0.f;
+            dataClassUG.setPercent7Val(0.f);
             ePercent7.setStyle(errorStyle);
             System.out.println("ePercent7Val not a float");
         }          
@@ -1228,14 +1199,13 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                ePercent8Val = Float.parseFloat(tmp);
+                dataClassUG.setPercent8Val(Float.parseFloat(tmp));
                 ePercent8.setStyle(successStyle);
-                System.out.println(ePercent8Val);
             } 
             catch (NumberFormatException e) 
             {
                 ePercent8.setText(null);
-                ePercent8Val = 0.f;
+                dataClassUG.setPercent8Val(0.f);
                 ePercent8.setStyle(errorStyle);
                 System.out.println("ePercent8Val not a float");
             }
@@ -1243,7 +1213,7 @@ public class Editing2Controller implements Initializable
         else
         {
             ePercent8.setText(null);
-            ePercent8Val = 0.f;
+            dataClassUG.setPercent8Val(0.f);
             ePercent8.setStyle(errorStyle);
             System.out.println("ePercent8Val not a float");
         }  
@@ -1275,12 +1245,8 @@ public class Editing2Controller implements Initializable
     
     @FXML
     private JFXTextField pPercent4;
-    
-    private int pPassYearVal;    
-    
-    private float pPercent1Val, pPercent2Val, pPercent3Val, pPercent4Val;
-
-    private String pSchoolVal, pCityVal;
+        
+    Editing2DataPG dataClassPG = Editing2DataPG.getInstance();
     
     
     public void setPPassYear()
@@ -1290,15 +1256,14 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                pPassYearVal = Integer.parseInt(tmp);
+                dataClassPG.setPassYearVal(Integer.parseInt(tmp));
                 pPassYear.setStyle(successStyle);
-                System.out.println(pPassYearVal);
             } 
             
             catch (NumberFormatException e) 
             {
                 pPassYear.setText(null);
-                pPassYearVal = 0;
+                dataClassPG.setPassYearVal(0);
                 pPassYear.setStyle(errorStyle);
                 System.out.println("pPassYear not an integer");
             }
@@ -1307,7 +1272,7 @@ public class Editing2Controller implements Initializable
         else 
         {
             pPassYear.setText(null);
-            pPassYearVal = 0;
+            dataClassPG.setPassYearVal(0);
             pPassYear.setStyle(errorStyle);
             System.out.println("year length < 4");
         }
@@ -1320,15 +1285,14 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("^[a-zA-Z0-9. -]+$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             pSchool.setText(null);
-            pSchoolVal = null;
+            dataClassPG.setSchoolVal(null);
             pSchool.setStyle(errorStyle);
             System.out.println("false");             
         } 
         else 
-        { 
+        {             
+            dataClassPG.setSchoolVal(tmp);
             pSchool.setStyle(successStyle);
-            pSchoolVal = tmp;
-            System.out.println(pSchoolVal);
         }
     }
     
@@ -1339,15 +1303,14 @@ public class Editing2Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             pCity.setText(null);
-            pCityVal = null;
+            dataClassPG.setCityVal(null);
             pCity.setStyle(errorStyle);
             System.out.println("false"); 
         } 
         else 
-        { 
+        {             
+            dataClassPG.setCityVal(tmp);
             pCity.setStyle(successStyle);
-            pCityVal = tmp;
-            System.out.println(pCityVal);
         }
     }
     
@@ -1359,24 +1322,23 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                pPercent1Val = Float.parseFloat(tmp);
+                dataClassPG.setPercent1Val(Float.parseFloat(tmp));
                 pPercent1.setStyle(successStyle);
-                System.out.println(pPercent1Val);
             } 
             catch (NumberFormatException e) 
             {
                 pPercent1.setText(null);
-                pPercent1Val = 0.f;
+                dataClassPG.setPercent1Val(0.f);
                 pPercent1.setStyle(errorStyle);
-                System.out.println("ePercent1Val not a float");
+                System.out.println("pPercent1Val not a float");
             }
         }
         else
         {
             pPercent1.setText(null);
-            pPercent1Val = 0.f;
+            dataClassPG.setPercent1Val(0.f);
             pPercent1.setStyle(errorStyle);
-            System.out.println("ePercent1Val not a float");
+            System.out.println("pPercent1Val not a float");
         }
     }
     
@@ -1388,24 +1350,23 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                pPercent2Val = Float.parseFloat(tmp);
+                dataClassPG.setPercent2Val(Float.parseFloat(tmp));
                 pPercent2.setStyle(successStyle);
-                System.out.println(pPercent2Val);
             } 
             catch (NumberFormatException e) 
             {
                 pPercent2.setText(null);
-                pPercent2Val = 0.f;
+                dataClassPG.setPercent2Val(0.f);
                 pPercent2.setStyle(errorStyle);
-                System.out.println("ePercent2Val not a float");
+                System.out.println("pPercent2Val not a float");
             }
         }
         else
         {
             pPercent2.setText(null);
-            pPercent2Val = 0.f;
+            dataClassPG.setPercent2Val(0.f);
             pPercent2.setStyle(errorStyle);
-            System.out.println("ePercent2Val not a float");
+            System.out.println("pPercent2Val not a float");
         }
     }
     
@@ -1417,24 +1378,23 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                pPercent3Val = Float.parseFloat(tmp);
+                dataClassPG.setPercent3Val(Float.parseFloat(tmp));
                 pPercent3.setStyle(successStyle);
-                System.out.println(pPercent3Val);
             } 
             catch (NumberFormatException e) 
             {
                 pPercent3.setText(null);
-                pPercent3Val = 0.f;
+                dataClassPG.setPercent3Val(0.f);
                 pPercent3.setStyle(errorStyle);
-                System.out.println("ePercent3Val not a float");
+                System.out.println("pPercent3Val not a float");
             }
         }
         else
         {
             pPercent3.setText(null);
-            pPercent3Val = 0.f;
+            dataClassPG.setPercent3Val(0.f);
             pPercent3.setStyle(errorStyle);
-            System.out.println("ePercent3Val not a float");
+            System.out.println("pPercent3Val not a float");
         }
     }
     
@@ -1446,176 +1406,28 @@ public class Editing2Controller implements Initializable
         {
             try 
             {
-                pPercent4Val = Float.parseFloat(tmp);
+                dataClassPG.setPercent4Val(Float.parseFloat(tmp));
                 pPercent4.setStyle(successStyle);
-                System.out.println(pPercent4Val);
             } 
             catch (NumberFormatException e) 
             {
                 pPercent4.setText(null);
-                pPercent4Val = 0.f;
+                dataClassPG.setPercent4Val(0.f);
                 pPercent4.setStyle(errorStyle);
-                System.out.println("ePercent4Val not a float");
+                System.out.println("pPercent4Val not a float");
             }
         }
         else
         {
             pPercent4.setText(null);
-            pPercent4Val = 0.f;
+            dataClassPG.setPercent4Val(0.f);
             pPercent4.setStyle(errorStyle);
-            System.out.println("ePercent4Val not a float");
+            System.out.println("pPercent4Val not a float");
         }
         
     }
     
-    
-    ///////////////////////////////////////////////////////////////////////////
-    // Get Values
-    
-    ////////////////////////////////////////////////////////////////////////////
-    // Diploma
-      
-    int getDPassYearVal()
-    {
-        return dPassYearVal;
-    }
-    
-    String getDSchoolVal()
-    {
-       return dSchoolVal;
-    }
-    
-    String getDCityVal()
-    {
-        return dCityVal;        
-    }
-    
-    float getDPercent1Val()
-    {
-        return dPercent1Val;
-    }
-    
-    float getDPercent2Val()
-    {
-        return dPercent2Val;
-    }
-    
-    float getDPercent3Val()
-    {
-        return dPercent3Val;
-    }
-    
-    float getDPercent4Val()
-    {
-        return dPercent4Val;
-    }
-    
-    float getDPercent5Val()
-    {
-        return dPercent5Val;
-    }
-    
-    float getDPercent6Val()
-    {
-        return dPercent6Val;
-    }
-    
-    ////////////////////////////////////////////////////////////////////////////
-    // Undergraduation
-        
-    int getEPassYearVal()
-    {
-        return ePassYearVal;
-    }
-    
-    String getESchoolVal()
-    {
-       return eSchoolVal;
-    }
-    
-    String getECityVal()
-    {
-        return eCityVal;        
-    }
-    
-    float getEPercent1Val()
-    {
-        return ePercent1Val;
-    }
-    
-    float getEPercent2Val()
-    {
-        return ePercent2Val;
-    }
-    
-    float getEPercent3Val()
-    {
-        return ePercent3Val;
-    }
-    
-    float getEPercent4Val()
-    {
-        return ePercent4Val;
-    }
-    
-    float getEPercent5Val()
-    {
-        return ePercent5Val;
-    }
-    
-    float getEPercent6Val()
-    {
-        return ePercent6Val;
-    }
-    
-    float getEPercent7Val()
-    {
-        return ePercent7Val;
-    }
-    
-    float getEPercent8Val()
-    {
-        return ePercent8Val;
-    }
-    
-    ////////////////////////////////////////////////////////////////////////////
-    // Postgraduation
-        
-    int getPPassYearVal()
-    {
-        return pPassYearVal;
-    }
-    
-    String getPSchoolVal()
-    {
-       return pSchoolVal;
-    }
-    
-    String getPCityVal()
-    {
-        return pCityVal;        
-    }
-    
-    float getPPercent1Val()
-    {
-        return pPercent1Val;
-    }
-    
-    float getPPercent2Val()
-    {
-        return pPercent2Val;
-    }
-    
-    float getPPercent3Val()
-    {
-        return pPercent3Val;
-    }
-    
-    float getPPercent4Val()
-    {
-        return pPercent4Val;
-    }
-    
+       
          
     public void toPrevPg(MouseEvent event)
      {  
@@ -1637,9 +1449,7 @@ public class Editing2Controller implements Initializable
     
     public void toNextPg(MouseEvent event)
     {
-        DatabaseIO dbIO = new DatabaseIO();
-        dbIO.InsertValues();
-        
+                
         try 
         {
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing3.fxml"));

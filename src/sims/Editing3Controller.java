@@ -40,7 +40,9 @@ public class Editing3Controller implements Initializable {
     private String errorStyle = "-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
     private String successStyle = "-fx-border-color: #23ff23; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
     
-    private String personMailVal = null, universityMailVal = null, dadContactVal = null, famContactVal = null, addInfoVal = null;
+    //private String personMailVal = null, universityMailVal = null, dadContactVal = null, famContactVal = null, addInfoVal = null;
+   
+    Editing3Data dataClass = Editing3Data.getInstance();
     
     @FXML
     private Pane edit3;
@@ -98,15 +100,14 @@ public class Editing3Controller implements Initializable {
         if(tmp == null || !Pattern.compile("^(.+@.+)$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())            
         { 
             personMail.setText(null);             
-            personMailVal = null;
+            dataClass.setPersonMailVal(null);
             personMail.setStyle(errorStyle);
             System.out.println("false");
         } 
         else 
-        { 
-            personMail.setStyle(successStyle);                
-            personMailVal = tmp;
-            System.out.println(personMailVal);
+        {                            
+            dataClass.setPersonMailVal(tmp);
+            personMail.setStyle(successStyle); 
         }
         
     }
@@ -118,15 +119,14 @@ public class Editing3Controller implements Initializable {
         if(tmp == null  || !Pattern.compile("^(.+@.+)$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())            
         {            
             universityMail.setText(null);
-            universityMailVal = null;
+            dataClass.setUniversityMailVal(null);
             universityMail.setStyle(errorStyle);
             System.out.println("false");
         }
         else 
-        {
-            universityMail.setStyle(successStyle);            
-            universityMailVal = tmp;
-            System.out.println(universityMailVal);
+        {           
+            dataClass.setUniversityMailVal(tmp);            
+            universityMail.setStyle(successStyle); 
         }        
     }
     
@@ -137,15 +137,14 @@ public class Editing3Controller implements Initializable {
         if(tmp == null || !Pattern.compile("^[+]?([0-9]{2,3})?[-]?[0-9]{10}$").matcher(tmp).matches())
         {
             dadContact.setText(null);
-            dadContactVal = null;
+            dataClass.setDadContactVal(null);
             dadContact.setStyle(errorStyle);
             System.out.println("Fathers Contact failed");            
         }
         else
         {   
-            dadContactVal = tmp;
-            System.out.println(dadContactVal);
-            dadContact.getStyleClass().add("text-field-success");                
+            dataClass.setDadContactVal(tmp);
+            dadContact.setStyle(successStyle);                
         }
     }
     
@@ -156,56 +155,25 @@ public class Editing3Controller implements Initializable {
         if(tmp == null || !Pattern.compile("^[+]?([0-9]{2,3})?[-]?[0-9]{10}$").matcher(tmp).matches())
         {
             famContact.setText(null);
-            famContactVal = null;
+            dataClass.setFamContactVal(null);
             famContact.setStyle(errorStyle);
-            System.out.println("Familys Contact failed");            
+            System.out.println("Family Contact failed");            
         }      
         else
         {             
-            famContactVal = tmp;
-            System.out.println(famContactVal);            
-            famContact.getStyleClass().add("text-field-success");   
+            dataClass.setFamContactVal(tmp);            
+            famContact.setStyle(successStyle);   
         }
     }
     
     
     public void setAddInfo()
-     {  
-            addInfoVal = addInfo.getText();
-            System.out.println(addInfoVal);
+    {  
+        dataClass.setAddInfoVal(addInfo.getText());
+        //addInfo.setStyle(successStyle);         
     }
     
-    
-    ///////////////////////////////////////////////////////////////////////////
-    // Get Values
-    
-    String getPersonMailVal()
-    {
-        return personMailVal;
-    }
-    
-    String getUniversityMailVal()
-    {
-        return universityMailVal;
-    }
-    
-    String getDadContactVal()
-    {
-        return dadContactVal;
-    }
-    
-    String getFamContactVal()
-    {
-        return famContactVal;
-    }
-    
-    String getAddInfoVal()
-    {
-        return addInfoVal;
-    }
-            
-    
-           
+             
     public void toSave(MouseEvent event)
     {        
         

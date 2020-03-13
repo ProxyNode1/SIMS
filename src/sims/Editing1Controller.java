@@ -40,7 +40,7 @@ public class Editing1Controller implements Initializable
     private final String errorStyle = "-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
     private final String successStyle = "-fx-border-color: #23ff23; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
     
-    Editing1Data dataclass;       
+    Editing1Data dataClass = Editing1Data.getInstance();;       
         
     @FXML
     private Pane edit1;
@@ -108,12 +108,7 @@ public class Editing1Controller implements Initializable
     @FXML
     private JFXTextField contact;
          
-    
-    public Editing1Controller()
-    {
-        dataclass = Editing1Data.getInstance();
-    }
-            
+                    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {  
@@ -133,7 +128,7 @@ public class Editing1Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             name.setText(null);
-            dataclass.setNameVal(null);
+            dataClass.setNameVal(null);
             name.setStyle(errorStyle);
         } 
         
@@ -141,7 +136,7 @@ public class Editing1Controller implements Initializable
         { 
             name.setText(tmp);
             name.setStyle(successStyle);
-            dataclass.setNameVal(tmp);            
+            dataClass.setNameVal(tmp);            
         }
     }
     
@@ -153,13 +148,13 @@ public class Editing1Controller implements Initializable
         if(tmp == null || tmp.trim().isEmpty())
         {
             clgID.setText(null);
-            dataclass.setClgIDVal(null);
+            dataClass.setClgIDVal(null);
             clgID.setStyle(errorStyle);   
         }
         else
         {
             clgID.setText(tmp);
-            dataclass.setClgIDVal(tmp);
+            dataClass.setClgIDVal(tmp);
             clgID.setStyle(successStyle);         
         }              
     }
@@ -171,19 +166,19 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("January");
-        dataclass.setMonthVal("1");
+        dataClass.setMonthVal("1");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
         }
     }
     
     public void setFabruary()
     {
-        if (dataclass.getYearVal() % 4 == 0) 
+        if (dataClass.getYearVal() % 4 == 0) 
         {
             numDays = 29;
         } 
@@ -192,13 +187,13 @@ public class Editing1Controller implements Initializable
             numDays = 28;
         }
         dobMonth.setText("Fabruary");
-        dataclass.setMonthVal("2");
+        dataClass.setMonthVal("2");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0); 
+            dataClass.setDayVal(0); 
         }
     }
     
@@ -206,13 +201,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("March");
-        dataclass.setMonthVal("3");
+        dataClass.setMonthVal("3");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
         }
     }
     
@@ -220,13 +215,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 30;
         dobMonth.setText("April");
-        dataclass.setMonthVal("4");
+        dataClass.setMonthVal("4");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
         }
     }
     
@@ -234,13 +229,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("May");
-        dataclass.setMonthVal("5");
+        dataClass.setMonthVal("5");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
         }
     }
     
@@ -248,13 +243,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 30;
         dobMonth.setText("June");
-        dataclass.setMonthVal("6");
+        dataClass.setMonthVal("6");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
         }
     }
     
@@ -262,13 +257,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("July");
-        dataclass.setMonthVal("7");
+        dataClass.setMonthVal("7");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
         }
     }
     
@@ -276,13 +271,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("August");
-        dataclass.setMonthVal("8");
+        dataClass.setMonthVal("8");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0); 
+            dataClass.setDayVal(0); 
         }
     }
     
@@ -290,13 +285,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 30;
         dobMonth.setText("September");
-        dataclass.setMonthVal("9");
+        dataClass.setMonthVal("9");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
         }
     }
     
@@ -304,13 +299,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("October");
-        dataclass.setMonthVal("10");
+        dataClass.setMonthVal("10");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
         }
     }
     
@@ -318,13 +313,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 30;
         dobMonth.setText("November");
-        dataclass.setMonthVal("11");
+        dataClass.setMonthVal("11");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
         }
     }
     
@@ -332,13 +327,13 @@ public class Editing1Controller implements Initializable
     {
         numDays = 31;
         dobMonth.setText("December");
-        dataclass.setMonthVal("12");
+        dataClass.setMonthVal("12");
         dobMonth.setStyle(successStyle);
         
-        if (dataclass.getDayVal() < 1 || dataclass.getDayVal() > numDays) 
+        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
         }
     }
     
@@ -357,13 +352,13 @@ public class Editing1Controller implements Initializable
             if (tmp != 0 && tmp <= 31 && tmp <= numDays ) 
             {
                 dobDay.setText(String.valueOf(tmp)); 
-                dataclass.setDayVal(tmp);
+                dataClass.setDayVal(tmp);
                 dobDay.setStyle(successStyle);
             }
             else
             {
                 dobDay.setText(null);
-                dataclass.setDayVal(0);
+                dataClass.setDayVal(0);
                 dobDay.setStyle(errorStyle);
             }
                        
@@ -372,7 +367,7 @@ public class Editing1Controller implements Initializable
         catch(NumberFormatException e)
         {
             dobDay.setText(null);
-            dataclass.setDayVal(0);
+            dataClass.setDayVal(0);
             dobDay.setStyle(errorStyle);
         }       
     }  
@@ -385,21 +380,21 @@ public class Editing1Controller implements Initializable
         {
             try
             {
-                dataclass.setYearVal(Integer.parseInt(tmp));                
+                dataClass.setYearVal(Integer.parseInt(tmp));                
                 dobYear.setText(tmp);
                 dobYear.setStyle(successStyle);                
             }            
             catch(NumberFormatException e)
             {
                 dobYear.setText(null);
-                dataclass.setYearVal(0);
+                dataClass.setYearVal(0);
                 dobYear.setStyle(errorStyle);
             }
         }
         else
         {
             dobYear.setText(null);
-            dataclass.setYearVal(0);
+            dataClass.setYearVal(0);
             dobYear.setStyle(errorStyle);
         }            
     }
@@ -411,14 +406,14 @@ public class Editing1Controller implements Initializable
         if(tmp == null || !Pattern.compile("[a-zA-Z0-9 -]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             course.setText(null);
-            dataclass.setCourseVal(null);
+            dataClass.setCourseVal(null);
             course.setStyle(errorStyle);            
         } 
         
         else 
         { 
             course.setText(tmp);
-            dataclass.setCourseVal(tmp);
+            dataClass.setCourseVal(tmp);
             course.setStyle(successStyle);
         }        
     }
@@ -431,21 +426,21 @@ public class Editing1Controller implements Initializable
         {
             try 
             {
-                dataclass.setCurrSemVal(Integer.parseInt(tmp));
+                dataClass.setCurrSemVal(Integer.parseInt(tmp));
                 currSem.setText(tmp);                
                 currSem.setStyle(successStyle);
             } 
             catch (NumberFormatException e) 
             {
                 currSem.setText(null);
-                dataclass.setCurrSemVal(0);
+                dataClass.setCurrSemVal(0);
                 currSem.setStyle(errorStyle);
             }
         }
         else
         {
             currSem.setText(null);
-            dataclass.setCurrSemVal(0);
+            dataClass.setCurrSemVal(0);
             currSem.setStyle(errorStyle);
         }
     }
@@ -457,7 +452,7 @@ public class Editing1Controller implements Initializable
         if(tmp == null || !Pattern.compile("^[+]?([0-9]{2,3})?[-]?[0-9]{10}$").matcher(tmp).matches())
         { 
             contact.setText(null);
-            dataclass.setContactVal(null);
+            dataClass.setContactVal(null);
             contact.setStyle(errorStyle);
         } 
         
@@ -465,7 +460,7 @@ public class Editing1Controller implements Initializable
         { 
             contact.setText(tmp);
             contact.setStyle(successStyle);
-            dataclass.setContactVal(tmp);
+            dataClass.setContactVal(tmp);
         }
     } 
     

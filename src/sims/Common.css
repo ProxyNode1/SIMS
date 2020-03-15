@@ -1,48 +1,8 @@
-.scroll-pane {
-    -fx-background-insets: 0;
-    -fx-padding: 0;
-    -fx-background:  #212121;
-    -fx-border-color:  #212121;
-}
-
-.scroll-pane:focused {
-    -fx-background-insets: 0;
-}
-
-.scroll-pane .corner {
-    -fx-background-insets: 0;
-}
-
-.menu-button:focused {
-  -fx-border-color: #0078D7;
-  -fx-border-width: 1px;
-}
-
-/*#menu-button2
+.root
 {
-  -fx-background-color: #2F3136;
-  -fx-border-color:  #ffffff;
-  -fx-border-width: 1px;
-}*/
-
-.menu-button
-{
-  -fx-background-color: #212121;
-  -fx-border-color:  #ffffff;
-  -fx-border-width: 1px;
-}
-
-
-.text-field{
-    -fx-text-fill: #ffffff;
-    -fx-prompt-text-fill: #ffffff;
-    -fx-border-color:  #ffffff;
+   -fx-background-color: #000000;
+    -fx-border-color: #1883D7;
     -fx-border-width: 1px;
-}
-
-.text-field:focused {
-  -fx-border-color: #0078D7;
-  -fx-border-width: 1px;
 }
 
 .table-view{
@@ -53,7 +13,7 @@
 }
 
 
-.tableview .header
+.table-view .header
 {
     -fx-text-fill: white;
     -fx-border-color: #212121;
@@ -122,10 +82,119 @@
 
 
 
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-background:  #212121;
+    -fx-border-color:  #212121;
+}
+
+.scroll-pane:focused {
+    -fx-background-insets: 0;
+}
+
+.scroll-pane .corner {
+    -fx-background-insets: 0;
+}
+
+.menu-button:focused {
+  -fx-border-color: #0078D7;
+  -fx-border-width: 1px;
+}
+
+/*#menu-button2
+{
+  -fx-background-color: #2F3136;
+  -fx-border-color:  #ffffff;
+  -fx-border-width: 1px;
+}*/
+
+.menu-button
+{
+  -fx-background-color: #212121;
+  -fx-border-color:  #ffffff;
+  -fx-border-width: 1px;
+}
 
 
+.text-field{
+    -fx-text-fill: #ffffffCC;
+    -fx-prompt-text-fill: #ffffff;
+    -fx-font: 15px Arial;
+    -fx-border-color:  #838484;
+    -fx-border-width: 2px;
+    -fx-background-color: #00000066;
+}
 
-  
+.text-field:focused {
+  -fx-border-color: #0078D7;
+  -fx-border-width: 1px;
+}
+
+.date-picker, .date-picker > .arrow-button
+{
+    -fx-text-fill: #ffffffCC;
+    -fx-prompt-text-fill: #ffffff;
+    -fx-font: 15px Arial;
+    -fx-border-color:  #838484;
+    -fx-border-width: 1px;
+    -fx-background-color: #00000066;
     
+}
+
+.jfx-date-picker > .arrow-button > .jfx-svg-glyph
+{
+    -fx-background-color: #ffffffCC;
+}
+
+.date-picker-popup .calendar-grid .day-cell:focused,
+.data-picker-list-cell:focused
+{
+    -fx-text-fill: white; /*turn it to white*/
+}
+
+.data-picker-list-cell:selected
+{
+    -fx-text-fill: red;
+}
+
+.date-picker-popup .calendar-grid .day-cell:hover,
+.data-picker-list-cell:hover
+{
+    -fx-background-color: #0078D799;
+    -fx-text-fill: white; 
+}
+
+.jfx-date-picker .input-line 
+{
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup .left-button .jfx-svg-glyph, .date-picker-popup .jfx-svg-glyph
+{
+   -fx-background-color: white
+}
+
+.date-picker-popup 
+{
+   -fx-background-color: #2B2B2B;
+   -fx-border-color: #777677;
+   -fx-border-width: 2px;
+}
+
+.date-picker-popup .calendar-grid .day-cell, .data-picker-list-cell,
+.date-picker-popup .day-name-cell, .date-picker-popup .spinner, 
+.date-picker-popup .month-year-pane, .date-picker-popup .spinner-label
+
+{
+    -fx-background-color: #2B2B2B;
+    -fx-text-fill: #ffffff;
+}
+  
+.data-picker .scroll-bar:vertical .thumb /*dbfjbndfknkbfdn*/
+{
+   -fx-background-color: red; 
+   -fx-text-fill: red;
+}
 
   

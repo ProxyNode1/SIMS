@@ -1,11 +1,11 @@
 .root
-{
-   -fx-background-color: #000000;
+{   -fx-background-color: #000000;
     -fx-border-color: #1883D7;
     -fx-border-width: 1px;
 }
 
-.table-view{
+.table-view
+{
     -fx-background-color:  #212121;
     -fx-selection-bar:  #212121;
     -fx-text-fill: white;
@@ -48,7 +48,8 @@
     -fx-border-width: 0;
  }
 
-.table-row-cell{
+.table-row-cell
+{
     -fx-text-fill: white;
     -fx-background-color: #212121;
     -fx-border-width: 0;
@@ -57,28 +58,30 @@
 
 }
 
-.table-row-cell:even{
+.table-row-cell:even
+{
     -fx-text-fill: white;
     -fx-background-color: #1A1A1A;
     -fx-border-width: 0;  
 }
 
-.table-row-cell:empty {
+.table-row-cell:empty 
+{
     -fx-background-color: transparent;
 }
 
-#table .table-cell{
+#table .table-cell
+{
     -fx-padding: 12px;
 }
 
 
-.table-row-cell:selected {
+.table-row-cell:selected 
+{
     -fx-background-color: #0078D7;
     -fx-background-insets: 0;
-    -fx-background-radius: 0;
-    
+    -fx-background-radius: 0;    
 }
-
 
 
 
@@ -101,13 +104,6 @@
   -fx-border-color: #0078D7;
   -fx-border-width: 1px;
 }
-
-/*#menu-button2
-{
-  -fx-background-color: #2F3136;
-  -fx-border-color:  #ffffff;
-  -fx-border-width: 1px;
-}*/
 
 .menu-button
 {

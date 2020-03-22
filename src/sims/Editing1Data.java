@@ -8,9 +8,9 @@ package sims;
 
 public class Editing1Data 
 {
-
-    private String nameVal = null, clgIDVal = null, monthVal = null, courseVal = null, contactVal = null;
-    private int yearVal = 0, dayVal = 0, currSemVal = 0;
+    private String oldNameVal = null;
+    private String nameVal = null, clgIDVal = null, courseVal = null, contactVal = null;
+    private int yearVal = 0, monthVal = 0, dayVal = 0, currSemVal = 0;
       
     
     private static volatile Editing1Data instance = null;
@@ -28,6 +28,18 @@ public class Editing1Data
         }
         
         return instance;
+    }
+    
+    
+    public String getOldNameVal() 
+    {
+        return oldNameVal;
+    }
+    
+    public void setOldNameVal(String oldNameVal) 
+    {
+        this.oldNameVal = oldNameVal;
+        System.out.println(this.oldNameVal);
     }
     
         
@@ -67,12 +79,12 @@ public class Editing1Data
     }
     
     
-    public String getMonthVal() 
+    public int getMonthVal() 
     {
         return monthVal;
     } 
     
-    public void setMonthVal(String monthVal) 
+    public void setMonthVal(int monthVal) 
     {
         this.monthVal = monthVal;
         System.out.println(this.monthVal);

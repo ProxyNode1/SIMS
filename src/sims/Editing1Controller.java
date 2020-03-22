@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -27,6 +28,8 @@ import javafx.event.EventHandler;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -38,9 +41,9 @@ public class Editing1Controller implements Initializable
 {
 
     private final String errorStyle = "-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
-    private final String successStyle = "-fx-border-color: #23ff23; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
     
-    Editing1Data dataClass = Editing1Data.getInstance();;       
+    
+    Editing1Data dataClass = Editing1Data.getInstance();      
         
     @FXML
     private Pane edit1;
@@ -52,53 +55,8 @@ public class Editing1Controller implements Initializable
     public JFXTextField clgID;
     
     @FXML
-    private JFXTextField dobYear;
-    
-    @FXML
-    private MenuButton dobMonth;
-               
-    @FXML
-    private MenuItem january;
-    
-    @FXML
-    private MenuItem faburary;
-
-    @FXML
-    private MenuItem march; 
-
-    @FXML
-    private MenuItem april;
-    
-    @FXML
-    private MenuItem may;
-
-    @FXML
-    private MenuItem june;
-
-    @FXML
-    private MenuItem july;
-    
-    @FXML
-    private MenuItem august;
-    
-    @FXML
-    private MenuItem september;
-    
-    @FXML
-    private MenuItem october;
-
-    @FXML
-    private MenuItem november;
-    
-    @FXML
-    private MenuItem december;
-    
-    @FXML
-    private Label monthLbl;
-    
-    @FXML
-    private JFXTextField dobDay;
-    
+    private JFXDatePicker dob;
+            
     @FXML
     private JFXTextField course;
     
@@ -107,22 +65,79 @@ public class Editing1Controller implements Initializable
     
     @FXML
     private JFXTextField contact;
-         
-                    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {  
         edit1.requestFocus();
                        
         name.setTooltip(new Tooltip ("use Fullname"));
-        dobYear.setTooltip(new Tooltip("eg. YYYY"));
         course.setTooltip(new Tooltip("eg. BE Computer Science"));
+        
+        setValues();
     }    
      
     ////////////////////////////////////////////////////////////////////////////
     // Set Values 
     
-    public void setNameVal()
+    public void setValues()
+    {
+        String tmp1;
+        int tmp2;
+        
+        tmp1 = dataClass.getNameVal();
+        if(tmp1 != null)
+        {
+            name.setText(tmp1);
+        }
+        
+        
+        tmp1 = dataClass.getClgIDVal();
+        if(tmp1 != null)
+        {
+            clgID.setText(tmp1);
+        }
+        
+        
+        int year = dataClass.getYearVal();
+        int month = dataClass.getMonthVal();
+        int day = dataClass.getDayVal();
+        
+        if(year != 0 && month != 0 && day != 0)
+        {
+            String date = String.format("%02d", month) +"-"+ String.format("%02d", day) +"-"+ String.format("%04d",year); //02-03-0002
+            
+            System.out.println(date);
+            
+            dob.setValue(LocalDate.parse(date, DateTimeFormatter.ofPattern("MM-dd-yyyy"))); 
+        }
+        
+        
+        tmp1 = dataClass.getCourseVal();
+        if(tmp1 != null)
+        {
+            course.setText(tmp1);
+        }
+        
+        
+        tmp2 = dataClass.getCurrSemVal();
+        if(tmp1 != null)
+        {
+            currSem.setText(Integer.toString(tmp2));
+        }
+        
+        
+        tmp1 = dataClass.getContactVal();
+        if(tmp1 != null)
+        {
+            contact.setText(tmp1);
+        }
+    }
+    
+    ////////////////////////////////////////////////////////////////
+    
+    public void getName() throws NullPointerException
     {       
         String tmp = name.getText();
         if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
@@ -130,18 +145,19 @@ public class Editing1Controller implements Initializable
             name.setText(null);
             dataClass.setNameVal(null);
             name.setStyle(errorStyle);
+            
+            //throw new NullPointerException("name null");
         } 
         
         else 
         { 
             name.setText(tmp);
-            name.setStyle(successStyle);
             dataClass.setNameVal(tmp);            
         }
     }
     
     
-    public void setClgIDVal()
+    public void getClgID() throws NullPointerException
     {   
         String tmp = clgID.getText();
         
@@ -150,276 +166,67 @@ public class Editing1Controller implements Initializable
             clgID.setText(null);
             dataClass.setClgIDVal(null);
             clgID.setStyle(errorStyle);   
+            
+            //throw new NullPointerException("clgID null");
         }
         else
         {
             clgID.setText(tmp);
-            dataClass.setClgIDVal(tmp);
-            clgID.setStyle(successStyle);         
+            dataClass.setClgIDVal(tmp);        
         }              
     }
     
-    
-    int numDays = 0;
-    
-    public void setJanuary()
+    public void getDate() throws NullPointerException
     {
-        numDays = 31;
-        dobMonth.setText("January");
-        dataClass.setMonthVal("1");
-        dobMonth.setStyle(successStyle);
+        LocalDate date = dob.getValue();
         
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-        }
-    }
-    
-    public void setFabruary()
-    {
-        if (dataClass.getYearVal() % 4 == 0) 
-        {
-            numDays = 29;
-        } 
-        else 
-        {
-            numDays = 28;
-        }
-        dobMonth.setText("Fabruary");
-        dataClass.setMonthVal("2");
-        dobMonth.setStyle(successStyle);
+        /*dataClass.setYearVal(date.getYear());
+            dataClass.setMonthVal(date.getMonthValue());
+            dataClass.setDayVal(date.getDayOfMonth()); 
         
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0); 
-        }
-    }
-    
-    public void setMarch()
-    {
-        numDays = 31;
-        dobMonth.setText("March");
-        dataClass.setMonthVal("3");
-        dobMonth.setStyle(successStyle);
+            dob.setStyle(successStyle);*/
         
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
+        if(date != null)
         {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-        }
-    }
-    
-    public void setApril()
-    {
-        numDays = 30;
-        dobMonth.setText("April");
-        dataClass.setMonthVal("4");
-        dobMonth.setStyle(successStyle);
-        
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-        }
-    }
-    
-    public void setMay()
-    {
-        numDays = 31;
-        dobMonth.setText("May");
-        dataClass.setMonthVal("5");
-        dobMonth.setStyle(successStyle);
-        
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-        }
-    }
-    
-    public void setJune()
-    {
-        numDays = 30;
-        dobMonth.setText("June");
-        dataClass.setMonthVal("6");
-        dobMonth.setStyle(successStyle);
-        
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-        }
-    }
-    
-    public void setJuly()
-    {
-        numDays = 31;
-        dobMonth.setText("July");
-        dataClass.setMonthVal("7");
-        dobMonth.setStyle(successStyle);
-        
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-        }
-    }
-    
-    public void setAugust()
-    {
-        numDays = 31;
-        dobMonth.setText("August");
-        dataClass.setMonthVal("8");
-        dobMonth.setStyle(successStyle);
-        
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0); 
-        }
-    }
-    
-    public void setSeptember()
-    {
-        numDays = 30;
-        dobMonth.setText("September");
-        dataClass.setMonthVal("9");
-        dobMonth.setStyle(successStyle);
-        
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-        }
-    }
-    
-    public void setOctober()
-    {
-        numDays = 31;
-        dobMonth.setText("October");
-        dataClass.setMonthVal("10");
-        dobMonth.setStyle(successStyle);
-        
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-        }
-    }
-    
-    public void setNovember()
-    {
-        numDays = 30;
-        dobMonth.setText("November");
-        dataClass.setMonthVal("11");
-        dobMonth.setStyle(successStyle);
-        
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-        }
-    }
-    
-    public void setDecember()
-    {
-        numDays = 31;
-        dobMonth.setText("December");
-        dataClass.setMonthVal("12");
-        dobMonth.setStyle(successStyle);
-        
-        if (dataClass.getDayVal() < 1 || dataClass.getDayVal() > numDays) 
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-        }
-    }
-    
-    
-    public void setMonthVal()
-    {
-        monthLbl.setVisible(true);               
-    }
-       
-        
-    public void setDayVal()
-    {  
-        try
-        {
-            int tmp = Integer.parseInt(dobDay.getText()); 
-            if (tmp != 0 && tmp <= 31 && tmp <= numDays ) 
-            {
-                dobDay.setText(String.valueOf(tmp)); 
-                dataClass.setDayVal(tmp);
-                dobDay.setStyle(successStyle);
-            }
-            else
-            {
-                dobDay.setText(null);
-                dataClass.setDayVal(0);
-                dobDay.setStyle(errorStyle);
-            }
-                       
+            dataClass.setYearVal(date.getYear());
+            dataClass.setMonthVal(date.getMonthValue());
+            dataClass.setDayVal(date.getDayOfMonth());
         }
         
-        catch(NumberFormatException e)
-        {
-            dobDay.setText(null);
-            dataClass.setDayVal(0);
-            dobDay.setStyle(errorStyle);
-        }       
-    }  
-    
-    
-    public void setYearVal()
-    {      
-        String tmp = dobYear.getText();
-        if(tmp != null && tmp.length() == 4)
-        {
-            try
-            {
-                dataClass.setYearVal(Integer.parseInt(tmp));                
-                dobYear.setText(tmp);
-                dobYear.setStyle(successStyle);                
-            }            
-            catch(NumberFormatException e)
-            {
-                dobYear.setText(null);
-                dataClass.setYearVal(0);
-                dobYear.setStyle(errorStyle);
-            }
-        }
         else
         {
-            dobYear.setText(null);
             dataClass.setYearVal(0);
-            dobYear.setStyle(errorStyle);
-        }            
+            dataClass.setMonthVal(0);
+            dataClass.setDayVal(0); 
+            
+            dob.setStyle(errorStyle);
+            throw new NullPointerException("dob null");
+        }
+        
     }
-         
+               
     
-    public void setCourseVal()
+    public void getCourse() throws NullPointerException
     {       
         String tmp = course.getText();               
         if(tmp == null || !Pattern.compile("[a-zA-Z0-9 -]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             course.setText(null);
             dataClass.setCourseVal(null);
-            course.setStyle(errorStyle);            
+            course.setStyle(errorStyle); 
+            
+            throw new NullPointerException("course null");
         } 
         
         else 
         { 
             course.setText(tmp);
             dataClass.setCourseVal(tmp);
-            course.setStyle(successStyle);
         }        
     }
     
     
-    public void setCurrSemVal()
+    public void getCurrSem() throws NullPointerException
     {          
         String tmp = currSem.getText();
         if (tmp != null) 
@@ -427,14 +234,15 @@ public class Editing1Controller implements Initializable
             try 
             {
                 dataClass.setCurrSemVal(Integer.parseInt(tmp));
-                currSem.setText(tmp);                
-                currSem.setStyle(successStyle);
+                currSem.setText(tmp);
             } 
             catch (NumberFormatException e) 
             {
                 currSem.setText(null);
                 dataClass.setCurrSemVal(0);
                 currSem.setStyle(errorStyle);
+                
+                throw new NullPointerException("currSem null");
             }
         }
         else
@@ -442,11 +250,13 @@ public class Editing1Controller implements Initializable
             currSem.setText(null);
             dataClass.setCurrSemVal(0);
             currSem.setStyle(errorStyle);
+            
+            throw new NullPointerException("currSem null");
         }
     }
     
     
-    public void setContactVal()
+    public void getContact() throws NullPointerException
     {  
         String tmp = contact.getText();       
         if(tmp == null || !Pattern.compile("^[+]?([0-9]{2,3})?[-]?[0-9]{10}$").matcher(tmp).matches())
@@ -454,29 +264,39 @@ public class Editing1Controller implements Initializable
             contact.setText(null);
             dataClass.setContactVal(null);
             contact.setStyle(errorStyle);
+            
+            throw new NullPointerException("contact null");
         } 
         
         else 
         { 
             contact.setText(tmp);
-            contact.setStyle(successStyle);
             dataClass.setContactVal(tmp);
         }
     } 
     
+    ////////////////////////////////////////////////////////////////////////////
+    // Validate Input
     
+    public void ValidateFields()
+    {
+       getName();
+       getClgID();
+       getDate();
+       getCourse();
+       getCurrSem();
+       getContact();
+    }
     
     ////////////////////////////////////////////////////////////////////////////
     // Changing to different page
     
     public void toNextPg(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
-    {  
-        DatabaseIO db = new DatabaseIO();
-        
-        db.InsertValues();
-        
+    {                  
         try 
         {
+            ValidateFields(); //save the fields value
+            
             Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
             Scene editPg1Scene = new Scene(editPag1);
             Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -484,9 +304,9 @@ public class Editing1Controller implements Initializable
             appStage.show();
             
         } 
-        catch (IOException e) 
+        catch (Exception e) 
         {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
     
@@ -500,9 +320,9 @@ public class Editing1Controller implements Initializable
             appStage.setScene(editPg1Scene);
             appStage.show();
         } 
-        catch (IOException e) 
-          {
-            e.printStackTrace();
-          }
+        catch (Exception e) 
+        {
+            System.err.println(e.getMessage());
+        }
     }
 }

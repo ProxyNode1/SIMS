@@ -11,12 +11,19 @@ public class DatabaseIO
     Connection connection = null;
     Statement statement = null;
     PreparedStatement prepStatement = null;
-    ResultSet resultSet = null;
-    
+        
     private String schemaName = "studentinfoschema";
     
+    Editing1Data edit1 = Editing1Data.getInstance();
+    Editing2DataSSC edit2Ssc = Editing2DataSSC.getInstance();
+    Editing2DataHSS edit2Hss = Editing2DataHSS.getInstance();
+    Editing2DataDiploma edit2Diploma = Editing2DataDiploma.getInstance();
+    Editing2DataUG edit2UG = Editing2DataUG.getInstance();
+    Editing2DataPG edit2PG = Editing2DataPG.getInstance();
+    Editing3Data edit3 = Editing3Data.getInstance();
+    
     public DatabaseIO() 
-    {
+    {                
         try
         {
             connection = DatabaseCon.connect();
@@ -44,7 +51,7 @@ public class DatabaseIO
         String basicInfo =  "CREATE TABLE IF NOT EXISTS " + schemaName +".basic_info ("+ 
                             "basic_info_Name VARCHAR(30) NOT NULL, "+
                             "ClgId VARCHAR(10) NOT NULL, "+
-                            "DOB DATE NOT NULL, "+
+                            "DOB DATE NOT NULL, "+ //year, month, date
                             "Course VARCHAR(15) NOT NULL, "+
                             "CurrentSem INT(1) UNSIGNED NOT NULL, "+
                             "Contact VARCHAR(15) NOT NULL, "+
@@ -172,9 +179,8 @@ public class DatabaseIO
     //Insert Values
     
     void InsertValues()
-    {
-        Editing1Data edit1 = Editing1Data.getInstance();
-        
+    {               
+        ResultSet resultSet = null;
         /*System.out.println( edit1.getNameVal());
         
         String query = "INSERT INTO "+ schemaName +".basic_info VALUES('"+
@@ -509,10 +515,10 @@ public class DatabaseIO
     ////////////////////////////////////////////////////////////////////////////
     // Get Data From The Table
     
-    public ResultSet getBasicInfo()
+    public ResultSet getBasicInfoForTable()
     {
         String query = "SELECT * FROM "+ schemaName +".basic_info";
-        
+        ResultSet resultSet = null;
         try
         {
            resultSet = connection.createStatement().executeQuery(query); 
@@ -541,24 +547,33 @@ public class DatabaseIO
         return resultSet;
     }
     
-    
-    public ResultSet getSscInfo()
+    public void getBasicInfo()
     {
-        String query = "SELECT * FROM "+ schemaName +".ssc_info";
+        String query = "SELECT * FROM "+ schemaName +".basic_info WHERE basic_info_name = '"+ edit1.getOldNameVal() + "';";
         
         try
         {
-           resultSet = connection.createStatement().executeQuery(query); 
-           /*while(resultSet.next())
+           ResultSet resultSet = connection.createStatement().executeQuery(query); 
+           while(resultSet.next())
            {
-           String tmp = resultSet.getString(2) +
-                        "   "+ resultSet.getString(1) +  
-                        "   "+ resultSet.getString(4).toUpperCase() + 
-                        "   "+ resultSet.getInt(5) + 
-                        "   "+ resultSet.getString(6); 
+               edit1.setNameVal(resultSet.getString(1)); //Name
+               edit1.setClgIDVal(resultSet.getString(2)); //ClgID
+               
+               
+               String Date[] = resultSet.getString(3).split("-");  //Date (yyyy-mm-dd)         
+               edit1.setYearVal( Integer.parseInt(Date[0]) );
+               edit1.setMonthVal( Integer.parseInt(Date[1]) );
+               edit1.setDayVal( Integer.parseInt(Date[2]) );
+               
+               
+               
+               edit1.setCourseVal(resultSet.getString(4)); //Course
+               edit1.setCurrSemVal(resultSet.getInt(5)); //CurrSem
+               edit1.setContactVal(resultSet.getString(6)); //Contact*/
             
-                System.out.println(tmp);
-           }*/
+                
+               break;
+           }
         }
         
         catch(SQLException e)
@@ -567,17 +582,17 @@ public class DatabaseIO
         }
         
                         
-        return resultSet;
+        //return resultSet;
     }
     
     
-    public ResultSet getHssInfo()
+    public void getSscInfo()
     {
-        String query = "SELECT * FROM "+ schemaName +".hss_info";
+        String query = "SELECT * FROM "+ schemaName +".ssc_info WHERE basic_info_name = "+ edit1.getOldNameVal();
         
         try
         {
-           resultSet = connection.createStatement().executeQuery(query); 
+           ResultSet resultSet = connection.createStatement().executeQuery(query); 
            /*while(resultSet.next())
            {
            String tmp = resultSet.getString(2) +
@@ -596,17 +611,17 @@ public class DatabaseIO
         }
         
                         
-        return resultSet;
+        //return resultSet;
     }
     
     
-    public ResultSet getDiplomaInfo()
+    public void getHssInfo()
     {
-        String query = "SELECT * FROM "+ schemaName +".diploma_info";
+        String query = "SELECT * FROM "+ schemaName +".hss_info WHERE basic_info_name = "+ edit1.getNameVal();
         
         try
         {
-           resultSet = connection.createStatement().executeQuery(query); 
+           ResultSet resultSet = connection.createStatement().executeQuery(query); 
            /*while(resultSet.next())
            {
            String tmp = resultSet.getString(2) +
@@ -625,17 +640,17 @@ public class DatabaseIO
         }
         
                         
-        return resultSet;
+        //return resultSet;
     }
     
     
-    public ResultSet getUGInfo()
+    public void getDiplomaInfo()
     {
-        String query = "SELECT * FROM "+ schemaName +".ug_info";
+        String query = "SELECT * FROM "+ schemaName +".diploma_info WHERE basic_info_name = "+ edit1.getNameVal();
         
         try
         {
-           resultSet = connection.createStatement().executeQuery(query); 
+           ResultSet resultSet = connection.createStatement().executeQuery(query); 
            /*while(resultSet.next())
            {
            String tmp = resultSet.getString(2) +
@@ -654,17 +669,17 @@ public class DatabaseIO
         }
         
                         
-        return resultSet;
+        //return resultSet;
     }
     
     
-    public ResultSet getPGInfo()
+    public void getUGInfo()
     {
-        String query = "SELECT * FROM "+ schemaName +".pg_info";
+        String query = "SELECT * FROM "+ schemaName +".ug_info WHERE basic_info_name = "+ edit1.getNameVal();
         
         try
         {
-           resultSet = connection.createStatement().executeQuery(query); 
+           ResultSet resultSet = connection.createStatement().executeQuery(query); 
            /*while(resultSet.next())
            {
            String tmp = resultSet.getString(2) +
@@ -683,16 +698,17 @@ public class DatabaseIO
         }
         
                         
-        return resultSet;
+        //return resultSet;
     }
     
-    public ResultSet getOtherInfo()
+    
+    public void getPGInfo()
     {
-        String query = "SELECT * FROM "+ schemaName +".other_info";
+        String query = "SELECT * FROM "+ schemaName +".pg_info WHERE basic_info_name = "+ edit1.getNameVal();
         
         try
         {
-           resultSet = connection.createStatement().executeQuery(query); 
+           ResultSet resultSet = connection.createStatement().executeQuery(query); 
            /*while(resultSet.next())
            {
            String tmp = resultSet.getString(2) +
@@ -711,7 +727,35 @@ public class DatabaseIO
         }
         
                         
-        return resultSet;
+        //return resultSet;
+    }
+    
+    public void getOtherInfo()
+    {
+        String query = "SELECT * FROM "+ schemaName +".other_info WHERE basic_info_name = "+ edit1.getNameVal();
+        
+        try
+        {
+           ResultSet resultSet = connection.createStatement().executeQuery(query); 
+           /*while(resultSet.next())
+           {
+           String tmp = resultSet.getString(2) +
+                        "   "+ resultSet.getString(1) +  
+                        "   "+ resultSet.getString(4).toUpperCase() + 
+                        "   "+ resultSet.getInt(5) + 
+                        "   "+ resultSet.getString(6); 
+            
+                System.out.println(tmp);
+           }*/
+        }
+        
+        catch(SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        
+                        
+        //return resultSet;
     }
     
 }

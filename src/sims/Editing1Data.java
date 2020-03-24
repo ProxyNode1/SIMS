@@ -39,7 +39,7 @@ public class Editing1Data
     public void setOldNameVal(String oldNameVal) 
     {
         this.oldNameVal = oldNameVal;
-        System.out.println(this.oldNameVal);
+        System.out.println("Old Name:" + this.oldNameVal);
     }
     
         

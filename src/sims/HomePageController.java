@@ -36,7 +36,7 @@ import com.sun.javafx.collections.ElementObservableListDecorator;
 
 public class HomePageController implements Initializable 
 {
-    DatabaseIO dbIO = new DatabaseIO();    
+    DatabaseIO dbIO = new DatabaseIO();
     
     @FXML
     private Pane homePage = new Pane();
@@ -90,7 +90,7 @@ public class HomePageController implements Initializable
                  
         try
         {                        
-            ResultSet resultSet = dbIO.getBasicInfo();
+            ResultSet resultSet = dbIO.getBasicInfoForTable();
             
             if(resultSet == null)
             {
@@ -103,9 +103,9 @@ public class HomePageController implements Initializable
                 
                 
                 observableList.add(new HomePageData(
-                        resultSet.getString(2) ,                // College ID
-                        resultSet.getString(1) ,                // Name
-                        resultSet.getString(4).toUpperCase() ,  // Course
+                        resultSet.getString(2),                // College ID
+                        resultSet.getString(1),                // Name
+                        resultSet.getString(4).toUpperCase(),  // Course
                         resultSet.getInt(5),                    // Current Sem
                         resultSet.getString(6)                 //Contact
                 ));
@@ -128,7 +128,7 @@ public class HomePageController implements Initializable
             System.err.println(e.getMessage());
         }
         
-        clgIDColumn.setCellValueFactory(new PropertyValueFactory<>("collegeId")); //
+        clgIDColumn.setCellValueFactory(new PropertyValueFactory<>("collegeId")); //the argument is a data class variable
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         courseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
         currSemColumn.setCellValueFactory(new PropertyValueFactory<>("currSem"));
@@ -160,23 +160,26 @@ public class HomePageController implements Initializable
     public void OpenEntry(MouseEvent event) 
     {
         
-        /*if(event.getClickCount() == 2) //on double click
+        if(event.getClickCount() == 2) //on double click
         {
             try 
             {
-                InputClass person = Table.getSelectionModel().getSelectedItem();
-                String x = person.getName(); 
+                Editing1Data Edit1Data = Editing1Data.getInstance();
+                HomePageData person = Table.getSelectionModel().getSelectedItem();
+                Edit1Data.setOldNameVal(person.getName()); 
                 
-                String b = x.trim();
-                System.out.println(b);
+                dbIO.getBasicInfo();
+                           
+                
+                
                 //(Editing1Controller.oldName) = b;
                 //Editing1Controller.ui = 0;
             
-                Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
+                /*Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
                 Scene editPg1Scene = new Scene(editPag1);
                 Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 appStage.setScene(editPg1Scene);
-                appStage.show();
+                appStage.show();*/
 
             } 
             catch (Exception ex) 
@@ -184,7 +187,7 @@ public class HomePageController implements Initializable
                 ex.printStackTrace();
             }
 
-        }*/
+        }
     }
   
 }   

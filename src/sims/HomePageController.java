@@ -35,34 +35,7 @@ import com.sun.javafx.collections.ElementObservableListDecorator;
 
 
 public class HomePageController implements Initializable 
-{
-    DatabaseIO dbIO = new DatabaseIO();
-    
-    @FXML
-    private Pane homePage = new Pane();
-    
-    @FXML
-    public Label StatusBtn = new Label();
-    
-    @FXML 
-    private  TableView<HomePageData> Table = new TableView<HomePageData>();
-    
-    @FXML 
-    private  TableColumn<HomePageData, String> clgIDColumn = new TableColumn<HomePageData, String>();  
-            
-    @FXML
-    private  TableColumn<HomePageData, String> nameColumn = new TableColumn<HomePageData, String>();   
-    
-    @FXML 
-    private  TableColumn<HomePageData, String> courseColumn = new TableColumn<HomePageData, String>();   
-    
-    @FXML 
-    private  TableColumn<HomePageData, Integer> currSemColumn = new TableColumn<HomePageData, Integer>();    
-        
-    @FXML 
-    private  TableColumn<HomePageData, String> contactColumn = new TableColumn<HomePageData, String>();     
-    
-        
+{    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -106,7 +79,7 @@ public class HomePageController implements Initializable
                         resultSet.getString(2),                // College ID
                         resultSet.getString(1),                // Name
                         resultSet.getString(4).toUpperCase(),  // Course
-                        resultSet.getInt(5),                    // Current Sem
+                        resultSet.getInt(5),                   // Current Sem
                         resultSet.getString(6)                 //Contact
                 ));
                 
@@ -164,7 +137,7 @@ public class HomePageController implements Initializable
         {
             try 
             {
-                Editing1Data Edit1Data = Editing1Data.getInstance();
+                BasicInfoData Edit1Data = BasicInfoData.getInstance();
                 HomePageData person = Table.getSelectionModel().getSelectedItem();
                 Edit1Data.setOldNameVal(person.getName()); 
                 
@@ -182,12 +155,39 @@ public class HomePageController implements Initializable
                 appStage.show();*/
 
             } 
-            catch (Exception ex) 
+            catch (Exception e) 
             {
-                ex.printStackTrace();
+                System.err.println(e.getMessage());
             }
 
         }
     }
+    
+    
+    private final DatabaseIO dbIO = new DatabaseIO();
+    
+    @FXML
+    private  final Pane homePage = new Pane();
+    
+    @FXML
+    public final Label StatusBtn = new Label();
+    
+    @FXML 
+    private final TableView<HomePageData> Table = new TableView<HomePageData>();
+    
+    @FXML 
+    private final TableColumn<HomePageData, String> clgIDColumn = new TableColumn<HomePageData, String>();  
+            
+    @FXML
+    private final TableColumn<HomePageData, String> nameColumn = new TableColumn<HomePageData, String>();   
+    
+    @FXML 
+    private final TableColumn<HomePageData, String> courseColumn = new TableColumn<HomePageData, String>();   
+    
+    @FXML 
+    private final TableColumn<HomePageData, Integer> currSemColumn = new TableColumn<HomePageData, Integer>();    
+        
+    @FXML 
+    private final TableColumn<HomePageData, String> contactColumn = new TableColumn<HomePageData, String>(); 
   
 }   

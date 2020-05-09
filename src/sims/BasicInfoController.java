@@ -9,72 +9,31 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Tooltip;
 import java.util.regex.Pattern;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import java.io.IOException;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.MenuButton; 
-import javafx.scene.control.Label;
-import java.util.Optional;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
+
 
 
 
 public class BasicInfoController implements Initializable 
 {
-
-    private final String errorStyle = "-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
-    
-    
-    BasicInfoData dataClass = BasicInfoData.getInstance();      
-        
-    @FXML
-    private Pane edit1;
-            
-    @FXML
-    private JFXTextField name;
-    
-    @FXML
-    public JFXTextField clgID;
-    
-    @FXML
-    private JFXDatePicker dob;
-            
-    @FXML
-    private JFXTextField course;
-    
-    @FXML
-    private JFXTextField currSem;
-    
-    @FXML
-    private JFXTextField contact;
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {  
         edit1.requestFocus();
-                       
-        name.setTooltip(new Tooltip ("use Fullname"));
+                      
         course.setTooltip(new Tooltip("eg. BE Computer Science"));
         
         setValues();
@@ -87,12 +46,6 @@ public class BasicInfoController implements Initializable
     {
         String tmp1;
         int tmp2;
-        
-        tmp1 = dataClass.getNameVal();
-        if(tmp1 != null)
-        {
-            name.setText(tmp1);
-        }
         
         
         tmp1 = dataClass.getClgIDVal();
@@ -138,27 +91,7 @@ public class BasicInfoController implements Initializable
     }
     
     ////////////////////////////////////////////////////////////////
-    
-    public void getName() throws NullPointerException
-    {       
-        String tmp = name.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
-        { 
-            name.setText(null);
-            dataClass.setNameVal(null);
-            name.setStyle(errorStyle);
-            
-            throw new NullPointerException("name null");
-        } 
-        
-        else 
-        { 
-            name.setText(tmp);
-            dataClass.setNameVal(tmp);            
-        }
-    }
-    
-    
+           
     public void getClgID() throws NullPointerException
     {   
         String tmp = clgID.getText();
@@ -173,10 +106,11 @@ public class BasicInfoController implements Initializable
         }
         else
         {
-            clgID.setText(tmp);
-            dataClass.setClgIDVal(tmp);        
+            dataClass.setClgIDVal(tmp); 
+            clgID.setStyle(null);       
         }              
     }
+    
     
     public void getDate() throws NullPointerException
     {
@@ -184,15 +118,14 @@ public class BasicInfoController implements Initializable
         
         /*dataClass.setYearVal(date.getYear());
             dataClass.setMonthVal(date.getMonthValue());
-            dataClass.setDayVal(date.getDayOfMonth()); 
-        
-            dob.setStyle(successStyle);*/
-        
+            dataClass.setDayVal(date.getDayOfMonth()); */
+                
         if(date != null)
         {
             dataClass.setYearVal(date.getYear());
             dataClass.setMonthVal(date.getMonthValue());
             dataClass.setDayVal(date.getDayOfMonth());
+            dob.setStyle(null);
         }
         
         else
@@ -221,9 +154,9 @@ public class BasicInfoController implements Initializable
         } 
         
         else 
-        { 
-            course.setText(tmp);
+        {
             dataClass.setCourseVal(tmp);
+            course.setStyle(null);
         }        
     }
     
@@ -236,7 +169,8 @@ public class BasicInfoController implements Initializable
             try 
             {
                 dataClass.setCurrSemVal(Integer.parseInt(tmp));
-                currSem.setText(tmp);
+                currSem.setStyle(null);
+                
             } 
             catch (NumberFormatException e) 
             {
@@ -244,7 +178,7 @@ public class BasicInfoController implements Initializable
                 dataClass.setCurrSemVal(0);
                 currSem.setStyle(errorStyle);
                 
-                throw new NullPointerException("currSem null");
+                throw new NullPointerException("currSem1 null");
             }
         }
         else
@@ -253,7 +187,7 @@ public class BasicInfoController implements Initializable
             dataClass.setCurrSemVal(0);
             currSem.setStyle(errorStyle);
             
-            throw new NullPointerException("currSem null");
+            throw new NullPointerException("currSem2 null");
         }
     }
     
@@ -273,7 +207,7 @@ public class BasicInfoController implements Initializable
         else 
         { 
             contact.setText(tmp);
-            dataClass.setContactVal(tmp);
+            contact.setStyle(null);
         }
     } 
     
@@ -281,8 +215,7 @@ public class BasicInfoController implements Initializable
     // Validate Input
     
     public void ValidateFields()
-    {
-       getName();
+    {       
        getClgID();
        getDate();
        getCourse();
@@ -290,20 +223,21 @@ public class BasicInfoController implements Initializable
        getContact();
     }
     
+    
     ////////////////////////////////////////////////////////////////////////////
     // Changing to different page
     
-    public void toNextPg(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
+    public void saveDat(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
     {                  
         try 
         {
             ValidateFields(); //save the fields value
             
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
+            /*Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
             Scene editPg1Scene = new Scene(editPag1);
             Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             appStage.setScene(editPg1Scene);
-            appStage.show();
+            appStage.show();*/
             
         } 
         catch (Exception e) 
@@ -311,20 +245,28 @@ public class BasicInfoController implements Initializable
             System.err.println(e.getMessage());
         }
     }
+        
+
+    private final String errorStyle = "-fx-border-color: #ff2323;";
     
-    public void toHomepg(MouseEvent event)
-    {
-        try 
-        {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-        } 
-        catch (Exception e) 
-        {
-            System.err.println(e.getMessage());
-        }
-    }
+    
+    private final BasicInfoData dataClass = BasicInfoData.getInstance();      
+        
+    @FXML
+    private AnchorPane edit1;            
+        
+    @FXML
+    public JFXTextField clgID;
+    
+    @FXML
+    private JFXDatePicker dob;
+            
+    @FXML
+    private JFXTextField course;
+    
+    @FXML
+    private JFXTextField currSem;
+    
+    @FXML
+    private JFXTextField contact;
 }

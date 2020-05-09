@@ -14,65 +14,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
  * @author Vic's
  */
-public class SSCInfoController implements Initializable {
-
-    private String errorStyle = "-fx-border-color: #ff2323; ";
-    
-    @FXML
-    private JFXTextField passYear;
-        
-    @FXML
-    private JFXTextField rNo;
-    
-    @FXML
-    private MenuButton board;
-    
-    @FXML
-    private MenuItem cbse;
-
-    @FXML
-    private MenuItem cisce;
-    
-    @FXML
-    private MenuItem state;
-
-    @FXML
-    private MenuItem ibo;
-    
-    @FXML
-    private MenuItem cie;
-    
-    @FXML
-    private JFXTextField medium;
-    
-    @FXML
-    private JFXTextField school;
-    
-    @FXML
-    private JFXTextField city;
-    
-    @FXML
-    private JFXTextField percent;
-    
-    @FXML
-    private Button save;
-            
-    SSCInfoData dataClass = SSCInfoData.getInstance();   
-    
-    
+public class SSCInfoController implements Initializable 
+{
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
         setValues();
     }    
-    
     
     
     ////////////////////////////////////////////////////////////////////////////
@@ -152,7 +107,7 @@ public class SSCInfoController implements Initializable {
                 passYear.setText(null);
                 dataClass.setPassYearVal(0);
                 passYear.setStyle(errorStyle);
-                throw new NullPointerException("sPassYear null");
+                throw new NullPointerException("sPassYear1 null");
             }
         }
         else
@@ -160,7 +115,7 @@ public class SSCInfoController implements Initializable {
             passYear.setText(null);
             dataClass.setPassYearVal(0);
             passYear.setStyle(errorStyle);
-            throw new NullPointerException("sPassYear null");
+            throw new NullPointerException("sPassYear2 null");
         }
     }
     
@@ -173,7 +128,7 @@ public class SSCInfoController implements Initializable {
             rNo.setText(null);
             dataClass.setRNoVal(null);
             rNo.setStyle(errorStyle);
-            throw new NullPointerException("sPassYear null");
+            throw new NullPointerException("sRno null");
         }        
         else
         {
@@ -190,7 +145,7 @@ public class SSCInfoController implements Initializable {
             board.setText("Select List Item");
             dataClass.setBoardVal("null"); 
             board.setStyle(errorStyle);
-            throw new NullPointerException("sPassYear null");
+            throw new NullPointerException("sBoard null");
         } 
         else
         {
@@ -202,9 +157,9 @@ public class SSCInfoController implements Initializable {
     public void getCBSE()
     {
         board.setText("CBSE");
-        //dataClass.setBoardVal("CBSE");   
-        board.setStyle("-fx-border-color: #23ff23;");
+        //dataClass.setBoardVal("CBSE");
     }
+    
     
     public void getCISCE()
     {
@@ -212,11 +167,13 @@ public class SSCInfoController implements Initializable {
         //dataClass.setBoardVal("CISCE");
     }
     
+    
     public void getState()
     {
         board.setText("STATE");
         //dataClass.setBoardVal("STATE");
     }
+    
     
     public void getIBO()
     {
@@ -224,6 +181,7 @@ public class SSCInfoController implements Initializable {
         //dataClass.setBoardVal("IBO");
     }
      
+    
     public void getSCIE()
     {
         board.setText("CIE");
@@ -268,7 +226,7 @@ public class SSCInfoController implements Initializable {
     public void getCity() throws NullPointerException
     {   
         String tmp = city.getText();
-        if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
+        if(tmp == null || !Pattern.compile("[a-zA-Z0-9 ,]+", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())
         { 
             city.setText(null);
             dataClass.setCityVal(null);
@@ -285,7 +243,7 @@ public class SSCInfoController implements Initializable {
     public void getPercent() throws NullPointerException
     {           
         String tmp = percent.getText();
-        if (tmp != null) 
+        if (tmp != null && Float.parseFloat(tmp) <= 100.0) 
         {
             try 
             {
@@ -296,7 +254,7 @@ public class SSCInfoController implements Initializable {
                 percent.setText(null);
                 dataClass.setPercentVal(0.f);
                 percent.setStyle(errorStyle);
-                throw new NullPointerException("sPercentVal not a float");
+                throw new NullPointerException("sPercentVal1 not a float");
             }
         }
         else
@@ -304,27 +262,27 @@ public class SSCInfoController implements Initializable {
             percent.setText(null);
             dataClass.setPercentVal(0.f);
             percent.setStyle(errorStyle);
-            throw new NullPointerException("sPercentVal not a float");
+            throw new NullPointerException("sPercentVal2 not a float");
         }
         
-    }    
-    
+    }        
     
     
     public void ValidateFields()
     {
        getPassYear();
-       getRNo();
-       getBoard();
+       getRNo();       
        getMedium();
        getSchool();
        getCity();
+       getBoard();
        getPercent();
     }
     
     
     
-     public void saveDat()
+    
+    public void saveDat()
     {
         try 
         {
@@ -336,4 +294,48 @@ public class SSCInfoController implements Initializable {
             System.err.println(e.getMessage());
         }        
     }
+    
+    
+        
+    @FXML
+    private JFXTextField passYear;
+        
+    @FXML
+    private JFXTextField rNo;
+    
+    @FXML
+    private MenuButton board;
+    
+    @FXML
+    private MenuItem cbse;
+
+    @FXML
+    private MenuItem cisce;
+    
+    @FXML
+    private MenuItem state;
+
+    @FXML
+    private MenuItem ibo;
+    
+    @FXML
+    private MenuItem cie;
+    
+    @FXML
+    private JFXTextField medium;
+    
+    @FXML
+    private JFXTextField school;
+    
+    @FXML
+    private JFXTextField city;
+    
+    @FXML
+    private JFXTextField percent;
+    
+    @FXML
+    private Button save;
+            
+    private final String errorStyle = "-fx-border-color: #ff2323; ";
+    private final SSCInfoData dataClass = SSCInfoData.getInstance();
 }

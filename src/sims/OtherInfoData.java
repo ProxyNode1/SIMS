@@ -11,15 +11,6 @@ package sims;
  */
 public class OtherInfoData 
 {
-    private String personMailVal = null, universityMailVal = null, dadContactVal = null, famContactVal = null, addInfoVal = null;
-    
-    static volatile OtherInfoData instance = null;
-
-    
-    OtherInfoData()
-    {}
-    
-    
     public static OtherInfoData getInstance()
     {
         if(instance == null)
@@ -36,6 +27,7 @@ public class OtherInfoData
         return personMailVal;
     }
 
+    
     public void setPersonMailVal(String personMailVal) 
     {
         this.personMailVal = personMailVal;
@@ -48,6 +40,7 @@ public class OtherInfoData
         return universityMailVal;
     }
 
+    
     public void setUniversityMailVal(String universityMailVal) 
     {
         this.universityMailVal = universityMailVal;
@@ -60,6 +53,7 @@ public class OtherInfoData
         return dadContactVal;
     }
 
+    
     public void setDadContactVal(String dadContactVal) 
     {
         this.dadContactVal = dadContactVal;
@@ -72,6 +66,7 @@ public class OtherInfoData
         return famContactVal;
     }
 
+    
     public void setFamContactVal(String famContactVal) 
     {
         this.famContactVal = famContactVal;
@@ -84,9 +79,29 @@ public class OtherInfoData
         return addInfoVal;
     }
 
+    
     public void setAddInfoVal(String addInfoVal) 
     {
         this.addInfoVal = addInfoVal;
         System.out.println(addInfoVal);        
     }   
+    
+    
+    public void setDefaultValues()
+    {
+        personMailVal = null;
+        universityMailVal = null;
+        dadContactVal = null;
+        famContactVal = null;
+        addInfoVal = null;
+    }
+    
+    
+    private String personMailVal = null, universityMailVal = null, dadContactVal = null, famContactVal = null, addInfoVal = null;
+    
+    static volatile OtherInfoData instance = null;
+
+    
+    private OtherInfoData()
+    {}
 }

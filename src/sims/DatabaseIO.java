@@ -7,21 +7,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 public class DatabaseIO 
-{
-    Connection connection = null;
-    Statement statement = null;
-    PreparedStatement prepStatement = null;
-        
-    private String schemaName = "studentinfoschema";
-    
-    Editing1Data edit1 = Editing1Data.getInstance();
-    Editing2DataSSC edit2Ssc = Editing2DataSSC.getInstance();
-    Editing2DataHSS edit2Hss = Editing2DataHSS.getInstance();
-    Editing2DataDiploma edit2Diploma = Editing2DataDiploma.getInstance();
-    Editing2DataUG edit2UG = Editing2DataUG.getInstance();
-    Editing2DataPG edit2PG = Editing2DataPG.getInstance();
-    Editing3Data edit3 = Editing3Data.getInstance();
-    
+{   
     public DatabaseIO() 
     {                
         try
@@ -38,13 +24,14 @@ public class DatabaseIO
         }
     }
     
+    
     public String getSchemaName()
     {
         return schemaName;
     }
     
     
-    final public void createTables()
+    public void createTables()
     {
         String cr8schema = "CREATE SCHEMA " + schemaName;
         
@@ -175,6 +162,7 @@ public class DatabaseIO
                
     }
     
+    
     ////////////////////////////////////////////////////////////////////
     //Insert Values
     
@@ -206,7 +194,7 @@ public class DatabaseIO
         
         
         
-        /*Editing2DataSSC edit2SSC = Editing2DataSSC.getInstance();
+        /*SSCInfoData edit2SSC = SSCInfoData.getInstance();
         
                 
         String query = "INSERT INTO "+ schemaName +".ssc_info value ('"+ edit1.getNameVal() 
@@ -230,7 +218,7 @@ public class DatabaseIO
         */
                 
         
-        /*Editing2DataHSS edit2Hss = Editing2DataHSS.getInstance();
+        /*HSSInfoData edit2Hss = HSSInfoData.getInstance();
                          
         
         String query = "INSERT INTO "+ schemaName +".hss_info value ('"+ edit1.getNameVal() 
@@ -254,7 +242,7 @@ public class DatabaseIO
         }*/
                 
          
-        /*Editing2DataDiploma edit2Diploma = Editing2DataDiploma.getInstance();
+        /*DiplomaInfoData edit2Diploma = DiplomaInfoData.getInstance();
                
         String query = "INSERT INTO "+ schemaName +".diploma_info VALUES( '"+ edit1.getNameVal() + "', "+  edit2Diploma.getPassYearVal()
                 +", '"+ edit2Diploma.getSchoolVal() +"', '"+ edit2Diploma.getCityVal() +"', "+ edit2Diploma.getPercent1Val() 
@@ -278,7 +266,7 @@ public class DatabaseIO
         }*/
                  
         
-        /*Editing2DataUG edit2UG = Editing2DataUG.getInstance();
+        /*UGInfoData edit2UG = UGInfoData.getInstance();
                              
         String query = "INSERT INTO "+ schemaName +".ug_info VALUES( '"+ edit1.getNameVal() + "', "+  edit2UG.getPassYearVal()
                 +", '"+ edit2UG.getSchoolVal() +"', '"+ edit2UG.getCityVal() +"', "+ edit2UG.getPercent1Val() 
@@ -302,7 +290,7 @@ public class DatabaseIO
         
                        
               
-        /*Editing2DataPG edit2PG = Editing2DataPG.getInstance();
+        /*PGInfoData edit2PG = PGInfoData.getInstance();
                
         String query = "INSERT INTO "+ schemaName +".pg_info VALUES( '"+ edit1.getNameVal() + "', "+  edit2PG.getPassYearVal()
                 +", '"+ edit2PG.getSchoolVal() +"', '"+ edit2PG.getCityVal() +"', "+ edit2PG.getPercent1Val() 
@@ -323,7 +311,7 @@ public class DatabaseIO
         }*/
         
         
-        /*Editing3Data edit3 = Editing3Data.getInstance();
+        /*OtherInfoData edit3 = OtherInfoData.getInstance();
         
         String query = "INSERT INTO "+ schemaName +".other_info VALUES"
                 + "( "
@@ -518,10 +506,10 @@ public class DatabaseIO
     public ResultSet getBasicInfoForTable()
     {
         String query = "SELECT * FROM "+ schemaName +".basic_info";
-        ResultSet resultSet = null;
+        
         try
         {
-           resultSet = connection.createStatement().executeQuery(query); 
+           return connection.createStatement().executeQuery(query); 
            
            /*while(resultSet.next())
            {
@@ -532,8 +520,7 @@ public class DatabaseIO
                         "   "+ resultSet.getString(6); 
             
                 System.out.println(tmp);
-           }*/
-           
+           }*/         
           
         }
         
@@ -544,8 +531,9 @@ public class DatabaseIO
         }
         
                         
-        return resultSet;
+        
     }
+    
     
     public void getBasicInfo()
     {
@@ -557,6 +545,7 @@ public class DatabaseIO
            while(resultSet.next())
            {
                edit1.setNameVal(resultSet.getString(1)); //Name
+               edit1.setOldNameVal(resultSet.getString(1)); // Old Name
                edit1.setClgIDVal(resultSet.getString(2)); //ClgID
                
                
@@ -580,9 +569,6 @@ public class DatabaseIO
         {
             System.err.println(e.getMessage());
         }
-        
-                        
-        //return resultSet;
     }
     
     
@@ -730,6 +716,7 @@ public class DatabaseIO
         //return resultSet;
     }
     
+    
     public void getOtherInfo()
     {
         String query = "SELECT * FROM "+ schemaName +".other_info WHERE basic_info_name = "+ edit1.getNameVal();
@@ -757,5 +744,21 @@ public class DatabaseIO
                         
         //return resultSet;
     }
+    
+    
+    
+    private Connection connection = null;
+    private Statement statement = null;
+    private PreparedStatement prepStatement = null;
+        
+    private String schemaName = "studentinfoschema";
+    
+    private final BasicInfoData edit1 = BasicInfoData.getInstance();
+    private final SSCInfoData edit2Ssc = SSCInfoData.getInstance();
+    private final HSSInfoData edit2Hss = HSSInfoData.getInstance();
+    private final DiplomaInfoData edit2Diploma = DiplomaInfoData.getInstance();
+    private final UGInfoData edit2UG = UGInfoData.getInstance();
+    private final PGInfoData edit2PG = PGInfoData.getInstance();
+    private final OtherInfoData edit3 = OtherInfoData.getInstance();
     
 }

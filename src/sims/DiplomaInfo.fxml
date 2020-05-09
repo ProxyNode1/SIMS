@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1203.0" styleClass="pane" stylesheets="@Common.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.DiplomaInfoController">
+   <children>
+      <Label layoutX="17.0" layoutY="51.0" stylesheets="@Common.css" text="Graduation Year">
+         <font>
+            <Font name="Segoe UI" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="passYear" layoutX="18.0" layoutY="80.0" maxHeight="30.0" maxWidth="294.0" prefHeight="30.0" prefWidth="294.0" promptText="Enter graduation year" stylesheets="@Common.css">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="374.0" layoutY="51.0" stylesheets="@Common.css" text="School">
+         <font>
+            <Font name="Segoe UI" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="school" layoutX="375.0" layoutY="80.0" maxHeight="30.0" maxWidth="294.0" prefHeight="30.0" prefWidth="294.0" promptText="Enter school name" stylesheets="@Common.css">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="733.0" layoutY="51.0" stylesheets="@Common.css" text="City">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="city" layoutX="734.0" layoutY="80.0" maxHeight="30.0" maxWidth="294.0" prefHeight="30.0" prefWidth="294.0" promptText="Enter city name" stylesheets="@Common.css">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="percent" layoutX="18.0" layoutY="190.0" maxHeight="30.0" maxWidth="294.0" prefHeight="30.0" prefWidth="294.0" promptText="Enter percentage acquired" stylesheets="@Common.css">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="17.0" layoutY="161.0" stylesheets="@Common.css" text="Percentage">
+         <font>
+            <Font name="Segoe UI" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

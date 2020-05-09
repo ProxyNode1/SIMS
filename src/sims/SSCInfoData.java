@@ -10,20 +10,7 @@ package sims;
  * @author Vic's
  */
 public class SSCInfoData
-{
-    private int passYearVal = 0;
-       
-    private String rNoVal = null, boardVal = null, mediumVal = null, schoolVal = null, cityVal = null;
-
-    private float percentVal = 0.f;
-    
-    private static volatile SSCInfoData instance = null;
-    
-    
-    private SSCInfoData()
-    {}
-    
-        
+{       
     public static SSCInfoData getInstance()
     {
         if(instance == null)
@@ -40,6 +27,7 @@ public class SSCInfoData
         return passYearVal;
     }
 
+    
     public void setPassYearVal(int passYearVal) 
     {
         this.passYearVal = passYearVal;
@@ -51,6 +39,7 @@ public class SSCInfoData
     {
         return rNoVal;
     }
+    
     
     public void setRNoVal(String rNoVal) 
     {
@@ -64,6 +53,7 @@ public class SSCInfoData
         return boardVal;
     }
 
+    
     public void setBoardVal(String boardVal) 
     {
         this.boardVal = boardVal;
@@ -76,6 +66,7 @@ public class SSCInfoData
         return mediumVal;
     }
 
+    
     public void setMediumVal(String mediumVal) 
     {
         this.mediumVal = mediumVal;
@@ -88,6 +79,7 @@ public class SSCInfoData
         return schoolVal;
     }
 
+    
     public void setSchoolVal(String schoolVal) 
     {
         this.schoolVal = schoolVal;
@@ -100,6 +92,7 @@ public class SSCInfoData
         return cityVal;
     }
 
+    
     public void setCityVal(String cityVal) 
     {
         this.cityVal = cityVal;
@@ -112,10 +105,35 @@ public class SSCInfoData
         return percentVal;
     }
 
+    
     public void setPercentVal(float percentVal) 
     {
         this.percentVal = percentVal;
         System.out.println(percentVal);
     }
     
+    
+    public void setDefaultValues()
+    {
+        passYearVal = 0;
+        rNoVal = null;
+        boardVal = null;
+        mediumVal = null;
+        schoolVal = null;
+        cityVal = null;
+        percentVal = 0.f;
+    }
+    
+    
+    private int passYearVal = 0;
+       
+    private String rNoVal = null, boardVal = null, mediumVal = null, schoolVal = null, cityVal = null;
+
+    private float percentVal = 0.f;
+    
+    private static volatile SSCInfoData instance = null;
+    
+    
+    private SSCInfoData()
+    {}
 }

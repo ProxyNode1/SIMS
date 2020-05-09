@@ -1,108 +1,98 @@
-.root
-{   -fx-background-color: #000000;
+/*@font-face
+{
+    src: url("F:\NetBeans 8.2\projects\SIMS\src\assets\segoeui.ttf");
+}*/
+
+.anchor-pane
+{   -fx-background-color: black;
     -fx-border-color: #1883D7;
     -fx-border-width: 1px;
 }
 
+.pane
+{   -fx-background-color: black;
+}
+
+
 .table-view
 {
-    -fx-background-color:  #212121;
-    -fx-selection-bar:  #212121;
+    -fx-background-color: #000000FF; 
     -fx-text-fill: white;
-    -fx-border-width: 0;    
+    -fx-border-width: 0;   
 }
 
-
-.table-view .header
+.table .table-cell
 {
-    -fx-text-fill: white;
-    -fx-border-color: #212121;
-    -fx-opacity: 100;
-    -fx-background-color:#212121;
-    -fx-font-size: 14px;
-    -fx-border-width: 0;
-    -fx-alignment: TOP_LEFT;
-    -fx-padding: 8px;
-    
-}
-
-
-.table-view .column-header .label {
-     
-    -fx-text-fill: white;
-    -fx-border-color: #212121;
-    -fx-opacity: 100;
-    -fx-background-color:#212121;
-    -fx-font-size: 14px;
-    -fx-border-width: 0;
-    -fx-alignment: TOP_LEFT;
-    -fx-padding: 8px;
-    
-}
-
-.table-view .table-column 
-{
-    -fx-alignment: TOP_LEFT;
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-border-width: 0;
- }
-
-.table-row-cell
-{
-    -fx-text-fill: white;
-    -fx-background-color: #212121;
-    -fx-border-width: 0;
-    -fx-padding: 5 0 0 0;
+    -fx-padding: 12px;
+    -fx-border-width: 0; 
     -fx-cell-size: 40px;
-
 }
 
 .table-row-cell:even
 {
-    -fx-text-fill: white;
-    -fx-background-color: #1A1A1A;
-    -fx-border-width: 0;  
+    -fx-background-color: #1a1a1a;
 }
 
-.table-row-cell:empty 
+.table-row-cell:odd
+{
+    -fx-background-color: #000000FF;
+}
+
+.table-row-cell:empty
 {
     -fx-background-color: transparent;
 }
 
-#table .table-cell
+.table-row-cell:filled:hover
 {
-    -fx-padding: 12px;
+    -fx-background-color: #2B2B2BFF; 
+}
+
+.table-row-cell:selected
+{
+    -fx-background-color: #0078D799;
+}
+
+.table-view .table-column
+{
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-padding: 0px 0px 0px 15px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI";
+}
+
+.table-view .column-header, .table-view .column-header-background .filler 
+{
+    -fx-text-fill: white;  
+    -fx-background-color: #000000FF;
+    -fx-border-color: #FFFFFF66;    
+}
+
+.table-view .column-header .label
+{
+   -fx-text-fill: white;
+   -fx-font: 20px bold; 
+   -fx-alignment: CENTER_LEFT;
 }
 
 
-.table-row-cell:selected 
+
+.scroll-pane 
 {
-    -fx-background-color: #0078D7;
-    -fx-background-insets: 0;
-    -fx-background-radius: 0;    
-}
-
-
-
-.scroll-pane {
     -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-background:  #212121;
-    -fx-border-color:  #212121;
+    -fx-background:  black;
 }
 
-.scroll-pane:focused {
+.scroll-pane:focused 
+{
     -fx-background-insets: 0;
 }
 
-.scroll-pane .corner {
+.scroll-pane .corner 
+{
     -fx-background-insets: 0;
-}
-
-.menu-button:focused {
-  -fx-border-color: #0078D7;
-  -fx-border-width: 1px;
 }
 
 .menu-button
@@ -112,46 +102,87 @@
   -fx-border-width: 1px;
 }
 
+.menu-button:focused 
+{
+  /*-fx-border-color: #0078D7;
+  -fx-border-width: 1px;*/
+}
 
-.text-field{
+.menu-item .label
+ {
+    -fx-text-fill: #ffffff99;
+ }
+
+.menu-item:hover, .menu-item:focused
+{
+    -fx-background-color: #0078D7;
+}
+
+.menu-item:hover .label, .menu-item:focused .label
+{
+    -fx-text-fill: white;
+}
+
+.context-menu 
+{
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color: #2B2B2B;
+    -fx-border-color:  #ffffff;
+    -fx-border-width: 1px;
+}
+
+.text-field
+{
     -fx-text-fill: #ffffffCC;
     -fx-prompt-text-fill: #ffffff;
-    -fx-font: 15px Arial;
+    -fx-font-size: 15px;
+    -fx-font-family: "Segoe UI";
     -fx-border-color:  #838484;
     -fx-border-width: 2px;
     -fx-background-color: #00000066;
+    -jfx-unfocus-color: transparent;
+    -jfx-focus-color: transparent;
+    
 }
 
-.text-field:focused {
-  -fx-border-color: #0078D7;
-  -fx-border-width: 1px;
+.text-field:focused 
+{
+  -fx-background-color: #ffffff;
+  -fx-text-fill: black;
+  -fx-border-color: #0078D7;  
+  
 }
 
 .date-picker, .date-picker > .arrow-button
 {
-    -fx-text-fill: #ffffffCC;
-    -fx-prompt-text-fill: #ffffff;
-    -fx-font: 15px Arial;
-    -fx-border-color:  #838484;
     -fx-border-width: 1px;
     -fx-background-color: #00000066;
     
 }
 
+.date-picker > .arrow-button
+{
+    -fx-border-color: #838484
+}
+
 .jfx-date-picker > .arrow-button > .jfx-svg-glyph
 {
     -fx-background-color: #ffffffCC;
+    
 }
 
 .date-picker-popup .calendar-grid .day-cell:focused,
 .data-picker-list-cell:focused
 {
-    -fx-text-fill: white; /*turn it to white*/
+    -fx-background-color: #0078D7FF;
+    -fx-text-fill: white; 
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
 }
 
 .data-picker-list-cell:selected
 {
-    -fx-text-fill: red;
+    -fx-text-fill: white;
 }
 
 .date-picker-popup .calendar-grid .day-cell:hover,
@@ -184,7 +215,7 @@
 
 {
     -fx-background-color: #2B2B2B;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #FFFFFF;
 }
   
 .data-picker .scroll-bar:vertical .thumb /*dbfjbndfknkbfdn*/
@@ -193,4 +224,62 @@
    -fx-text-fill: red;
 }
 
-  
+.label
+{
+    -fx-text-fill: white;
+}
+
+.largetext
+{
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: #FFFFFF;
+    -fx-font-size: 40px;
+    -fx-font-family: "Segoe UI";
+    -fx-border-color:  #000000;
+    -fx-border-width: 1px;
+    -fx-background-color: transparent;
+    -jfx-unfocus-color: transparent;
+    -jfx-focus-color: transparent;
+}
+
+.largetext:focused
+{
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: #FFFFFF66;
+    -fx-font-size: 40px;
+    -fx-font-family: "Segoe UI";
+    -fx-border-color:  #000000;
+    -fx-border-width: 1px;
+    -fx-background-color: transparent;
+    -jfx-unfocus-color: transparent;
+    -jfx-focus-color: transparent;
+}
+
+.jfx-tab-pane .tab-header-background
+{
+    -fx-border-bottom-color: white;
+    -fx-background-color: black;
+}
+
+.tab .tab-label
+{
+    -fx-text-fill: #ffffff;
+}
+
+
+.tab-pane:top *.tab-header-area 
+{
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
+    -fx-background-color: red;
+}
+
+.jfx-tab-pane .tab-selected-line 
+{
+    -fx-background-color: #0078D7FF; 
+}
+
+ .jfx-tab-pane .tab-header-area .jfx-rippler 
+ {
+    -jfx-rippler-fill: transparent; 
+ }

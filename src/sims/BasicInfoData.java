@@ -7,19 +7,7 @@ package sims;
 
 
 public class BasicInfoData 
-{
-    private String oldNameVal = null;
-    private String nameVal = null, clgIDVal = null, courseVal = null, contactVal = null;
-    private int yearVal = 0, monthVal = 0, dayVal = 0, currSemVal = 0;
-      
-    
-    private static volatile BasicInfoData instance = null;
-    
-    
-    private BasicInfoData()
-    {   }
-    
-            
+{        
     public static BasicInfoData getInstance()
     {
         if(instance == null)
@@ -36,6 +24,7 @@ public class BasicInfoData
         return oldNameVal;
     }
     
+    
     public void setOldNameVal(String oldNameVal) 
     {
         this.oldNameVal = oldNameVal;
@@ -47,6 +36,7 @@ public class BasicInfoData
     {
         return nameVal;
     }
+    
     
     public void setNameVal(String nameVal) 
     {
@@ -60,6 +50,7 @@ public class BasicInfoData
         return clgIDVal;
     }
 
+    
     public void setClgIDVal(String clgIDVal) 
     {
         this.clgIDVal = clgIDVal;
@@ -72,6 +63,7 @@ public class BasicInfoData
         return yearVal;
     }
 
+    
     public void setYearVal(int yearVal) 
     {
         this.yearVal = yearVal;
@@ -83,6 +75,7 @@ public class BasicInfoData
     {
         return monthVal;
     } 
+    
     
     public void setMonthVal(int monthVal) 
     {
@@ -96,6 +89,7 @@ public class BasicInfoData
         return dayVal;
     }
     
+    
     public void setDayVal(int dayVal) 
     {
         this.dayVal = dayVal;
@@ -108,6 +102,7 @@ public class BasicInfoData
         return courseVal;
     }
 
+    
     public void setCourseVal(String courseVal) 
     {
         this.courseVal = courseVal;
@@ -133,9 +128,36 @@ public class BasicInfoData
         return contactVal;
     }
     
+    
     public void setContactVal(String contactVal) 
     {
         this.contactVal = contactVal;
         System.out.println(this.contactVal);
     }
+    
+    
+    public void setDefaultValue()
+    {
+        oldNameVal = null;
+        nameVal = null;
+        clgIDVal = null;
+        courseVal = null;
+        contactVal = null;
+        yearVal = 0;
+        monthVal = 0;
+        dayVal = 0;
+        currSemVal = 0;
+    }
+    
+    
+    private String oldNameVal = null;
+    private String nameVal = null, clgIDVal = null, courseVal = null, contactVal = null;
+    private int yearVal = 0, monthVal = 0, dayVal = 0, currSemVal = 0;
+      
+    
+    private static volatile BasicInfoData instance = null;
+    
+    
+    private BasicInfoData()
+    {}
 }

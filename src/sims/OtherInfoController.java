@@ -7,66 +7,28 @@ import javafx.fxml.Initializable;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.Pane;
+import java.util.regex.Pattern;
+
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import java.util.regex.Pattern;
-
-
-import javafx.scene.control.Tooltip;
-import javafx.scene.control.Label;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
-import java.sql.*;
-import java.util.Optional;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.scene.input.MouseEvent;
 
 
 
-/**
- * FXML Controller class
- *
- * @author VIC's
- */
-public class OtherInfoController implements Initializable {
-
-        
-    private String errorStyle = "-fx-border-color: #ff2323; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
-    private String successStyle = "-fx-border-color: #23ff23; -fx-text-fill: white; -fx-prompt-text-fill: white; ";
-    
-    //private String personMailVal = null, universityMailVal = null, dadContactVal = null, famContactVal = null, addInfoVal = null;
-   
-    OtherInfoData dataClass = OtherInfoData.getInstance();
-    
-    @FXML
-    private Pane edit3;
-       
-    @FXML
-    private JFXTextField personMail;
-    
-    @FXML
-    private JFXTextField universityMail;
-                
-    @FXML
-    private JFXTextField dadContact;
-    
-    @FXML
-    private JFXTextField famContact;
-       
-    @FXML
-    private TextArea addInfo;
-            
-       
+public class OtherInfoController implements Initializable 
+{
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
         edit3.requestFocus();
+        
+        setValues();
 
         /*if(Editing1Controller.ui  == 1)
         {
@@ -93,8 +55,49 @@ public class OtherInfoController implements Initializable {
         
     ///////////////////////////////////////////////////////////////////////////
     // Set Values
+    public void setValues()
+    {
+        String tmp1;
+        
+        tmp1 = dataClass.getPersonMailVal();        
+        if(tmp1 != null)
+        {
+            personMail.setText(tmp1);
+        }
+        
+        
+        tmp1 = dataClass.getUniversityMailVal();
+        if(tmp1 != null)
+        {
+            universityMail.setText(tmp1);
+        }
+        
+        
+        tmp1 = dataClass.getDadContactVal();
+        if(tmp1 != null)
+        {
+            dadContact.setText(tmp1);
+        }
+        
+        
+        tmp1 = dataClass.getFamContactVal();
+        if(tmp1 != null)
+        {
+            famContact.setText(tmp1);
+        }
+        
+        
+        tmp1 = dataClass.getAddInfoVal();
+        if(tmp1 != null)
+        {
+            addInfo.setText(tmp1);
+        }
+    } 
     
-    public void setPersonMail()
+    
+    //////////////////////////////////////////////////////////////////////////
+    // Take Input
+    public void getPersonMail() throws NullPointerException
     {           
         String tmp = personMail.getText();
         if(tmp == null || !Pattern.compile("^(.+@.+)$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())            
@@ -102,18 +105,19 @@ public class OtherInfoController implements Initializable {
             personMail.setText(null);             
             dataClass.setPersonMailVal(null);
             personMail.setStyle(errorStyle);
-            System.out.println("false");
+            
+            throw new NullPointerException("personMail null");
         } 
         else 
         {                            
             dataClass.setPersonMailVal(tmp);
-            personMail.setStyle(successStyle); 
+            personMail.setStyle(null);
         }
         
     }
     
     
-    public void setUnivMail()
+    public void getUnivMail() throws NullPointerException
     {   
         String tmp = universityMail.getText();
         if(tmp == null  || !Pattern.compile("^(.+@.+)$", Pattern.CASE_INSENSITIVE).matcher(tmp).matches())            
@@ -121,17 +125,18 @@ public class OtherInfoController implements Initializable {
             universityMail.setText(null);
             dataClass.setUniversityMailVal(null);
             universityMail.setStyle(errorStyle);
-            System.out.println("false");
+            
+            throw new NullPointerException("universityMail null");
         }
         else 
         {           
-            dataClass.setUniversityMailVal(tmp);            
-            universityMail.setStyle(successStyle); 
+            dataClass.setUniversityMailVal(tmp);
+            universityMail.setStyle(null);
         }        
     }
     
     
-    public void setDadContact() 
+    public void getDadContact() throws NullPointerException
     {   
         String tmp = dadContact.getText();        
         if(tmp == null || !Pattern.compile("^[+]?([0-9]{2,3})?[-]?[0-9]{10}$").matcher(tmp).matches())
@@ -139,17 +144,18 @@ public class OtherInfoController implements Initializable {
             dadContact.setText(null);
             dataClass.setDadContactVal(null);
             dadContact.setStyle(errorStyle);
-            System.out.println("Fathers Contact failed");            
+            
+            throw new NullPointerException("dadContact null");
         }
         else
         {   
-            dataClass.setDadContactVal(tmp);
-            dadContact.setStyle(successStyle);                
+            dataClass.setDadContactVal(tmp);  
+            dadContact.setStyle(null);
         }
     }
     
     
-    public void setFamContact()
+    public void getFamContact() throws NullPointerException
     {   
         String tmp = famContact.getText();        
         if(tmp == null || !Pattern.compile("^[+]?([0-9]{2,3})?[-]?[0-9]{10}$").matcher(tmp).matches())
@@ -157,77 +163,58 @@ public class OtherInfoController implements Initializable {
             famContact.setText(null);
             dataClass.setFamContactVal(null);
             famContact.setStyle(errorStyle);
-            System.out.println("Family Contact failed");            
+            
+            throw new NullPointerException("famContact null");
         }      
         else
         {             
-            dataClass.setFamContactVal(tmp);            
-            famContact.setStyle(successStyle);   
+            dataClass.setFamContactVal(tmp); 
+            famContact.setStyle(null);
         }
     }
     
     
-    public void setAddInfo()
+    public void getAddInfo()
     {  
-        dataClass.setAddInfoVal(addInfo.getText());
-        //addInfo.setStyle(successStyle);         
+        dataClass.setAddInfoVal(addInfo.getText());         
     }
     
-             
-    public void toSave(MouseEvent event)
-    {        
         
-        DatabaseIO Connection = new DatabaseIO();
-        
-        Connection.InsertValues();
-        
-        try 
-        {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();        
-        } 
-        catch (Exception ex) 
-        {
-            ex.printStackTrace();
-        }
-    }
     
-    
-    public void toPrevPg(MouseEvent event)
+    public void ValidateField()
     {
-        try 
-        {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();        
-        } 
-        catch (Exception ex) 
-        {
-            ex.printStackTrace();
-        }
+       getPersonMail();
+       getUnivMail();
+       getDadContact();
+       getFamContact();
+       getAddInfo();
     }
+    
+    
+    
+    
+    @FXML
+    private Pane edit3;
        
+    @FXML
+    private JFXTextField personMail;
     
-    public void toHomepg(MouseEvent event)
-    {
-        try 
-        {
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
-        } 
-        catch (Exception ex) 
-          {
-            ex.printStackTrace();
-          }
-    }    
+    @FXML
+    private JFXTextField universityMail;
+                
+    @FXML
+    private JFXTextField dadContact;
     
+    @FXML
+    private JFXTextField famContact;
+       
+    @FXML
+    private TextArea addInfo;
+    
+    
+    private final String errorStyle = "-fx-border-color: #ff2323;";
+    
+    
+    private final OtherInfoData dataClass = OtherInfoData.getInstance();
     
 }

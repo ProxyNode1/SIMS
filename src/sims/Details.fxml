@@ -12,7 +12,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="anchor-pane" stylesheets="@Common.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sims.DetailsController">
    <children>
-      <Button layoutX="1081.0" layoutY="107.0" mnemonicParsing="false" onMouseClicked="#saveData" text="Save" />
       <JFXTextField fx:id="nameField" layoutX="107.0" layoutY="113.0" prefHeight="79.0" prefWidth="785.0" promptText="Name" styleClass="largetext" stylesheets="@Common.css">
          <font>
             <Font name="Segoe UI" size="46.0" />
@@ -56,11 +55,12 @@
             </Tab>
          </tabs>
       </JFXTabPane>
-      <Button layoutX="1010.0" layoutY="107.0" mnemonicParsing="false" text="Edit" />
-      <Button layoutX="922.0" layoutY="107.0" mnemonicParsing="false" text="Delete" />
-      <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="1.0" layoutY="1.0" maxHeight="32.0" maxWidth="48.0" onMousePressed="#toHomepg" prefHeight="32.0" prefWidth="48.0" ripplerFill="#b2afaf" style="-fx-background-color: #1883D7;" textFill="#3525c6">
+      <Button layoutX="1081.0" layoutY="107.0" mnemonicParsing="false" onAction="#SaveData" text="Save" />
+      <Button layoutX="1010.0" layoutY="107.0" mnemonicParsing="false" onAction="#EditData" text="Edit" />
+      <Button layoutX="922.0" layoutY="107.0" mnemonicParsing="false" onAction="#DeleteData" text="Delete" />
+      <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="1.0" layoutY="1.0" maxHeight="32.0" maxWidth="48.0" onAction="#ToHomepg" onMousePressed="#ToHomepg" prefHeight="32.0" prefWidth="48.0" ripplerFill="#b2afaf" style="-fx-background-color: #1883D7;" textFill="#3525c6">
          <graphic>
-            <ImageView fitHeight="26.0" fitWidth="26.0" onKeyPressed="#toHomepg" onMouseClicked="#toHomepg" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/home.png" />
                </image>

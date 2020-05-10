@@ -162,40 +162,57 @@ public class DetailsController implements Initializable
             oBasicInfoData.setNameVal(tmp);            
         }
     }
-     
     
-    public void validateData()
+    
+    public void SetFieldEditable(boolean Value)
+    {
+        nameField.setEditable(Value);
+        nameField.setDisable(!Value);
+        
+        //SaveButton.SetDisable(Value)
+        //EditButton.SetDisable(!Value)
+        
+        
+        oBasicInfoController.SetFieldEditable(Value);
+    }
+    
+    
+    public void ValidateData()
     {
         getName();
         oBasicInfoController.ValidateFields();
-        oSSCInfoController.ValidateFields();
+        
+        /*oSSCInfoController.ValidateFields();
         oHSSInfoController.ValidateFields();
         oDiplomaInfoController.ValidateFields();
         oUGInfoController.ValidateFields();
         oPGInfoController.ValidateFields();
-        oOtherInfoController.ValidateField();
+        oOtherInfoController.ValidateField();*/
     }
     
     
-    public void saveData()
+    public void SaveData()
     {
-        validateData();
+        ValidateData();
+        
+        //EditButton.SetDisable(false)
     }
     
     
-    public void updateData()
+    public void EditData()
     {
-        
+        //SaveButton.SetDisable(true)
     }
     
     
-    public void deleteData()
+    public void DeleteData()
     {
-        
+        //Display a prompt asking yes or no
+        // return to homepage
     }
     
         
-    public void toHomepg(MouseEvent event) 
+    public void ToHomepg(MouseEvent event) 
     {
         try 
         {

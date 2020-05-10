@@ -115,12 +115,21 @@ public class HomePageController implements Initializable
     public void AddData(MouseEvent event) 
     {        
         try 
-        {           
-            Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();
+        {   
+            DetailsController oDetail = new DetailsController();
+             
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Details.fxml"));
+            Parent DetailView = loader.load();
+            
+            
+            oDetail = loader.getController();
+            oDetail.SetFieldEditable(true);
+            
+            
+            Stage AppStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene DetailScene = new Scene(DetailView);
+            AppStage.setScene(DetailScene);
+            AppStage.show();
             
         } 
         catch (IOException e) 
@@ -143,16 +152,18 @@ public class HomePageController implements Initializable
                 
                 dbIO.getBasicInfo();
                            
-                
-                
-                //(Editing1Controller.oldName) = b;
-                //Editing1Controller.ui = 0;
-            
-                /*Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing1.fxml"));
-                Scene editPg1Scene = new Scene(editPag1);
-                Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                appStage.setScene(editPg1Scene);
-                appStage.show();*/
+                DetailsController oDetail = new DetailsController();
+             
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Details.fxml"));
+                Parent DetailView = loader.load();
+
+                oDetail = loader.getController();
+                oDetail.SetFieldEditable(false);
+
+                Stage AppStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene DetailScene = new Scene(DetailView);
+                AppStage.setScene(DetailScene);
+                AppStage.show();
 
             } 
             catch (Exception e) 

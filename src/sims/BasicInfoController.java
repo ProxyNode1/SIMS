@@ -7,11 +7,7 @@ import javafx.fxml.Initializable;
 
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
-
 import javafx.fxml.FXML;
-
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Tooltip;
 import java.util.regex.Pattern;
 import java.time.LocalDate;
@@ -22,6 +18,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 
 
@@ -32,8 +30,7 @@ public class BasicInfoController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {  
-        edit1.requestFocus();
-                      
+              
         course.setTooltip(new Tooltip("eg. BE Computer Science"));
         
         setValues();
@@ -132,9 +129,9 @@ public class BasicInfoController implements Initializable
         {
             dataClass.setYearVal(0);
             dataClass.setMonthVal(0);
-            dataClass.setDayVal(0); 
-            
+            dataClass.setDayVal(0);             
             dob.setStyle(errorStyle);
+            
             throw new NullPointerException("dob null");
         }
         
@@ -148,7 +145,7 @@ public class BasicInfoController implements Initializable
         { 
             course.setText(null);
             dataClass.setCourseVal(null);
-            course.setStyle(errorStyle); 
+            course.setStyle(errorStyle);
             
             throw new NullPointerException("course null");
         } 
@@ -224,36 +221,31 @@ public class BasicInfoController implements Initializable
     }
     
     
-    ////////////////////////////////////////////////////////////////////////////
-    // Changing to different page
-    
-    public void saveDat(MouseEvent event) //this function allows to transport to another tab without opening another window and same goes for other 2 functions
-    {                  
-        try 
-        {
-            ValidateFields(); //save the fields value
-            
-            /*Parent editPag1 = FXMLLoader.load(getClass().getResource("Editing2.fxml"));
-            Scene editPg1Scene = new Scene(editPag1);
-            Stage appStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            appStage.setScene(editPg1Scene);
-            appStage.show();*/
-            
-        } 
-        catch (Exception e) 
-        {
-            System.err.println(e.getMessage());
-        }
-    }
+    public void SetFieldEditable(boolean Value)
+    {
+        clgID.setEditable(Value);
+        clgID.setDisable(!Value);
         
+        dob.setEditable(Value);
+        dob.setDisable(!Value);
+        
+        course.setEditable(Value);
+        course.setDisable(!Value);
+        
+        currSem.setEditable(Value);
+        currSem.setDisable(!Value);
+        
+        contact.setEditable(Value);
+        contact.setDisable(!Value);
+    }
+    
+            
 
     private final String errorStyle = "-fx-border-color: #ff2323;";
     
     
     private final BasicInfoData dataClass = BasicInfoData.getInstance();      
         
-    @FXML
-    private AnchorPane edit1;            
         
     @FXML
     public JFXTextField clgID;

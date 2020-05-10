@@ -31,7 +31,7 @@
             </Pane>
          </content>
       </ScrollPane>
-      <JFXButton fx:id="addData" alignment="CENTER" layoutX="1208.0" layoutY="65.0" onMouseClicked="#AddData" prefHeight="24.0" prefWidth="36.0" ripplerFill="#9a6c00" style="-fx-background-color: #DEA309;" text="+" textFill="#1f1f1f">
+      <JFXButton alignment="CENTER" layoutX="1208.0" layoutY="65.0" onMouseClicked="#AddData" prefHeight="24.0" prefWidth="36.0" ripplerFill="#9a6c00" style="-fx-background-color: #DEA309;" text="+" textFill="#1f1f1f">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>

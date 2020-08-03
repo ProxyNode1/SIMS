@@ -94,7 +94,7 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField sPercent;
             
-    Editing2DataSSC dataClassSSC = Editing2DataSSC.getInstance();
+    SSCInfoData dataClassSSC = SSCInfoData.getInstance();
     
     
     public void setSPassYear()
@@ -337,7 +337,7 @@ public class Editing2Controller implements Initializable
     @FXML
     private TextField hMath;
     
-    Editing2DataHSS dataClassHss = Editing2DataHSS.getInstance();
+    HSSInfoData dataClassHss = HSSInfoData.getInstance();
     
     
     public void setHPassYear()
@@ -619,7 +619,7 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField dPercent6;
             
-    Editing2DataDiploma dataClassDiploma = Editing2DataDiploma.getInstance();
+    DiplomaInfoData dataClassDiploma = DiplomaInfoData.getInstance();
     
     
     public void setDPassYear()
@@ -688,7 +688,7 @@ public class Editing2Controller implements Initializable
     }
     
     
-    public void setDPercent1()
+    /*public void setDPercent1()
     {           
         String tmp = dPercent1.getText();
         if (tmp != null) 
@@ -855,7 +855,7 @@ public class Editing2Controller implements Initializable
             dPercent6.setStyle(errorStyle);
             System.out.println("dPercent6Val not a float");
         }
-    }
+    }*/
        
     
     //////////////////////////////////////////////////////////
@@ -924,7 +924,7 @@ public class Editing2Controller implements Initializable
     private JFXTextField ePercent8;
     
         
-    Editing2DataUG dataClassUG = Editing2DataUG.getInstance();
+    UGInfoData dataClassUG = UGInfoData.getInstance();
     
     
     public void setEPassYear()
@@ -994,7 +994,7 @@ public class Editing2Controller implements Initializable
     }
     
     
-    public void setEPercent1()
+    /*public void setEPercent1()
     {           
         String tmp = ePercent1.getText();
         if (tmp != null) 
@@ -1217,7 +1217,7 @@ public class Editing2Controller implements Initializable
             ePercent8.setStyle(errorStyle);
             System.out.println("ePercent8Val not a float");
         }  
-    }
+    }*/
     
    
     
@@ -1246,7 +1246,7 @@ public class Editing2Controller implements Initializable
     @FXML
     private JFXTextField pPercent4;
         
-    Editing2DataPG dataClassPG = Editing2DataPG.getInstance();
+    PGInfoData dataClassPG = PGInfoData.getInstance();
     
     
     public void setPPassYear()
@@ -1315,7 +1315,7 @@ public class Editing2Controller implements Initializable
     }
     
     
-    public void setPPercent1()
+    /*public void setPPercent1()
     {           
         String tmp = pPercent1.getText();
         if (tmp != null) 
@@ -1425,7 +1425,7 @@ public class Editing2Controller implements Initializable
             System.out.println("pPercent4Val not a float");
         }
         
-    }
+    }*/
     
        
          

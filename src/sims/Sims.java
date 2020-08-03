@@ -9,12 +9,9 @@ import javafx.stage.Stage;
 
 public class Sims extends Application 
 {
-    
     @Override
     public void start(Stage stage) throws Exception 
     {        
-        //DatabaseIO a = new DatabaseIO();
-        
         Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         
         stage.resizableProperty().setValue(Boolean.FALSE);

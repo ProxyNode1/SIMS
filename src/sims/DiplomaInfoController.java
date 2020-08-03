@@ -78,6 +78,7 @@ public class DiplomaInfoController implements Initializable
                 passYear.setText(null);
                 dataClass.setPassYearVal(0);
                 passYear.setStyle(errorStyle);
+                
                 throw new NullPointerException("DPassYear1 null");
             }
         }
